@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<catalogs>  
+    <catalog id="001">Book</catalog>  
+    <catalog id="002">Video</catalog>  
+</catalogs>  
