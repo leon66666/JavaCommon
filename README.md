@@ -1,0 +1,3 @@
+# JavaCommon
+Java基础，集合，线程，数据类型，正则，jdk5--8各个版本特性，等等...
+每个包的package-info.java有详细的说明和参考文档
