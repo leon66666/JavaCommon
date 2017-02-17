@@ -1,6 +1,7 @@
 package zhongqiu.common.base.collections;
 
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.TreeSet;
 
 //set
@@ -16,7 +17,8 @@ public class SetDemo {
 
 	// HashSet类按照哈希算法来存取集合中的对象，存取速度比较快。HashSet类还有一个子类LinkedHashSet类，它不仅实现了哈希算法，而且实现了链表数据结构。
 	HashSet<String> hSet = new HashSet<>();
-
+	
+    LinkedHashSet<String> linkedHashSet=new LinkedHashSet<>();
 	// TreeSet类实现了SortedSet接口，具有排序功能。TreeSet支持两种排序方式：自然排序和客户化排序，在默认情况下TreeSet采用自然排序方式。
 	TreeSet<String> tSet = new TreeSet<>();
 }

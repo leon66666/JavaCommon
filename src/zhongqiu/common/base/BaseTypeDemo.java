@@ -24,12 +24,12 @@ double 双精度类型（双精度）  8
 */
 public class BaseTypeDemo {
 	public static void main(String[] args) {
-		ValueTypeDemo.test();
+		// ValueTypeDemo.test();
 		ReferenceTypeDemo.test();
-		CharDemo.test();
-		StringDemo.test();
-		StringDemo.test1();
-		StringDemo.test2();
+		// CharDemo.test();
+		// StringDemo.test();
+		// StringDemo.test1();
+		// StringDemo.test2();
 	}
 
 	// 值类型Demo
@@ -43,7 +43,7 @@ public class BaseTypeDemo {
 			StringBuffer str = new StringBuffer("a");
 			process(str);
 			System.out.println(str);
-			// 结果 1 1 ab
+			// 结果： 1 1 ab
 		}
 
 		public static void process(int i) {
@@ -67,6 +67,8 @@ public class BaseTypeDemo {
 			char c = 'a';
 			System.out.println(a == b);
 			System.out.println(a == c);
+
+			// 结果：false true
 		}
 	}
 
@@ -80,7 +82,7 @@ public class BaseTypeDemo {
 			System.out.println("ab" == String.valueOf("ab"));
 
 			// 而”kv”和”ill”也都是字符
-			// 串常量，当一个字符串由多个字符串常量连接而成时，它自己肯定也是字符串常量，所以s2也同样在编译期就被解析为一个字符串常量，所以s2也是常量池中
+			// 串常量，当一个字符串由多个字符串常量连接而成时，它自己肯定也是字符串常量，所以s7也同样在编译期就被解析为一个字符串常量，所以s7也是常量池中
 			// ”kvill”的一个引用。
 			String s6 = "kvill";
 			String s7 = "kv" + "ill";
@@ -92,8 +94,8 @@ public class BaseTypeDemo {
 			// 存在于.class文件中的常量池，在运行期被JVM装载，并且可以扩充。String的intern()方法就是扩充常量池的一个
 			// 方法；当一个String实例str调用intern()方法时，Java查找常量池中是否有相同Unicode的字符串常量，如果有，则返回其的引用，
 			// 如果没有，则在常量池中增加一个Unicode等于str的字符串并返回它的引用
-			String s0 = "kvill";
-			String s1 = new String("kvill");
+			String s0 = "kvill"; // 声明了一个常量，在常量池中增加字符串kvill
+			String s1 = new String("kvill");// new 方法不会在常量池中增加字符串
 			String s2 = new String("kvill");
 			System.out.println(s0 == s1);
 			System.out.println("**********");
@@ -151,7 +153,6 @@ public class BaseTypeDemo {
 			process(str, sb);
 			System.out.println(str);
 			System.out.println(sb);
-			// 结果 a a a aA
 		}
 
 		public static void process(String str) {

@@ -3,10 +3,14 @@ package zhongqiu.common.base;
 //随机数。Math.random() -- 返回0和1之间的伪随机数 可能为0，但总是小于1，[0,1)
 public class MathRandomDemo {
 	public static void main(String[] args) {
-		// intAndChar();
+		intAndChar();
+		for (int i = 0; i < 100; i++) {
+			System.out.println(Math.random());
+		}
 		for (int i = 0; i < 10; i++) {
 			sixRandomStr();
 		}
+
 	}
 
 	// int和char对应关系

@@ -6,10 +6,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Vector;
-
-import org.ietf.jgss.Oid;
 
 //ListÏà¹Ø²Ù×÷
 public class ListDemo {

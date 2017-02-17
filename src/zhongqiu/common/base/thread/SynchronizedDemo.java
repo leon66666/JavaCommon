@@ -14,9 +14,9 @@ package zhongqiu.common.base.thread;
 */
 public class SynchronizedDemo implements Runnable {
 	public static void main(String[] args) {
-		// test();
-		// test1();
-		test2();
+//		test1();
+//		test2();
+		test3();
 	}
 
 	// synchronized(this)同步代码块
@@ -24,7 +24,7 @@ public class SynchronizedDemo implements Runnable {
 		System.out.println("线程" + Thread.currentThread().getName() + "申请获得syn的锁");
 		synchronized (this) {
 			System.out.println("线程" + Thread.currentThread().getName() + "获得了syn的锁");
-			for (int i = 0; i < 3; i++) {
+			for (int i = 0; i < 200; i++) {
 				System.out.println(Thread.currentThread().getName() + " synchronized loop " + i);
 			}
 		}
@@ -35,7 +35,7 @@ public class SynchronizedDemo implements Runnable {
 		System.out.println("线程" + Thread.currentThread().getName() + "申请获得syn的锁");
 		synchronized (this) {
 			System.out.println("线程" + Thread.currentThread().getName() + "获得了syn的锁");
-			for (int i = 0; i < 3; i++) {
+			for (int i = 0; i < 200; i++) {
 				System.out.println(Thread.currentThread().getName() + " synchronized loop " + i);
 			}
 		}
@@ -45,7 +45,7 @@ public class SynchronizedDemo implements Runnable {
 	public void notSYN() {
 		System.out.println("对象非synchronized(this)同步代码块不受锁的影响");
 		System.out.println("线程" + Thread.currentThread().getName() + "继续使用对象syn的其他非synchronized(this)方法");
-		for (int i = 0; i < 3; i++) {
+		for (int i = 0; i < 200; i++) {
 			System.out.println(Thread.currentThread().getName() + " synchronized loop " + i);
 		}
 	}
@@ -64,7 +64,7 @@ public class SynchronizedDemo implements Runnable {
 
 	void methodA() {
 		synchronized (lock1) {
-			for (int i = 0; i < 3; i++) {
+			for (int i = 0; i < 200; i++) {
 				System.out.println(Thread.currentThread().getName() + " synchronized loop " + i);
 			}
 		}
@@ -74,7 +74,7 @@ public class SynchronizedDemo implements Runnable {
 	 * 当两个并发线程访问同一个对象object中的这个synchronized(this)同步代码块时，
 	 * 一个时间内只能有一个线程得到执行。另一个线程必须等待当前线程执行完这个代码块以后才能执行该代码块。
 	 */
-	public static void test() {
+	public static void test1() {
 		SynchronizedDemo syn = new SynchronizedDemo();
 		Thread ta = new Thread(syn, "A");
 		Thread tb = new Thread(syn, "B");
@@ -86,24 +86,23 @@ public class SynchronizedDemo implements Runnable {
 	 * 当一个线程访问object的一个synchronized(this)同步代码块时，
 	 * 另一个线程仍然可以访问该object中的非synchronized(this)同步代码块。
 	 */
-	public static void test1() {
+	public static void test2() {
 		/*
 		 * final修饰的类不能被继承。 Sting就是一个被final修饰的类，我们只能用，不用继承
 		 * final不仅可以修饰类，还可以修饰变量，被final修饰的变量就是一个常量，只能赋值一次
 		 */
 		final SynchronizedDemo syn = new SynchronizedDemo();
-		Thread t1 = new Thread(new Runnable() {
+		new Thread(new Runnable() {
 			public void run() {
 				syn.run();
 			}
-		}, "t1");
-		Thread t2 = new Thread(new Runnable() {
+		}, "t1").start();
+		
+		new Thread(new Runnable() {
 			public void run() {
 				syn.notSYN();
 			}
-		}, "t2");
-		t1.start();
-		t2.start();
+		}, "t2").start();
 	}
 
 	/*
@@ -112,26 +111,26 @@ public class SynchronizedDemo implements Runnable {
 	 * 也就是说，当一个线程访问object的一个synchronized(this)同步代码块时，它就获得了这个object的对象锁。
 	 * 结果，其它线程对该object对象所有同步代码部分的访问都被暂时阻塞。
 	 */
-	public static void test2() {
+	public static void test3() {
 		final SynchronizedDemo syn = new SynchronizedDemo();
-		Thread t1 = new Thread(new Runnable() {
+		
+		new Thread(new Runnable() {
 			public void run() {
 				syn.run();
 			}
-		}, "t1");
-		Thread t2 = new Thread(new Runnable() {
+		}, "t1").start();
+		
+		new Thread(new Runnable() {
 			public void run() {
 				syn.SYN();
 			}
-		}, "t2");
-		Thread t3 = new Thread(new Runnable() {
+		}, "t2").start();
+		
+		new Thread(new Runnable() {
 			public void run() {
 				syn.methodA();
 			}
-		}, "t3");
-		t1.start();
-		t2.start();
-		t3.start();
+		}, "t3").start();
 	}
 
 }

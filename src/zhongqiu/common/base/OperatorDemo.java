@@ -30,7 +30,7 @@ public class OperatorDemo {
 		System.out.println("Value of b is : " + b);
 	}
 
-	// instanceof运算符.
+	// instanceof运算符.判断是否为一个类的实例
 	public static void instanceOf() {
 		String name = "James";
 		boolean result = name instanceof String;

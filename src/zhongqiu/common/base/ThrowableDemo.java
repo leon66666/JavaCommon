@@ -2,7 +2,7 @@ package zhongqiu.common.base;
 
 //异常
 //http://www.runoob.com/java/java-exceptions.html
-public class ThrowableDemo {
+public class ThrowableDemo extends Throwable{
 	// Throwable包含了错误(Error)和异常(Exception两类)
 	// Exception又包含了运行时异常(RuntimeException, 又叫非检查异常)和非运行时异常(又叫检查异常)
 	// (1) Error是程序无法处理了, 如果OutOfMemoryError等等, 这些异常发生时,java虚拟机一般会终止线程 .

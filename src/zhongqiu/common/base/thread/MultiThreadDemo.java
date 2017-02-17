@@ -8,7 +8,7 @@ import java.util.concurrent.FutureTask;
 //     http://www.runoob.com/java/java-multithreading.html
 
 //在java中，每次程序运行至少启动2个线程。一个是main线程，一个是垃圾收集线程。
-//因为每当使用java命令执行一个类的时候，实际上都会启动一个ＪＶＭ，每一个ｊＶＭ实习在就是在操作系统中启动了一个进程。
+//因为每当使用java命令执行一个类的时候，实际上都会启动一个ＪＶＭ，每一个ｊＶＭ就是在操作系统中启动了一个进程。
 //线程类的一些常用方法： 
 //sleep(): 强迫一个线程睡眠Ｎ毫秒。 
 //isAlive(): 判断一个线程是否存活。 
@@ -24,6 +24,22 @@ import java.util.concurrent.FutureTask;
 //setPriority(): 设置一个线程的优先级。
 public class MultiThreadDemo {
 	public static void main(String[] args) throws InterruptedException {
+		// 匿名类实现多线程
+		// new Thread(new Runnable() {
+		// public void run() {
+		// for (int i = 0; i < 10; i++) {
+		// System.out.println("线程1");
+		// }
+		// }
+		// }).start();
+		// new Thread(new FutureTask<>(new Callable<Integer>() {
+		// public Integer call()
+		// {
+		// System.out.println("线程2");
+		// return 1;
+		// }
+		// })).start();
+
 		// start()方法的调用后并不是立即执行多线程代码，而是使得该线程变为可运行态（Runnable），什么时候运行是由操作系统决定的。
 		// new ThreadDemo("A").start();
 		// new ThreadDemo("B").start();
@@ -34,18 +50,18 @@ public class MultiThreadDemo {
 		// new Thread(my, "D").start();
 
 		// 经典面试题
-		// SYNPo a = new SYNPo("a");
-		// SYNPo b = new SYNPo("b");
-		// SYNPo c = new SYNPo("c");
-		// MyThreadPrinter pa = new MyThreadPrinter("A", c, a);
-		// MyThreadPrinter pb = new MyThreadPrinter("B", a, b);
-		// MyThreadPrinter pc = new MyThreadPrinter("C", b, c);
-		// new Thread(pa).start();
-		// Thread.sleep(100); // 确保按顺序A、B、C执行
-		// new Thread(pb).start();
-		// Thread.sleep(100);
-		// new Thread(pc).start();
-		// Thread.sleep(100);
+		 SYNPo a = new SYNPo("a");
+		 SYNPo b = new SYNPo("b");
+		 SYNPo c = new SYNPo("c");
+		 MyThreadPrinter pa = new MyThreadPrinter("A", c, a);
+		 MyThreadPrinter pb = new MyThreadPrinter("B", a, b);
+		 MyThreadPrinter pc = new MyThreadPrinter("C", b, c);
+		 new Thread(pa).start();
+		 Thread.sleep(100); // 确保按顺序A、B、C执行
+		 new Thread(pb).start();
+		 Thread.sleep(100);
+		 new Thread(pc).start();
+		 Thread.sleep(100);
 
 		// 通过 Callable 和 Future 创建线程
 		// 1. 创建 Callable 接口的实现类，并实现 call() 方法，该 call() 方法将作为线程执行体，并且有返回值。
@@ -53,8 +69,6 @@ public class MultiThreadDemo {
 		// 对象封装了该 Callable 对象的 call() 方法的返回值。
 		// 3. 使用 FutureTask 对象作为 Thread 对象的 target 创建并启动新线程。
 		// 4. 调用 FutureTask 对象的 get() 方法来获得子线程执行结束后的返回值。
-		CallableDemo cDemo = new CallableDemo();
-		FutureTask<Integer> fTask = new FutureTask<>(cDemo);
 		// FutureTask有下面几个重要的方法：
 		// 1.get()
 		// 阻塞一直等待执行完成拿到结果
@@ -66,19 +80,22 @@ public class MultiThreadDemo {
 		// 是否已经完成
 		// 5.cancel(boolean mayInterruptIfRunning)
 		// 试图取消正在执行的任务
-		for (int i = 0; i < 100; i++) {
-			System.out.println(Thread.currentThread().getName() + " 的循环变量i的值" + i);
-			if (i == 20) {
-				new Thread(fTask, "有返回值的线程").start();
-			}
-		}
-		try {
-			System.out.println("子线程的返回值：" + fTask.get());
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		} catch (ExecutionException e) {
-			e.printStackTrace();
-		}
+		// CallableDemo cDemo = new CallableDemo();
+		// FutureTask<Integer> fTask = new FutureTask<>(cDemo);
+		// for (int i = 0; i < 100; i++) {
+		// System.out.println(Thread.currentThread().getName() + " 的循环变量i的值" +
+		// i);
+		// if (i == 20) {
+		// new Thread(fTask, "有返回值的线程").start();
+		// }
+		// }
+		// try {
+		// System.out.println("子线程的返回值：" + fTask.get());
+		// } catch (InterruptedException e) {
+		// e.printStackTrace();
+		// } catch (ExecutionException e) {
+		// e.printStackTrace();
+		// }
 	}
 
 	// 继承Thread类实现多线程
@@ -181,7 +198,7 @@ public class MultiThreadDemo {
 						// notify()调用后，并不是马上就释放对象锁的，而是在相应的synchronized(){}语句块执行结束，
 						// 自动释放锁后,JVM会在wait()对象锁的线程中随机选取一线程，赋予其对象锁，唤醒线程，继续执行。
 						self.notify();
-						System.out.println("对象" + self.getName() + "被赋予给了等待的进程" + "【唤醒操作!!!】");
+//						System.out.println("对象" + self.getName() + "被赋予给了等待的进程" + "【唤醒操作!!!】");
 					}
 					System.out.println("线程" + name + "释放了对象" + self.getName() + "的锁");
 					try {
