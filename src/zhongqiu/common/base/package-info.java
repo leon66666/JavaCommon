@@ -12,6 +12,7 @@
  * （4）String,StringBuffer,StringBuilder相关:stringbuilder的方法使用
  * （5）Number类型相关：对应基本类型
  * （6）随机数。Math.random():生成随机的六位字符串
+ * （7）反射机制 
  * 
  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  * 
  * （1）集合中的List：arrayList，linkedList,vector的区别和使用场景
@@ -24,7 +25,7 @@
  * 
  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  * 
  * （1）同步Synchronized
- * （2）多线程:1、多线程的三种实现方法；2、如何运行一个多线程执行代码；3、线程的常用方法；4、经典面试题（三个线程交替打印10次ABC）
+ * （2）多线程:1、多线程的三种实现方法；2、如何运行一个多线程执行代码；3、线程的常用方法；4、wait和notify的使用；5、经典面试题（三个线程交替打印10次ABC）
  * （3）线程池 ThreadPoolExecutor
  * （4）Volatile关键字
  * 

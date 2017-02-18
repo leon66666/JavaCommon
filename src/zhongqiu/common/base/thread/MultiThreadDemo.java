@@ -1,8 +1,6 @@
 package zhongqiu.common.base.thread;
 
 import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.FutureTask;
 
 //多线程    http://www.mamicode.com/info-detail-517008.html
 //     http://www.runoob.com/java/java-multithreading.html
@@ -22,6 +20,10 @@ import java.util.concurrent.FutureTask;
 //wait(): 强迫一个线程等待。 
 //notify(): 通知一个线程继续运行。 
 //setPriority(): 设置一个线程的优先级。
+
+//如果对象调用了wait方法就会使持有该对象的线程把该对象的控制权交出去，然后处于等待这个对象的控制权的状态。
+//如果对象调用了notify方法就会通知某个正在等待这个对象的控制权的线程可以继续运行。
+//如果对象调用了notifyAll方法就会通知所有等待这个对象控制权的线程继续运行。
 public class MultiThreadDemo {
 	public static void main(String[] args) throws InterruptedException {
 		// 匿名类实现多线程
@@ -48,20 +50,6 @@ public class MultiThreadDemo {
 		// RunnableDemo my = new RunnableDemo();
 		// new Thread(my, "C").start();
 		// new Thread(my, "D").start();
-
-		// 经典面试题
-		 SYNPo a = new SYNPo("a");
-		 SYNPo b = new SYNPo("b");
-		 SYNPo c = new SYNPo("c");
-		 MyThreadPrinter pa = new MyThreadPrinter("A", c, a);
-		 MyThreadPrinter pb = new MyThreadPrinter("B", a, b);
-		 MyThreadPrinter pc = new MyThreadPrinter("C", b, c);
-		 new Thread(pa).start();
-		 Thread.sleep(100); // 确保按顺序A、B、C执行
-		 new Thread(pb).start();
-		 Thread.sleep(100);
-		 new Thread(pc).start();
-		 Thread.sleep(100);
 
 		// 通过 Callable 和 Future 创建线程
 		// 1. 创建 Callable 接口的实现类，并实现 call() 方法，该 call() 方法将作为线程执行体，并且有返回值。
@@ -100,16 +88,15 @@ public class MultiThreadDemo {
 
 	// 继承Thread类实现多线程
 	public static class ThreadDemo extends Thread {
-		private String name;
 		private int count = 5;
 
 		public ThreadDemo(String name) {
-			this.name = name;
+			super(name);
 		}
 
 		public void run() {
 			for (int i = 0; i < 5; i++) {
-				System.out.println(name + "运行  count= " + count--);
+				System.out.println(this.getName() + "运行  count= " + count--);
 				try {
 					// Thread.sleep()方法调用目的是不让当前线程独自霸占该进程所获取的CPU资源，以留出一定时间给其他线程执行的机会。
 					sleep((int) Math.random() * 10);
@@ -164,55 +151,6 @@ public class MultiThreadDemo {
 
 		public void setName(String name) {
 			this.name = name;
-		}
-	}
-
-	// 经典面试题
-	// 建立三个线程，A线程打印10次A，B线程打印10次B,C线程打印10次C，要求线程同时运行，交替打印10次ABC。
-	// 主要考察obj.wait()和obj.notify() 的用法
-	public static class MyThreadPrinter implements Runnable {
-
-		private String name;
-		private SYNPo prev;
-		private SYNPo self;
-
-		private MyThreadPrinter(String name, SYNPo prev, SYNPo self) {
-			this.name = name;
-			this.prev = prev;
-			this.self = self;
-		}
-
-		@Override
-		public void run() {
-			int count = 10;
-			while (count > 0) {
-				System.out.println("线程" + name + "申请获得对象" + prev.getName() + "的锁");
-				synchronized (prev) {
-					System.out.println("线程" + name + "获得了对象" + prev.getName() + "的锁");
-					System.out.println("线程" + name + "申请获得对象" + self.getName() + "的锁");
-					synchronized (self) {
-						System.out.println("线程" + name + "获得了对象" + self.getName() + "的锁");
-						System.out.println(name);
-						count--;
-
-						// notify()调用后，并不是马上就释放对象锁的，而是在相应的synchronized(){}语句块执行结束，
-						// 自动释放锁后,JVM会在wait()对象锁的线程中随机选取一线程，赋予其对象锁，唤醒线程，继续执行。
-						self.notify();
-//						System.out.println("对象" + self.getName() + "被赋予给了等待的进程" + "【唤醒操作!!!】");
-					}
-					System.out.println("线程" + name + "释放了对象" + self.getName() + "的锁");
-					try {
-						// Thread.sleep()与Object.wait()二者都可以暂停当前线程，释放CPU控制权，
-						// 主要的区别在于Object.wait()在释放CPU同时，释放了对象锁的控制。
-						System.out.println("线程" + name + "释放了对象" + prev.getName() + "的锁");
-						System.out.println("线程" + name + "进入休眠状态。等待获取" + prev.getName() + "的锁" + "【等待中。。。】");
-						prev.wait();
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-				}
-
-			}
 		}
 	}
 }

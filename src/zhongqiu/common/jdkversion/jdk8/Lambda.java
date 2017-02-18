@@ -13,26 +13,28 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 //Lambda 表达式
+//方法与构造函数引用
 public class Lambda {
 	public static List<String> fruitList = Arrays.asList("Apple", "Banan", "Orange", "Pear");
 	public static ArrayList<String> values = new ArrayList<>(1000000);
 
 	public static void main(String[] args) {
-		// Stream.filter();
+		// StreamDemo.filter();
 		// StreamDemo.sorted();
-		// Stream.match();
-		// Stream.count();
-		// Stream.reduce();
-		// Stream.map();
+		// StreamDemo.match();
+		// StreamDemo.count();
+		// StreamDemo.reduce();
+		// StreamDemo.map();
+		StreamDemo.flagMap();
 		// ParallelStreamDemo.init();
 		// ParallelStreamDemo.stream();
 		// ParallelStreamDemo.parallelStream();
-		ReuseLambda.reUseLambda();
+		// ReuseLambda.reUseLambda();
 	}
 
 	// Stream 接口
 	// Stream操作分为中间操作或者最终操作两种，最终操作返回一特定类型的计算结果，而中间操作返回Stream本身，这样你就可以将多个操作依次串起来。
-	// 最终操作：forEach,match,count,reduce
+	// 最终操作：forEach,match,count,reduce,collect
 	// 中间操作：filter,sorted,map,flagMap
 	public static class StreamDemo {
 		// forEach 遍历
@@ -88,10 +90,11 @@ public class Lambda {
 		public static void map() {
 			// 遍历输出名字的大写形式
 			fruitList.stream().map(name -> name.toUpperCase()).forEach(name -> System.out.print(name + " "));
-			fruitList.stream().map(String::toUpperCase).forEach(System.out::println);
+			fruitList.stream().map(String::toUpperCase).forEach(System.out::println);// 方法与构造函数引用
 
 			// 遍历输出每个名字的长度
 			fruitList.stream().map(String::length).forEach(count -> System.out.print(count + " "));
+			fruitList.stream().map(String::length).forEach(System.out::println);
 		}
 
 		// flagMap 映射 一对多
@@ -99,6 +102,7 @@ public class Lambda {
 			Stream<List<Integer>> inputStream = Stream.of(Arrays.asList(1), Arrays.asList(2, 3),
 					Arrays.asList(4, 5, 6));
 			Stream<Integer> outputStream = inputStream.flatMap((childList) -> childList.stream());
+			outputStream.forEach(System.out::println);
 		}
 
 		// 流转换成其他的数据结构

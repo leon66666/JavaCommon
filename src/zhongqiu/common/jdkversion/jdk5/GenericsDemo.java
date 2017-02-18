@@ -13,9 +13,11 @@ public class GenericsDemo {
 		Container<String, String> c1 = new Container<String, String>("name", "findingsea");
 		Container<String, Integer> c2 = new Container<String, Integer>("age", 24);
 		Container<Double, Double> c3 = new Container<Double, Double>(1.1, 2.2);
+		Container<Integer, Object> c4 = new Container<Integer, Object>(1, new Object());
 		getContainer(c1);
 		getContainer(c2);
 		getContainer(c3);
+		getContainerSuper(c4);// getContainerSuper(c3)会报错
 		getContainerExtends(c1);// getContainerExtends(c2);会报错
 
 		// 泛型接口
@@ -89,6 +91,10 @@ public class GenericsDemo {
 			Random rand = new Random();
 			return fruits[rand.nextInt(3)];
 		}
+	}
+
+	public static <R, T> R in(T t, R r) {
+		return r;
 	}
 
 	// 泛型方法

@@ -13,7 +13,7 @@ public class VolatileDemo {
 	 * active 值被使用，那么在 第二行 的 active 值为 false 时循环不会停止。 但是以上代码中我们使用了 volatile 修饰
 	 * active，所以该循环会停止。
 	 */
-	public class MyRunnable implements Runnable {
+	public static class MyRunnable implements Runnable {
 		private volatile boolean active;
 
 		public void run() {
@@ -21,11 +21,37 @@ public class VolatileDemo {
 			while (active) // 第一行
 			{
 				// 代码
+				System.out.println("active=" + active);
+				try {
+					Thread.sleep(500);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		}
 
 		public void stop() {
+			System.out.println("active=" + false);
 			active = false; // 第二行
 		}
+	}
+
+	public static void main(String[] args) throws InterruptedException {
+		MyRunnable myRunnable = new MyRunnable();
+
+		new Thread(new Runnable() {
+			public void run() {
+				myRunnable.run();
+			}
+		}).start();
+
+		Thread.sleep(5000);
+
+		new Thread(new Runnable() {
+			public void run() {
+				myRunnable.stop();
+			}
+		}).start();
 	}
 }
