@@ -1,4 +1,4 @@
-package zhongqiu.test;
+package zhongqiu.common.base.classload;
 
 public class Test {
 	static {
