@@ -14,7 +14,12 @@
  * （6）随机数。Math.random():生成随机的六位字符串
  * （7）反射机制 
  * （8）类加载：类加载过程，原理(双亲委托模式)，三种类加载器，类加载的三种方式，自定义classloader
- * 
+ * （9）JVM内存管理：两个子系统(Class loader子系统和Execution engine(执行引擎))，
+ *     两个组件分别是Runtime data area (运行时数据区域)组件和Native interface(本地接口)组件
+ *     Runtime Data Area组件：1、Heap (堆)2、Method Area(方法区域)3、Java Stack(java的栈）
+ *                          4、Program Counter(程序计数器)5、Native method stack(本地方法栈)：保存native方法进入区域的地址
+ *     JVM GC原理：对象分为年青代(Young)、年老代(Tenured)、持久代(Perm)，对不同生命周期的对象使用不同的算法
+ *     年轻代和年老代都是指的JVM的Heap空间，而持久代则是之前提到的Method Area，不属于Heap。
  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  * 
  * （1）集合中的List：arrayList，linkedList,vector的区别和使用场景
  * （2）集合中的Stack：push，pop，peek，search
