@@ -17,7 +17,16 @@
  *               包装：byte array[] = new byte[1024];
                      ByteBuffer buffer = ByteBuffer.wrap( array );
   
- *五、
-                  
+ *五、缓冲区分片和数据共享。缓冲区和子缓冲区共享同一个底层数据数组
+ *   分片（子缓冲区）：buffer.position( 3 );
+         buffer.limit( 7 );
+         ByteBuffer slice = buffer.slice();    
+ *六、只读缓冲区。通过调用缓冲区的 asReadOnlyBuffer() 方法，将任何常规缓冲区转换为只读缓冲区，
+ *   这个方法返回一个与原缓冲区完全相同的缓冲区(并与其共享数据)，只不过它是只读的。  不能将只读的缓冲区转换为可写的缓冲区。
+ *七、直接和间接缓冲区。 FastCopyFile.java。ByteBuffer buffer = ByteBuffer.allocateDirect( 1024 );
+ *
+ *
  */
 package zhongqiu.common.base.nio;
+
+import java.nio.ByteBuffer;
