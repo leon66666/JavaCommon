@@ -4,6 +4,9 @@
 /**
  * @author zhongqiu
  *https://www.ibm.com/developerworks/cn/education/java/j-nio/j-nio.html
+ *重要概念：通道，缓冲区
+ *区别：io是面向io，面向流的；nio是面向缓冲区的
+ *
  *一、三个状态变量：position，limit，capacity。position<=limit,limit<=capacity
  *   buffer.flip(),改变position和limit的值。
  *   
