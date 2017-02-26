@@ -138,19 +138,4 @@ public class MultiThreadDemo {
 		}
 	}
 
-	public static class SYNPo {
-		public SYNPo(String name) {
-			setName(name);
-		}
-
-		public String name;
-
-		public String getName() {
-			return name;
-		}
-
-		public void setName(String name) {
-			this.name = name;
-		}
-	}
 }

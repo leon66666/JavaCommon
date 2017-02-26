@@ -1,7 +1,5 @@
 package zhongqiu.common.base.thread;
 
-import zhongqiu.common.base.thread.MultiThreadDemo.SYNPo;
-
 //经典面试题
 // 建立三个线程，A线程打印10次A，B线程打印10次B,C线程打印10次C，要求线程同时运行，交替打印10次ABC。
 // 主要考察obj.wait()和obj.notify() 的用法
@@ -70,6 +68,22 @@ public class PrintABC extends Thread {
 				}
 			}
 
+		}
+	}
+
+	public static class SYNPo {
+		public SYNPo(String name) {
+			setName(name);
+		}
+
+		public String name;
+
+		public String getName() {
+			return name;
+		}
+
+		public void setName(String name) {
+			this.name = name;
 		}
 	}
 }
