@@ -107,7 +107,7 @@ public class MultiThreadDemo {
 		}
 	}
 
-	// 实现Runnable接口。 可以资源共享
+	// 实现Runnable接口。 可以资源共享。和thread的主要区别
 	public static class RunnableDemo implements Runnable {
 		private int count = 5;
 
