@@ -13,7 +13,7 @@
  * （9）队列：【阻塞队列】blockingqueue（add、put和take，offer和poll，contains，remove，drainTo）
  *          ArrayBlockingQueue,LinkedBlockingQueue,DelayQueue,PriorityBlockingQueue,SynchronousQueue
  * （10）CountDownLatch。同步辅助类（await，countDown，getCount）
- * （11）ConcurrentHashMap。应用场景,实现原理,锁分离技术，Segment，和hashtable的区别，
+ * （11）ConcurrentHashMap。应用场景,实现原理,锁分离技术，Segment，和hashtable的区别，弱一致迭代器，读不需要锁
  * （12）ReentrantLock。在资源竞争不是很激烈的情况下，Synchronized的性能要优于ReetrantLock，
  *                    但是在资源竞争很激烈的情况下，Synchronized的性能会下降几十倍，
  * （13）ReentrantReadWriteLock。读写锁。和synchronized的区别。实现原理的不同，
