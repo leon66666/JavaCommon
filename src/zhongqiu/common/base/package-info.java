@@ -6,11 +6,11 @@
  * 参考资料：http://www.runoob.com/java/java-stack-class.html
  * 实例：  http://www.runoob.com/java/java-examples.html
  * java基础：
- * （1）基本数据类型：值类型和引用类型，string常量池，intern()方法，stringbuilder
+ * （1）基本数据类型：8个基本类型；值类型和引用类型，常量池，intern()方法，stringbuilder
  * （2）运算符操作：a++，++a,三元运算符，instanceof运算符
- * （3）异常：错误和异常，异常分为运行时异常和非运行时异常
+ * （3）异常：错误和异常，异常分为运行时异常和非运行时异常。Throwable，Error，Exception，RuntimeException
  * （4）String,StringBuffer,StringBuilder相关:stringbuilder的方法使用
- * （5）Number类型相关：对应基本类型
+ * （5）Number类型相关：对应基本类型的封装类。是否实现了常量池技术，哪些实现了，哪些没有实现，有哪些限制
  * （6）随机数。Math.random():生成随机的六位字符串
  * （7）反射机制 
  * （7）关键字：final，volatile，native，instance of，static，transient  

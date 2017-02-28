@@ -22,6 +22,11 @@ float 浮点类型（单精度）     4
 double 双精度类型（双精度）  8
 一个字节等于8位，一个字节等于256个数，就是-128到127一共256
 */
+
+/*常量池概念
+java中基本类型的包装类的大部分都实现了常量池技术，这些类是 Byte,Short,Integer,Long,Character,Boolean,
+另外两种浮点数类型的包装类则没有实现。另外 Byte,Short,Integer,Long,Character这5种整型的包装类也只是在对应值>= -128 &&<= 127时才可使用对象池，
+也即对象不负责创建和管理大于127的这些类的对象*/
 public class BaseTypeDemo {
 	public static void main(String[] args) {
 		// ValueTypeDemo.test();
