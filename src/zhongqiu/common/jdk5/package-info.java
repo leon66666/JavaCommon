@@ -11,7 +11,9 @@
  * （7）增强型for循环For-Each
  * （8）Scanner类。用来获取用户的输入
  * （9）队列：【阻塞队列】blockingqueue（add、put和take，offer和poll，contains，remove，drainTo）
- *          ArrayBlockingQueue,LinkedBlockingQueue,DelayQueue,PriorityBlockingQueue,SynchronousQueue
+ *          ArrayBlockingQueue,LinkedBlockingQueue,,PriorityBlockingQueue
+ *          DelayQueue：重写getDelay和compare方法
+ *          SynchronousQueue：每个插入操作必须等待另一个线程的对应移除操作 ，反之亦然。同步队列没有任何内部容量，甚至连一个队列的容量都没有。
  * （10）CountDownLatch。同步辅助类（await，countDown，getCount）。
  *      应用场景：假如有Thread1、Thread2、Thread3、Thread4四条线程分别统计C、D、E、F四个盘的大小，所有线程都统计完毕交给Thread5线程去做汇总
  * （11）ConcurrentHashMap。应用场景,实现原理,锁分离技术，Segment，和hashtable的区别，弱一致迭代器，读不需要锁
