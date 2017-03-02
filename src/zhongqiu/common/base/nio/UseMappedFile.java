@@ -10,7 +10,7 @@ public class UseMappedFile
   static private final int size = 1024;
 
   static public void main( String args[] ) throws Exception {
-    RandomAccessFile raf = new RandomAccessFile( "usemappedfile.txt", "rw" );
+    RandomAccessFile raf = new RandomAccessFile( "writesomebytes.txt", "rw" );
     FileChannel fc = raf.getChannel();
 
     MappedByteBuffer mbb = fc.map( FileChannel.MapMode.READ_WRITE,

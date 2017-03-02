@@ -14,7 +14,7 @@
  *   get() 和 put() 的相对方法和绝对方法，相对方法在调用后会改变position的值，绝对方法不会改变
  *   
  *三、缓存区的使用。FileChannel.read() 和FileChannel. write() 调用得到了极大的简化，
- *   因为许多工作细节都由缓冲区完成了。 clear() 和 flip() 方法用于让缓冲区在读和写之间切换。
+ *   因为许多工作细节都由缓冲区完成了。buffer. clear() 和 buffer.flip() 方法用于让缓冲区在读和写之间切换。buffer.rewind(),重绕
  *   
  *四、缓冲区分配和包装。分配：ByteBuffer.allocate( 1024 )；
  *               包装：byte array[] = new byte[1024];
