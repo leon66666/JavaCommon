@@ -26,6 +26,6 @@
  *八、将文件映射到内存。FileChannel.map
  *九、分散和聚集。缓冲区数组、
  *十、网络IO。ServerSocketChannel，SocketChannel,ServerSocket,selector,
- *
+ *十一、文件锁定。FileChannel.lock()获取对此通道的文件的独占锁定;FileLock.release()释放锁
  */
 package zhongqiu.common.base.nio;

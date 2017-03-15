@@ -1,6 +1,8 @@
 package zhongqiu.common.base.thread;
 
 import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.FutureTask;
 
 //多线程    http://www.mamicode.com/info-detail-517008.html
 //     http://www.runoob.com/java/java-multithreading.html
@@ -68,22 +70,22 @@ public class MultiThreadDemo {
 		// 是否已经完成
 		// 5.cancel(boolean mayInterruptIfRunning)
 		// 试图取消正在执行的任务
-		// CallableDemo cDemo = new CallableDemo();
-		// FutureTask<Integer> fTask = new FutureTask<>(cDemo);
-		// for (int i = 0; i < 100; i++) {
-		// System.out.println(Thread.currentThread().getName() + " 的循环变量i的值" +
-		// i);
-		// if (i == 20) {
-		// new Thread(fTask, "有返回值的线程").start();
-		// }
-		// }
-		// try {
-		// System.out.println("子线程的返回值：" + fTask.get());
-		// } catch (InterruptedException e) {
-		// e.printStackTrace();
-		// } catch (ExecutionException e) {
-		// e.printStackTrace();
-		// }
+		 CallableDemo cDemo = new CallableDemo();
+		 FutureTask<Integer> fTask = new FutureTask<>(cDemo);
+		 for (int i = 0; i < 100; i++) {
+		 System.out.println(Thread.currentThread().getName() + " 的循环变量i的值" +
+		 i);
+		 if (i == 20) {
+		 new Thread(fTask, "有返回值的线程").start();
+		 }
+		 }
+		 try {
+		 System.out.println("子线程的返回值：" + fTask.get());
+		 } catch (InterruptedException e) {
+		 e.printStackTrace();
+		 } catch (ExecutionException e) {
+		 e.printStackTrace();
+		 }
 	}
 
 	// 继承Thread类实现多线程
