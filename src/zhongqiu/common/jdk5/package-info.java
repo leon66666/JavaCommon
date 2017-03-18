@@ -18,7 +18,9 @@
  *      应用场景：假如有Thread1、Thread2、Thread3、Thread4四条线程分别统计C、D、E、F四个盘的大小，所有线程都统计完毕交给Thread5线程去做汇总
  * （11）ConcurrentHashMap。应用场景,实现原理,锁分离技术，volatile，Segment，和hashtable的区别，弱一致迭代器，读不需要锁
  * （12）ReentrantLock。在资源竞争不是很激烈的情况下，Synchronized的性能要优于ReetrantLock，
- *                    但是在资源竞争很激烈的情况下，Synchronized的性能会下降几十倍，
+ *                    但是在资源竞争很激烈的情况下，Synchronized的性能会下降几十倍
+ *                    公平锁（new RenentrantLock(boolean fair)），synchronized默认公平锁，ReentrantLock默认不公平锁
+ *                    定时锁等候(tryLock)和可中断锁等候. lock 必须在 finally 块中释放
  * （13）ReentrantReadWriteLock。读写锁。和synchronized的区别。实现原理的不同，
  * （14）Atomic。原子性操作。addAndGet和getAndAdd和decrementAndGet() ，compareAndSet(int expect, int update)
  * （15）线程池Executors。newCachedThreadPool()；newFixedThreadPool(3)；newSingleThreadExecutor();newScheduledThreadPool(5)
