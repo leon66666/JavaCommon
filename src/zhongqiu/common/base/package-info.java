@@ -8,27 +8,20 @@
  * java基础：
  * （1）基本数据类型：8个基本类型；值类型和引用类型，常量池，intern()方法，stringbuilder
  * （2）运算符操作：a++，++a,三元运算符，instanceof运算符，位运算符,&&和&的区别
- * （3）异常：错误和异常，异常分为运行时异常和非运行时异常。Throwable，Error，Exception，RuntimeException
+ * （3）异常：错误和异常，异常分为运行时异常和非运行时异常。Throwable，Error，Exception，RuntimeException。throws和throw的区别
  * （4）String,StringBuffer,StringBuilder区别:stringbuilder的方法使用
  * （5）Number类型相关：对应基本类型的封装类。是否实现了常量池技术，哪些实现了，哪些没有实现，有哪些限制.存在于.class文件中，在运行期被JVM装载，并且可以扩充
  * （6）随机数。Math.random():生成随机的六位字符串
  * （7）反射机制 
  * （7）关键字用法：final，volatile，native，static，transient,break,continue
- * （8）类加载：类加载过程，原理(双亲委托模式)，三种类加载器，类加载的三种方式，自定义classloader
- * （9）JVM内存管理：两个子系统(Class loader子系统和Execution engine(执行引擎))，
- *     两个组件分别是Runtime data area (运行时数据区域)组件和Native interface(本地接口)组件
- *     Runtime Data Area组件：1、Heap (堆)2、Method Area(方法区域)3、Java Stack(java的栈）
- *                          4、Program Counter(程序计数器)5、Native method stack(本地方法栈)：保存native方法进入区域的地址
- *     JVM GC原理：对象分为年青代(Young)、年老代(Tenured)、持久代(Perm)，对不同生命周期的对象使用不同的算法
- *     年轻代和年老代都是指的JVM的Heap空间，而持久代则是之前提到的Method Area，不属于Heap。
- *     内存泄露：手动将生成的无用对象，中间对象置为null；对象池；弱引用；JVM调优 
- *     内存检测工具：jconsole；JProfiler
- * （10）object类相关方法。equals四个特性：自反，对称，一致，传递；hashcode：三个协定，需要重写的情景；getclass，toString；notify；wait
- * （11）内部类。常规内部类,静态内部类,私有内部类,局部内部类,匿名内部类,内部类中的变量访问形式
- *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  * 
+ * （8）object类相关方法。equals四个特性：自反，对称，一致，传递；hashcode：三个协定，需要重写的情景；getclass，toString；notify；wait
+ * （9）内部类。常规内部类,静态内部类,私有内部类,局部内部类,匿名内部类,内部类中的变量访问形式
+ *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  * *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  * 
  * （1）多线程 
  * （2）Nio
  * （3）集合
+ * （4）GC
+ *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  * *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  
  * （1）Date相关
  * （2）正则相关
  * （4）序列化 Serialize

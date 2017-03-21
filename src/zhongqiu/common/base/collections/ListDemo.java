@@ -24,6 +24,7 @@ public class ListDemo {
 		// indexOfSubList();
 		// rotate();
 		// fill();
+		Iterator<String> iterator=list.iterator();
 	}
 
 	private static ArrayList<String> list = new ArrayList<>();

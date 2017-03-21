@@ -1,4 +1,4 @@
-package zhongqiu.common.base.classload;
+package zhongqiu.common.base.gc.classload;
 
 import java.net.MalformedURLException;
 import java.net.URL;

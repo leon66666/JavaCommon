@@ -49,10 +49,10 @@ public class MultiThreadDemo {
 		// new ThreadDemo("B").start();
 
 		// 多线程资源共享
-		// RunnableDemo my = new RunnableDemo();
-		// new Thread(my, "C").start();
-		// new Thread(my, "D").start();
-
+		RunnableDemo my = new RunnableDemo();
+		new Thread(my, "C").start();
+		new Thread(my, "D").start();
+		new Thread(my, "E").start();
 		// 通过 Callable 和 Future 创建线程
 		// 1. 创建 Callable 接口的实现类，并实现 call() 方法，该 call() 方法将作为线程执行体，并且有返回值。
 		// 2. 创建 Callable 实现类的实例，使用 FutureTask 类来包装 Callable 对象，该 FutureTask
@@ -70,35 +70,39 @@ public class MultiThreadDemo {
 		// 是否已经完成
 		// 5.cancel(boolean mayInterruptIfRunning)
 		// 试图取消正在执行的任务
-		 CallableDemo cDemo = new CallableDemo();
-		 FutureTask<Integer> fTask = new FutureTask<>(cDemo);
-		 for (int i = 0; i < 100; i++) {
-		 System.out.println(Thread.currentThread().getName() + " 的循环变量i的值" +
-		 i);
-		 if (i == 20) {
-		 new Thread(fTask, "有返回值的线程").start();
-		 }
-		 }
-		 try {
-		 System.out.println("子线程的返回值：" + fTask.get());
-		 } catch (InterruptedException e) {
-		 e.printStackTrace();
-		 } catch (ExecutionException e) {
-		 e.printStackTrace();
-		 }
+		// CallableDemo cDemo = new CallableDemo();
+		// FutureTask<Integer> fTask = new FutureTask<>(cDemo);
+		// for (int i = 0; i < 100; i++) {
+		// System.out.println(Thread.currentThread().getName() + " 的循环变量i的值" +
+		// i);
+		// if (i == 20) {
+		// new Thread(fTask, "有返回值的线程").start();
+		// }
+		// }
+		// try {
+		// System.out.println("子线程的返回值：" + fTask.get());
+		// } catch (InterruptedException e) {
+		// e.printStackTrace();
+		// } catch (ExecutionException e) {
+		// e.printStackTrace();
+		// }
 	}
 
 	// 继承Thread类实现多线程
 	public static class ThreadDemo extends Thread {
-		private int count = 5;
+		private int count = 50;
 
 		public ThreadDemo(String name) {
 			super(name);
 		}
 
 		public void run() {
-			for (int i = 0; i < 5; i++) {
-				System.out.println(this.getName() + "运行  count= " + count--);
+			for (int i = 0; i < 50; i++) {
+				synchronized(this)
+				{
+					System.out.println(this.getName() + "运行  count= " + count--);
+				}
+				
 				try {
 					// Thread.sleep()方法调用目的是不让当前线程独自霸占该进程所获取的CPU资源，以留出一定时间给其他线程执行的机会。
 					sleep((int) Math.random() * 10);
@@ -111,14 +115,22 @@ public class MultiThreadDemo {
 
 	// 实现Runnable接口。 可以资源共享。和thread的主要区别
 	public static class RunnableDemo implements Runnable {
-		private int count = 5;
+		private volatile int count = 50;
 
 		@Override
 		public void run() {
-			for (int i = 0; i < 5; i++) {
+			for (int i = 0; i < 50; i++) {
 				if (count > 0) {
 					System.out.println(Thread.currentThread().getName() + "运行  count= " + count--);
 				}
+				// synchronized(this)
+				// {
+				// if (count > 0) {
+				// System.out.println(Thread.currentThread().getName() + "运行
+				// count= " + count--);
+				// }
+				// }
+				
 				try {
 					Thread.sleep((int) Math.random() * 10);
 				} catch (InterruptedException e) {
