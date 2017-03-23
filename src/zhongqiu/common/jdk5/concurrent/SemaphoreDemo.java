@@ -10,7 +10,6 @@ public class SemaphoreDemo {
 		// 线程池
 
 		ExecutorService exec = Executors.newCachedThreadPool();
-
 		// 只能5个线程同时访问
 
 		final Semaphore semp = new Semaphore(5);

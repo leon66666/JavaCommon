@@ -12,7 +12,7 @@
  * （4）String,StringBuffer,StringBuilder区别:stringbuilder的方法使用
  * （5）Number类型相关：对应基本类型的封装类。是否实现了常量池技术，哪些实现了，哪些没有实现，有哪些限制.存在于.class文件中，在运行期被JVM装载，并且可以扩充
  * （6）随机数。Math.random():生成随机的六位字符串
- * （7）反射机制 
+ * （7）反射机制
  * （7）关键字用法：final，volatile，native，static，transient,break,continue
  * （8）object类相关方法。equals四个特性：自反，对称，一致，传递；hashcode：三个协定，需要重写的情景；getclass，toString；notify；wait
  * （9）内部类。常规内部类,静态内部类,私有内部类,局部内部类,匿名内部类,内部类中的变量访问形式
