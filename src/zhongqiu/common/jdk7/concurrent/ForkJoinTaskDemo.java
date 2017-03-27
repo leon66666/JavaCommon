@@ -7,6 +7,10 @@ import java.util.concurrent.Future;
 import java.util.concurrent.FutureTask;
 import java.util.concurrent.RecursiveTask;
 
+//RecursiveAction：用于没有返回结果的任务。
+//RecursiveTask ：用于有返回结果的任务。
+//双端队列，工作窃取，重写compute方法
+//用于可很好分解成子任务的场景
 public class ForkJoinTaskDemo {
 	public static void main(String[] args) throws InterruptedException {
 		long startTime = System.currentTimeMillis();
@@ -23,7 +27,6 @@ public class ForkJoinTaskDemo {
 		CountTask countTask = new CountTask(1, 10);
 		ForkJoinPool forkJoinPool = new ForkJoinPool();
 		Future<Integer> futureTask = forkJoinPool.submit(countTask);
-
 		try {
 			System.out.println(futureTask.get());
 		} catch (ExecutionException e) {
