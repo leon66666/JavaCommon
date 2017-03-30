@@ -16,6 +16,7 @@
  * （7）关键字用法：final，volatile，native，static，transient,break,continue
  * （8）object类相关方法。equals四个特性：自反，对称，一致，传递；hashcode：三个协定，需要重写的情景；getclass，toString；notify；wait
  * （9）内部类。常规内部类,静态内部类,私有内部类,局部内部类,匿名内部类,内部类中的变量访问形式
+ * （10）switch。case 1,2写法错误；支持switch int型和字符串型；default不是必须的；break不写会导致执行匹配之后的所有case代码
  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  * *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  * 
  * （1）多线程 
  * （2）Nio
