@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="935c1e84-f046-4a80-8fd4-1c9d8e1f8e66" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/zhongqiu/common/jdk5/EnumDemo.java" afterPath="$PROJECT_DIR$/src/zhongqiu/common/jdk5/EnumDemo.java" />
-    </list>
+    <list default="true" id="935c1e84-f046-4a80-8fd4-1c9d8e1f8e66" name="Default" comment="" />
     <ignored path="Common.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/bin/" />
@@ -541,16 +539,16 @@
       <created>1494643449658</created>
       <option name="number" value="Default" />
       <updated>1494643449658</updated>
-      <workItem from="1494643453449" duration="3294000" />
+      <workItem from="1494643453449" duration="3368000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3294000" />
+    <option name="totallyTimeSpent" value="3368000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
