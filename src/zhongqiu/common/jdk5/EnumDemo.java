@@ -1,16 +1,21 @@
 package zhongqiu.common.jdk5;
 
+import java.util.EnumSet;
+
 //枚举
-/*1、switch的枚举用法
-2、枚举的自定义方法
-3、枚举实现接口
-4、枚举集合的使用。java.util.EnumSet和java.util.EnumMap是两个枚举集合。
+/*
+1、普通枚举，通过name获取枚举，通过默认序号ordinal获取枚举
+2、自定义枚举
+3、枚举的switch用法
+4、枚举实现接口
+5、枚举集合的使用。java.util.EnumSet和java.util.EnumMap是两个枚举集合。
   EnumSet保证集合中的元素不重复；EnumMap中的key是enum类型，而value则可以是任意类型。*/
 public class EnumDemo {
     public static void main(String[] args) {
         EnumSwitch();
     }
 
+    //普通枚举
     public enum Color {
         RED, GREEN, BLANK, YELLOW;
 
@@ -145,4 +150,7 @@ public class EnumDemo {
             System.out.println(this.index + ":" + this.name);
         }
     }
+
+    //枚举集合的使用。java.util.EnumSet和java.util.EnumMap是两个枚举集合。
+    EnumSet<Color> repayApplyStatus = EnumSet.of(Color.BLANK,Color.GREEN,Color.RED);
 }
