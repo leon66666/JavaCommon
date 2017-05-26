@@ -151,6 +151,6 @@ public class EnumDemo {
         }
     }
 
-    //枚举集合的使用。java.util.EnumSet和java.util.EnumMap是两个枚举集合。
+    //枚举集合的使用，java.util.EnumSet和java.util.EnumMap是两个枚举集合。
     EnumSet<Color> repayApplyStatus = EnumSet.of(Color.BLANK,Color.GREEN,Color.RED);
 }

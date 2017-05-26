@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="935c1e84-f046-4a80-8fd4-1c9d8e1f8e66" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/zhongqiu/common/jdk5/EnumDemo.java" afterPath="$PROJECT_DIR$/src/zhongqiu/common/jdk5/EnumDemo.java" />
     </list>
     <ignored path="Common.iws" />
@@ -30,8 +28,8 @@
       <file leaf-file-name="EnumDemo.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/zhongqiu/common/jdk5/EnumDemo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.8064516">
-              <caret line="154" column="84" selection-start-line="154" selection-start-column="84" selection-end-line="154" selection-end-column="84" />
+            <state vertical-scroll-proportion="0.7986191">
+              <caret line="153" column="14" selection-start-line="153" selection-start-column="14" selection-end-line="153" selection-end-column="14" />
               <folding>
                 <element signature="class#Color#0;class#EnumDemo#0" expanded="false" />
                 <element signature="class#ColorExt#0;class#EnumDemo#0" expanded="false" />
@@ -121,7 +119,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -234,8 +232,8 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -703,11 +701,12 @@
       <workItem from="1495594830531" duration="1244000" />
       <workItem from="1495618435936" duration="1234000" />
       <workItem from="1495784832326" duration="359000" />
+      <workItem from="1495785498899" duration="9000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12561000" />
+    <option name="totallyTimeSpent" value="12570000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="0" />
@@ -760,12 +759,26 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/zhongqiu/common/jdk5/EnumDemo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="class#Color#0;class#EnumDemo#0" expanded="false" />
+            <element signature="class#ColorExt#0;class#EnumDemo#0" expanded="false" />
+            <element signature="method#EnumSwitch#0;class#EnumDemo#0" expanded="false" />
+            <element signature="class#Behaviour#0;class#EnumDemo#0" expanded="false" />
+            <element signature="class#ColorImpl#0;class#EnumDemo#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/zhongqiu/common/jdk5/concurrent/BlockingQueueDemo.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="31" column="54" selection-start-line="31" selection-start-column="54" selection-end-line="31" selection-end-column="54" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -783,7 +796,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -793,7 +806,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -971,8 +984,8 @@
         <state vertical-scroll-proportion="0.33256617">
           <caret line="819" column="18" selection-start-line="819" selection-start-column="18" selection-end-line="819" selection-end-column="18" />
           <folding>
-            <element signature="e#29847#29848#0" expanded="true" />
-            <element signature="e#29879#29880#0" expanded="true" />
+            <element signature="e#29847#29848#0" expanded="false" />
+            <element signature="e#29879#29880#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -990,7 +1003,7 @@
         <state vertical-scroll-proportion="0.0287687">
           <caret line="31" column="54" selection-start-line="31" selection-start-column="54" selection-end-line="31" selection-end-column="54" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -999,14 +1012,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.1150748">
           <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/zhongqiu/common/jdk5/EnumDemo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8064516">
-          <caret line="154" column="84" selection-start-line="154" selection-start-column="84" selection-end-line="154" selection-end-column="84" />
+        <state vertical-scroll-proportion="0.7986191">
+          <caret line="153" column="14" selection-start-line="153" selection-start-column="14" selection-end-line="153" selection-end-column="14" />
           <folding>
             <element signature="class#Color#0;class#EnumDemo#0" expanded="false" />
             <element signature="class#ColorExt#0;class#EnumDemo#0" expanded="false" />
