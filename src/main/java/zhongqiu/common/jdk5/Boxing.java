@@ -18,6 +18,7 @@ public class Boxing {
 		 * 实际上，执行上面那句代码的时候，系统为我们执行了：Integer i = Integer.valueOf(100);
 		 * 
 		 * 此即基本数据类型的自动装箱功能。
+		 * 此即基本数据类型的自动装箱功能。
 		 */
 		Integer i = 100;
 	}

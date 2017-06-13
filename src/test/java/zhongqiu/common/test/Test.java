@@ -1,8 +1,8 @@
-package zhongqiu.test;
+package zhongqiu.common.test;
 
 public class Test {
 	static {
-		System.out.println("Test¾²Ì¬³õÊ¼»¯¿éÖ´ÐÐÁË£¡");
+		System.out.println("Testï¿½ï¿½Ì¬ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ï¿½ï¿½Ë£ï¿½");
 	}
 	Integer i;
 	Integer j;

@@ -1,4 +1,4 @@
-package zhongqiu.test;
+package zhongqiu.common.test;
 
 public class TestSon extends Test {
 	String name;
