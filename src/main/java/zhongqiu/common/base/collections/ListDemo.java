@@ -8,14 +8,14 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Vector;
 
-//ListÏà¹Ø²Ù×÷
+//Listç›¸å…³æ“ä½œ
 public class ListDemo {
     public static void main(String[] args) {
         initList();
 //        traversal();
         // sort();
         // reverse();
-         userDefinedSort();
+        userDefinedSort();
         // shuffle();
         // copy();
         // min();
@@ -28,67 +28,67 @@ public class ListDemo {
     }
 
     private static ArrayList<String> list = new ArrayList<>();
-    private static ArrayList<CollectionPo> arrayList = new ArrayList<>();// ·ÇÍ¬²½£¬¿É±äÊı×é
-    private static LinkedList<CollectionPo> linkedList = new LinkedList<>();// ·ÇÍ¬²½£¬Á´±í
-    private static Vector<CollectionPo> vector = new Vector<>();// Í¬²½
+    private static ArrayList<CollectionPo> arrayList = new ArrayList<>();// éåŒæ­¥ï¼Œå¯å˜æ•°ç»„
+    private static LinkedList<CollectionPo> linkedList = new LinkedList<>();// éåŒæ­¥ï¼Œé“¾è¡¨
+    private static Vector<CollectionPo> vector = new Vector<>();// åŒæ­¥
 
-    // ³õÊ¼»¯·½·¨
+    // åˆå§‹åŒ–æ–¹æ³•
     public static void initList() {
-        // Arrays.asList·½·¨
+        // Arrays.asListæ–¹æ³•
         list = new ArrayList<String>(Arrays.asList("Apple", "Banan", "Orange"));
 
-        arrayList = new ArrayList<CollectionPo>(Arrays.asList(new CollectionPo(1, "ÕÔ", 30),
-                new CollectionPo(0, "Ç®", 22), new CollectionPo(0, "Ëï", 66)));
+        arrayList = new ArrayList<CollectionPo>(Arrays.asList(new CollectionPo(1, "èµµ", 30),
+                new CollectionPo(0, "é’±", 22), new CollectionPo(0, "å­™", 66)));
 
-        // add·½·¨
-        CollectionPo cPo = new CollectionPo(1, "Àî", 7);
+        // addæ–¹æ³•
+        CollectionPo cPo = new CollectionPo(1, "æ", 7);
         arrayList.add(cPo);
 
-        arrayList.add(new CollectionPo(1, "ÖÜ", 87));
+        arrayList.add(new CollectionPo(1, "å‘¨", 87));
 
         list.add("Pear");
 
     }
 
-    // ±éÀú·½·¨
+    // éå†æ–¹æ³•
     public static void traversal() {
-        // foreach±éÀú£¬Ö»ÊÇ±éÀú£¬²»ÄÜ¸Ä±äĞòÁĞÖĞµÄÔªËØ
+        // foreachéå†ï¼Œåªæ˜¯éå†ï¼Œä¸èƒ½æ”¹å˜åºåˆ—ä¸­çš„å…ƒç´ 
         for (String string : list) {
             System.out.println(string);
         }
         for (CollectionPo cPo : arrayList) {
             System.out.println(cPo.name);
         }
-        // for±éÀú£¬¿ÉÒÔ¶ÔĞòÁĞÖĞµÄÔªËØ½øĞĞ²Ù×÷
+        // foréå†ï¼Œå¯ä»¥å¯¹åºåˆ—ä¸­çš„å…ƒç´ è¿›è¡Œæ“ä½œ
         for (int i = 0; i < list.size(); i++) {
             System.out.println(list.get(i));
         }
         for (int i = 0; i < arrayList.size(); i++) {
             System.out.println(arrayList.get(i).name);
         }
-        // µü´úÆ÷±éÀú
+        // è¿­ä»£å™¨éå†
         Iterator<String> ite = list.iterator();
-        while (ite.hasNext())// ÅĞ¶ÏÏÂÒ»¸öÔªËØÖ®ºóÓĞÖµ
+        while (ite.hasNext())// åˆ¤æ–­ä¸‹ä¸€ä¸ªå…ƒç´ ä¹‹åæœ‰å€¼
         {
             System.out.println(ite.next());
         }
     }
 
-    // ÉıĞòÅÅĞò
+    // å‡åºæ’åº
     public static void sort() {
         Collections.sort(list);
         System.out.println(list);
     }
 
-    // ½µĞòÅÅĞò
+    // é™åºæ’åº
     public static void reverse() {
         Collections.reverse(list);
         System.out.println(list);
     }
 
-    // ×Ô¶¨ÒåÅÅĞò
+    // è‡ªå®šä¹‰æ’åº
     public static void userDefinedSort() {
-        // ÅÅĞòList<String>,°´ÕÕStringÅÅĞò
+        // æ’åºList<String>,æŒ‰ç…§Stringæ’åº
         Collections.sort(list, new Comparator<String>() {
             @Override
             public int compare(String a, String b) {
@@ -96,7 +96,7 @@ public class ListDemo {
             }
         });
         System.out.println(list);
-        // ÅÅĞòList<CollectionPo>,°´ÕÕageÊôĞÔÅÅĞò
+        // æ’åºList<CollectionPo>,æŒ‰ç…§ageå±æ€§æ’åº
         Collections.sort(arrayList, new Comparator<CollectionPo>() {
             @Override
             public int compare(CollectionPo a, CollectionPo b) {
@@ -106,7 +106,7 @@ public class ListDemo {
         for (CollectionPo cPo : arrayList) {
             System.out.println(cPo.getAge() + "--" + cPo.getName());
         }
-        // ÅÅĞòList<CollectionPo>,°´ÕÕageÊôĞÔÅÅĞò
+        // æ’åºList<CollectionPo>,æŒ‰ç…§ageå±æ€§æ’åº
         Collections.sort(arrayList, new Comparator<CollectionPo>() {
             @Override
             public int compare(CollectionPo a, CollectionPo b) {
@@ -124,52 +124,52 @@ public class ListDemo {
         }
     }
 
-    // »ìÅÅ£¬´òÂÒÅÅĞò
+    // æ··æ’ï¼Œæ‰“ä¹±æ’åº
     public static void shuffle() {
         Collections.shuffle(list);
         System.out.println(list);
     }
 
-    // È«²¿Ìæ»»
+    // å…¨éƒ¨æ›¿æ¢
     public static void fill() {
         Collections.fill(list, "aaa");
         System.out.println(list);
     }
 
-    // ¸´ÖÆ
+    // å¤åˆ¶
     public static void copy() {
-        // ĞèÒªÌáÇ°ÉèÖÃºÃÄ¿±êlistµÄsize£¬·ñÔò»á±¨´í
+        // éœ€è¦æå‰è®¾ç½®å¥½ç›®æ ‡listçš„sizeï¼Œå¦åˆ™ä¼šæŠ¥é”™
         ArrayList<String> newlist = new ArrayList<>(Arrays.asList(new String[list.size()]));
 
         Collections.copy(newlist, list);
         System.out.println(newlist);
     }
 
-    // ×îĞ¡Öµ
+    // æœ€å°å€¼
     public static void min() {
         System.out.println(Collections.min(list));
     }
 
-    // ×î´óÖµ
+    // æœ€å¤§å€¼
     public static void max() {
         System.out.println(Collections.max(list));
     }
 
-    // ×îºóÒ»´Î³öÏÖµÄÎ»ÖÃ
+    // æœ€åä¸€æ¬¡å‡ºç°çš„ä½ç½®
     public static void lastIndexOfSubList() {
         ArrayList<Integer> intList = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6, 6, 6, 7, 3));
         ArrayList<Integer> targetList = new ArrayList<>(Arrays.asList(6));
         System.out.println(Collections.lastIndexOfSubList(intList, targetList));
     }
 
-    // µÚÒ»´Î³öÏÖµÄÎ»ÖÃ
+    // ç¬¬ä¸€æ¬¡å‡ºç°çš„ä½ç½®
     public static void indexOfSubList() {
         ArrayList<Integer> intList = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6, 6, 6, 7, 3));
         ArrayList<Integer> targetList = new ArrayList<>(Arrays.asList(6));
         System.out.println(Collections.indexOfSubList(intList, targetList));
     }
 
-    // ÒÆ¶¯ÁĞ±íÖĞµÄÔªËØ£¬¸ºÊıÏò×óÒÆ¶¯£¬ÕıÊıÏòÓÒÒÆ¶¯
+    // ç§»åŠ¨åˆ—è¡¨ä¸­çš„å…ƒç´ ï¼Œè´Ÿæ•°å‘å·¦ç§»åŠ¨ï¼Œæ­£æ•°å‘å³ç§»åŠ¨
     public static void rotate() {
         ArrayList<Integer> intList = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5));
         System.out.println(intList);

@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
-//Á÷(Stream)¡¢ÎÄ¼ş(File)ºÍIO
+//æµ(Stream)ã€æ–‡ä»¶(File)å’ŒIO
 //http://www.runoob.com/java/java-files-io.html
 public class FileIODemo {
 	public static void main(String[] args) {
@@ -21,26 +21,26 @@ public class FileIODemo {
 		dirList("mkdirs");
 	}
 
-	// ¶ÁÈ¡ÊäÈëµÄ×Ö·û
+	// è¯»å–è¾“å…¥çš„å­—ç¬¦
 	public static void BRRead() {
 		char c = 0;
-		// Ê¹ÓÃ System.in ´´½¨ BufferedReader
+		// ä½¿ç”¨ System.in åˆ›å»º BufferedReader
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		System.out.println("ÊäÈë×Ö·û, °´ÏÂ 'q' ¼üÍË³ö¡£");
-		// ¶ÁÈ¡×Ö·û
+		System.out.println("è¾“å…¥å­—ç¬¦, æŒ‰ä¸‹ 'q' é”®é€€å‡ºã€‚");
+		// è¯»å–å­—ç¬¦
 		do {
 			try {
 				c = (char) br.read();
-				System.out.println("ÄãÊäÈëµÄ×Ö·ûÊÇ£º" + c);
+				System.out.println("ä½ è¾“å…¥çš„å­—ç¬¦æ˜¯ï¼š" + c);
 			} catch (IOException e) {
-				System.out.println("»ñÈ¡ÊäÈëÄÚÈİÊ§°Ü");
+				System.out.println("è·å–è¾“å…¥å†…å®¹å¤±è´¥");
 			}
 		} while (c != 'q');
 	}
 
-	// ¶ÁÈ¡ÊäÈëµÄ×Ö·û´®
+	// è¯»å–è¾“å…¥çš„å­—ç¬¦ä¸²
 	public static void BRReadLine() {
-		// Ê¹ÓÃ System.in ´´½¨ BufferedReader
+		// ä½¿ç”¨ System.in åˆ›å»º BufferedReader
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		String str = "";
 		System.out.println("Enter lines of text.");
@@ -52,87 +52,87 @@ public class FileIODemo {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			System.out.println("ÄãÊäÈëµÄÊÇ£º" + str);
+			System.out.println("ä½ è¾“å…¥çš„æ˜¯ï¼š" + str);
 		} while (!str.equals("end"));
 	}
 
-	// ¿ØÖÆÌ¨Êä³ö
+	// æ§åˆ¶å°è¾“å‡º
 	public static void Write() {
 		char b;
 		b = 'A';
 		System.out.write(b);
 		System.out.write('\n');
-		System.out.println("µÚ¶şÖÖÊä³ö·½·¨");
+		System.out.println("ç¬¬äºŒç§è¾“å‡ºæ–¹æ³•");
 	}
 
-	// Ä¿Â¼²Ù×÷
-	// mkdir()·½·¨´´½¨Ò»¸öÎÄ¼ş¼Ğ£¬³É¹¦Ôò·µ»Øtrue£¬Ê§°ÜÔò·µ»Øfalse¡£Ê§°Ü±íÃ÷File¶ÔÏóÖ¸¶¨µÄÂ·¾¶ÒÑ¾­´æÔÚ£¬»òÕßÓÉÓÚÕû¸öÂ·¾¶»¹²»´æÔÚ£¬¸ÃÎÄ¼ş¼Ğ²»ÄÜ±»´´½¨¡£
-	// mkdirs()·½·¨´´½¨Ò»¸öÎÄ¼ş¼ĞºÍËüµÄËùÓĞ¸¸ÎÄ¼ş¼Ğ¡£
+	// ç›®å½•æ“ä½œ
+	// mkdir()æ–¹æ³•åˆ›å»ºä¸€ä¸ªæ–‡ä»¶å¤¹ï¼ŒæˆåŠŸåˆ™è¿”å›trueï¼Œå¤±è´¥åˆ™è¿”å›falseã€‚å¤±è´¥è¡¨æ˜Fileå¯¹è±¡æŒ‡å®šçš„è·¯å¾„å·²ç»å­˜åœ¨ï¼Œæˆ–è€…ç”±äºæ•´ä¸ªè·¯å¾„è¿˜ä¸å­˜åœ¨ï¼Œè¯¥æ–‡ä»¶å¤¹ä¸èƒ½è¢«åˆ›å»ºã€‚
+	// mkdirs()æ–¹æ³•åˆ›å»ºä¸€ä¸ªæ–‡ä»¶å¤¹å’Œå®ƒçš„æ‰€æœ‰çˆ¶æ–‡ä»¶å¤¹ã€‚
 	public static void mkdirs() {
 		String dirname = "mkdirs/test";
 		File d = new File(dirname);
-		// ÏÖÔÚ´´½¨Ä¿Â¼
+		// ç°åœ¨åˆ›å»ºç›®å½•
 		d.mkdirs();
-		System.out.println("³É¹¦");
+		System.out.println("æˆåŠŸ");
 	}
 
-	// ÎÄ¼ş²Ù×÷
+	// æ–‡ä»¶æ“ä½œ
 	public static void fileStream() {
 		try {
 			File f = new File("mkdirs/test/filetest.txt");
 			FileOutputStream fop = new FileOutputStream(f);
-			// ¹¹½¨FileOutputStream¶ÔÏó,ÎÄ¼ş²»´æÔÚ»á×Ô¶¯ĞÂ½¨
+			// æ„å»ºFileOutputStreamå¯¹è±¡,æ–‡ä»¶ä¸å­˜åœ¨ä¼šè‡ªåŠ¨æ–°å»º
 
 			OutputStreamWriter writer = new OutputStreamWriter(fop, "gbk");
-			// ¹¹½¨OutputStreamWriter¶ÔÏó,²ÎÊı¿ÉÒÔÖ¸¶¨±àÂë,Ä¬ÈÏÎª²Ù×÷ÏµÍ³Ä¬ÈÏ±àÂë,windowsÉÏÊÇgbk
+			// æ„å»ºOutputStreamWriterå¯¹è±¡,å‚æ•°å¯ä»¥æŒ‡å®šç¼–ç ,é»˜è®¤ä¸ºæ“ä½œç³»ç»Ÿé»˜è®¤ç¼–ç ,windowsä¸Šæ˜¯gbk
 
-			writer.append("ÖĞÎÄÊäÈë");
-			// Ğ´Èëµ½»º³åÇø
+			writer.append("ä¸­æ–‡è¾“å…¥");
+			// å†™å…¥åˆ°ç¼“å†²åŒº
 
 			writer.append("\r\n");
-			// »»ĞĞ
+			// æ¢è¡Œ
 
 			writer.append("English");
-			// Ë¢ĞÂ»º´æ³å,Ğ´Èëµ½ÎÄ¼ş,Èç¹ûÏÂÃæÒÑ¾­Ã»ÓĞĞ´ÈëµÄÄÚÈİÁË,Ö±½ÓcloseÒ²»áĞ´Èë
+			// åˆ·æ–°ç¼“å­˜å†²,å†™å…¥åˆ°æ–‡ä»¶,å¦‚æœä¸‹é¢å·²ç»æ²¡æœ‰å†™å…¥çš„å†…å®¹äº†,ç›´æ¥closeä¹Ÿä¼šå†™å…¥
 
 			writer.close();
-			// ¹Ø±ÕĞ´ÈëÁ÷,Í¬Ê±»á°Ñ»º³åÇøÄÚÈİĞ´ÈëÎÄ¼ş,ËùÒÔÉÏÃæµÄ×¢ÊÍµô
+			// å…³é—­å†™å…¥æµ,åŒæ—¶ä¼šæŠŠç¼“å†²åŒºå†…å®¹å†™å…¥æ–‡ä»¶,æ‰€ä»¥ä¸Šé¢çš„æ³¨é‡Šæ‰
 
 			fop.close();
-			// ¹Ø±ÕÊä³öÁ÷,ÊÍ·ÅÏµÍ³×ÊÔ´
+			// å…³é—­è¾“å‡ºæµ,é‡Šæ”¾ç³»ç»Ÿèµ„æº
 
 			FileInputStream fip = new FileInputStream(f);
-			// ¹¹½¨FileInputStream¶ÔÏó
+			// æ„å»ºFileInputStreamå¯¹è±¡
 
 			InputStreamReader reader = new InputStreamReader(fip, "UTF-8");
-			// ¹¹½¨InputStreamReader¶ÔÏó,±àÂëÓëĞ´ÈëÏàÍ¬
+			// æ„å»ºInputStreamReaderå¯¹è±¡,ç¼–ç ä¸å†™å…¥ç›¸åŒ
 
 			StringBuffer sb = new StringBuffer();
 			while (reader.ready()) {
 				sb.append((char) reader.read());
-				// ×ª³Échar¼Óµ½StringBuffer¶ÔÏóÖĞ
+				// è½¬æˆcharåŠ åˆ°StringBufferå¯¹è±¡ä¸­
 			}
 			System.out.println(sb.toString());
 			reader.close();
-			// ¹Ø±Õ¶ÁÈ¡Á÷
+			// å…³é—­è¯»å–æµ
 
 			fip.close();
-			// ¹Ø±ÕÊäÈëÁ÷,ÊÍ·ÅÏµÍ³×ÊÔ´
+			// å…³é—­è¾“å…¥æµ,é‡Šæ”¾ç³»ç»Ÿèµ„æº
 		} catch (Exception e) {
 		}
 	}
 
-	//¶ÁÈ¡Ä¿Â¼ÏÂµÄËùÓĞ×ÓÄ¿Â¼ºÍÎÄ¼ş
+	//è¯»å–ç›®å½•ä¸‹çš„æ‰€æœ‰å­ç›®å½•å’Œæ–‡ä»¶
 	public static void dirList(String dirName) {
 		File f1 = new File(dirName);
 		if (f1.isDirectory()) {
-			System.out.println("Ä¿Â¼£º" + dirName);
+			System.out.println("ç›®å½•ï¼š" + dirName);
 			String s[] = f1.list();
 			for (int i = 0; i < s.length; i++) {
 				dirList(dirName + "/" + s[i]);
 			}
 		} else {
-			System.out.println("ÎÄ¼ş£º" + dirName);
+			System.out.println("æ–‡ä»¶ï¼š" + dirName);
 		}
 	}
 }

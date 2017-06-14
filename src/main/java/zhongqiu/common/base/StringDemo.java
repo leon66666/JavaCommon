@@ -1,16 +1,16 @@
 package zhongqiu.common.base;
 
-//StringÏà¹Ø
+//Stringç›¸å…³
 public class StringDemo {
 	/*
-	 * String ÀàĞÍºÍ StringBuffer ÀàĞÍµÄÖ÷ÒªĞÔÄÜÇø±ğÆäÊµÔÚÓÚ String ÊÇ²»¿É±äµÄ¶ÔÏó, Òò´ËÔÚÃ¿´Î¶Ô String
-	 * ÀàĞÍ½øĞĞ¸Ä±äµÄÊ±ºòÆäÊµ¶¼µÈÍ¬ÓÚÉú³ÉÁËÒ»¸öĞÂµÄ String ¶ÔÏó£¬È»ºó½«Ö¸ÕëÖ¸ÏòĞÂµÄ String ¶ÔÏó£¬ËùÒÔ¾­³£¸Ä±äÄÚÈİµÄ×Ö·û´®×îºÃ²»ÒªÓÃ
-	 * String £¬ÒòÎªÃ¿´ÎÉú³É¶ÔÏó¶¼»á¶ÔÏµÍ³ĞÔÄÜ²úÉúÓ°Ïì£¬ÌØ±ğµ±ÄÚ´æÖĞÎŞÒıÓÃ¶ÔÏó¶àÁËÒÔºó£¬ JVM µÄ GC ¾Í»á¿ªÊ¼¹¤×÷£¬ÄÇËÙ¶ÈÊÇÒ»¶¨»áÏàµ±ÂıµÄ¡£
+	 * String ç±»å‹å’Œ StringBuffer ç±»å‹çš„ä¸»è¦æ€§èƒ½åŒºåˆ«å…¶å®åœ¨äº String æ˜¯ä¸å¯å˜çš„å¯¹è±¡, å› æ­¤åœ¨æ¯æ¬¡å¯¹ String
+	 * ç±»å‹è¿›è¡Œæ”¹å˜çš„æ—¶å€™å…¶å®éƒ½ç­‰åŒäºç”Ÿæˆäº†ä¸€ä¸ªæ–°çš„ String å¯¹è±¡ï¼Œç„¶åå°†æŒ‡é’ˆæŒ‡å‘æ–°çš„ String å¯¹è±¡ï¼Œæ‰€ä»¥ç»å¸¸æ”¹å˜å†…å®¹çš„å­—ç¬¦ä¸²æœ€å¥½ä¸è¦ç”¨
+	 * String ï¼Œå› ä¸ºæ¯æ¬¡ç”Ÿæˆå¯¹è±¡éƒ½ä¼šå¯¹ç³»ç»Ÿæ€§èƒ½äº§ç”Ÿå½±å“ï¼Œç‰¹åˆ«å½“å†…å­˜ä¸­æ— å¼•ç”¨å¯¹è±¡å¤šäº†ä»¥åï¼Œ JVM çš„ GC å°±ä¼šå¼€å§‹å·¥ä½œï¼Œé‚£é€Ÿåº¦æ˜¯ä¸€å®šä¼šç›¸å½“æ…¢çš„ã€‚
 	 */
 
-	// StringBuffer ×Ö·û´®±äÁ¿£¨Ïß³Ì°²È«£©
-	// StringBuilder ×Ö·û´®±äÁ¿£¨·ÇÏß³Ì°²È«£©
-	// ´ó²¿·ÖÇé¿öÏÂ StringBuilder>StringBuffer>String
+	// StringBuffer å­—ç¬¦ä¸²å˜é‡ï¼ˆçº¿ç¨‹å®‰å…¨ï¼‰
+	// StringBuilder å­—ç¬¦ä¸²å˜é‡ï¼ˆéçº¿ç¨‹å®‰å…¨ï¼‰
+	// å¤§éƒ¨åˆ†æƒ…å†µä¸‹ StringBuilder>StringBuffer>String
 
 	public static void main(String[] args) {
 		stringBuilderDemo();
@@ -18,32 +18,32 @@ public class StringDemo {
 
 	// StringBuilder
 	public static void stringBuilderDemo() {
-		// ´´½¨ÊµÀı»¯¶ÔÏó
+		// åˆ›å»ºå®ä¾‹åŒ–å¯¹è±¡
 		StringBuilder sb = new StringBuilder("Hello World!");
 
-		// apendÓÃ·¨
+		// apendç”¨æ³•
 		sb.append("aaaa");
 		System.out.println(sb);
 
-		// insertÓÃ·¨.ÔÚĞòºÅ4µÄÇ°Ãæ²åÈë
+		// insertç”¨æ³•.åœ¨åºå·4çš„å‰é¢æ’å…¥
 		sb.insert(4, "23456");
 		System.out.println(sb);
 
-		// StringBuffer delete(start,end):É¾³ı»º³åÇøÖĞµÄÊı¾İ£¬°üº¬Start,²»°üº¬end
-		// StringBuffer deleteCharAt(index)£»É¾³ı»º³åÇøÖ¸¶¨Î»ÖÃµÄÊı¾İ
+		// StringBuffer delete(start,end):åˆ é™¤ç¼“å†²åŒºä¸­çš„æ•°æ®ï¼ŒåŒ…å«Start,ä¸åŒ…å«end
+		// StringBuffer deleteCharAt(index)ï¼›åˆ é™¤ç¼“å†²åŒºæŒ‡å®šä½ç½®çš„æ•°æ®
 		sb.delete(1, 3);
 		System.out.println(sb.toString());
 		sb.deleteCharAt(0);
 		System.out.println(sb.toString());
-		// sb.delete(0,sb.length()):Çå¿Õ»º³åÇø
+		// sb.delete(0,sb.length()):æ¸…ç©ºç¼“å†²åŒº
 
-		// »ñÈ¡
+		// è·å–
 		char c = sb.charAt(2);
 		System.out.println(c);
 		int index = sb.indexOf("a");
 		System.out.println(index);
 
-		// ĞŞ¸Ä£¬Ò²¿ÉÒÔÀí½âÎªÌæ»»
+		// ä¿®æ”¹ï¼Œä¹Ÿå¯ä»¥ç†è§£ä¸ºæ›¿æ¢
 		sb.replace(1, 3, "java");
 		System.out.println(sb.toString());
 		sb.setCharAt(2, 'm');

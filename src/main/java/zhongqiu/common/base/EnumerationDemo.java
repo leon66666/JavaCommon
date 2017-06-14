@@ -3,19 +3,19 @@ package zhongqiu.common.base;
 import java.util.Enumeration;
 
 public class EnumerationDemo implements Enumeration{
-	 int count; // ¼ÆÊıÆ÷
-     int length; //´æ´¢µÄÊı×éµÄ³¤¶È
-     Object[] dataArray; // ´æ´¢Êı¾İÊı×éµÄÒıÓÃ
-     //¹¹ÔìÆ÷
-     EnumerationDemo(int count,int length,Object[] dataArray){ 
-           this.count = count;
-           this.length= length;
-           this.dataArray=dataArray;
-     } 
-     public boolean hasMoreElements() { 
-           return (count< length);
-     }
-     public Object nextElement() {
-           return dataArray[count++];
-     }
+    int count; // è®¡æ•°å™¨
+    int length; //å­˜å‚¨çš„æ•°ç»„çš„é•¿åº¦
+    Object[] dataArray; // å­˜å‚¨æ•°æ®æ•°ç»„çš„å¼•ç”¨
+    //æ„é€ å™¨
+    EnumerationDemo(int count,int length,Object[] dataArray){
+        this.count = count;
+        this.length= length;
+        this.dataArray=dataArray;
+    }
+    public boolean hasMoreElements() {
+        return (count< length);
+    }
+    public Object nextElement() {
+        return dataArray[count++];
+    }
 }

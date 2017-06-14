@@ -3,7 +3,7 @@ package zhongqiu.common.base;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-//ÕıÔòÏà¹Ø
+//æ­£åˆ™ç›¸å…³
 //http://www.runoob.com/java/java-regular-expressions.html
 public class RegexDemo {
 	public static void main(String[] args) {
@@ -12,14 +12,14 @@ public class RegexDemo {
 	}
 
 	public static void match() {
-		// °´Ö¸¶¨Ä£Ê½ÔÚ×Ö·û´®²éÕÒ
+		// æŒ‰æŒ‡å®šæ¨¡å¼åœ¨å­—ç¬¦ä¸²æŸ¥æ‰¾
 		String line = "This order was placed for QT3000! OK?";
 		String pattern = "(\\D*)(\\d+)(.*)";
 
-		// ´´½¨ Pattern ¶ÔÏó
+		// åˆ›å»º Pattern å¯¹è±¡
 		Pattern r = Pattern.compile(pattern);
 
-		// ÏÖÔÚ´´½¨ matcher ¶ÔÏó
+		// ç°åœ¨åˆ›å»º matcher å¯¹è±¡
 		Matcher m = r.matcher(line);
 		if (m.groupCount() > 0) {
 			System.out.println(m.groupCount());
@@ -35,10 +35,10 @@ public class RegexDemo {
 		String REGEX = "dog";
 		String INPUT = "The dog says meow. " + "All dogs say meow.";
 
-		// È«²¿Ìæ»»
+		// å…¨éƒ¨æ›¿æ¢
 		System.out.println(Pattern.compile(REGEX).matcher(INPUT).replaceAll("cat"));
 
-		// Ìæ»»µÚÒ»¸ö
+		// æ›¿æ¢ç¬¬ä¸€ä¸ª
 		System.out.println(Pattern.compile(REGEX).matcher(INPUT).replaceFirst("cat"));
 
 	}

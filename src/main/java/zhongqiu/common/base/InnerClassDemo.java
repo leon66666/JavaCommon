@@ -1,50 +1,50 @@
 package zhongqiu.common.base;
 
-//ÄÚ²¿Àà
+//å†…éƒ¨ç±»
 //http://www.cnblogs.com/wangzhongqiu/p/6574019.html
 public class InnerClassDemo {
 	public static void main(String[] args) {
-		// ³£¹æÄÚ²¿Àà
-		// ÄÚ²¿ÀàÖĞµÄ±äÁ¿·ÃÎÊĞÎÊ½
+		// å¸¸è§„å†…éƒ¨ç±»
+		// å†…éƒ¨ç±»ä¸­çš„å˜é‡è®¿é—®å½¢å¼
 		Out1.In in = new Out1().new In();
 		in.print();
 
-		// ¾²Ì¬ÄÚ²¿Àà
+		// é™æ€å†…éƒ¨ç±»
 		Out2.In in2 = new Out2.In();
 
-		// Ë½ÓĞÄÚ²¿Àà
+		// ç§æœ‰å†…éƒ¨ç±»
 		Out3 out3 = new Out3();
 		out3.outPrint();
 
-		// ¾Ö²¿ÄÚ²¿Àà
+		// å±€éƒ¨å†…éƒ¨ç±»
 		Out4 out4 = new Out4();
 		out4.Print(5);
-		
-		// ÄäÃûÄÚ²¿Àà
+
+		// åŒ¿åå†…éƒ¨ç±»
 		out5 out5=new out5();
 		out5.print();
 	}
 }
 
-// ³£¹æÄÚ²¿Àà
-// ÄÚ²¿ÀàÖĞµÄ±äÁ¿·ÃÎÊĞÎÊ½
+// å¸¸è§„å†…éƒ¨ç±»
+// å†…éƒ¨ç±»ä¸­çš„å˜é‡è®¿é—®å½¢å¼
 class Out1 {
 	private int age = 12;
 
-	// ÄÚ²¿Àà
+	// å†…éƒ¨ç±»
 	class In {
 		private int age = 13;
 
 		public void print() {
 			int age = 14;
-			System.out.println("¾Ö²¿±äÁ¿£º" + age);
-			System.out.println("ÄÚ²¿Àà±äÁ¿£º" + this.age);
-			System.out.println("Íâ²¿Àà±äÁ¿£º" + Out1.this.age);
+			System.out.println("å±€éƒ¨å˜é‡ï¼š" + age);
+			System.out.println("å†…éƒ¨ç±»å˜é‡ï¼š" + this.age);
+			System.out.println("å¤–éƒ¨ç±»å˜é‡ï¼š" + Out1.this.age);
 		}
 	}
 }
 
-// ¾²Ì¬ÄÚ²¿Àà
+// é™æ€å†…éƒ¨ç±»
 class Out2 {
 	private static int age = 12;
 	private int normalage = 13;
@@ -52,13 +52,13 @@ class Out2 {
 	static class In {
 		public void print() {
 			System.out.println(age);
-			// ¾²Ì¬ÄÚ²¿Àà²»ÄÜ·ÃÎÊÍâ²¿ÀàµÄ·Ç¾²Ì¬³ÉÔ±±äÁ¿
+			// é™æ€å†…éƒ¨ç±»ä¸èƒ½è®¿é—®å¤–éƒ¨ç±»çš„éé™æ€æˆå‘˜å˜é‡
 			// System.out.println(normalage);
 		}
 	}
 }
 
-// Ë½ÓĞÄÚ²¿Àà
+// ç§æœ‰å†…éƒ¨ç±»
 class Out3 {
 	private int age = 12;
 
@@ -73,7 +73,7 @@ class Out3 {
 	}
 }
 
-// ¾Ö²¿ÄÚ²¿Àà
+// å±€éƒ¨å†…éƒ¨ç±»
 class Out4 {
 	private int age = 12;
 
@@ -88,7 +88,7 @@ class Out4 {
 	}
 }
 
-// ÄäÃûÄÚ²¿Àà
+// åŒ¿åå†…éƒ¨ç±»
 class out5 {
 	public void print() {
 		new Thread(new Runnable() {

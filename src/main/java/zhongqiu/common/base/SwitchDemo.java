@@ -10,18 +10,18 @@ public class SwitchDemo {
 		// switch�п���ʹ���ִ��ˡ�������������ڱ�������������ʵ�ֵ�
 		String s = "test";
 		switch (s) {
-		case "test":
-			System.out.println("test");
-			break;
-		case "a":
-			System.out.println("a");
-			break;
-		case "test1":
-			System.out.println("test1");
-			break;
-		default:
-			System.out.println("break");
-			break;
+			case "test":
+				System.out.println("test");
+				break;
+			case "a":
+				System.out.println("a");
+				break;
+			case "test1":
+				System.out.println("test1");
+				break;
+			default:
+				System.out.println("break");
+				break;
 		}
 		test();
 	}
@@ -29,10 +29,10 @@ public class SwitchDemo {
 	public static void test() {
 		int i = 0, j = -1;
 		switch (i) {
-		case 3:
-			j = 1;
-		case 4:
-			j = 2;
+			case 3:
+				j = 1;
+			case 4:
+				j = 2;
 		}
 		System.out.println(j);
 	}

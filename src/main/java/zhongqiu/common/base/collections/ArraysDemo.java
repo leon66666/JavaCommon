@@ -3,7 +3,7 @@ package zhongqiu.common.base.collections;
 import java.util.Arrays;
 import java.util.List;
 
-//ArraysÀàÏà¹Ø
+//Arraysç±»ç›¸å…³
 public class ArraysDemo {
 	public static void main(String[] args) {
 		byte[] test1 = { 23, 34 };
@@ -12,30 +12,30 @@ public class ArraysDemo {
 
 		int[] test3 = { 4, 5, 6, 7 };
 
-		// ¸ù¾İµÚ¶ş¸ö²ÎÊı×÷ÎªË÷ÒıÕÒ³ö¶ÔÓ¦µÄÏÂ±ê£¬¶ş·Ö·¨²éÕÒËã·¨
+		// æ ¹æ®ç¬¬äºŒä¸ªå‚æ•°ä½œä¸ºç´¢å¼•æ‰¾å‡ºå¯¹åº”çš„ä¸‹æ ‡ï¼ŒäºŒåˆ†æ³•æŸ¥æ‰¾ç®—æ³•
 		System.out.println(Arrays.binarySearch(test3, 7));
 
-		// toString·½·¨
+		// toStringæ–¹æ³•
 		System.out.println(test1.toString());
-		System.out.println(Arrays.toString(test1));// ÖØĞ´Tostring·½·¨
+		System.out.println(Arrays.toString(test1));// é‡å†™Tostringæ–¹æ³•
 
-		// Equals·½·¨
+		// Equalsæ–¹æ³•
 		System.out.println(test1.equals(test2));
-		System.out.println(Arrays.equals(test1, test2));// ÖØĞ´ÁËEquals·½·¨
+		System.out.println(Arrays.equals(test1, test2));// é‡å†™äº†Equalsæ–¹æ³•
 		System.out.println(test1 == test2);
 		System.out.println(test1.getClass());
-		// fill·½·¨
-		// ½«Ö¸¶¨µÄ byte Öµ·ÖÅä¸øÖ¸¶¨byteĞÍÊı×éÖ¸¶¨·¶Î§ÖĞµÄÃ¿¸öÔªËØ¡£
+		// fillæ–¹æ³•
+		// å°†æŒ‡å®šçš„ byte å€¼åˆ†é…ç»™æŒ‡å®šbyteå‹æ•°ç»„æŒ‡å®šèŒƒå›´ä¸­çš„æ¯ä¸ªå…ƒç´ ã€‚
 		Arrays.fill(test1, 0, 1, (byte) 56);
 		System.out.println(Arrays.toString(test1));
 
-		// hashCode·½·¨
+		// hashCodeæ–¹æ³•
 		System.out.println(test1.hashCode());
-		System.out.println(Arrays.hashCode(test1));// »ùÓÚÖ¸¶¨Êı×éµÄÄÚÈİ·µ»Ø¹şÏ£Âë
+		System.out.println(Arrays.hashCode(test1));// åŸºäºæŒ‡å®šæ•°ç»„çš„å†…å®¹è¿”å›å“ˆå¸Œç 
 
 		// aslist
 		List list = Arrays.asList(test1);
-		
+
 	}
 
 }

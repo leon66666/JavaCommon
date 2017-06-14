@@ -1,10 +1,10 @@
 package zhongqiu.common.base.collections;
 
-//Êı×éÏà¹Ø
+//æ•°ç»„ç›¸å…³
 public class ArrayDemo {
-	public static int[] intArray={1,2,3,4}; // Ê×Ñ¡µÄ·½·¨
+	public static int[] intArray={1,2,3,4}; // é¦–é€‰çš„æ–¹æ³•
 
-	// public static int doubleArray2[]; Ğ§¹ûÏàÍ¬£¬µ«²»ÊÇÊ×Ñ¡·½·¨¡£ÑØÓÃc/c++µÄĞ´·¨
+	// public static int doubleArray2[]; æ•ˆæœç›¸åŒï¼Œä½†ä¸æ˜¯é¦–é€‰æ–¹æ³•ã€‚æ²¿ç”¨c/c++çš„å†™æ³•
 
 	public static void main(String[] args) {
 		initArray();
@@ -13,20 +13,20 @@ public class ArrayDemo {
 		printArray(intArray);
 	}
 
-	// ´´½¨Êı×é
+	// åˆ›å»ºæ•°ç»„
 	public static void initArray() {
 		int[] intArray1 = new int[10];
 		int[] intArray2={1,2,3,4};
 	}
 
-	// Êı×é×÷Îªº¯ÊıµÄ²ÎÊı
+	// æ•°ç»„ä½œä¸ºå‡½æ•°çš„å‚æ•°
 	public static void printArray(int[] array) {
 		for (int i = 0; i < array.length; i++) {
 			System.out.print(array[i] + " ");
 		}
 	}
 
-	// Êı×é×÷Îªº¯ÊıµÄ·µ»ØÖµ
+	// æ•°ç»„ä½œä¸ºå‡½æ•°çš„è¿”å›å€¼
 	public static int[] reverse(int[] list) {
 		int[] result = new int[list.length];
 

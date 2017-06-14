@@ -1,6 +1,6 @@
 package zhongqiu.common.base;
 
-//ÔËËã·û²Ù×÷
+//è¿ç®—ç¬¦æ“ä½œ
 public class OperatorDemo {
 	public static void main(String[] args) {
 		self();
@@ -8,19 +8,19 @@ public class OperatorDemo {
 		instanceOf();
 	}
 
-	// a++£¬a--¡£×ÔÔö×Ô¼õÔËËã·û
-	// 1¡¢Ç°×º×ÔÔö×Ô¼õ·¨(++a,--a): ÏÈ½øĞĞ×ÔÔö»òÕß×Ô¼õÔËËã£¬ÔÙ½øĞĞ±í´ïÊ½ÔËËã¡£
-	// 2¡¢ºó×º×ÔÔö×Ô¼õ·¨(a++,a--): ÏÈ½øĞĞ±í´ïÊ½ÔËËã£¬ÔÙ½øĞĞ×ÔÔö»òÕß×Ô¼õÔËËã ÊµÀı£º
+	// a++ï¼Œa--ã€‚è‡ªå¢è‡ªå‡è¿ç®—ç¬¦
+	// 1ã€å‰ç¼€è‡ªå¢è‡ªå‡æ³•(++a,--a): å…ˆè¿›è¡Œè‡ªå¢æˆ–è€…è‡ªå‡è¿ç®—ï¼Œå†è¿›è¡Œè¡¨è¾¾å¼è¿ç®—ã€‚
+	// 2ã€åç¼€è‡ªå¢è‡ªå‡æ³•(a++,a--): å…ˆè¿›è¡Œè¡¨è¾¾å¼è¿ç®—ï¼Œå†è¿›è¡Œè‡ªå¢æˆ–è€…è‡ªå‡è¿ç®— å®ä¾‹ï¼š
 	public static void self() {
-		int a = 5;// ¶¨ÒåÒ»¸ö±äÁ¿£»
+		int a = 5;// å®šä¹‰ä¸€ä¸ªå˜é‡ï¼›
 		int b = 5;
 		int x = 2 * ++a;
 		int y = 2 * b++;
-		System.out.println("×ÔÔöÔËËã·ûÇ°×ºÔËËãºóa=" + a + ",x=" + x);
-		System.out.println("×ÔÔöÔËËã·ûºó×ºÔËËãºób=" + b + ",y=" + y);
+		System.out.println("è‡ªå¢è¿ç®—ç¬¦å‰ç¼€è¿ç®—åa=" + a + ",x=" + x);
+		System.out.println("è‡ªå¢è¿ç®—ç¬¦åç¼€è¿ç®—åb=" + b + ",y=" + y);
 	}
 
-	// Ìõ¼şÔËËã·û(ÈıÔªÔËËã·û)£¨?:£©
+	// æ¡ä»¶è¿ç®—ç¬¦(ä¸‰å…ƒè¿ç®—ç¬¦)ï¼ˆ?:ï¼‰
 	public static void three() {
 		int a, b;
 		a = 10;
@@ -30,7 +30,7 @@ public class OperatorDemo {
 		System.out.println("Value of b is : " + b);
 	}
 
-	// instanceofÔËËã·û.ÅĞ¶ÏÊÇ·ñÎªÒ»¸öÀàµÄÊµÀı
+	// instanceofè¿ç®—ç¬¦.åˆ¤æ–­æ˜¯å¦ä¸ºä¸€ä¸ªç±»çš„å®ä¾‹
 	public static void instanceOf() {
 		String name = "James";
 		boolean result = name instanceof String;

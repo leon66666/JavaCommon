@@ -3,25 +3,25 @@ package zhongqiu.common.base;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-//·´Éä¾ÍÊÇÔÚÔËĞĞ×´Ì¬°Ñ Java  ÀàÖĞµÄ¸÷ÖÖ³É·ÖÓ³Éä³ÉÏàÓ¦ÏàÓ¦µÄ Java  Àà£¬¿ÉÒÔ¶¯Ì¬µÃ»ñÈ¡ËùÓĞµÄÊôĞÔÒÔ¼°¶¯Ì¬µ÷ÓÃÈÎÒâÒ»¸ö·½·¨¡£
-//1).Ò»¶Îjava´úÂëÔÚ³ÌĞòµÄÔËĞĞÆÚ¼ä»á¾­ÀúÈı¸ö½×¶Î£ºsource-->class-->runtime
-//2).Class¶ÔÏó
-//       ÔÚjavaÖĞÓÃÒ»¸öClass¶ÔÏóÀ´±íÊ¾Ò»¸öjavaÀàµÄclass½×¶Î
-//       Class¶ÔÏó·â×°ÁËÒ»¸öjavaÀà¶¨ÒåµÄ³ÉÔ±±äÁ¿¡¢³ÉÔ±·½·¨¡¢¹¹Ôì·½·¨¡¢°üÃû¡¢ÀàÃûµÈ¡£
+//åå°„å°±æ˜¯åœ¨è¿è¡ŒçŠ¶æ€æŠŠ Java  ç±»ä¸­çš„å„ç§æˆåˆ†æ˜ å°„æˆç›¸åº”ç›¸åº”çš„ Java  ç±»ï¼Œå¯ä»¥åŠ¨æ€å¾—è·å–æ‰€æœ‰çš„å±æ€§ä»¥åŠåŠ¨æ€è°ƒç”¨ä»»æ„ä¸€ä¸ªæ–¹æ³•ã€‚
+//1).ä¸€æ®µjavaä»£ç åœ¨ç¨‹åºçš„è¿è¡ŒæœŸé—´ä¼šç»å†ä¸‰ä¸ªé˜¶æ®µï¼šsource-->class-->runtime
+//2).Classå¯¹è±¡
+//       åœ¨javaä¸­ç”¨ä¸€ä¸ªClasså¯¹è±¡æ¥è¡¨ç¤ºä¸€ä¸ªjavaç±»çš„classé˜¶æ®µ
+//       Classå¯¹è±¡å°è£…äº†ä¸€ä¸ªjavaç±»å®šä¹‰çš„æˆå‘˜å˜é‡ã€æˆå‘˜æ–¹æ³•ã€æ„é€ æ–¹æ³•ã€åŒ…åã€ç±»åç­‰ã€‚
 public class Reflection {
 	public static void main(String[] args)
 			throws ClassNotFoundException, InstantiationException, IllegalAccessException, NoSuchMethodException,
 			SecurityException, IllegalArgumentException, InvocationTargetException {
-		// Í¨¹ıÀàÃûÀ´¹¹ÔìÒ»¸öÀàµÄÊµÀı
+		// é€šè¿‡ç±»åæ¥æ„é€ ä¸€ä¸ªç±»çš„å®ä¾‹
 		Class cls_str = Class.forName("java.lang.String");
-		// ÉÏÃæÕâ¾äºÜÑÛÊì£¬ÒòÎªÊ¹ÓÃ¹ı JDBC ·ÃÎÊÊı¾İ¿âµÄÈË¶¼ÓÃ¹ı J
+		// ä¸Šé¢è¿™å¥å¾ˆçœ¼ç†Ÿï¼Œå› ä¸ºä½¿ç”¨è¿‡ JDBC è®¿é—®æ•°æ®åº“çš„äººéƒ½ç”¨è¿‡ J
 		Object str = cls_str.newInstance();
-		// Ïàµ±ÓÚ String str = new String();
+		// ç›¸å½“äº String str = new String();
 
-		// Í¨¹ı·½·¨ÃûÀ´µ÷ÓÃÒ»¸ö·½·¨
+		// é€šè¿‡æ–¹æ³•åæ¥è°ƒç”¨ä¸€ä¸ªæ–¹æ³•
 		String methodName = "length";
 		Method m = cls_str.getMethod(methodName, null);
 		System.out.println("length is " + m.invoke(str, null));
-		// Ïàµ±ÓÚ System.out.println(str.length());
+		// ç›¸å½“äº System.out.println(str.length());
 	}
 }

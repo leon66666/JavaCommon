@@ -3,23 +3,23 @@ package zhongqiu.common.base;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-//DateÏà¹Ø
+//Dateç›¸å…³
 //http://www.runoob.com/java/java-date-time.html
 public class DateDemo {
 	public static void main(String[] args) {
 		simpleDateFormat();
 	}
 
-	// Ê¹ÓÃ SimpleDateFormat ¸ñÊ½»¯ÈÕÆÚ
+	// ä½¿ç”¨ SimpleDateFormat æ ¼å¼åŒ–æ—¥æœŸ
 	public static void simpleDateFormat() {
 		Date dNow = new Date();
-		
+
 		SimpleDateFormat ft = new SimpleDateFormat("E yyyy.MM.dd 'at' hh:mm:ss a zzz");
 		System.out.println("Current Date: " + ft.format(dNow));
-		
+
 		SimpleDateFormat ft1 = new SimpleDateFormat("yyyy.MM.dd 'at' hh:mm:ss a zzz");
 		System.out.println("Current Date: " + ft1.format(dNow));
-		
+
 		SimpleDateFormat ft2 = new SimpleDateFormat("yyyy.MM.dd 'at' hh:mm:ss");
 		System.out.println("Current Date: " + ft2.format(dNow));
 	}

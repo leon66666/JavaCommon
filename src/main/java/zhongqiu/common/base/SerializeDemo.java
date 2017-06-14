@@ -1,6 +1,6 @@
 package zhongqiu.common.base;
 
-//ĞòÁĞ»¯ Serialize
+//åºåˆ—åŒ– Serialize
 //http://www.runoob.com/java/java-serialization.html
 public class SerializeDemo {
 	public static void main(String[] args) {

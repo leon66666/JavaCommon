@@ -2,7 +2,7 @@ package zhongqiu.common.test;
 
 public class Test {
 	static {
-		System.out.println("Test��̬��ʼ����ִ���ˣ�");
+		System.out.println("sdfs");
 	}
 	Integer i;
 	Integer j;

@@ -2,7 +2,7 @@ package zhongqiu.common.base.gc.classload;
 
 public class Test {
 	static {
-		System.out.println("Test¾²Ì¬³õÊ¼»¯¿éÖ´ĞĞÁË£¡");
+		System.out.println("Testé™æ€åˆå§‹åŒ–å—æ‰§è¡Œäº†ï¼");
 	}
 	Integer i;
 	Integer j;

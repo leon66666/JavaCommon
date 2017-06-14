@@ -2,34 +2,34 @@ package zhongqiu.common.base.gc.classload;
 
 public class ClassLoadDemo {
 	static {
-		System.out.println("ClassLoadDemo¾²Ì¬³õÊ¼»¯¿éÖ´ĞĞÁË£¡");
+		System.out.println("ClassLoadDemoé™æ€åˆå§‹åŒ–å—æ‰§è¡Œäº†ï¼");
 	}
 
 	public static void main(String[] args) throws ClassNotFoundException {
-		// Ò»¡¢Àà¼ÓÔØ¹ı³Ì£º
-		// 1¡¢Ñ°ÕÒjreÄ¿Â¼£¬Ñ°ÕÒjvm.dll£¬²¢³õÊ¼»¯JVM£»
-		// 2¡¢²úÉúÒ»¸öBootstrap Loader£¨Æô¶¯Àà¼ÓÔØÆ÷£©£»
-		// 3¡¢Bootstrap Loader×Ô¶¯¼ÓÔØExtended Loader£¨±ê×¼À©Õ¹Àà¼ÓÔØÆ÷£©£¬²¢½«Æä¸¸LoaderÉèÎªBootstrap
-		// Loader¡£
-		// 4¡¢Bootstrap Loader×Ô¶¯¼ÓÔØAppClass Loader£¨ÏµÍ³Àà¼ÓÔØÆ÷£©£¬²¢½«Æä¸¸LoaderÉèÎªExtended
-		// Loader¡£
-		// 5¡¢×îºóÓÉAppClass Loader¼ÓÔØHelloWorldÀà¡£
+		// ä¸€ã€ç±»åŠ è½½è¿‡ç¨‹ï¼š
+		// 1ã€å¯»æ‰¾jreç›®å½•ï¼Œå¯»æ‰¾jvm.dllï¼Œå¹¶åˆå§‹åŒ–JVMï¼›
+		// 2ã€äº§ç”Ÿä¸€ä¸ªBootstrap Loaderï¼ˆå¯åŠ¨ç±»åŠ è½½å™¨ï¼‰ï¼›
+		// 3ã€Bootstrap Loaderè‡ªåŠ¨åŠ è½½Extended Loaderï¼ˆæ ‡å‡†æ‰©å±•ç±»åŠ è½½å™¨ï¼‰ï¼Œå¹¶å°†å…¶çˆ¶Loaderè®¾ä¸ºBootstrap
+		// Loaderã€‚
+		// 4ã€Bootstrap Loaderè‡ªåŠ¨åŠ è½½AppClass Loaderï¼ˆç³»ç»Ÿç±»åŠ è½½å™¨ï¼‰ï¼Œå¹¶å°†å…¶çˆ¶Loaderè®¾ä¸ºExtended
+		// Loaderã€‚
+		// 5ã€æœ€åç”±AppClass LoaderåŠ è½½HelloWorldç±»ã€‚
 		ClassLoader loader1 = ClassLoadDemo.class.getClassLoader();
 		System.out.println(loader1);
 		System.out.println(loader1.getParent());
 		System.out.println(loader1.getParent().getParent());
 
-		// ¶ş¡¢Àà¼ÓÔØÓĞÈıÖÖ·½Ê½£º
-		// 1¡¢ÃüÁîĞĞÆô¶¯Ó¦ÓÃÊ±ºòÓÉJVM³õÊ¼»¯¼ÓÔØ
-		// 2¡¢Í¨¹ıClass.forName()·½·¨¶¯Ì¬¼ÓÔØ
-		// 3¡¢Í¨¹ıClassLoader.loadClass()·½·¨¶¯Ì¬¼ÓÔØ
+		// äºŒã€ç±»åŠ è½½æœ‰ä¸‰ç§æ–¹å¼ï¼š
+		// 1ã€å‘½ä»¤è¡Œå¯åŠ¨åº”ç”¨æ—¶å€™ç”±JVMåˆå§‹åŒ–åŠ è½½
+		// 2ã€é€šè¿‡Class.forName()æ–¹æ³•åŠ¨æ€åŠ è½½
+		// 3ã€é€šè¿‡ClassLoader.loadClass()æ–¹æ³•åŠ¨æ€åŠ è½½
 		ClassLoader loader2 = ClassLoadDemo.class.getClassLoader();
 		System.out.println(loader2);
-		// Ê¹ÓÃClassLoader.loadClass()À´¼ÓÔØÀà£¬²»»áÖ´ĞĞ³õÊ¼»¯¿é
+		// ä½¿ç”¨ClassLoader.loadClass()æ¥åŠ è½½ç±»ï¼Œä¸ä¼šæ‰§è¡Œåˆå§‹åŒ–å—
 		// loader2.loadClass("zhongqiu.test.Test");
-		// Ê¹ÓÃClass.forName()À´¼ÓÔØÀà£¬Ä¬ÈÏ»áÖ´ĞĞ³õÊ¼»¯¿é
+		// ä½¿ç”¨Class.forName()æ¥åŠ è½½ç±»ï¼Œé»˜è®¤ä¼šæ‰§è¡Œåˆå§‹åŒ–å—
 		// Class.forName("zhongqiu.test.Test");
-		// Ê¹ÓÃClass.forName()À´¼ÓÔØÀà£¬²¢Ö¸¶¨ClassLoader£¬³õÊ¼»¯Ê±²»Ö´ĞĞ¾²Ì¬¿é
+		// ä½¿ç”¨Class.forName()æ¥åŠ è½½ç±»ï¼Œå¹¶æŒ‡å®šClassLoaderï¼Œåˆå§‹åŒ–æ—¶ä¸æ‰§è¡Œé™æ€å—
 		Class.forName("zhongqiu.test.Test", false, loader2);
 	}
 }

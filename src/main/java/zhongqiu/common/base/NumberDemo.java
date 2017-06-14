@@ -1,14 +1,14 @@
 package zhongqiu.common.base;
 
-//NumberÀàÏà¹Ø
+//Numberç±»ç›¸å…³
 public class NumberDemo {
 	/*
-	 * ÔÚÊµ¼Ê¿ª·¢¹ı³ÌÖĞ£¬ÎÒÃÇ¾­³£»áÓöµ½ĞèÒªÊ¹ÓÃ¶ÔÏó£¬¶ø²»ÊÇÄÚÖÃÊı¾İÀàĞÍµÄÇéĞÎ¡£ÎªÁË½â¾öÕâ¸öÎÊÌâ£¬Java ÓïÑÔÎªÃ¿Ò»¸öÄÚÖÃÊı¾İÀàĞÍÌá¹©ÁË¶ÔÓ¦µÄ°ü×°Àà¡£
-	 * ËùÓĞµÄ°ü×°Àà£¨Integer¡¢Long¡¢Byte¡¢Double¡¢Float¡¢Short£©¶¼ÊÇ³éÏóÀà Number µÄ×ÓÀà¡£
+	 * åœ¨å®é™…å¼€å‘è¿‡ç¨‹ä¸­ï¼Œæˆ‘ä»¬ç»å¸¸ä¼šé‡åˆ°éœ€è¦ä½¿ç”¨å¯¹è±¡ï¼Œè€Œä¸æ˜¯å†…ç½®æ•°æ®ç±»å‹çš„æƒ…å½¢ã€‚ä¸ºäº†è§£å†³è¿™ä¸ªé—®é¢˜ï¼ŒJava è¯­è¨€ä¸ºæ¯ä¸€ä¸ªå†…ç½®æ•°æ®ç±»å‹æä¾›äº†å¯¹åº”çš„åŒ…è£…ç±»ã€‚
+	 * æ‰€æœ‰çš„åŒ…è£…ç±»ï¼ˆIntegerã€Longã€Byteã€Doubleã€Floatã€Shortï¼‰éƒ½æ˜¯æŠ½è±¡ç±» Number çš„å­ç±»ã€‚
 	 */
 
 	/*
-	 * Number·½·¨ compareTo() equals() µÈµÈ
+	 * Numberæ–¹æ³• compareTo() equals() ç­‰ç­‰
 	 */
 	public static void main(String[] args) {
 		Integer aInteger = 1;

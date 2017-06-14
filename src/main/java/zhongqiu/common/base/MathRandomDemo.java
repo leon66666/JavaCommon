@@ -1,6 +1,6 @@
 package zhongqiu.common.base;
 
-//Ëæ»úÊı¡£Math.random() -- ·µ»Ø0ºÍ1Ö®¼äµÄÎ±Ëæ»úÊı ¿ÉÄÜÎª0£¬µ«×ÜÊÇĞ¡ÓÚ1£¬[0,1)
+//éšæœºæ•°ã€‚Math.random() -- è¿”å›0å’Œ1ä¹‹é—´çš„ä¼ªéšæœºæ•° å¯èƒ½ä¸º0ï¼Œä½†æ€»æ˜¯å°äº1ï¼Œ[0,1)
 public class MathRandomDemo {
 	public static void main(String[] args) {
 		intAndChar();
@@ -13,23 +13,23 @@ public class MathRandomDemo {
 
 	}
 
-	// intºÍchar¶ÔÓ¦¹ØÏµ
+	// intå’Œcharå¯¹åº”å…³ç³»
 	public static void intAndChar() {
 		for (int i = 1; i < 257; i++) {
-			System.out.println(i + "¶ÔÓ¦:" + (char) i);
+			System.out.println(i + "å¯¹åº”:" + (char) i);
 		}
 	}
 
-	// Éú³ÉÒ»¸ö6Î»µÄËæ»ú×Ö·û´®
+	// ç”Ÿæˆä¸€ä¸ª6ä½çš„éšæœºå­—ç¬¦ä¸²
 	public static void sixRandomStr() {
 		String result = "";
 		for (int i = 0; i < 6; i++) {
-			// Éú³É97-122µÄintĞÍµÄÕûĞÍ
+			// ç”Ÿæˆ97-122çš„intå‹çš„æ•´å‹
 			int intValue = (int) (Math.random() * 25 + 97);
-			// ½«intValueÇ¿ÖÆ×ª»¯³ÉcharÀàĞÍºó½Óµ½resultºóÃæ
+			// å°†intValueå¼ºåˆ¶è½¬åŒ–æˆcharç±»å‹åæ¥åˆ°resultåé¢
 			result = result + (char) intValue;
 		}
-		// Êä³ö×Ö·û´®
+		// è¾“å‡ºå­—ç¬¦ä¸²
 		System.out.println(result);
 	}
 }

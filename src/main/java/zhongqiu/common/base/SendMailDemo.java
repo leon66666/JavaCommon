@@ -1,6 +1,6 @@
 package zhongqiu.common.base;
 
-//·¢ÓÊ¼ş send mail
+//å‘é‚®ä»¶ send mail
 //http://www.runoob.com/java/java-sending-email.html
 public class SendMailDemo {
 	public static void main(String[] args) {

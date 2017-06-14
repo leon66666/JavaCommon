@@ -28,49 +28,49 @@ public class MapDemo {
 		subCounter(str, subStr);
 	}
 
-	// HashMap°´ÕÕ¹şÏ£Ëã·¨À´´æÈ¡¼ü¶ÔÏó£¬ÓĞºÜºÃµÄ´æÈ¡ĞÔÄÜ
+	// HashMapæŒ‰ç…§å“ˆå¸Œç®—æ³•æ¥å­˜å–é”®å¯¹è±¡ï¼Œæœ‰å¾ˆå¥½çš„å­˜å–æ€§èƒ½
 	private static HashMap<Integer, Integer> hMap = new HashMap<>();
 
-	// TreeMapÊµÏÖÁËSortedMap½Ó¿Ú£¬ÄÜ¶Ô¼ü¶ÔÏó½øĞĞÅÅĞò¡£Ö§³Ö×ÔÈ»ÅÅĞòºÍ¿Í»§»¯ÅÅĞòÁ½ÖÖ·½Ê½¡£
+	// TreeMapå®ç°äº†SortedMapæ¥å£ï¼Œèƒ½å¯¹é”®å¯¹è±¡è¿›è¡Œæ’åºã€‚æ”¯æŒè‡ªç„¶æ’åºå’Œå®¢æˆ·åŒ–æ’åºä¸¤ç§æ–¹å¼ã€‚
 	private static TreeMap<Integer, Integer> tMap = new TreeMap<>();
 
-	// mapµÄ¸³Öµ
+	// mapçš„èµ‹å€¼
 	public static void init() {
 		hMap.put(1, 1);
 		hMap.put(2, 2);
 		hMap.put(3, 3);
 	}
 
-	// mapµÄ±éÀú
+	// mapçš„éå†
 	public static void traversal() {
-		// µÚÒ»ÖÖ£ºÆÕ±éÊ¹ÓÃ£¬¶ş´ÎÈ¡Öµ
-		System.out.println("Í¨¹ıMap.keySet±éÀúkeyºÍvalue£º");
+		// ç¬¬ä¸€ç§ï¼šæ™®éä½¿ç”¨ï¼ŒäºŒæ¬¡å–å€¼
+		System.out.println("é€šè¿‡Map.keySetéå†keyå’Œvalueï¼š");
 		for (Integer key : hMap.keySet()) {
 			System.out.println("key= " + key + " and value= " + hMap.get(key));
 		}
 
-		// µÚ¶şÖÖ
-		System.out.println("Í¨¹ıMap.entrySetÊ¹ÓÃiterator±éÀúkeyºÍvalue£º");
+		// ç¬¬äºŒç§
+		System.out.println("é€šè¿‡Map.entrySetä½¿ç”¨iteratoréå†keyå’Œvalueï¼š");
 		Iterator<Map.Entry<Integer, Integer>> it = hMap.entrySet().iterator();
 		while (it.hasNext()) {
 			Map.Entry<Integer, Integer> entry = it.next();
 			System.out.println("key= " + entry.getKey() + " and value= " + entry.getValue());
 		}
 
-		// µÚÈıÖÖ£ºÍÆ¼ö£¬ÓÈÆäÊÇÈİÁ¿´óÊ±
-		System.out.println("Í¨¹ıMap.entrySet±éÀúkeyºÍvalue");
+		// ç¬¬ä¸‰ç§ï¼šæ¨èï¼Œå°¤å…¶æ˜¯å®¹é‡å¤§æ—¶
+		System.out.println("é€šè¿‡Map.entrySetéå†keyå’Œvalue");
 		for (Map.Entry<Integer, Integer> entry : hMap.entrySet()) {
 			System.out.println("key= " + entry.getKey() + " and value= " + entry.getValue());
 		}
 
-		// µÚËÄÖÖ
-		System.out.println("Í¨¹ıMap.values()±éÀúËùÓĞµÄvalue£¬µ«²»ÄÜ±éÀúkey");
+		// ç¬¬å››ç§
+		System.out.println("é€šè¿‡Map.values()éå†æ‰€æœ‰çš„valueï¼Œä½†ä¸èƒ½éå†key");
 		for (Integer v : hMap.values()) {
 			System.out.println("value= " + v);
 		}
 	}
 
-	// Í³¼Æ×Ö·û´®ÖĞÃ¿¸ö×Ö·û³öÏÖµÄ´ÎÊı
+	// ç»Ÿè®¡å­—ç¬¦ä¸²ä¸­æ¯ä¸ªå­—ç¬¦å‡ºç°çš„æ¬¡æ•°
 	public static void statis(String str, int top) {
 		HashMap<Character, Integer> hashMap = new HashMap<Character, Integer>();
 		char[] cs = str.toCharArray();
@@ -81,7 +81,7 @@ public class MapDemo {
 				hashMap.put(c, hashMap.get(c) + 1);
 			}
 		}
-		// °ÑentryÈ¡³öÀ´½øĞĞÅÅĞò
+		// æŠŠentryå–å‡ºæ¥è¿›è¡Œæ’åº
 		List<Map.Entry<Character, Integer>> list = new ArrayList<Map.Entry<Character, Integer>>(hashMap.entrySet());
 		Collections.sort(list, new Comparator<Map.Entry<Character, Integer>>() {
 			public int compare(Map.Entry<Character, Integer> o1, Map.Entry<Character, Integer> o2) {
@@ -93,7 +93,7 @@ public class MapDemo {
 				System.out.println(list.get(i).getKey() + "--" + list.get(i).getValue());
 			}
 		}
-		// Ö»°ÑvalueÈ¡³öÀ´
+		// åªæŠŠvalueå–å‡ºæ¥
 		List<Integer> valueList = new ArrayList<>(hashMap.values());
 		Collections.sort(valueList, new Comparator<Integer>() {
 			@Override
@@ -108,7 +108,7 @@ public class MapDemo {
 		}
 	}
 
-	// Í³¼Æ×Ö·û´®ÖĞµÄ´óĞ´£¬Ğ¡Ğ´£¬Êı×Ö£¬ÆäËû×Ö·û¸öÊı
+	// ç»Ÿè®¡å­—ç¬¦ä¸²ä¸­çš„å¤§å†™ï¼Œå°å†™ï¼Œæ•°å­—ï¼Œå…¶ä»–å­—ç¬¦ä¸ªæ•°
 	public static void count(String s) {
 		int low, upper, num, others;
 		low = upper = num = others = 0;
@@ -129,10 +129,10 @@ public class MapDemo {
 			}
 		}
 		System.out
-				.println(" ´óĞ´×ÖÄ¸µÄ¸öÊıÎª£º" + upper + "\n Ğ¡Ğ´×ÖÄ¸µÄ¸öÊıÎª£º" + low + "\n Êı×ÖµÄ¸öÊıÎª£º " + num + "\n ÆäËû×Ö·ûµÄ¸öÊıÎª£º " + others);
+				.println(" å¤§å†™å­—æ¯çš„ä¸ªæ•°ä¸ºï¼š" + upper + "\n å°å†™å­—æ¯çš„ä¸ªæ•°ä¸ºï¼š" + low + "\n æ•°å­—çš„ä¸ªæ•°ä¸ºï¼š " + num + "\n å…¶ä»–å­—ç¬¦çš„ä¸ªæ•°ä¸ºï¼š " + others);
 	}
 
-	// Í³¼Æ×Ö·û´®ÖĞ×Ó×Ö·û´®³öÏÖµÄ´ÎÊı
+	// ç»Ÿè®¡å­—ç¬¦ä¸²ä¸­å­å­—ç¬¦ä¸²å‡ºç°çš„æ¬¡æ•°
 	public static void subCounter(String str1, String str2) {
 		int counter = 0;
 		for (int i = 0; i <= str1.length() - str2.length(); i++) {
@@ -140,6 +140,6 @@ public class MapDemo {
 				counter++;
 			}
 		}
-		System.out.println("×Ó×Ö·û´®µÄ¸öÊıÎª£º " + counter);
+		System.out.println("å­å­—ç¬¦ä¸²çš„ä¸ªæ•°ä¸ºï¼š " + counter);
 	}
 }

@@ -2,27 +2,27 @@ package zhongqiu.common.base.gc;
 
 
 /*
-(a)SerialÊÕ¼¯Æ÷
-´®ÐÐÊÕ¼¯Æ÷ÊÇ×î¹ÅÀÏ£¬×îÎÈ¶¨ÒÔ¼°Ð§ÂÊ¸ßµÄÊÕ¼¯Æ÷£¬¿ÉÄÜ»á²úÉú½Ï³¤µÄÍ£¶Ù£¬Ö»Ê¹ÓÃÒ»¸öÏß³ÌÈ¥»ØÊÕ¡£
-ÐÂÉú´ú¡¢ÀÏÄê´úÊ¹ÓÃ´®ÐÐ»ØÊÕ£»ÐÂÉú´ú¸´ÖÆËã·¨¡¢ÀÏÄê´ú±ê¼Ç-Ñ¹Ëõ£»À¬»øÊÕ¼¯µÄ¹ý³ÌÖÐ»áStop The World£¨·þÎñÔÝÍ££©
-²ÎÊý¿ØÖÆ£º-XX:+UseSerialGC  ´®ÐÐÊÕ¼¯Æ÷
-£¨b£©ÍÂÁ¿ÓÅÏÈµÄ²¢ÐÐÊÕ¼¯Æ÷
--XX:+UseParallelGC£ºÑ¡ÔñÀ¬»øÊÕ¼¯Æ÷Îª²¢ÐÐÊÕ¼¯Æ÷¡£´ËÅäÖÃ½ö¶ÔÄêÇá´úÓÐÐ§¡£¼´ÉÏÊöÅäÖÃÏÂ£¬ÄêÇá´úÊ¹ÓÃ²¢·¢ÊÕ¼¯£¬¶øÄêÀÏ´úÈÔ¾ÉÊ¹ÓÃ´®ÐÐÊÕ¼¯¡£
--XX:ParallelGCThreads=20£ºÅäÖÃ²¢ÐÐÊÕ¼¯Æ÷µÄÏß³ÌÊý£¬¼´£ºÍ¬Ê±¶àÉÙ¸öÏß³ÌÒ»Æð½øÐÐÀ¬»ø»ØÊÕ¡£´ËÖµ×îºÃÅäÖÃÓë´¦ÀíÆ÷ÊýÄ¿ÏàµÈ¡£
--XX:+UseParallelOldGC£ºÅäÖÃÄêÀÏ´úÀ¬»øÊÕ¼¯·½Ê½Îª²¢ÐÐÊÕ¼¯¡£JDK6.0Ö§³Ö¶ÔÄêÀÏ´ú²¢ÐÐÊÕ¼¯¡£Parallel OldÊÇSerial OldµÄ²¢ÐÐ°æ±¾
--XX:MaxGCPauseMillis=100:ÉèÖÃÃ¿´ÎÄêÇá´úÀ¬»ø»ØÊÕµÄ×î³¤Ê±¼ä£¬Èç¹ûÎÞ·¨Âú×ã´ËÊ±¼ä£¬JVM»á×Ô¶¯µ÷ÕûÄêÇá´ú´óÐ¡£¬ÒÔÂú×ã´ËÖµ¡£
--XX:+UseAdaptiveSizePolicy£ºÉèÖÃ´ËÑ¡Ïîºó£¬²¢ÐÐÊÕ¼¯Æ÷»á×Ô¶¯Ñ¡ÔñÄêÇá´úÇø´óÐ¡ºÍÏàÓ¦µÄSurvivorÇø±ÈÀý£¬
-       ÒÔ´ïµ½Ä¿±êÏµÍ³¹æ¶¨µÄ×îµÍÏàÓ¦Ê±¼ä»òÕßÊÕ¼¯ÆµÂÊµÈ£¬´ËÖµ½¨ÒéÊ¹ÓÃ²¢ÐÐÊÕ¼¯Æ÷Ê±£¬Ò»Ö±´ò¿ª¡£
-£¨c£©ÏìÓ¦Ê±¼äÓÅÏÈµÄ²¢·¢ÊÕ¼¯Æ÷
--XX:+UseParNewGC:ParNewÊÇSerialµÄ²¢ÐÐ°æ±¾¡£
-     ÉèÖÃÄêÇá´úÎª²¢ÐÐÊÕ¼¯¡£¿ÉÓëCMSÊÕ¼¯Í¬Ê±Ê¹ÓÃ¡£JDK5.0ÒÔÉÏ£¬JVM»á¸ù¾ÝÏµÍ³ÅäÖÃ×ÔÐÐÉèÖÃ£¬ËùÒÔÎÞÐèÔÙÉèÖÃ´ËÖµ¡£
-£¨d£©CMSÊÕ¼¯Æ÷¡£ÓÅµã:²¢·¢ÊÕ¼¯¡¢µÍÍ£¶Ù¡£È±µã£º²úÉú´óÁ¿¿Õ¼äËéÆ¬¡¢²¢·¢½×¶Î»á½µµÍÍÌÍÂÁ¿
--XX:+UseConcMarkSweepGC  ÉèÖÃÄêÀÏ´úÊ¹ÓÃCMSÊÕ¼¯Æ÷
--XX:+UseCMSCompactAtFullCollection  FullGCºó£¬½øÐÐÒ»´ÎËéÆ¬ÕûÀí£»ÕûÀí¹ý³ÌÊÇ¶ÀÕ¼µÄ£¬»áÒýÆðÍ£¶ÙÊ±¼ä±ä³¤
--XX:+CMSFullGCsBeforeCompaction  ÉèÖÃ½øÐÐ¼¸´ÎFull GCºó£¬½øÐÐÒ»´ÎËéÆ¬ÕûÀí
--XX:ParallelCMSThreads  Éè¶¨CMSµÄÏß³ÌÊýÁ¿£¨Ò»°ãÇé¿öÔ¼µÈÓÚ¿ÉÓÃCPUÊýÁ¿£© 
-£¨e£©G1ÊÕ¼¯Æ÷
-G1ÊÕ¼¯Æ÷²ÉÓÃ±ê¼ÇÕûÀíËã·¨¡£ ¿ÉÔ¤²âÍ£¶Ù£¬ÄÜÈÃÊ¹ÓÃÕßÃ÷È·Ö¸¶¨ÔÚÒ»¸ö³¤¶ÈÎªNºÁÃëµÄÊ±¼äÆ¬¶ÎÄÚ£¬ÏûºÄÔÚÀ¬»øÊÕ¼¯ÉÏµÄÊ±¼ä²»µÃ³¬¹ýNºÁÃë
+(a)Serialæ”¶é›†å™¨
+ä¸²è¡Œæ”¶é›†å™¨æ˜¯æœ€å¤è€ï¼Œæœ€ç¨³å®šä»¥åŠæ•ˆçŽ‡é«˜çš„æ”¶é›†å™¨ï¼Œå¯èƒ½ä¼šäº§ç”Ÿè¾ƒé•¿çš„åœé¡¿ï¼Œåªä½¿ç”¨ä¸€ä¸ªçº¿ç¨‹åŽ»å›žæ”¶ã€‚
+æ–°ç”Ÿä»£ã€è€å¹´ä»£ä½¿ç”¨ä¸²è¡Œå›žæ”¶ï¼›æ–°ç”Ÿä»£å¤åˆ¶ç®—æ³•ã€è€å¹´ä»£æ ‡è®°-åŽ‹ç¼©ï¼›åžƒåœ¾æ”¶é›†çš„è¿‡ç¨‹ä¸­ä¼šStop The Worldï¼ˆæœåŠ¡æš‚åœï¼‰
+å‚æ•°æŽ§åˆ¶ï¼š-XX:+UseSerialGC  ä¸²è¡Œæ”¶é›†å™¨
+ï¼ˆbï¼‰åé‡ä¼˜å…ˆçš„å¹¶è¡Œæ”¶é›†å™¨
+-XX:+UseParallelGCï¼šé€‰æ‹©åžƒåœ¾æ”¶é›†å™¨ä¸ºå¹¶è¡Œæ”¶é›†å™¨ã€‚æ­¤é…ç½®ä»…å¯¹å¹´è½»ä»£æœ‰æ•ˆã€‚å³ä¸Šè¿°é…ç½®ä¸‹ï¼Œå¹´è½»ä»£ä½¿ç”¨å¹¶å‘æ”¶é›†ï¼Œè€Œå¹´è€ä»£ä»æ—§ä½¿ç”¨ä¸²è¡Œæ”¶é›†ã€‚
+-XX:ParallelGCThreads=20ï¼šé…ç½®å¹¶è¡Œæ”¶é›†å™¨çš„çº¿ç¨‹æ•°ï¼Œå³ï¼šåŒæ—¶å¤šå°‘ä¸ªçº¿ç¨‹ä¸€èµ·è¿›è¡Œåžƒåœ¾å›žæ”¶ã€‚æ­¤å€¼æœ€å¥½é…ç½®ä¸Žå¤„ç†å™¨æ•°ç›®ç›¸ç­‰ã€‚
+-XX:+UseParallelOldGCï¼šé…ç½®å¹´è€ä»£åžƒåœ¾æ”¶é›†æ–¹å¼ä¸ºå¹¶è¡Œæ”¶é›†ã€‚JDK6.0æ”¯æŒå¯¹å¹´è€ä»£å¹¶è¡Œæ”¶é›†ã€‚Parallel Oldæ˜¯Serial Oldçš„å¹¶è¡Œç‰ˆæœ¬
+-XX:MaxGCPauseMillis=100:è®¾ç½®æ¯æ¬¡å¹´è½»ä»£åžƒåœ¾å›žæ”¶çš„æœ€é•¿æ—¶é—´ï¼Œå¦‚æžœæ— æ³•æ»¡è¶³æ­¤æ—¶é—´ï¼ŒJVMä¼šè‡ªåŠ¨è°ƒæ•´å¹´è½»ä»£å¤§å°ï¼Œä»¥æ»¡è¶³æ­¤å€¼ã€‚
+-XX:+UseAdaptiveSizePolicyï¼šè®¾ç½®æ­¤é€‰é¡¹åŽï¼Œå¹¶è¡Œæ”¶é›†å™¨ä¼šè‡ªåŠ¨é€‰æ‹©å¹´è½»ä»£åŒºå¤§å°å’Œç›¸åº”çš„SurvivoråŒºæ¯”ä¾‹ï¼Œ
+       ä»¥è¾¾åˆ°ç›®æ ‡ç³»ç»Ÿè§„å®šçš„æœ€ä½Žç›¸åº”æ—¶é—´æˆ–è€…æ”¶é›†é¢‘çŽ‡ç­‰ï¼Œæ­¤å€¼å»ºè®®ä½¿ç”¨å¹¶è¡Œæ”¶é›†å™¨æ—¶ï¼Œä¸€ç›´æ‰“å¼€ã€‚
+ï¼ˆcï¼‰å“åº”æ—¶é—´ä¼˜å…ˆçš„å¹¶å‘æ”¶é›†å™¨
+-XX:+UseParNewGC:ParNewæ˜¯Serialçš„å¹¶è¡Œç‰ˆæœ¬ã€‚
+     è®¾ç½®å¹´è½»ä»£ä¸ºå¹¶è¡Œæ”¶é›†ã€‚å¯ä¸ŽCMSæ”¶é›†åŒæ—¶ä½¿ç”¨ã€‚JDK5.0ä»¥ä¸Šï¼ŒJVMä¼šæ ¹æ®ç³»ç»Ÿé…ç½®è‡ªè¡Œè®¾ç½®ï¼Œæ‰€ä»¥æ— éœ€å†è®¾ç½®æ­¤å€¼ã€‚
+ï¼ˆdï¼‰CMSæ”¶é›†å™¨ã€‚ä¼˜ç‚¹:å¹¶å‘æ”¶é›†ã€ä½Žåœé¡¿ã€‚ç¼ºç‚¹ï¼šäº§ç”Ÿå¤§é‡ç©ºé—´ç¢Žç‰‡ã€å¹¶å‘é˜¶æ®µä¼šé™ä½Žåžåé‡
+-XX:+UseConcMarkSweepGC  è®¾ç½®å¹´è€ä»£ä½¿ç”¨CMSæ”¶é›†å™¨
+-XX:+UseCMSCompactAtFullCollection  FullGCåŽï¼Œè¿›è¡Œä¸€æ¬¡ç¢Žç‰‡æ•´ç†ï¼›æ•´ç†è¿‡ç¨‹æ˜¯ç‹¬å çš„ï¼Œä¼šå¼•èµ·åœé¡¿æ—¶é—´å˜é•¿
+-XX:+CMSFullGCsBeforeCompaction  è®¾ç½®è¿›è¡Œå‡ æ¬¡Full GCåŽï¼Œè¿›è¡Œä¸€æ¬¡ç¢Žç‰‡æ•´ç†
+-XX:ParallelCMSThreads  è®¾å®šCMSçš„çº¿ç¨‹æ•°é‡ï¼ˆä¸€èˆ¬æƒ…å†µçº¦ç­‰äºŽå¯ç”¨CPUæ•°é‡ï¼‰
+ï¼ˆeï¼‰G1æ”¶é›†å™¨
+G1æ”¶é›†å™¨é‡‡ç”¨æ ‡è®°æ•´ç†ç®—æ³•ã€‚ å¯é¢„æµ‹åœé¡¿ï¼Œèƒ½è®©ä½¿ç”¨è€…æ˜Žç¡®æŒ‡å®šåœ¨ä¸€ä¸ªé•¿åº¦ä¸ºNæ¯«ç§’çš„æ—¶é—´ç‰‡æ®µå†…ï¼Œæ¶ˆè€—åœ¨åžƒåœ¾æ”¶é›†ä¸Šçš„æ—¶é—´ä¸å¾—è¶…è¿‡Næ¯«ç§’
 -XX:+UseG1GC
 */
 public class GCCollector {

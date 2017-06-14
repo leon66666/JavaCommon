@@ -2,19 +2,19 @@ package zhongqiu.common.base.collections;
 
 import java.util.Stack;
 
-//Õ»£¬VectorµÄ×ÓÀà
+//æ ˆï¼ŒVectorçš„å­ç±»
 public class StackDemo {
-	// °ÑÔªËØ·ÅÈëÕ»¶¥
+	// æŠŠå…ƒç´ æ”¾å…¥æ ˆé¡¶
 	static void showpush(Stack st, int a) {
 		st.push(new Integer(a));
 		System.out.println("push(" + a + ")");
 		System.out.println("stack: " + st);
 	}
 
-	// ´ÓÕ»¶¥É¾³ıÔªËØ
+	// ä»æ ˆé¡¶åˆ é™¤å…ƒç´ 
 	static void showpop(Stack st) {
 		System.out.print("pop -> ");
-		// ÅĞ¶ÏÕ»ÊÇ·ñÎª¿Õ
+		// åˆ¤æ–­æ ˆæ˜¯å¦ä¸ºç©º
 		if (st.empty()) {
 			System.out.println("Stack is empty.");
 		} else {
@@ -24,7 +24,7 @@ public class StackDemo {
 		}
 	}
 
-	// ²é¿´Õ»¶¥ÔªËØ
+	// æŸ¥çœ‹æ ˆé¡¶å…ƒç´ 
 	static void showpeek(Stack st) {
 		System.out.print("peek -> ");
 		if (st.empty()) {
@@ -36,7 +36,7 @@ public class StackDemo {
 		}
 	}
 
-	// ²éÑ¯Ö¸¶¨ÔªËØ
+	// æŸ¥è¯¢æŒ‡å®šå…ƒç´ 
 	static void showsearch(Stack st, int i) {
 		System.out.print("search -> " + i);
 		Integer index = (Integer) st.search(i);
