@@ -6,7 +6,7 @@ import javax.script.Invocable;
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 
-//对脚本语言的支持：script
+//瀵硅剼鏈瑷�鐨勬敮鎸侊細script
 public class ScriptDemo {
 	public static void main(String[] args) {
 		ScriptEngineManager manager = new ScriptEngineManager();

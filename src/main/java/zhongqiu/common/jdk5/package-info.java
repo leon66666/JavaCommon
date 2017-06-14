@@ -1,36 +1,36 @@
 /*
  * @author zhongqiu
- * jdk5ÌØĞÔ
- * Ö÷ÒªÌØĞÔ£º 
- * £¨1£©×Ô¶¯×°ÏäÓë²ğÏä
- * £¨2£©Ã¶¾Ù£ºÃ¶¾ÙµÄswitch£¬×Ô¶¨ÒåÃ¶¾Ù£¬Ã¶¾ÙÊµÏÖ½Ó¿Ú
- * £¨3£©¾²Ì¬µ¼Èë:import static java.lang.System.out;¾²Ì¬µ¼ÈëµÄÊÇ¾²Ì¬·½·¨
- * £¨4£©¿É±ä²ÎÊı£¨Varargs£©: int ... args
- * £¨5£©ÄÚÊ¡£¨Introspector£©
- * £¨6£©·ºĞÍ£º·ºĞÍÀà£»·ºĞÍ×÷Îª²ÎÊıºÍ¿É±ä²ÎÊı£»·ºĞÍ×÷Îª·µ»ØÖµ£»·ºĞÍ·½·¨£»ÀàĞÍÍ¨Åä·ûºÍextendºÍsuperÓÃ·¨£»
- * £¨7£©ÔöÇ¿ĞÍforÑ­»·For-Each
- * £¨8£©ScannerÀà¡£ÓÃÀ´»ñÈ¡ÓÃ»§µÄÊäÈë
- * £¨9£©¶ÓÁĞ£º¡¾×èÈû¶ÓÁĞ¡¿blockingqueue£¨add¡¢putºÍtake£¬offerºÍpoll£¬contains£¬remove£¬drainTo£©
+ * jdk5ç‰¹æ€§
+ * ä¸»è¦ç‰¹æ€§ï¼š
+ * ï¼ˆ1ï¼‰è‡ªåŠ¨è£…ç®±ä¸æ‹†ç®±
+ * ï¼ˆ2ï¼‰æšä¸¾ï¼šæšä¸¾çš„switchï¼Œè‡ªå®šä¹‰æšä¸¾ï¼Œæšä¸¾å®ç°æ¥å£
+ * ï¼ˆ3ï¼‰é™æ€å¯¼å…¥:import static java.lang.System.out;é™æ€å¯¼å…¥çš„æ˜¯é™æ€æ–¹æ³•
+ * ï¼ˆ4ï¼‰å¯å˜å‚æ•°ï¼ˆVarargsï¼‰: int ... args
+ * ï¼ˆ5ï¼‰å†…çœï¼ˆIntrospectorï¼‰
+ * ï¼ˆ6ï¼‰æ³›å‹ï¼šæ³›å‹ç±»ï¼›æ³›å‹ä½œä¸ºå‚æ•°å’Œå¯å˜å‚æ•°ï¼›æ³›å‹ä½œä¸ºè¿”å›å€¼ï¼›æ³›å‹æ–¹æ³•ï¼›ç±»å‹é€šé…ç¬¦å’Œextendå’Œsuperç”¨æ³•ï¼›
+ * ï¼ˆ7ï¼‰å¢å¼ºå‹forå¾ªç¯For-Each
+ * ï¼ˆ8ï¼‰Scannerç±»ã€‚ç”¨æ¥è·å–ç”¨æˆ·çš„è¾“å…¥
+ * ï¼ˆ9ï¼‰é˜Ÿåˆ—ï¼šã€é˜»å¡é˜Ÿåˆ—ã€‘blockingqueueï¼ˆaddã€putå’Œtakeï¼Œofferå’Œpollï¼Œcontainsï¼Œremoveï¼ŒdrainToï¼‰
  *          ArrayBlockingQueue,LinkedBlockingQueue,,PriorityBlockingQueue
- *          DelayQueue£ºÖØĞ´getDelayºÍcompareTo·½·¨
- *          SynchronousQueue£ºÃ¿¸ö²åÈë²Ù×÷±ØĞëµÈ´ıÁíÒ»¸öÏß³ÌµÄ¶ÔÓ¦ÒÆ³ı²Ù×÷ £¬·´Ö®ÒàÈ»¡£Í¬²½¶ÓÁĞÃ»ÓĞÈÎºÎÄÚ²¿ÈİÁ¿£¬ÉõÖÁÁ¬Ò»¸ö¶ÓÁĞµÄÈİÁ¿¶¼Ã»ÓĞ¡£
- *         ¡¾ÓÅÏÈ¼¶¶ÓÁĞ¡¿PriorityQueue
- * £¨10£©CountDownLatch¡£Í¬²½¸¨ÖúÀà£¨await£¬countDown£¬getCount£©¡£
- *      Ó¦ÓÃ³¡¾°£º¼ÙÈçÓĞThread1¡¢Thread2¡¢Thread3¡¢Thread4ËÄÌõÏß³Ì·Ö±ğÍ³¼ÆC¡¢D¡¢E¡¢FËÄ¸öÅÌµÄ´óĞ¡£¬ËùÓĞÏß³Ì¶¼Í³¼ÆÍê±Ï½»¸øThread5Ïß³ÌÈ¥×ö»ã×Ü
- *      CyclicBarrier¡£Í¬²½¸¨ÖúÀà£¬Õ¤À¸¡£barrier.await(); 
- *      Semaphore¡£¼ÆÊıĞÅºÅÁ¿¡£semp.acquire();semp.release();
- *      Exchanger¡£¿ÉÒÔÔÚÁ½¸öÏß³ÌÖ®¼ä½»»»Êı¾İ£¬Ö»ÄÜÊÇ2¸öÏß³Ì£¬Ëû²»Ö§³Ö¸ü¶àµÄÏß³ÌÖ®¼ä»¥»»Êı¾İ
- * £¨11£©ConcurrentHashMap¡£Ó¦ÓÃ³¡¾°,ÊµÏÖÔ­Àí,Ëø·ÖÀë¼¼Êõ£¬volatile£¬Segment£¬ºÍhashtableµÄÇø±ğ£¬ÈõÒ»ÖÂµü´úÆ÷£¬¶Á²»ĞèÒªËø
- * £¨12£©ReentrantLock¡£ÔÚ×ÊÔ´¾ºÕù²»ÊÇºÜ¼¤ÁÒµÄÇé¿öÏÂ£¬SynchronizedµÄĞÔÄÜÒªÓÅÓÚReetrantLock£¬
- *                    µ«ÊÇÔÚ×ÊÔ´¾ºÕùºÜ¼¤ÁÒµÄÇé¿öÏÂ£¬SynchronizedµÄĞÔÄÜ»áÏÂ½µ¼¸Ê®±¶
- *                    ¹«Æ½Ëø£¨new RenentrantLock(boolean fair)£©£¬synchronizedÄ¬ÈÏ¹«Æ½Ëø£¬ReentrantLockÄ¬ÈÏ²»¹«Æ½Ëø
- *                    ¶¨Ê±ËøµÈºò(tryLock)ºÍ¿ÉÖĞ¶ÏËøµÈºò. lock ±ØĞëÔÚ finally ¿éÖĞÊÍ·Å
- * £¨13£©ReentrantReadWriteLock¡£¶ÁĞ´Ëø¡£ºÍsynchronizedµÄÇø±ğ¡£ÊµÏÖÔ­ÀíµÄ²»Í¬£¬
- * £¨14£©Atomic¡£Ô­×ÓĞÔ²Ù×÷¡£addAndGetºÍgetAndAddºÍdecrementAndGet() £¬compareAndSet(int expect, int update)
- * £¨15£©Ïß³Ì³ØExecutors¡£ExecutorService exec = Executors.newCachedThreadPool();
+ *          DelayQueueï¼šé‡å†™getDelayå’ŒcompareToæ–¹æ³•
+ *          SynchronousQueueï¼šæ¯ä¸ªæ’å…¥æ“ä½œå¿…é¡»ç­‰å¾…å¦ä¸€ä¸ªçº¿ç¨‹çš„å¯¹åº”ç§»é™¤æ“ä½œ ï¼Œåä¹‹äº¦ç„¶ã€‚åŒæ­¥é˜Ÿåˆ—æ²¡æœ‰ä»»ä½•å†…éƒ¨å®¹é‡ï¼Œç”šè‡³è¿ä¸€ä¸ªé˜Ÿåˆ—çš„å®¹é‡éƒ½æ²¡æœ‰ã€‚
+ *         ã€ä¼˜å…ˆçº§é˜Ÿåˆ—ã€‘PriorityQueue
+ * ï¼ˆ10ï¼‰CountDownLatchã€‚åŒæ­¥è¾…åŠ©ç±»ï¼ˆawaitï¼ŒcountDownï¼ŒgetCountï¼‰ã€‚
+ *      åº”ç”¨åœºæ™¯ï¼šå‡å¦‚æœ‰Thread1ã€Thread2ã€Thread3ã€Thread4å››æ¡çº¿ç¨‹åˆ†åˆ«ç»Ÿè®¡Cã€Dã€Eã€Få››ä¸ªç›˜çš„å¤§å°ï¼Œæ‰€æœ‰çº¿ç¨‹éƒ½ç»Ÿè®¡å®Œæ¯•äº¤ç»™Thread5çº¿ç¨‹å»åšæ±‡æ€»
+ *      CyclicBarrierã€‚åŒæ­¥è¾…åŠ©ç±»ï¼Œæ …æ ã€‚barrier.await();
+ *      Semaphoreã€‚è®¡æ•°ä¿¡å·é‡ã€‚semp.acquire();semp.release();
+ *      Exchangerã€‚å¯ä»¥åœ¨ä¸¤ä¸ªçº¿ç¨‹ä¹‹é—´äº¤æ¢æ•°æ®ï¼Œåªèƒ½æ˜¯2ä¸ªçº¿ç¨‹ï¼Œä»–ä¸æ”¯æŒæ›´å¤šçš„çº¿ç¨‹ä¹‹é—´äº’æ¢æ•°æ®
+ * ï¼ˆ11ï¼‰ConcurrentHashMapã€‚åº”ç”¨åœºæ™¯,å®ç°åŸç†,é”åˆ†ç¦»æŠ€æœ¯ï¼Œvolatileï¼ŒSegmentï¼Œå’Œhashtableçš„åŒºåˆ«ï¼Œå¼±ä¸€è‡´è¿­ä»£å™¨ï¼Œè¯»ä¸éœ€è¦é”
+ * ï¼ˆ12ï¼‰ReentrantLockã€‚åœ¨èµ„æºç«äº‰ä¸æ˜¯å¾ˆæ¿€çƒˆçš„æƒ…å†µä¸‹ï¼ŒSynchronizedçš„æ€§èƒ½è¦ä¼˜äºReetrantLockï¼Œ
+ *                    ä½†æ˜¯åœ¨èµ„æºç«äº‰å¾ˆæ¿€çƒˆçš„æƒ…å†µä¸‹ï¼ŒSynchronizedçš„æ€§èƒ½ä¼šä¸‹é™å‡ åå€
+ *                    å…¬å¹³é”ï¼ˆnew RenentrantLock(boolean fair)ï¼‰ï¼Œsynchronizedé»˜è®¤å…¬å¹³é”ï¼ŒReentrantLocké»˜è®¤ä¸å…¬å¹³é”
+ *                    å®šæ—¶é”ç­‰å€™(tryLock)å’Œå¯ä¸­æ–­é”ç­‰å€™. lock å¿…é¡»åœ¨ finally å—ä¸­é‡Šæ”¾
+ * ï¼ˆ13ï¼‰ReentrantReadWriteLockã€‚è¯»å†™é”ã€‚å’Œsynchronizedçš„åŒºåˆ«ã€‚å®ç°åŸç†çš„ä¸åŒï¼Œ
+ * ï¼ˆ14ï¼‰Atomicã€‚åŸå­æ€§æ“ä½œã€‚addAndGetå’ŒgetAndAddå’ŒdecrementAndGet() ï¼ŒcompareAndSet(int expect, int update)
+ * ï¼ˆ15ï¼‰çº¿ç¨‹æ± Executorsã€‚ExecutorService exec = Executors.newCachedThreadPool();
  *      pool.execute(new RunnableTest("Task2"));
- *      Future future = pool.submit(new RunnableTest("Task2"));ÓĞ·µ»ØÖµ
- *      newCachedThreadPool()£»newFixedThreadPool(3)£»newSingleThreadExecutor();newScheduledThreadPool(5)
+ *      Future future = pool.submit(new RunnableTest("Task2"));æœ‰è¿”å›å€¼
+ *      newCachedThreadPool()ï¼›newFixedThreadPool(3)ï¼›newSingleThreadExecutor();newScheduledThreadPool(5)
  *                     
  */
 package zhongqiu.common.jdk5;

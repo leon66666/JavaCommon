@@ -2,15 +2,15 @@ package zhongqiu.common.jdk7;
 
 import java.util.List;
 
-//¿É±ä²ÎÊı·Ç¾ßÌå»¯ÊÇÌáÊ¾¾¯¸æ
+//å¯å˜å‚æ•°éå…·ä½“åŒ–æ˜¯æç¤ºè­¦å‘Š
 public class VarableParameter {
 	public static void main(String[] args) {
-		
+
 	}
 
-	public static <T> void addToList (List<T> listArg, T... elements) {  
-	    for (T x : elements) {  
-	      listArg.add(x);  
-	    }  
-	  }  
+	public static <T> void addToList (List<T> listArg, T... elements) {
+		for (T x : elements) {
+			listArg.add(x);
+		}
+	}
 }

@@ -1,22 +1,22 @@
 /**
- * 
+ *
  */
 /**
  * @author zhongqiu
- * jdk6µÄÌØĞÔ 
- * ²Î¿¼×ÊÁÏ£ºhttp://freesea.iteye.com/blog/160133 
- * ¾ßÌåÌØĞÔ£º 
- * £¨1£©Compiler API¡£¶¯Ì¬±àÒëJavaÔ´ÎÄ¼ş
- * £¨2£©ÇáÁ¿¼¶HttpServer¡£Http Server API
- * £¨3£©¶Ô½Å±¾ÓïÑÔµÄÖ§³ÖÈç: ruby, groovy, javascript
- * £¨4£©¡¾²åÈëÊ½×¢½â´¦ÀíAPI¡¿ºÍCommon Annotations 
- * £¨5£©¼ò»¯Web Services¡£
- *      JAX-WS(Java Architecture for XML-Web Services) 2.0¡£xml-web  service
- *      JAXB(Java Architecture for XML Binding) 2.0¡£ÊµÏÖ¶ÔÏóÓëXMLÖ®¼äµÄÓ³Éä 
- *      Streaming API for XML (STaX)¡£ÊÇ¼ÌDOM(Document Object Model)ºÍSAX(Simple API for XML)Ö®ºóµÄÓÖÒ»ÖÖ´¦ÀíxmlµÄapi
- *      ËüÌá¹©ÁËÒ»¸öË«ÏòAPI£¬Õâ¸öAPI¿ÉÒÔÍ¨¹ıÒ»¸öÊÂ¼şÁ÷À´¶ÁÈ¡»òÕßĞ´ÈëXML£¬ÆäÖĞ°üÀ¨Ìø¹ıÄ³¸ö²¿·Ö£¬È»ºóÖ±½Ó¹Ø×¢ÓëÎÄµµÖĞµÄÁíÍâÒ»¸öĞ¡²¿·ÖµÄÄÜÁ¦¡£
- * £¨6£©Database,°ó¶¨Derby¡£¿ªÔ´Ç¶ÈëÊ½Êı¾İ¿â Derby(JavaDB) °ó¶¨ÔÚJDK 1.6ÖĞ
- * £¨7£©¸ü·á¸»µÄDesktop APIs¡£DesktopÀàºÍSystemTrayÀà ¡£±ÈÈçÆô¶¯½çÃæµÄÖ§³Ö,ÏµÍ³ÍĞÅÌµÄÖ§³Ö,JTableÅÅĞòµÈµÈ¡£
- * £¨8£©ÓÃConsole¿ª·¢¿ØÖÆÌ¨³ÌĞò
+ * jdk6çš„ç‰¹æ€§
+ * å‚è€ƒèµ„æ–™ï¼šhttp://freesea.iteye.com/blog/160133
+ * å…·ä½“ç‰¹æ€§ï¼š
+ * ï¼ˆ1ï¼‰Compiler APIã€‚åŠ¨æ€ç¼–è¯‘Javaæºæ–‡ä»¶
+ * ï¼ˆ2ï¼‰è½»é‡çº§HttpServerã€‚Http Server API
+ * ï¼ˆ3ï¼‰å¯¹è„šæœ¬è¯­è¨€çš„æ”¯æŒå¦‚: ruby, groovy, javascript
+ * ï¼ˆ4ï¼‰ã€æ’å…¥å¼æ³¨è§£å¤„ç†APIã€‘å’ŒCommon Annotations
+ * ï¼ˆ5ï¼‰ç®€åŒ–Web Servicesã€‚
+ *      JAX-WS(Java Architecture for XML-Web Services) 2.0ã€‚xml-web  service
+ *      JAXB(Java Architecture for XML Binding) 2.0ã€‚å®ç°å¯¹è±¡ä¸XMLä¹‹é—´çš„æ˜ å°„
+ *      Streaming API for XML (STaX)ã€‚æ˜¯ç»§DOM(Document Object Model)å’ŒSAX(Simple API for XML)ä¹‹åçš„åˆä¸€ç§å¤„ç†xmlçš„api
+ *      å®ƒæä¾›äº†ä¸€ä¸ªåŒå‘APIï¼Œè¿™ä¸ªAPIå¯ä»¥é€šè¿‡ä¸€ä¸ªäº‹ä»¶æµæ¥è¯»å–æˆ–è€…å†™å…¥XMLï¼Œå…¶ä¸­åŒ…æ‹¬è·³è¿‡æŸä¸ªéƒ¨åˆ†ï¼Œç„¶åç›´æ¥å…³æ³¨ä¸æ–‡æ¡£ä¸­çš„å¦å¤–ä¸€ä¸ªå°éƒ¨åˆ†çš„èƒ½åŠ›ã€‚
+ * ï¼ˆ6ï¼‰Database,ç»‘å®šDerbyã€‚å¼€æºåµŒå…¥å¼æ•°æ®åº“ Derby(JavaDB) ç»‘å®šåœ¨JDK 1.6ä¸­
+ * ï¼ˆ7ï¼‰æ›´ä¸°å¯Œçš„Desktop APIsã€‚Desktopç±»å’ŒSystemTrayç±» ã€‚æ¯”å¦‚å¯åŠ¨ç•Œé¢çš„æ”¯æŒ,ç³»ç»Ÿæ‰˜ç›˜çš„æ”¯æŒ,JTableæ’åºç­‰ç­‰ã€‚
+ * ï¼ˆ8ï¼‰ç”¨Consoleå¼€å‘æ§åˆ¶å°ç¨‹åº
  */
 package zhongqiu.common.jdk6;

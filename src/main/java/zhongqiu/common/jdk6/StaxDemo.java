@@ -13,7 +13,7 @@ import javax.xml.stream.XMLStreamWriter;
 import javax.xml.stream.events.StartElement;
 import javax.xml.stream.events.XMLEvent;
 
-//STAX´¦Àíxml
+//STAXå¤„ç†xml
 public class StaxDemo {
 	public static void main(String[] arg) throws XMLStreamException, FileNotFoundException {
 		readXMLByStAX();
@@ -62,11 +62,11 @@ public class StaxDemo {
 		writer.writeStartElement("http://blog.csdn.net/Chinajash", "catalog");
 		writer.writeAttribute("id", "007");
 		writer.writeCharacters("Apparel");
-		// Ğ´ÈëcatalogÔªËØµÄ½áÊø±êÇ©
+		// å†™å…¥catalogå…ƒç´ çš„ç»“æŸæ ‡ç­¾
 		writer.writeEndElement();
-		// Ğ´ÈëcatalogsÔªËØµÄ½áÊø±êÇ©
+		// å†™å…¥catalogså…ƒç´ çš„ç»“æŸæ ‡ç­¾
 		writer.writeEndElement();
-		// ½áÊø XML ÎÄµµ
+		// ç»“æŸ XML æ–‡æ¡£
 		writer.writeEndDocument();
 		writer.close();
 		System.out.println("ok");

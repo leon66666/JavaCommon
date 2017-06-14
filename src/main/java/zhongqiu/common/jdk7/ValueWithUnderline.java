@@ -1,14 +1,14 @@
 package zhongqiu.common.jdk7;
 
-//ÊıÖµ¿É¼ÓÏÂ»®Ïß
-//ºÜ³¤µÄÊı×Ö¿É¶ÁĞÔ²»ºÃ£¬ÔÚJava 7ÖĞ¿ÉÒÔÊ¹ÓÃÏÂ»®Ïß·Ö¸ô³¤intÒÔ¼°longÁË
+//æ•°å€¼å¯åŠ ä¸‹åˆ’çº¿
+//å¾ˆé•¿çš„æ•°å­—å¯è¯»æ€§ä¸å¥½ï¼Œåœ¨Java 7ä¸­å¯ä»¥ä½¿ç”¨ä¸‹åˆ’çº¿åˆ†éš”é•¿intä»¥åŠlongäº†
 public class ValueWithUnderline {
 	public static void main(String[] args) {
-		 int one_million = 1_000_000; 
-		 System.out.println(one_million);
-		 int i=1_1 * 10;
-		 System.out.println(i);
-		 int j=120 - 1_________________0;
-		 System.out.println(j);
+		int one_million = 1_000_000;
+		System.out.println(one_million);
+		int i=1_1 * 10;
+		System.out.println(i);
+		int j=120 - 1_________________0;
+		System.out.println(j);
 	}
 }

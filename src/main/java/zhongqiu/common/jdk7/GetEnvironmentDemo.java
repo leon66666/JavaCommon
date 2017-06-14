@@ -1,15 +1,15 @@
 package zhongqiu.common.jdk7;
 
 
-//ĞÂÔöÒ»Ğ©È¡»·¾³ĞÅÏ¢µÄ¹¤¾ß·½·¨
+//æ–°å¢ä¸€äº›å–ç¯å¢ƒä¿¡æ¯çš„å·¥å…·æ–¹æ³•
 public class GetEnvironmentDemo {
 	public static void main(String[] args) {
-//		System getJavaIoTempDir(); // IOÁÙÊ±ÎÄ¼ş¼Ğ
+//		System getJavaIoTempDir(); // IOä¸´æ—¶æ–‡ä»¶å¤¹
 //
-//		System.getJavaHomeDir(); // JREµÄ°²×°Ä¿Â¼
+//		System.getJavaHomeDir(); // JREçš„å®‰è£…ç›®å½•
 //
-//		File= System.getUserHomeDir(); // µ±Ç°ÓÃ»§Ä¿Â¼
+//		File= System.getUserHomeDir(); // å½“å‰ç”¨æˆ·ç›®å½•
 //
-//		File System.getUserDir(); // Æô¶¯java½ø³ÌÊ±ËùÔÚµÄÄ¿Â¼5
+//		File System.getUserDir(); // å¯åŠ¨javaè¿›ç¨‹æ—¶æ‰€åœ¨çš„ç›®å½•5
 	}
 }

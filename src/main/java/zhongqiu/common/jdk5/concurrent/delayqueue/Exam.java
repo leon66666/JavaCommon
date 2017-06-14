@@ -5,14 +5,14 @@ import java.util.Random;
 import java.util.concurrent.DelayQueue;
 import java.util.concurrent.Delayed;
 import java.util.concurrent.TimeUnit;
-//DelayQueue£ºDelayQueue ¶ÔÔªËØ½øĞĞ³ÖÓĞÖ±µ½Ò»¸öÌØ¶¨µÄÑÓ³Ùµ½ÆÚ¡£×¢ÈëÆäÖĞµÄÔªËØ±ØĞëÊµÏÖ java.util.concurrent.Delayed ½Ó¿Ú¡£
+//DelayQueueï¼šDelayQueue å¯¹å…ƒç´ è¿›è¡ŒæŒæœ‰ç›´åˆ°ä¸€ä¸ªç‰¹å®šçš„å»¶è¿Ÿåˆ°æœŸã€‚æ³¨å…¥å…¶ä¸­çš„å…ƒç´ å¿…é¡»å®ç° java.util.concurrent.Delayed æ¥å£ã€‚
 /*
- Ä£ÄâÒ»¸ö¿¼ÊÔµÄÈÕ×Ó£¬¿¼ÊÔÊ±¼äÎª120·ÖÖÓ£¬30·ÖÖÓºó²Å¿É½»¾í£¬µ±Ê±¼äµ½ÁË£¬»òÑ§Éú¶¼½»Íê¾íÁË¿¼ÊÔ½áÊø¡£
-Õâ¸ö³¡¾°ÖĞ¼¸¸öµãĞèÒª×¢Òâ£º
-¿¼ÊÔÊ±¼äÎª120·ÖÖÓ£¬30·ÖÖÓºó²Å¿É½»¾í£¬³õÊ¼»¯¿¼ÉúÍê³ÉÊÔ¾íÊ±¼ä×îĞ¡Ó¦Îª30·ÖÖÓ
-¶ÔÓÚÄÜ¹»ÔÚ120·ÖÖÓÄÚ½»¾íµÄ¿¼Éú£¬ÈçºÎÊµÏÖÕâĞ©¿¼Éú½»¾í
-¶ÔÓÚ120·ÖÖÓÄÚÃ»ÓĞÍê³É¿¼ÊÔµÄ¿¼Éú£¬ÔÚ120·ÖÖÓ¿¼ÊÔÊ±¼äµ½ºóĞèÒªÈÃËûÃÇÇ¿ÖÆ½»¾í
-ÔÚËùÓĞµÄ¿¼Éú¶¼½»Íê¾íºó£¬ĞèÒª½«¿ØÖÆÏß³Ì¹Ø±Õ
+ æ¨¡æ‹Ÿä¸€ä¸ªè€ƒè¯•çš„æ—¥å­ï¼Œè€ƒè¯•æ—¶é—´ä¸º120åˆ†é’Ÿï¼Œ30åˆ†é’Ÿåæ‰å¯äº¤å·ï¼Œå½“æ—¶é—´åˆ°äº†ï¼Œæˆ–å­¦ç”Ÿéƒ½äº¤å®Œå·äº†è€ƒè¯•ç»“æŸã€‚
+è¿™ä¸ªåœºæ™¯ä¸­å‡ ä¸ªç‚¹éœ€è¦æ³¨æ„ï¼š
+è€ƒè¯•æ—¶é—´ä¸º120åˆ†é’Ÿï¼Œ30åˆ†é’Ÿåæ‰å¯äº¤å·ï¼Œåˆå§‹åŒ–è€ƒç”Ÿå®Œæˆè¯•å·æ—¶é—´æœ€å°åº”ä¸º30åˆ†é’Ÿ
+å¯¹äºèƒ½å¤Ÿåœ¨120åˆ†é’Ÿå†…äº¤å·çš„è€ƒç”Ÿï¼Œå¦‚ä½•å®ç°è¿™äº›è€ƒç”Ÿäº¤å·
+å¯¹äº120åˆ†é’Ÿå†…æ²¡æœ‰å®Œæˆè€ƒè¯•çš„è€ƒç”Ÿï¼Œåœ¨120åˆ†é’Ÿè€ƒè¯•æ—¶é—´åˆ°åéœ€è¦è®©ä»–ä»¬å¼ºåˆ¶äº¤å·
+åœ¨æ‰€æœ‰çš„è€ƒç”Ÿéƒ½äº¤å®Œå·åï¼Œéœ€è¦å°†æ§åˆ¶çº¿ç¨‹å…³é—­
 */
 public class Exam {
 
@@ -43,7 +43,7 @@ class Student implements Runnable, Delayed {
 	public Student(String name, long workTime) {
 		this.name = name;
 		this.workTime = workTime;
-		this.submitTime = TimeUnit.NANOSECONDS.convert(workTime, TimeUnit.NANOSECONDS) + System.nanoTime();// ÄÉÃë¼¶±ğ
+		this.submitTime = TimeUnit.NANOSECONDS.convert(workTime, TimeUnit.NANOSECONDS) + System.nanoTime();// çº³ç§’çº§åˆ«
 	}
 
 	@Override
@@ -73,9 +73,9 @@ class Student implements Runnable, Delayed {
 	public void run() {
 		// TODO Auto-generated method stub
 		if (isForce) {
-			System.out.println(name + " ½»¾í£¬Êµ¼ÊÓÃÊ± 120·ÖÖÓ");
+			System.out.println(name + " äº¤å·ï¼Œå®é™…ç”¨æ—¶ 120åˆ†é’Ÿ");
 		} else {
-			System.out.println(name + " ½»¾í," + "Êµ¼ÊÓÃÊ± " + workTime + " ·ÖÖÓ");
+			System.out.println(name + " äº¤å·," + "å®é™…ç”¨æ—¶ " + workTime + " åˆ†é’Ÿ");
 		}
 	}
 
@@ -110,7 +110,7 @@ class Teacher implements Runnable {
 						counter--;
 					}
 				} else {
-					System.out.println(" ¿¼ÊÔÊ±¼äµ½£¬È«²¿½»¾í£¡");
+					System.out.println(" è€ƒè¯•æ—¶é—´åˆ°ï¼Œå…¨éƒ¨äº¤å·ï¼");
 					Student tmpStudent;
 					for (Iterator<Student> iterator2 = students.iterator(); iterator2.hasNext();) {
 						tmpStudent = iterator2.next();

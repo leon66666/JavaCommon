@@ -1,11 +1,11 @@
 package zhongqiu.common.base.thread;
 
-//¾­µäÃæÊÔÌâ
-// ½¨Á¢Èı¸öÏß³Ì£¬AÏß³Ì´òÓ¡10´ÎA£¬BÏß³Ì´òÓ¡10´ÎB,CÏß³Ì´òÓ¡10´ÎC£¬ÒªÇóÏß³ÌÍ¬Ê±ÔËĞĞ£¬½»Ìæ´òÓ¡10´ÎABC¡£
-// Ö÷Òª¿¼²ìobj.wait()ºÍobj.notify() µÄÓÃ·¨
+//ç»å…¸é¢è¯•é¢˜
+// å»ºç«‹ä¸‰ä¸ªçº¿ç¨‹ï¼ŒAçº¿ç¨‹æ‰“å°10æ¬¡Aï¼ŒBçº¿ç¨‹æ‰“å°10æ¬¡B,Cçº¿ç¨‹æ‰“å°10æ¬¡Cï¼Œè¦æ±‚çº¿ç¨‹åŒæ—¶è¿è¡Œï¼Œäº¤æ›¿æ‰“å°10æ¬¡ABCã€‚
+// ä¸»è¦è€ƒå¯Ÿobj.wait()å’Œobj.notify() çš„ç”¨æ³•
 public class PrintABC extends Thread {
 	public static void main(String[] args) throws InterruptedException {
-		// ¾­µäÃæÊÔÌâ
+		// ç»å…¸é¢è¯•é¢˜
 		SYNPo a = new SYNPo("a");
 		SYNPo b = new SYNPo("b");
 		SYNPo c = new SYNPo("c");
@@ -13,7 +13,7 @@ public class PrintABC extends Thread {
 		PrintABC pb = new PrintABC("B", a, b);
 		PrintABC pc = new PrintABC("C", b, c);
 		new Thread(pa).start();
-		Thread.sleep(100); // È·±£°´Ë³ĞòA¡¢B¡¢CÖ´ĞĞ
+		Thread.sleep(100); // ç¡®ä¿æŒ‰é¡ºåºAã€Bã€Cæ‰§è¡Œ
 		new Thread(pb).start();
 		Thread.sleep(100);
 		new Thread(pc).start();
@@ -34,34 +34,34 @@ public class PrintABC extends Thread {
 	public void run() {
 		int count = 10;
 		while (count > 0) {
-			// System.out.println("Ïß³Ì" + name + "ÉêÇë»ñµÃ¶ÔÏó" + prev.getName() +
-			// "µÄËø");
+			// System.out.println("çº¿ç¨‹" + name + "ç”³è¯·è·å¾—å¯¹è±¡" + prev.getName() +
+			// "çš„é”");
 			synchronized (prev) {
-				// System.out.println("Ïß³Ì" + name + "»ñµÃÁË¶ÔÏó" + prev.getName() +
-				// "µÄËø");
-				// System.out.println("Ïß³Ì" + name + "ÉêÇë»ñµÃ¶ÔÏó" + self.getName() +
-				// "µÄËø");
+				// System.out.println("çº¿ç¨‹" + name + "è·å¾—äº†å¯¹è±¡" + prev.getName() +
+				// "çš„é”");
+				// System.out.println("çº¿ç¨‹" + name + "ç”³è¯·è·å¾—å¯¹è±¡" + self.getName() +
+				// "çš„é”");
 				synchronized (self) {
-					// System.out.println("Ïß³Ì" + name + "»ñµÃÁË¶ÔÏó" + self.getName()
-					// + "µÄËø");
+					// System.out.println("çº¿ç¨‹" + name + "è·å¾—äº†å¯¹è±¡" + self.getName()
+					// + "çš„é”");
 					System.out.println(name);
 					count--;
 
-					// notify()µ÷ÓÃºó£¬²¢²»ÊÇÂíÉÏ¾ÍÊÍ·Å¶ÔÏóËøµÄ£¬¶øÊÇÔÚÏàÓ¦µÄsynchronized(){}Óï¾ä¿éÖ´ĞĞ½áÊø£¬
-					// ×Ô¶¯ÊÍ·ÅËøºó,JVM»áÔÚwait()¶ÔÏóËøµÄÏß³ÌÖĞËæ»úÑ¡È¡Ò»Ïß³Ì£¬¸³ÓèÆä¶ÔÏóËø£¬»½ĞÑÏß³Ì£¬¼ÌĞøÖ´ĞĞ¡£
+					// notify()è°ƒç”¨åï¼Œå¹¶ä¸æ˜¯é©¬ä¸Šå°±é‡Šæ”¾å¯¹è±¡é”çš„ï¼Œè€Œæ˜¯åœ¨ç›¸åº”çš„synchronized(){}è¯­å¥å—æ‰§è¡Œç»“æŸï¼Œ
+					// è‡ªåŠ¨é‡Šæ”¾é”å,JVMä¼šåœ¨wait()å¯¹è±¡é”çš„çº¿ç¨‹ä¸­éšæœºé€‰å–ä¸€çº¿ç¨‹ï¼Œèµ‹äºˆå…¶å¯¹è±¡é”ï¼Œå”¤é†’çº¿ç¨‹ï¼Œç»§ç»­æ‰§è¡Œã€‚
 					self.notify();
-					// System.out.println("¶ÔÏó" + self.getName() +
-					// "±»¸³Óè¸øÁËµÈ´ıµÄ½ø³Ì" + "¡¾»½ĞÑ²Ù×÷!!!¡¿");
+					// System.out.println("å¯¹è±¡" + self.getName() +
+					// "è¢«èµ‹äºˆç»™äº†ç­‰å¾…çš„è¿›ç¨‹" + "ã€å”¤é†’æ“ä½œ!!!ã€‘");
 				}
-				// System.out.println("Ïß³Ì" + name + "ÊÍ·ÅÁË¶ÔÏó" + self.getName() +
-				// "µÄËø");
+				// System.out.println("çº¿ç¨‹" + name + "é‡Šæ”¾äº†å¯¹è±¡" + self.getName() +
+				// "çš„é”");
 				try {
-					// Thread.sleep()ÓëObject.wait()¶şÕß¶¼¿ÉÒÔÔİÍ£µ±Ç°Ïß³Ì£¬ÊÍ·ÅCPU¿ØÖÆÈ¨£¬
-					// Ö÷ÒªµÄÇø±ğÔÚÓÚObject.wait()ÔÚÊÍ·ÅCPUÍ¬Ê±£¬ÊÍ·ÅÁË¶ÔÏóËøµÄ¿ØÖÆ¡£
-					// System.out.println("Ïß³Ì" + name + "ÊÍ·ÅÁË¶ÔÏó" + prev.getName()
-					// + "µÄËø");
-					// System.out.println("Ïß³Ì" + name + "½øÈëĞİÃß×´Ì¬¡£µÈ´ı»ñÈ¡" +
-					// prev.getName() + "µÄËø" + "¡¾µÈ´ıÖĞ¡£¡£¡£¡¿");
+					// Thread.sleep()ä¸Object.wait()äºŒè€…éƒ½å¯ä»¥æš‚åœå½“å‰çº¿ç¨‹ï¼Œé‡Šæ”¾CPUæ§åˆ¶æƒï¼Œ
+					// ä¸»è¦çš„åŒºåˆ«åœ¨äºObject.wait()åœ¨é‡Šæ”¾CPUåŒæ—¶ï¼Œé‡Šæ”¾äº†å¯¹è±¡é”çš„æ§åˆ¶ã€‚
+					// System.out.println("çº¿ç¨‹" + name + "é‡Šæ”¾äº†å¯¹è±¡" + prev.getName()
+					// + "çš„é”");
+					// System.out.println("çº¿ç¨‹" + name + "è¿›å…¥ä¼‘çœ çŠ¶æ€ã€‚ç­‰å¾…è·å–" +
+					// prev.getName() + "çš„é”" + "ã€ç­‰å¾…ä¸­ã€‚ã€‚ã€‚ã€‘");
 					prev.wait();
 				} catch (InterruptedException e) {
 					e.printStackTrace();

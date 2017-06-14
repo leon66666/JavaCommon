@@ -3,10 +3,10 @@ package zhongqiu.common.jdk5.concurrent.atomic;
 import java.util.concurrent.atomic.AtomicInteger;
 
 
-//ÄÇÃ´ÎªÊ²Ã´²»Ê¹ÓÃ¼ÇÊıÆ÷×Ô¼ÓÄØ£¬ÀıÈçcount++ÕâÑùµÄ£¬ÒòÎªÕâÖÖ¼ÆÊıÊÇÏß³Ì²»°²È«µÄ£¬¸ß²¢·¢·ÃÎÊÊ±Í³¼Æ»áÓĞÎó£¬
-//¶øAtomicIntegerÎªÊ²Ã´ÄÜ¹»´ïµ½¶à¶ø²»ÂÒ£¬´¦Àí¸ß²¢·¢Ó¦¸¶×ÔÈçÄØ£¿
-//ÕâÊÇÓÉÓ²¼şÌá¹©Ô­×Ó²Ù×÷Ö¸ÁîÊµÏÖµÄ¡£ÔÚ·Ç¼¤ÁÒ¾ºÕùµÄÇé¿öÏÂ£¬¿ªÏú¸üĞ¡£¬ËÙ¶È¸ü¿ì¡£Java.util.concurrentÖĞÊµÏÖµÄÔ­×Ó²Ù×÷Àà°üÀ¨£º
-//AtomicBoolean¡¢AtomicInteger¡¢AtomicLong¡¢AtomicReference¡£
+//é‚£ä¹ˆä¸ºä»€ä¹ˆä¸ä½¿ç”¨è®°æ•°å™¨è‡ªåŠ å‘¢ï¼Œä¾‹å¦‚count++è¿™æ ·çš„ï¼Œå› ä¸ºè¿™ç§è®¡æ•°æ˜¯çº¿ç¨‹ä¸å®‰å…¨çš„ï¼Œé«˜å¹¶å‘è®¿é—®æ—¶ç»Ÿè®¡ä¼šæœ‰è¯¯ï¼Œ
+//è€ŒAtomicIntegerä¸ºä»€ä¹ˆèƒ½å¤Ÿè¾¾åˆ°å¤šè€Œä¸ä¹±ï¼Œå¤„ç†é«˜å¹¶å‘åº”ä»˜è‡ªå¦‚å‘¢ï¼Ÿ
+//è¿™æ˜¯ç”±ç¡¬ä»¶æä¾›åŸå­æ“ä½œæŒ‡ä»¤å®ç°çš„ã€‚åœ¨éæ¿€çƒˆç«äº‰çš„æƒ…å†µä¸‹ï¼Œå¼€é”€æ›´å°ï¼Œé€Ÿåº¦æ›´å¿«ã€‚Java.util.concurrentä¸­å®ç°çš„åŸå­æ“ä½œç±»åŒ…æ‹¬ï¼š
+//AtomicBooleanã€AtomicIntegerã€AtomicLongã€AtomicReferenceã€‚
 public class AtomicIntegerDemo {
 
 }
@@ -15,7 +15,7 @@ class CounterSyn {
 	private volatile int count = 0;
 
 	public synchronized void increment() {
-		count++; // ÈôÒªÏß³Ì°²È«Ö´ĞĞÖ´ĞĞcount++£¬ĞèÒª¼ÓËø
+		count++; // è‹¥è¦çº¿ç¨‹å®‰å…¨æ‰§è¡Œæ‰§è¡Œcount++ï¼Œéœ€è¦åŠ é”
 	}
 
 	public int getCount() {
@@ -30,7 +30,7 @@ class CounterAtomic {
 		count.incrementAndGet();
 	}
 
-	// Ê¹ÓÃAtomicIntegerÖ®ºó£¬²»ĞèÒª¼ÓËø£¬Ò²¿ÉÒÔÊµÏÖÏß³Ì°²È«¡£
+	// ä½¿ç”¨AtomicIntegerä¹‹åï¼Œä¸éœ€è¦åŠ é”ï¼Œä¹Ÿå¯ä»¥å®ç°çº¿ç¨‹å®‰å…¨ã€‚
 	public int getCount() {
 		return count.get();
 	}

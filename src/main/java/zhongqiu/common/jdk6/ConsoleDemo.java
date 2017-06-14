@@ -2,10 +2,10 @@ package zhongqiu.common.jdk6;
 
 import java.io.Console;
 
-//ÓÃConsole¿ª·¢¿ØÖÆÌ¨³ÌĞò 
-/*ÄãÈç¹ûÊÇÔÚÒ»¸öIDEÖĞÈçeclipse, netbeansÖĞÔËĞĞÄã½«µÃµ½£º
+//ç”¨Consoleå¼€å‘æ§åˆ¶å°ç¨‹åº
+/*ä½ å¦‚æœæ˜¯åœ¨ä¸€ä¸ªIDEä¸­å¦‚eclipse, netbeansä¸­è¿è¡Œä½ å°†å¾—åˆ°ï¼š
 No Console!
-ÒòÎªÖ»ÓĞÔÚÃüÁîĞĞÖĞ²ÅÄÜµÃµ½Console¶ÔÏó¡£*/
+å› ä¸ºåªæœ‰åœ¨å‘½ä»¤è¡Œä¸­æ‰èƒ½å¾—åˆ°Consoleå¯¹è±¡ã€‚*/
 public class ConsoleDemo {
 	public static void main(String[] args) {
 		Console console = System.console();

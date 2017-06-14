@@ -26,7 +26,7 @@ public class PriorityQueueDemo {
 	}
 
 	public static void main(String args[]) {
-		// ºÍ Comparable µÄ¶Ô±È
+		// å’Œ Comparable çš„å¯¹æ¯”
 		Comparator<PriorityQueueDemo> OrderIsdn = new Comparator<PriorityQueueDemo>() {
 			public int compare(PriorityQueueDemo o1, PriorityQueueDemo o2) {
 				// TODO Auto-generated method stub

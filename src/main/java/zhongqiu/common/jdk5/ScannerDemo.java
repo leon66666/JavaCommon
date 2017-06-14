@@ -2,7 +2,7 @@ package zhongqiu.common.jdk5;
 
 import java.util.Scanner;
 
-//scannerÀà£¬ÓÃÀ´»ñÈ¡ÓÃ»§µÄÊäÈë
+//scannerç±»ï¼Œç”¨æ¥è·å–ç”¨æˆ·çš„è¾“å…¥
 public class ScannerDemo {
 	public static void main(String[] args) {
 		next();
@@ -11,84 +11,84 @@ public class ScannerDemo {
 		scannerDemo2();
 	}
 
-	// next() Óë nextLine() Çø±ğ
+	// next() ä¸ nextLine() åŒºåˆ«
 	// next():
-	// 1¡¢Ò»¶¨Òª¶ÁÈ¡µ½ÓĞĞ§×Ö·ûºó²Å¿ÉÒÔ½áÊøÊäÈë¡£
-	// 2¡¢¶ÔÊäÈëÓĞĞ§×Ö·ûÖ®Ç°Óöµ½µÄ¿Õ°×£¬next() ·½·¨»á×Ô¶¯½«ÆäÈ¥µô¡£
-	// 3¡¢Ö»ÓĞÊäÈëÓĞĞ§×Ö·ûºó²Å½«ÆäºóÃæÊäÈëµÄ¿Õ°××÷Îª·Ö¸ô·û»òÕß½áÊø·û¡£²»ÄÜµÃµ½´øÓĞ¿Õ¸ñµÄ×Ö·û´®¡£
-	// nextLine()£º
-	// 1¡¢ÒÔEnterÎª½áÊø·û,Ò²¾ÍÊÇËµnextLine()·½·¨·µ»ØµÄÊÇÊäÈë»Ø³µÖ®Ç°µÄËùÓĞ×Ö·û¡£
-	// 2¡¢¿ÉÒÔ»ñµÃ¿Õ°×¡£
+	// 1ã€ä¸€å®šè¦è¯»å–åˆ°æœ‰æ•ˆå­—ç¬¦åæ‰å¯ä»¥ç»“æŸè¾“å…¥ã€‚
+	// 2ã€å¯¹è¾“å…¥æœ‰æ•ˆå­—ç¬¦ä¹‹å‰é‡åˆ°çš„ç©ºç™½ï¼Œnext() æ–¹æ³•ä¼šè‡ªåŠ¨å°†å…¶å»æ‰ã€‚
+	// 3ã€åªæœ‰è¾“å…¥æœ‰æ•ˆå­—ç¬¦åæ‰å°†å…¶åé¢è¾“å…¥çš„ç©ºç™½ä½œä¸ºåˆ†éš”ç¬¦æˆ–è€…ç»“æŸç¬¦ã€‚ä¸èƒ½å¾—åˆ°å¸¦æœ‰ç©ºæ ¼çš„å­—ç¬¦ä¸²ã€‚
+	// nextLine()ï¼š
+	// 1ã€ä»¥Enterä¸ºç»“æŸç¬¦,ä¹Ÿå°±æ˜¯è¯´nextLine()æ–¹æ³•è¿”å›çš„æ˜¯è¾“å…¥å›è½¦ä¹‹å‰çš„æ‰€æœ‰å­—ç¬¦ã€‚
+	// 2ã€å¯ä»¥è·å¾—ç©ºç™½ã€‚
 
 	public static void next() {
 		Scanner scan = new Scanner(System.in);
-		// ´Ó¼üÅÌ½ÓÊÕÊı¾İ
+		// ä»é”®ç›˜æ¥æ”¶æ•°æ®
 
-		// next·½Ê½½ÓÊÕ×Ö·û´®
-		System.out.println("next·½Ê½½ÓÊÕ£º");
-		// ÅĞ¶ÏÊÇ·ñ»¹ÓĞÊäÈë
+		// nextæ–¹å¼æ¥æ”¶å­—ç¬¦ä¸²
+		System.out.println("nextæ–¹å¼æ¥æ”¶ï¼š");
+		// åˆ¤æ–­æ˜¯å¦è¿˜æœ‰è¾“å…¥
 		if (scan.hasNext()) {
 			String str1 = scan.next();
-			System.out.println("ÊäÈëµÄÊı¾İÎª£º" + str1);
+			System.out.println("è¾“å…¥çš„æ•°æ®ä¸ºï¼š" + str1);
 		}
 	}
 
 	public static void nextLine() {
 		Scanner scan = new Scanner(System.in);
-		// ´Ó¼üÅÌ½ÓÊÕÊı¾İ
+		// ä»é”®ç›˜æ¥æ”¶æ•°æ®
 
-		// nextLine·½Ê½½ÓÊÕ×Ö·û´®
-		System.out.println("nextLine·½Ê½½ÓÊÕ£º");
-		// ÅĞ¶ÏÊÇ·ñ»¹ÓĞÊäÈë
+		// nextLineæ–¹å¼æ¥æ”¶å­—ç¬¦ä¸²
+		System.out.println("nextLineæ–¹å¼æ¥æ”¶ï¼š");
+		// åˆ¤æ–­æ˜¯å¦è¿˜æœ‰è¾“å…¥
 		if (scan.hasNextLine()) {
 			String str2 = scan.nextLine();
-			System.out.println("ÊäÈëµÄÊı¾İÎª£º" + str2);
+			System.out.println("è¾“å…¥çš„æ•°æ®ä¸ºï¼š" + str2);
 		}
 	}
 
-	// Èç¹ûÒªÊäÈë int »ò float ÀàĞÍµÄÊı¾İ£¬ÔÚ Scanner ÀàÖĞÒ²ÓĞÖ§³Ö£¬µ«ÊÇÔÚÊäÈëÖ®Ç°×îºÃÏÈÊ¹ÓÃ hasNextXxx()
-	// ·½·¨½øĞĞÑéÖ¤£¬ÔÙÊ¹ÓÃ nextXxx() À´¶ÁÈ¡£º
+	// å¦‚æœè¦è¾“å…¥ int æˆ– float ç±»å‹çš„æ•°æ®ï¼Œåœ¨ Scanner ç±»ä¸­ä¹Ÿæœ‰æ”¯æŒï¼Œä½†æ˜¯åœ¨è¾“å…¥ä¹‹å‰æœ€å¥½å…ˆä½¿ç”¨ hasNextXxx()
+	// æ–¹æ³•è¿›è¡ŒéªŒè¯ï¼Œå†ä½¿ç”¨ nextXxx() æ¥è¯»å–ï¼š
 	public static void scannerDemo1() {
 		Scanner scan = new Scanner(System.in);
-		// ´Ó¼üÅÌ½ÓÊÕÊı¾İ
+		// ä»é”®ç›˜æ¥æ”¶æ•°æ®
 		int i = 0;
 		float f = 0.0f;
-		System.out.print("ÊäÈëÕûÊı£º");
+		System.out.print("è¾“å…¥æ•´æ•°ï¼š");
 		if (scan.hasNextInt()) {
-			// ÅĞ¶ÏÊäÈëµÄÊÇ·ñÊÇÕûÊı
+			// åˆ¤æ–­è¾“å…¥çš„æ˜¯å¦æ˜¯æ•´æ•°
 			i = scan.nextInt();
-			// ½ÓÊÕÕûÊı
-			System.out.println("ÕûÊıÊı¾İ£º" + i);
+			// æ¥æ”¶æ•´æ•°
+			System.out.println("æ•´æ•°æ•°æ®ï¼š" + i);
 		} else {
-			// ÊäÈë´íÎóµÄĞÅÏ¢
-			System.out.println("ÊäÈëµÄ²»ÊÇÕûÊı£¡");
+			// è¾“å…¥é”™è¯¯çš„ä¿¡æ¯
+			System.out.println("è¾“å…¥çš„ä¸æ˜¯æ•´æ•°ï¼");
 		}
-		System.out.print("ÊäÈëĞ¡Êı£º");
+		System.out.print("è¾“å…¥å°æ•°ï¼š");
 		if (scan.hasNextFloat()) {
-			// ÅĞ¶ÏÊäÈëµÄÊÇ·ñÊÇĞ¡Êı
+			// åˆ¤æ–­è¾“å…¥çš„æ˜¯å¦æ˜¯å°æ•°
 			f = scan.nextFloat();
-			// ½ÓÊÕĞ¡Êı
-			System.out.println("Ğ¡ÊıÊı¾İ£º" + f);
+			// æ¥æ”¶å°æ•°
+			System.out.println("å°æ•°æ•°æ®ï¼š" + f);
 		} else {
-			// ÊäÈë´íÎóµÄĞÅÏ¢
-			System.out.println("ÊäÈëµÄ²»ÊÇĞ¡Êı£¡");
+			// è¾“å…¥é”™è¯¯çš„ä¿¡æ¯
+			System.out.println("è¾“å…¥çš„ä¸æ˜¯å°æ•°ï¼");
 		}
 	}
 
-	// ÎÒÃÇ¿ÉÒÔÊäÈë¶à¸öÊı×Ö£¬²¢ÇóÆä×ÜºÍÓëÆ½¾ùÊı£¬Ã¿ÊäÈëÒ»¸öÊı×ÖÓÃ»Ø³µÈ·ÈÏ£¬Í¨¹ıÊäÈë·ÇÊı×ÖÀ´½áÊøÊäÈë²¢Êä³öÖ´ĞĞ½á¹û
+	// æˆ‘ä»¬å¯ä»¥è¾“å…¥å¤šä¸ªæ•°å­—ï¼Œå¹¶æ±‚å…¶æ€»å’Œä¸å¹³å‡æ•°ï¼Œæ¯è¾“å…¥ä¸€ä¸ªæ•°å­—ç”¨å›è½¦ç¡®è®¤ï¼Œé€šè¿‡è¾“å…¥éæ•°å­—æ¥ç»“æŸè¾“å…¥å¹¶è¾“å‡ºæ‰§è¡Œç»“æœ
 	public static void scannerDemo2() {
 		Scanner scan = new Scanner(System.in);
 
 		double sum = 0;
 		int m = 0;
-		System.out.println("ÊäÈëÊı×ÖÇóÆ½¾ù£¬ÊäÈë·ÇÊı×Ö½áÊø£¡");
+		System.out.println("è¾“å…¥æ•°å­—æ±‚å¹³å‡ï¼Œè¾“å…¥éæ•°å­—ç»“æŸï¼");
 		while (scan.hasNextDouble()) {
 			double x = scan.nextDouble();
 			m = m + 1;
 			sum = sum + x;
 		}
 
-		System.out.println(m + "¸öÊıµÄºÍÎª" + sum);
-		System.out.println(m + "¸öÊıµÄÆ½¾ùÖµÊÇ" + (sum / m));
+		System.out.println(m + "ä¸ªæ•°çš„å’Œä¸º" + sum);
+		System.out.println(m + "ä¸ªæ•°çš„å¹³å‡å€¼æ˜¯" + (sum / m));
 	}
 }

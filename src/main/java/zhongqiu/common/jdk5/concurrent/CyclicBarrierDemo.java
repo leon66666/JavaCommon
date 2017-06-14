@@ -3,7 +3,7 @@ package zhongqiu.common.jdk5.concurrent;
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
 
-//³¡¾°·ÖÎö:10¸öÈËÈ¥´ºÓÎ,¹æ¶¨´ïµ½Ò»¸öµØµãºó²ÅÄÜ¼ÌĞøÇ°ĞĞ.
+//åœºæ™¯åˆ†æ:10ä¸ªäººå»æ˜¥æ¸¸,è§„å®šè¾¾åˆ°ä¸€ä¸ªåœ°ç‚¹åæ‰èƒ½ç»§ç»­å‰è¡Œ.
 public class CyclicBarrierDemo {
 	public static void main(String[] args) {
 		int num = 10;
@@ -34,7 +34,7 @@ class CyclicBarrierWorker implements Runnable {
 		// TODO Auto-generated method stub
 		try {
 			System.out.println(id + " th people wait");
-			barrier.await(); // ´ó¼ÒµÈ´ı×îºóÒ»¸öÏß³Ìµ½´ï
+			barrier.await(); // å¤§å®¶ç­‰å¾…æœ€åä¸€ä¸ªçº¿ç¨‹åˆ°è¾¾
 		} catch (InterruptedException | BrokenBarrierException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

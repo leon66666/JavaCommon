@@ -2,14 +2,14 @@ package zhongqiu.common.jdk5;
 
 import java.util.Random;
 
-//·ºĞÍÓÃ·¨¡£
-//·ºĞÍÀà£¬·ºĞÍ½Ó¿Ú£¬·ºĞÍ·½·¨£¬Í¨Åä·ûÓÃ·¨extendsºÍsuper
-/*ÔÚÓÚJavaÖĞµÄ·ºĞÍÕâÒ»¸ÅÄîÌá³öµÄÄ¿µÄ£¬µ¼ÖÂÆäÖ»ÊÇ×÷ÓÃÓÚ´úÂë±àÒë½×¶Î£¬
-ÔÚ±àÒë¹ı³ÌÖĞ£¬¶ÔÓÚÕıÈ·¼ìÑé·ºĞÍ½á¹ûºó£¬»á½«·ºĞÍµÄÏà¹ØĞÅÏ¢²Á³ö£¬Ò²¾ÍÊÇËµ£¬
-³É¹¦±àÒë¹ıºóµÄclassÎÄ¼şÖĞÊÇ²»°üº¬ÈÎºÎ·ºĞÍĞÅÏ¢µÄ¡£·ºĞÍĞÅÏ¢²»»á½øÈëµ½ÔËĞĞÊ±½×¶Î¡£*/
+//æ³›å‹ç”¨æ³•ã€‚
+//æ³›å‹ç±»ï¼Œæ³›å‹æ¥å£ï¼Œæ³›å‹æ–¹æ³•ï¼Œé€šé…ç¬¦ç”¨æ³•extendså’Œsuper
+/*åœ¨äºJavaä¸­çš„æ³›å‹è¿™ä¸€æ¦‚å¿µæå‡ºçš„ç›®çš„ï¼Œå¯¼è‡´å…¶åªæ˜¯ä½œç”¨äºä»£ç ç¼–è¯‘é˜¶æ®µï¼Œ
+åœ¨ç¼–è¯‘è¿‡ç¨‹ä¸­ï¼Œå¯¹äºæ­£ç¡®æ£€éªŒæ³›å‹ç»“æœåï¼Œä¼šå°†æ³›å‹çš„ç›¸å…³ä¿¡æ¯æ“¦å‡ºï¼Œä¹Ÿå°±æ˜¯è¯´ï¼Œ
+æˆåŠŸç¼–è¯‘è¿‡åçš„classæ–‡ä»¶ä¸­æ˜¯ä¸åŒ…å«ä»»ä½•æ³›å‹ä¿¡æ¯çš„ã€‚æ³›å‹ä¿¡æ¯ä¸ä¼šè¿›å…¥åˆ°è¿è¡Œæ—¶é˜¶æ®µã€‚*/
 public class GenericsDemo {
 	public static void main(String[] args) {
-		// ·ºĞÍ×÷Îª²ÎÊı
+		// æ³›å‹ä½œä¸ºå‚æ•°
 		Container<String, String> c1 = new Container<String, String>("name", "findingsea");
 		Container<String, Integer> c2 = new Container<String, Integer>("age", 24);
 		Container<Double, Double> c3 = new Container<Double, Double>(1.1, 2.2);
@@ -17,21 +17,21 @@ public class GenericsDemo {
 		getContainer(c1);
 		getContainer(c2);
 		getContainer(c3);
-		getContainerSuper(c4);// getContainerSuper(c3)»á±¨´í
-		getContainerExtends(c1);// getContainerExtends(c2);»á±¨´í
+		getContainerSuper(c4);// getContainerSuper(c3)ä¼šæŠ¥é”™
+		getContainerExtends(c1);// getContainerExtends(c2);ä¼šæŠ¥é”™
 
-		// ·ºĞÍ½Ó¿Ú
+		// æ³›å‹æ¥å£
 		FruitGenerator generator = new FruitGenerator();
 		System.out.println(generator.next());
 		System.out.println(generator.next());
 
-		// ·ºĞÍ·½·¨
+		// æ³›å‹æ–¹æ³•
 		out("findingsea");
 		out(123);
 		out("abc", "lkj", "sgh");
 	}
 
-	// ·ºĞÍÀà
+	// æ³›å‹ç±»
 	public static class Container<K, V> {
 		private K key;
 		private V value;
@@ -58,30 +58,30 @@ public class GenericsDemo {
 		}
 	}
 
-	// Í¨Åä·û½ÓÊÜ·ºĞÍ
+	// é€šé…ç¬¦æ¥å—æ³›å‹
 	public static void getContainer(Container<?, ?> data) {
 		System.out.println("key :" + data.getKey());
 		System.out.println("value :" + data.getValue());
 	}
 
-	// Í¨Åä·û½ÓÊÜ·ºĞÍ(extendsÓÃ·¨)
+	// é€šé…ç¬¦æ¥å—æ³›å‹(extendsç”¨æ³•)
 	public static void getContainerExtends(Container<?, ? extends String> data) {
 		System.out.println("key :" + data.getKey());
 		System.out.println("value :" + data.getValue());
 	}
 
-	// Í¨Åä·û½ÓÊÜ·ºĞÍ(superÓÃ·¨)
+	// é€šé…ç¬¦æ¥å—æ³›å‹(superç”¨æ³•)
 	public static void getContainerSuper(Container<?, ? super String> data) {
 		System.out.println("key :" + data.getKey());
 		System.out.println("value :" + data.getValue());
 	}
 
-	// ·ºĞÍ½Ó¿Ú
+	// æ³›å‹æ¥å£
 	public interface Generator<T> {
 		public T next();
 	}
 
-	// ·ºĞÍ½Ó¿ÚµÄÊµÏÖÀà
+	// æ³›å‹æ¥å£çš„å®ç°ç±»
 	public static class FruitGenerator implements Generator<String> {
 
 		private String[] fruits = new String[] { "Apple", "Banana", "Pear" };
@@ -97,12 +97,12 @@ public class GenericsDemo {
 		return r;
 	}
 
-	// ·ºĞÍ·½·¨
+	// æ³›å‹æ–¹æ³•
 	public static <T> void out(T t) {
 		System.out.println(t);
 	}
 
-	// ·ºĞÍ·½·¨ºÍ¿É±ä²ÎÊı
+	// æ³›å‹æ–¹æ³•å’Œå¯å˜å‚æ•°
 	public static <T> void out(T... args) {
 		for (T t : args) {
 			System.out.println(t);

@@ -7,10 +7,10 @@ import java.util.concurrent.Future;
 import java.util.concurrent.FutureTask;
 import java.util.concurrent.RecursiveTask;
 
-//RecursiveAction£ºÓÃÓÚÃ»ÓĞ·µ»Ø½á¹ûµÄÈÎÎñ¡£
-//RecursiveTask £ºÓÃÓÚÓĞ·µ»Ø½á¹ûµÄÈÎÎñ¡£
-//Ë«¶Ë¶ÓÁĞ£¬¹¤×÷ÇÔÈ¡£¬ÖØĞ´compute·½·¨
-//ÓÃÓÚ¿ÉºÜºÃ·Ö½â³É×ÓÈÎÎñµÄ³¡¾°
+//RecursiveActionï¼šç”¨äºæ²¡æœ‰è¿”å›ç»“æœçš„ä»»åŠ¡ã€‚
+//RecursiveTask ï¼šç”¨äºæœ‰è¿”å›ç»“æœçš„ä»»åŠ¡ã€‚
+//åŒç«¯é˜Ÿåˆ—ï¼Œå·¥ä½œçªƒå–ï¼Œé‡å†™computeæ–¹æ³•
+//ç”¨äºå¯å¾ˆå¥½åˆ†è§£æˆå­ä»»åŠ¡çš„åœºæ™¯
 public class ForkJoinTaskDemo {
 	public static void main(String[] args) throws InterruptedException {
 		long startTime = System.currentTimeMillis();
@@ -20,8 +20,8 @@ public class ForkJoinTaskDemo {
 			Thread.sleep(1000);
 		}
 		System.out.println(count);
-		long endTime = System.currentTimeMillis(); // »ñÈ¡½áÊøÊ±¼ä
-		System.out.println("³ÌĞòÔËĞĞÊ±¼ä£º " + (startTime - endTime) + "ms");
+		long endTime = System.currentTimeMillis(); // è·å–ç»“æŸæ—¶é—´
+		System.out.println("ç¨‹åºè¿è¡Œæ—¶é—´ï¼š " + (startTime - endTime) + "ms");
 
 		long startTime1 = System.currentTimeMillis();
 		CountTask countTask = new CountTask(1, 10);
@@ -33,13 +33,13 @@ public class ForkJoinTaskDemo {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		long endTime1 = System.currentTimeMillis(); // »ñÈ¡½áÊøÊ±¼ä
-		System.out.println("³ÌĞòÔËĞĞÊ±¼ä£º " + (startTime1 - endTime1) + "ms");
+		long endTime1 = System.currentTimeMillis(); // è·å–ç»“æŸæ—¶é—´
+		System.out.println("ç¨‹åºè¿è¡Œæ—¶é—´ï¼š " + (startTime1 - endTime1) + "ms");
 
 	}
 }
 
-// RecursiveTaskÓÃ·¨£¬Í³¼Æ1+2+3+....
+// RecursiveTaskç”¨æ³•ï¼Œç»Ÿè®¡1+2+3+....
 class CountTask extends RecursiveTask<Integer> {
 	private static final int THRESHOLD = 2;
 	private Integer start;

@@ -20,17 +20,17 @@ public class ReentrantLockDemo {
 }
 
 class Outputter1 {
-	private Lock lock = new ReentrantLock();// Ëø¶ÔÏó
+	private Lock lock = new ReentrantLock();// é”å¯¹è±¡
 
 	public void output(String name) {
-		// TODO Ïß³ÌÊä³ö·½·¨
-		lock.lock();// µÃµ½Ëø
+		// TODO çº¿ç¨‹è¾“å‡ºæ–¹æ³•
+		lock.lock();// å¾—åˆ°é”
 		try {
 			for (int i = 0; i < name.length(); i++) {
 				System.out.print(name.charAt(i));
 			}
 		} finally {
-			lock.unlock();// ÊÍ·ÅËø
+			lock.unlock();// é‡Šæ”¾é”
 		}
 	}
 }

@@ -1,16 +1,16 @@
 package zhongqiu.common.base.thread;
 
-//¶àÏß³Ì×ÊÔ´Í¬²½
+//å¤šçº¿ç¨‹èµ„æºåŒæ­¥
 /*
-1¡¢synchronized¹Ø¼ü×ÖµÄ×÷ÓÃÓòÓĞ¶şÖÖ£º 
-1£©ÊÇÄ³¸ö¶ÔÏóÊµÀıÄÚ£¬synchronized aMethod(){}¿ÉÒÔ·ÀÖ¹¶à¸öÏß³ÌÍ¬Ê±·ÃÎÊÕâ¸ö¶ÔÏóµÄsynchronized·½·¨£¨Èç¹ûÒ»¸ö¶ÔÏóÓĞ¶à¸ösynchronized·½·¨£¬
-       Ö»ÒªÒ»¸öÏß³Ì·ÃÎÊÁËÆäÖĞµÄÒ»¸ösynchronized·½·¨£¬ÆäËüÏß³Ì²»ÄÜÍ¬Ê±·ÃÎÊÕâ¸ö¶ÔÏóÖĞÈÎºÎÒ»¸ösynchronized·½·¨£©¡£
-       ÕâÊ±£¬²»Í¬µÄ¶ÔÏóÊµÀıµÄsynchronized·½·¨ÊÇ²»Ïà¸ÉÈÅµÄ¡£Ò²¾ÍÊÇËµ£¬ÆäËüÏß³ÌÕÕÑù¿ÉÒÔÍ¬Ê±·ÃÎÊÏàÍ¬ÀàµÄÁíÒ»¸ö¶ÔÏóÊµÀıÖĞµÄsynchronized·½·¨£» 
-2£©ÊÇÄ³¸öÀàµÄ·¶Î§£¬synchronized static aStaticMethod{}·ÀÖ¹¶à¸öÏß³ÌÍ¬Ê±·ÃÎÊÕâ¸öÀàÖĞµÄsynchronized static ·½·¨¡£Ëü¿ÉÒÔ¶ÔÀàµÄËùÓĞ¶ÔÏóÊµÀıÆğ×÷ÓÃ¡£ 
-2¡¢³ıÁË·½·¨Ç°ÓÃsynchronized¹Ø¼ü×Ö£¬synchronized¹Ø¼ü×Ö»¹¿ÉÒÔÓÃÓÚ·½·¨ÖĞµÄÄ³¸öÇø¿éÖĞ£¬±íÊ¾Ö»¶ÔÕâ¸öÇø¿éµÄ×ÊÔ´ÊµĞĞ»¥³â·ÃÎÊ¡£
-       ÓÃ·¨ÊÇ: synchronized(this){Çø¿é}£¬ËüµÄ×÷ÓÃÓòÊÇµ±Ç°¶ÔÏó£» 
-3¡¢synchronized¹Ø¼ü×ÖÊÇ²»ÄÜ¼Ì³ĞµÄ£¬Ò²¾ÍÊÇËµ£¬»ùÀàµÄ·½·¨synchronized f(){} ÔÚ¼Ì³ĞÀàÖĞ²¢²»×Ô¶¯ÊÇsynchronized f(){}£¬
-       ¶øÊÇ±ä³ÉÁËf(){}¡£¼Ì³ĞÀàĞèÒªÄãÏÔÊ½µÄÖ¸¶¨ËüµÄÄ³¸ö·½·¨Îªsynchronized·½·¨£» 
+1ã€synchronizedå…³é”®å­—çš„ä½œç”¨åŸŸæœ‰äºŒç§ï¼š
+1ï¼‰æ˜¯æŸä¸ªå¯¹è±¡å®ä¾‹å†…ï¼Œsynchronized aMethod(){}å¯ä»¥é˜²æ­¢å¤šä¸ªçº¿ç¨‹åŒæ—¶è®¿é—®è¿™ä¸ªå¯¹è±¡çš„synchronizedæ–¹æ³•ï¼ˆå¦‚æœä¸€ä¸ªå¯¹è±¡æœ‰å¤šä¸ªsynchronizedæ–¹æ³•ï¼Œ
+       åªè¦ä¸€ä¸ªçº¿ç¨‹è®¿é—®äº†å…¶ä¸­çš„ä¸€ä¸ªsynchronizedæ–¹æ³•ï¼Œå…¶å®ƒçº¿ç¨‹ä¸èƒ½åŒæ—¶è®¿é—®è¿™ä¸ªå¯¹è±¡ä¸­ä»»ä½•ä¸€ä¸ªsynchronizedæ–¹æ³•ï¼‰ã€‚
+       è¿™æ—¶ï¼Œä¸åŒçš„å¯¹è±¡å®ä¾‹çš„synchronizedæ–¹æ³•æ˜¯ä¸ç›¸å¹²æ‰°çš„ã€‚ä¹Ÿå°±æ˜¯è¯´ï¼Œå…¶å®ƒçº¿ç¨‹ç…§æ ·å¯ä»¥åŒæ—¶è®¿é—®ç›¸åŒç±»çš„å¦ä¸€ä¸ªå¯¹è±¡å®ä¾‹ä¸­çš„synchronizedæ–¹æ³•ï¼›
+2ï¼‰æ˜¯æŸä¸ªç±»çš„èŒƒå›´ï¼Œsynchronized static aStaticMethod{}é˜²æ­¢å¤šä¸ªçº¿ç¨‹åŒæ—¶è®¿é—®è¿™ä¸ªç±»ä¸­çš„synchronized static æ–¹æ³•ã€‚å®ƒå¯ä»¥å¯¹ç±»çš„æ‰€æœ‰å¯¹è±¡å®ä¾‹èµ·ä½œç”¨ã€‚
+2ã€é™¤äº†æ–¹æ³•å‰ç”¨synchronizedå…³é”®å­—ï¼Œsynchronizedå…³é”®å­—è¿˜å¯ä»¥ç”¨äºæ–¹æ³•ä¸­çš„æŸä¸ªåŒºå—ä¸­ï¼Œè¡¨ç¤ºåªå¯¹è¿™ä¸ªåŒºå—çš„èµ„æºå®è¡Œäº’æ–¥è®¿é—®ã€‚
+       ç”¨æ³•æ˜¯: synchronized(this){åŒºå—}ï¼Œå®ƒçš„ä½œç”¨åŸŸæ˜¯å½“å‰å¯¹è±¡ï¼›
+3ã€synchronizedå…³é”®å­—æ˜¯ä¸èƒ½ç»§æ‰¿çš„ï¼Œä¹Ÿå°±æ˜¯è¯´ï¼ŒåŸºç±»çš„æ–¹æ³•synchronized f(){} åœ¨ç»§æ‰¿ç±»ä¸­å¹¶ä¸è‡ªåŠ¨æ˜¯synchronized f(){}ï¼Œ
+       è€Œæ˜¯å˜æˆäº†f(){}ã€‚ç»§æ‰¿ç±»éœ€è¦ä½ æ˜¾å¼çš„æŒ‡å®šå®ƒçš„æŸä¸ªæ–¹æ³•ä¸ºsynchronizedæ–¹æ³•ï¼›
 */
 public class SynchronizedDemo implements Runnable {
 	public static void main(String[] args) {
@@ -19,48 +19,48 @@ public class SynchronizedDemo implements Runnable {
 		test3();
 	}
 
-	// synchronized(this)Í¬²½´úÂë¿é
+	// synchronized(this)åŒæ­¥ä»£ç å—
 	public void run() {
-		System.out.println("Ïß³Ì" + Thread.currentThread().getName() + "ÉêÇë»ñµÃsynµÄËø");
+		System.out.println("çº¿ç¨‹" + Thread.currentThread().getName() + "ç”³è¯·è·å¾—synçš„é”");
 		synchronized (this) {
-			System.out.println("Ïß³Ì" + Thread.currentThread().getName() + "»ñµÃÁËsynµÄËø");
+			System.out.println("çº¿ç¨‹" + Thread.currentThread().getName() + "è·å¾—äº†synçš„é”");
 			for (int i = 0; i < 200; i++) {
 				System.out.println(Thread.currentThread().getName() + " synchronized loop " + i);
 			}
 		}
 	}
 
-	// synchronized(this)Í¬²½´úÂë¿é
+	// synchronized(this)åŒæ­¥ä»£ç å—
 	public void SYN() {
-		System.out.println("Ïß³Ì" + Thread.currentThread().getName() + "ÉêÇë»ñµÃsynµÄËø");
+		System.out.println("çº¿ç¨‹" + Thread.currentThread().getName() + "ç”³è¯·è·å¾—synçš„é”");
 		synchronized (this) {
-			System.out.println("Ïß³Ì" + Thread.currentThread().getName() + "»ñµÃÁËsynµÄËø");
+			System.out.println("çº¿ç¨‹" + Thread.currentThread().getName() + "è·å¾—äº†synçš„é”");
 			for (int i = 0; i < 200; i++) {
 				System.out.println(Thread.currentThread().getName() + " synchronized loop " + i);
 			}
 		}
 	}
 
-	// ·Çsynchronized(this)Í¬²½´úÂë¿é
+	// ésynchronized(this)åŒæ­¥ä»£ç å—
 	public void notSYN() {
-		System.out.println("¶ÔÏó·Çsynchronized(this)Í¬²½´úÂë¿é²»ÊÜËøµÄÓ°Ïì");
-		System.out.println("Ïß³Ì" + Thread.currentThread().getName() + "¼ÌĞøÊ¹ÓÃ¶ÔÏósynµÄÆäËû·Çsynchronized(this)·½·¨");
+		System.out.println("å¯¹è±¡ésynchronized(this)åŒæ­¥ä»£ç å—ä¸å—é”çš„å½±å“");
+		System.out.println("çº¿ç¨‹" + Thread.currentThread().getName() + "ç»§ç»­ä½¿ç”¨å¯¹è±¡synçš„å…¶ä»–ésynchronized(this)æ–¹æ³•");
 		for (int i = 0; i < 200; i++) {
 			System.out.println(Thread.currentThread().getName() + " synchronized loop " + i);
 		}
 	}
 
 	/*
-	 * µ±ÓĞÒ»¸öÃ÷È·µÄ¶ÔÏó×÷ÎªËøÊ±£¬¾Í¿ÉÒÔÕâÑùĞ´³ÌĞò£¬µ«µ±Ã»ÓĞÃ÷
-	 * 
-	 * È·µÄ¶ÔÏó×÷ÎªËø£¬Ö»ÊÇÏëÈÃÒ»¶Î´úÂëÍ¬²½Ê±£¬¿ÉÒÔ´´½¨Ò»¸öÌØÊâµÄinstance±äÁ¿£¨ËüµÃÊÇÒ»¸ö¶ÔÏó£©À´³äµ±Ëø£º
+	 * å½“æœ‰ä¸€ä¸ªæ˜ç¡®çš„å¯¹è±¡ä½œä¸ºé”æ—¶ï¼Œå°±å¯ä»¥è¿™æ ·å†™ç¨‹åºï¼Œä½†å½“æ²¡æœ‰æ˜
+	 *
+	 * ç¡®çš„å¯¹è±¡ä½œä¸ºé”ï¼Œåªæ˜¯æƒ³è®©ä¸€æ®µä»£ç åŒæ­¥æ—¶ï¼Œå¯ä»¥åˆ›å»ºä¸€ä¸ªç‰¹æ®Šçš„instanceå˜é‡ï¼ˆå®ƒå¾—æ˜¯ä¸€ä¸ªå¯¹è±¡ï¼‰æ¥å……å½“é”ï¼š
 	 */
 	/*
-	 * ×¢£ºÁã³¤¶ÈµÄbyteÊı×é¶ÔÏó´´½¨ÆğÀ´½«±ÈÈÎºÎ¶ÔÏó¶¼¾­¼Ã¨D¨D²é¿´±àÒëºóµÄ×Ö½ÚÂë£ºÉú³ÉÁã³¤¶ÈµÄbyte[]¶ÔÏóÖ»Ğè3Ìõ²Ù×÷Âë£¬¶øObject lock
-	 * 
-	 * = new Object()ÔòĞèÒª7ĞĞ²Ù×÷Âë¡£
+	 * æ³¨ï¼šé›¶é•¿åº¦çš„byteæ•°ç»„å¯¹è±¡åˆ›å»ºèµ·æ¥å°†æ¯”ä»»ä½•å¯¹è±¡éƒ½ç»æµâ€•â€•æŸ¥çœ‹ç¼–è¯‘åçš„å­—èŠ‚ç ï¼šç”Ÿæˆé›¶é•¿åº¦çš„byte[]å¯¹è±¡åªéœ€3æ¡æ“ä½œç ï¼Œè€ŒObject lock
+	 *
+	 * = new Object()åˆ™éœ€è¦7è¡Œæ“ä½œç ã€‚
 	 */
-	private byte[] lock1 = new byte[0]; // ÌØÊâµÄinstance±äÁ¿
+	private byte[] lock1 = new byte[0]; // ç‰¹æ®Šçš„instanceå˜é‡
 
 	void methodA() {
 		synchronized (lock1) {
@@ -71,8 +71,8 @@ public class SynchronizedDemo implements Runnable {
 	}
 
 	/*
-	 * µ±Á½¸ö²¢·¢Ïß³Ì·ÃÎÊÍ¬Ò»¸ö¶ÔÏóobjectÖĞµÄÕâ¸ösynchronized(this)Í¬²½´úÂë¿éÊ±£¬
-	 * Ò»¸öÊ±¼äÄÚÖ»ÄÜÓĞÒ»¸öÏß³ÌµÃµ½Ö´ĞĞ¡£ÁíÒ»¸öÏß³Ì±ØĞëµÈ´ıµ±Ç°Ïß³ÌÖ´ĞĞÍêÕâ¸ö´úÂë¿éÒÔºó²ÅÄÜÖ´ĞĞ¸Ã´úÂë¿é¡£
+	 * å½“ä¸¤ä¸ªå¹¶å‘çº¿ç¨‹è®¿é—®åŒä¸€ä¸ªå¯¹è±¡objectä¸­çš„è¿™ä¸ªsynchronized(this)åŒæ­¥ä»£ç å—æ—¶ï¼Œ
+	 * ä¸€ä¸ªæ—¶é—´å†…åªèƒ½æœ‰ä¸€ä¸ªçº¿ç¨‹å¾—åˆ°æ‰§è¡Œã€‚å¦ä¸€ä¸ªçº¿ç¨‹å¿…é¡»ç­‰å¾…å½“å‰çº¿ç¨‹æ‰§è¡Œå®Œè¿™ä¸ªä»£ç å—ä»¥åæ‰èƒ½æ‰§è¡Œè¯¥ä»£ç å—ã€‚
 	 */
 	public static void test1() {
 		SynchronizedDemo syn = new SynchronizedDemo();
@@ -83,13 +83,13 @@ public class SynchronizedDemo implements Runnable {
 	}
 
 	/*
-	 * µ±Ò»¸öÏß³Ì·ÃÎÊobjectµÄÒ»¸ösynchronized(this)Í¬²½´úÂë¿éÊ±£¬
-	 * ÁíÒ»¸öÏß³ÌÈÔÈ»¿ÉÒÔ·ÃÎÊ¸ÃobjectÖĞµÄ·Çsynchronized(this)Í¬²½´úÂë¿é¡£
+	 * å½“ä¸€ä¸ªçº¿ç¨‹è®¿é—®objectçš„ä¸€ä¸ªsynchronized(this)åŒæ­¥ä»£ç å—æ—¶ï¼Œ
+	 * å¦ä¸€ä¸ªçº¿ç¨‹ä»ç„¶å¯ä»¥è®¿é—®è¯¥objectä¸­çš„ésynchronized(this)åŒæ­¥ä»£ç å—ã€‚
 	 */
 	public static void test2() {
 		/*
-		 * finalĞŞÊÎµÄÀà²»ÄÜ±»¼Ì³Ğ¡£ Sting¾ÍÊÇÒ»¸ö±»finalĞŞÊÎµÄÀà£¬ÎÒÃÇÖ»ÄÜÓÃ£¬²»ÓÃ¼Ì³Ğ
-		 * final²»½ö¿ÉÒÔĞŞÊÎÀà£¬»¹¿ÉÒÔĞŞÊÎ±äÁ¿£¬±»finalĞŞÊÎµÄ±äÁ¿¾ÍÊÇÒ»¸ö³£Á¿£¬Ö»ÄÜ¸³ÖµÒ»´Î
+		 * finalä¿®é¥°çš„ç±»ä¸èƒ½è¢«ç»§æ‰¿ã€‚ Stingå°±æ˜¯ä¸€ä¸ªè¢«finalä¿®é¥°çš„ç±»ï¼Œæˆ‘ä»¬åªèƒ½ç”¨ï¼Œä¸ç”¨ç»§æ‰¿
+		 * finalä¸ä»…å¯ä»¥ä¿®é¥°ç±»ï¼Œè¿˜å¯ä»¥ä¿®é¥°å˜é‡ï¼Œè¢«finalä¿®é¥°çš„å˜é‡å°±æ˜¯ä¸€ä¸ªå¸¸é‡ï¼Œåªèƒ½èµ‹å€¼ä¸€æ¬¡
 		 */
 		final SynchronizedDemo syn = new SynchronizedDemo();
 		new Thread(new Runnable() {
@@ -97,7 +97,7 @@ public class SynchronizedDemo implements Runnable {
 				syn.run();
 			}
 		}, "t1").start();
-		
+
 		new Thread(new Runnable() {
 			public void run() {
 				syn.notSYN();
@@ -106,26 +106,26 @@ public class SynchronizedDemo implements Runnable {
 	}
 
 	/*
-	 * µ±Ò»¸öÏß³Ì·ÃÎÊobjectµÄÒ»¸ösynchronized(this)Í¬²½´úÂë¿éÊ±£¬
-	 * ÆäËûÏß³Ì¶ÔobjectÖĞËùÓĞÆäËüsynchronized(this)Í¬²½´úÂë¿éµÄ·ÃÎÊ½«±»×èÈû¡£
-	 * Ò²¾ÍÊÇËµ£¬µ±Ò»¸öÏß³Ì·ÃÎÊobjectµÄÒ»¸ösynchronized(this)Í¬²½´úÂë¿éÊ±£¬Ëü¾Í»ñµÃÁËÕâ¸öobjectµÄ¶ÔÏóËø¡£
-	 * ½á¹û£¬ÆäËüÏß³Ì¶Ô¸Ãobject¶ÔÏóËùÓĞÍ¬²½´úÂë²¿·ÖµÄ·ÃÎÊ¶¼±»ÔİÊ±×èÈû¡£
+	 * å½“ä¸€ä¸ªçº¿ç¨‹è®¿é—®objectçš„ä¸€ä¸ªsynchronized(this)åŒæ­¥ä»£ç å—æ—¶ï¼Œ
+	 * å…¶ä»–çº¿ç¨‹å¯¹objectä¸­æ‰€æœ‰å…¶å®ƒsynchronized(this)åŒæ­¥ä»£ç å—çš„è®¿é—®å°†è¢«é˜»å¡ã€‚
+	 * ä¹Ÿå°±æ˜¯è¯´ï¼Œå½“ä¸€ä¸ªçº¿ç¨‹è®¿é—®objectçš„ä¸€ä¸ªsynchronized(this)åŒæ­¥ä»£ç å—æ—¶ï¼Œå®ƒå°±è·å¾—äº†è¿™ä¸ªobjectçš„å¯¹è±¡é”ã€‚
+	 * ç»“æœï¼Œå…¶å®ƒçº¿ç¨‹å¯¹è¯¥objectå¯¹è±¡æ‰€æœ‰åŒæ­¥ä»£ç éƒ¨åˆ†çš„è®¿é—®éƒ½è¢«æš‚æ—¶é˜»å¡ã€‚
 	 */
 	public static void test3() {
 		final SynchronizedDemo syn = new SynchronizedDemo();
-		
+
 		new Thread(new Runnable() {
 			public void run() {
 				syn.run();
 			}
 		}, "t1").start();
-		
+
 		new Thread(new Runnable() {
 			public void run() {
 				syn.SYN();
 			}
 		}, "t2").start();
-		
+
 		new Thread(new Runnable() {
 			public void run() {
 				syn.methodA();

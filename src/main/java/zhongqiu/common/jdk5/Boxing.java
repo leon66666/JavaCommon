@@ -7,49 +7,49 @@ public class Boxing {
 
 	public static void autoBoxing() {
 		/*
-		 * Ò»°ãÎÒÃÇÒª´´½¨Ò»¸öÀàµÄ¶ÔÏóÊµÀýµÄÊ±ºò£¬ÎÒÃÇ»áÕâÑù£º
-		 * 
+		 * ä¸€èˆ¬æˆ‘ä»¬è¦åˆ›å»ºä¸€ä¸ªç±»çš„å¯¹è±¡å®žä¾‹çš„æ—¶å€™ï¼Œæˆ‘ä»¬ä¼šè¿™æ ·ï¼š
+		 *
 		 * Class a = new Class(parameter);
-		 * 
-		 * µ±ÎÒÃÇ´´½¨Ò»¸öInteger¶ÔÏóÊ±£¬È´¿ÉÒÔÕâÑù£º
-		 * 
-		 * Integer i = 100; (×¢Òâ£º²»ÊÇ int i = 100; )
-		 * 
-		 * Êµ¼ÊÉÏ£¬Ö´ÐÐÉÏÃæÄÇ¾ä´úÂëµÄÊ±ºò£¬ÏµÍ³ÎªÎÒÃÇÖ´ÐÐÁË£ºInteger i = Integer.valueOf(100);
-		 * 
-		 * ´Ë¼´»ù±¾Êý¾ÝÀàÐÍµÄ×Ô¶¯×°Ïä¹¦ÄÜ¡£
-		 * ´Ë¼´»ù±¾Êý¾ÝÀàÐÍµÄ×Ô¶¯×°Ïä¹¦ÄÜ¡£
+		 *
+		 * å½“æˆ‘ä»¬åˆ›å»ºä¸€ä¸ªIntegerå¯¹è±¡æ—¶ï¼Œå´å¯ä»¥è¿™æ ·ï¼š
+		 *
+		 * Integer i = 100; (æ³¨æ„ï¼šä¸æ˜¯ int i = 100; )
+		 *
+		 * å®žé™…ä¸Šï¼Œæ‰§è¡Œä¸Šé¢é‚£å¥ä»£ç çš„æ—¶å€™ï¼Œç³»ç»Ÿä¸ºæˆ‘ä»¬æ‰§è¡Œäº†ï¼šInteger i = Integer.valueOf(100);
+		 *
+		 * æ­¤å³åŸºæœ¬æ•°æ®ç±»åž‹çš„è‡ªåŠ¨è£…ç®±åŠŸèƒ½ã€‚
+		 * æ­¤å³åŸºæœ¬æ•°æ®ç±»åž‹çš„è‡ªåŠ¨è£…ç®±åŠŸèƒ½ã€‚
 		 */
 		Integer i = 100;
 	}
 
 	public static void unBoxing() {
-		// ×Ô¶¯²ðÏä(unboxing)£¬Ò²¾ÍÊÇ½«¶ÔÏóÖÐµÄ»ù±¾Êý¾Ý´Ó¶ÔÏóÖÐ×Ô¶¯È¡³ö¡£ÈçÏÂ¿ÉÊµÏÖ×Ô¶¯²ðÏä£º
-		Integer i = 10; // ×°Ïä
-		int t = i; // ²ðÏä£¬Êµ¼ÊÉÏÖ´ÐÐÁË int t = i.intValue();
+		// è‡ªåŠ¨æ‹†ç®±(unboxing)ï¼Œä¹Ÿå°±æ˜¯å°†å¯¹è±¡ä¸­çš„åŸºæœ¬æ•°æ®ä»Žå¯¹è±¡ä¸­è‡ªåŠ¨å–å‡ºã€‚å¦‚ä¸‹å¯å®žçŽ°è‡ªåŠ¨æ‹†ç®±ï¼š
+		Integer i = 10; // è£…ç®±
+		int t = i; // æ‹†ç®±ï¼Œå®žé™…ä¸Šæ‰§è¡Œäº† int t = i.intValue();
 	}
 
 	public static void integerBoxing() {
-		// integerÔ´Âë
+		// integeræºç 
 		// public static Integer valueOf(int i) {
-		// if(i >= -128 && i <= IntegerCache.high) // Ã»ÓÐÉèÖÃµÄ»°£¬IngegerCache.high
-		// Ä¬ÈÏÊÇ127
+		// if(i >= -128 && i <= IntegerCache.high) // æ²¡æœ‰è®¾ç½®çš„è¯ï¼ŒIngegerCache.high
+		// é»˜è®¤æ˜¯127
 		// return IntegerCache.cache[i + 128];
 		// else
 		// return new Integer(i);
 		// }
 
-		// ÔÚ-128~127 Ö®ÍâµÄÊý
+		// åœ¨-128~127 ä¹‹å¤–çš„æ•°
 		Integer i1 = 200;
 		Integer i2 = 200;
-		System.out.println("i1==i2: " + (i1 == i2));// ÏÔÊ¾false
-		// ÔÚ-128~127 Ö®ÄÚµÄÊý
+		System.out.println("i1==i2: " + (i1 == i2));// æ˜¾ç¤ºfalse
+		// åœ¨-128~127 ä¹‹å†…çš„æ•°
 		Integer i3 = 100;
 		Integer i4 = 100;
-		System.out.println("i3==i4: " + (i3 == i4));// ÏÔÊ¾true
+		System.out.println("i3==i4: " + (i3 == i4));// æ˜¾ç¤ºtrue
 
 		Integer i5 = new Integer(100);
 		Integer i6 = new Integer(100);
-		System.out.println("i5==i6: " + (i5 == i6));// ÏÔÊ¾false
+		System.out.println("i5==i6: " + (i5 == i6));// æ˜¾ç¤ºfalse
 	}
 }

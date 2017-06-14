@@ -1,21 +1,21 @@
 /**
- * 
+ *
  */
 /**
- * @author zhongqiu 
- * ²Î¿¼×ÊÁÏ£ºhttp://www.cnblogs.com/nayitian/p/3406749.html
- * jdk1.7ÌØÐÔ
- * £¨1£©switchÖÐ¿ÉÒÔÊ¹ÓÃ×Ö´®ÁË
- * £¨2£©ÀàÐÍ×Ô¶¯ÍÆ¶Ï
- * £¨3£©ÊýÖµ¿É¼ÓÏÂ»®Ïß
- * £¨4£©Ö§³Ö¶þ½øÖÆÎÄ×Ö
- * £¨5£©¡¾´«Êä¶ÓÁÐ¡¿transferqueue£¨tryTransfer£¬transfer£¬tryTransfer(E e, long timeout, TimeUnit unit)£©
- * £¨6£©ForkJoinTask
- * £¨5£©ÔÚtry catchÒì³£ÆË×½ÖÐ£¬Ò»¸öcatch¿ÉÒÔÐ´¶à¸öÒì³£ÀàÐÍ£¬ÓÃ"|"¸ô¿ª
- * £¨6£©×Ô¶¯×ÊÔ´¹ÜÀí¡£
- *     jdk7Ö®Ç°£¬Äã±ØÐëÓÃtry{}finally{}ÔÚtryÄÚÊ¹ÓÃ×ÊÔ´£¬ÔÚfinallyÖÐ¹Ø±Õ×ÊÔ´£¬²»¹ÜtryÖÐµÄ´úÂëÊÇ·ñÕý³£ÍË³ö»òÕßÒì³£ÍË³ö¡£
- *     jdk7Ö®ºó£¬Äã¿ÉÒÔ²»±ØÒªÐ´finallyÓï¾äÀ´¹Ø±Õ×ÊÔ´£¬Ö»ÒªÄãÔÚtry()µÄÀ¨ºÅÄÚ²¿¶¨ÒåÒªÊ¹ÓÃµÄ×ÊÔ´¡£
- * £¨7£©¿É±ä²ÎÊý·Ç¾ßÌå»¯Ê±ÌáÊ¾¾¯¸æ
- * £¨8£©ÐÂÔöÒ»Ð©È¡»·¾³ÐÅÏ¢µÄ¹¤¾ß·½·¨
+ * @author zhongqiu
+ * å‚è€ƒèµ„æ–™ï¼šhttp://www.cnblogs.com/nayitian/p/3406749.html
+ * jdk1.7ç‰¹æ€§
+ * ï¼ˆ1ï¼‰switchä¸­å¯ä»¥ä½¿ç”¨å­—ä¸²äº†
+ * ï¼ˆ2ï¼‰ç±»åž‹è‡ªåŠ¨æŽ¨æ–­
+ * ï¼ˆ3ï¼‰æ•°å€¼å¯åŠ ä¸‹åˆ’çº¿
+ * ï¼ˆ4ï¼‰æ”¯æŒäºŒè¿›åˆ¶æ–‡å­—
+ * ï¼ˆ5ï¼‰ã€ä¼ è¾“é˜Ÿåˆ—ã€‘transferqueueï¼ˆtryTransferï¼Œtransferï¼ŒtryTransfer(E e, long timeout, TimeUnit unit)ï¼‰
+ * ï¼ˆ6ï¼‰ForkJoinTask
+ * ï¼ˆ5ï¼‰åœ¨try catchå¼‚å¸¸æ‰‘æ‰ä¸­ï¼Œä¸€ä¸ªcatchå¯ä»¥å†™å¤šä¸ªå¼‚å¸¸ç±»åž‹ï¼Œç”¨"|"éš”å¼€
+ * ï¼ˆ6ï¼‰è‡ªåŠ¨èµ„æºç®¡ç†ã€‚
+ *     jdk7ä¹‹å‰ï¼Œä½ å¿…é¡»ç”¨try{}finally{}åœ¨tryå†…ä½¿ç”¨èµ„æºï¼Œåœ¨finallyä¸­å…³é—­èµ„æºï¼Œä¸ç®¡tryä¸­çš„ä»£ç æ˜¯å¦æ­£å¸¸é€€å‡ºæˆ–è€…å¼‚å¸¸é€€å‡ºã€‚
+ *     jdk7ä¹‹åŽï¼Œä½ å¯ä»¥ä¸å¿…è¦å†™finallyè¯­å¥æ¥å…³é—­èµ„æºï¼Œåªè¦ä½ åœ¨try()çš„æ‹¬å·å†…éƒ¨å®šä¹‰è¦ä½¿ç”¨çš„èµ„æºã€‚
+ * ï¼ˆ7ï¼‰å¯å˜å‚æ•°éžå…·ä½“åŒ–æ—¶æç¤ºè­¦å‘Š
+ * ï¼ˆ8ï¼‰æ–°å¢žä¸€äº›å–çŽ¯å¢ƒä¿¡æ¯çš„å·¥å…·æ–¹æ³•
  */
 package zhongqiu.common.jdk7;

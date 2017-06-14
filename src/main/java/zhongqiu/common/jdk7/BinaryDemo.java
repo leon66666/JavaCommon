@@ -1,6 +1,6 @@
 package zhongqiu.common.jdk7;
 
-//Ö§³Ö¶ş½øÖÆÎÄ×Ö
+//æ”¯æŒäºŒè¿›åˆ¶æ–‡å­—
 public class BinaryDemo {
 	public static void main(String[] args) {
 		int binary = 0b1001_1001;

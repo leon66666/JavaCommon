@@ -6,13 +6,13 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 //http://blog.csdn.net/ghsau/article/details/7461369/
 //
-//1. LockµÄ¼ÓËøºÍ½âËø¶¼ÊÇÓÉjava´úÂëÅäºÏnative·½·¨£¨µ÷ÓÃ²Ù×÷ÏµÍ³µÄÏà¹Ø·½·¨£©ÊµÏÖµÄ£¬¶øsynchronizeµÄ¼ÓËøºÍ½âËøµÄ¹ı³ÌÊÇÓÉJVM¹ÜÀíµÄ
+//1. Lockçš„åŠ é”å’Œè§£é”éƒ½æ˜¯ç”±javaä»£ç é…åˆnativeæ–¹æ³•ï¼ˆè°ƒç”¨æ“ä½œç³»ç»Ÿçš„ç›¸å…³æ–¹æ³•ï¼‰å®ç°çš„ï¼Œè€Œsynchronizeçš„åŠ é”å’Œè§£é”çš„è¿‡ç¨‹æ˜¯ç”±JVMç®¡ç†çš„
 //
-//2. µ±Ò»¸öÏß³ÌÊ¹ÓÃsynchronize»ñÈ¡ËøÊ±£¬ÈôËø±»ÆäËûÏß³ÌÕ¼ÓÃ×Å£¬ÄÇÃ´µ±Ç°Ö»ÄÜ±»×èÈû£¬Ö±µ½³É¹¦»ñÈ¡Ëø¡£¶øLockÔòÌá¹©³¬Ê±ËøºÍ¿ÉÖĞ¶ÏµÈ¸ü¼ÓÁé»îµÄ·½Ê½£¬ÔÚÎ´ÄÜ»ñÈ¡ËøµÄ     Ìõ¼şÏÂÌá¹©Ò»ÖÖÍË³öµÄ»úÖÆ¡£
+//2. å½“ä¸€ä¸ªçº¿ç¨‹ä½¿ç”¨synchronizeè·å–é”æ—¶ï¼Œè‹¥é”è¢«å…¶ä»–çº¿ç¨‹å ç”¨ç€ï¼Œé‚£ä¹ˆå½“å‰åªèƒ½è¢«é˜»å¡ï¼Œç›´åˆ°æˆåŠŸè·å–é”ã€‚è€ŒLockåˆ™æä¾›è¶…æ—¶é”å’Œå¯ä¸­æ–­ç­‰æ›´åŠ çµæ´»çš„æ–¹å¼ï¼Œåœ¨æœªèƒ½è·å–é”çš„     æ¡ä»¶ä¸‹æä¾›ä¸€ç§é€€å‡ºçš„æœºåˆ¶ã€‚
 //
-//3. Ò»¸öËøÄÚ²¿¿ÉÒÔÓĞ¶à¸öConditionÊµÀı£¬¼´ÓĞ¶àÂ·Ìõ¼ş¶ÓÁĞ£¬¶øsynchronizeÖ»ÓĞÒ»Â·Ìõ¼ş¶ÓÁĞ£»Í¬ÑùConditionÒ²Ìá¹©Áé»îµÄ×èÈû·½Ê½£¬ÔÚÎ´»ñµÃÍ¨ÖªÖ®Ç°¿ÉÒÔÍ¨¹ıÖĞ¶ÏÏß³ÌÒÔ    ¼°ÉèÖÃµÈ´ıÊ±ÏŞµÈ·½Ê½ÍË³öÌõ¼ş¶ÓÁĞ¡£
+//3. ä¸€ä¸ªé”å†…éƒ¨å¯ä»¥æœ‰å¤šä¸ªConditionå®ä¾‹ï¼Œå³æœ‰å¤šè·¯æ¡ä»¶é˜Ÿåˆ—ï¼Œè€Œsynchronizeåªæœ‰ä¸€è·¯æ¡ä»¶é˜Ÿåˆ—ï¼›åŒæ ·Conditionä¹Ÿæä¾›çµæ´»çš„é˜»å¡æ–¹å¼ï¼Œåœ¨æœªè·å¾—é€šçŸ¥ä¹‹å‰å¯ä»¥é€šè¿‡ä¸­æ–­çº¿ç¨‹ä»¥    åŠè®¾ç½®ç­‰å¾…æ—¶é™ç­‰æ–¹å¼é€€å‡ºæ¡ä»¶é˜Ÿåˆ—ã€‚
 //
-//4. synchronize¶ÔÏß³ÌµÄÍ¬²½½öÌá¹©¶ÀÕ¼Ä£Ê½£¬¶øLock¼´¿ÉÒÔÌá¹©¶ÀÕ¼Ä£Ê½£¬Ò²¿ÉÒÔÌá¹©¹²ÏíÄ£Ê½
+//4. synchronizeå¯¹çº¿ç¨‹çš„åŒæ­¥ä»…æä¾›ç‹¬å æ¨¡å¼ï¼Œè€ŒLockå³å¯ä»¥æä¾›ç‹¬å æ¨¡å¼ï¼Œä¹Ÿå¯ä»¥æä¾›å…±äº«æ¨¡å¼
 public class ReentrantReadWriteLockDemo {
 	public static void main(String[] args) {
 		final Data data = new Data();
@@ -38,37 +38,37 @@ public class ReentrantReadWriteLockDemo {
 }
 
 class Data {
-	private int data;// ¹²ÏíÊı¾İ
+	private int data;// å…±äº«æ•°æ®
 	private ReadWriteLock rwl = new ReentrantReadWriteLock();
 
 	public void set(int data) {
-		rwl.writeLock().lock();// È¡µ½Ğ´ÈëËø
+		rwl.writeLock().lock();// å–åˆ°å†™å…¥é”
 		try {
-			System.out.println(Thread.currentThread().getName() + "×¼±¸Ğ´ÈëÊı¾İ");
+			System.out.println(Thread.currentThread().getName() + "å‡†å¤‡å†™å…¥æ•°æ®");
 			try {
 				Thread.sleep(20);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 			this.data = data;
-			System.out.println(Thread.currentThread().getName() + "Ğ´Èë" + this.data);
+			System.out.println(Thread.currentThread().getName() + "å†™å…¥" + this.data);
 		} finally {
-			rwl.writeLock().unlock();// ÊÍ·ÅĞ´Ëø
+			rwl.writeLock().unlock();// é‡Šæ”¾å†™é”
 		}
 	}
 
 	public void get() {
-		rwl.readLock().lock();// È¡µ½¶ÁÈ¡Ëø
+		rwl.readLock().lock();// å–åˆ°è¯»å–é”
 		try {
-			System.out.println(Thread.currentThread().getName() + "×¼±¸¶ÁÈ¡Êı¾İ");
+			System.out.println(Thread.currentThread().getName() + "å‡†å¤‡è¯»å–æ•°æ®");
 			try {
 				Thread.sleep(20);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-			System.out.println(Thread.currentThread().getName() + "¶ÁÈ¡" + this.data);
+			System.out.println(Thread.currentThread().getName() + "è¯»å–" + this.data);
 		} finally {
-			rwl.readLock().unlock();// ÊÍ·Å¶ÁËø
+			rwl.readLock().unlock();// é‡Šæ”¾è¯»é”
 		}
 	}
 }

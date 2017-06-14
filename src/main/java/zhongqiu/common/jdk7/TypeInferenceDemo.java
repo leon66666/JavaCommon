@@ -5,13 +5,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-//ÀàĞÍ×Ô¶¯ÍÆ¶Ï  <>
+//ç±»å‹è‡ªåŠ¨æ¨æ–­  <>
 public class TypeInferenceDemo {
 
 	List<String> tempList = new ArrayList<>();
 
-	// Ã»ÓĞÊ¹ÓÃÀàĞÍÍÆ¶Ï
+	// æ²¡æœ‰ä½¿ç”¨ç±»å‹æ¨æ–­
 	Map<String, List<String>> map1 = new HashMap<String, List<String>>();
-	// Í¨¹ıÀàĞÍÍÆ¶Ïºó±ä³É£º
-	Map<String, List<String>> map2 = new HashMap<>();// Õâ¸ö<>±»½Ğ×ödiamond£¨×êÊ¯£©ÔËËã·û£¬Õâ¸öÔËËã·û´ÓÒıÓÃµÄÉùÃ÷ÖĞÍÆ¶ÏÀàĞÍ¡£
+	// é€šè¿‡ç±»å‹æ¨æ–­åå˜æˆï¼š
+	Map<String, List<String>> map2 = new HashMap<>();// è¿™ä¸ª<>è¢«å«åšdiamondï¼ˆé’»çŸ³ï¼‰è¿ç®—ç¬¦ï¼Œè¿™ä¸ªè¿ç®—ç¬¦ä»å¼•ç”¨çš„å£°æ˜ä¸­æ¨æ–­ç±»å‹ã€‚
 }

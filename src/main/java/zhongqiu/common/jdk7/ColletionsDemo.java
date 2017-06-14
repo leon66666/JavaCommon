@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-//语法上支持集合，而不一定是数组 
+//璇硶涓婃敮鎸侀泦鍚堬紝鑰屼笉涓�瀹氭槸鏁扮粍
 public class ColletionsDemo {
 	public static void main(String[] args) {
 

@@ -7,14 +7,14 @@ import java.util.concurrent.Semaphore;
 public class SemaphoreDemo {
 	public static void main(String[] args) {
 
-		// Ïß³Ì³Ø
+		// çº¿ç¨‹æ± 
 
 		ExecutorService exec = Executors.newCachedThreadPool();
-		// Ö»ÄÜ5¸öÏß³ÌÍ¬Ê±·ÃÎÊ
+		// åªèƒ½5ä¸ªçº¿ç¨‹åŒæ—¶è®¿é—®
 
 		final Semaphore semp = new Semaphore(5);
 
-		// Ä£Äâ20¸ö¿Í»§¶Ë·ÃÎÊ
+		// æ¨¡æ‹Ÿ20ä¸ªå®¢æˆ·ç«¯è®¿é—®
 
 		for (int index = 0; index < 20; index++) {
 
@@ -26,7 +26,7 @@ public class SemaphoreDemo {
 
 					try {
 
-						// »ñÈ¡Ğí¿É
+						// è·å–è®¸å¯
 
 						semp.acquire();
 
@@ -34,7 +34,7 @@ public class SemaphoreDemo {
 
 						Thread.sleep((long) (Math.random() * 10000));
 
-						// ·ÃÎÊÍêºó£¬ÊÍ·Å
+						// è®¿é—®å®Œåï¼Œé‡Šæ”¾
 
 						semp.release();
 
@@ -54,7 +54,7 @@ public class SemaphoreDemo {
 
 		}
 
-		// ÍË³öÏß³Ì³Ø
+		// é€€å‡ºçº¿ç¨‹æ± 
 
 		exec.shutdown();
 

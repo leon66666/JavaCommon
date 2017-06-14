@@ -2,24 +2,24 @@ package zhongqiu.common.jdk5;
 
 import java.util.EnumSet;
 
-//Ã¶¾Ù
+//æžšä¸¾
 /*
-1¡¢ÆÕÍ¨Ã¶¾Ù£¬Í¨¹ýname»ñÈ¡Ã¶¾Ù£¬Í¨¹ýÄ¬ÈÏÐòºÅordinal»ñÈ¡Ã¶¾Ù
-2¡¢×Ô¶¨ÒåÃ¶¾Ù
-3¡¢Ã¶¾ÙµÄswitchÓÃ·¨
-4¡¢Ã¶¾ÙÊµÏÖ½Ó¿Ú
-5¡¢Ã¶¾Ù¼¯ºÏµÄÊ¹ÓÃ¡£java.util.EnumSetºÍjava.util.EnumMapÊÇÁ½¸öÃ¶¾Ù¼¯ºÏ¡£
-  EnumSet±£Ö¤¼¯ºÏÖÐµÄÔªËØ²»ÖØ¸´£»EnumMapÖÐµÄkeyÊÇenumÀàÐÍ£¬¶øvalueÔò¿ÉÒÔÊÇÈÎÒâÀàÐÍ¡£*/
+1ã€æ™®é€šæžšä¸¾ï¼Œé€šè¿‡nameèŽ·å–æžšä¸¾ï¼Œé€šè¿‡é»˜è®¤åºå·ordinalèŽ·å–æžšä¸¾
+2ã€è‡ªå®šä¹‰æžšä¸¾
+3ã€æžšä¸¾çš„switchç”¨æ³•
+4ã€æžšä¸¾å®žçŽ°æŽ¥å£
+5ã€æžšä¸¾é›†åˆçš„ä½¿ç”¨ã€‚java.util.EnumSetå’Œjava.util.EnumMapæ˜¯ä¸¤ä¸ªæžšä¸¾é›†åˆã€‚
+  EnumSetä¿è¯é›†åˆä¸­çš„å…ƒç´ ä¸é‡å¤ï¼›EnumMapä¸­çš„keyæ˜¯enumç±»åž‹ï¼Œè€Œvalueåˆ™å¯ä»¥æ˜¯ä»»æ„ç±»åž‹ã€‚*/
 public class EnumDemo {
     public static void main(String[] args) {
         EnumSwitch();
     }
 
-    //ÆÕÍ¨Ã¶¾Ù
+    //æ™®é€šæžšä¸¾
     public enum Color {
         RED, GREEN, BLANK, YELLOW;
 
-        //Í¨¹ýname»ñÈ¡Ã¶¾Ù
+        //é€šè¿‡nameèŽ·å–æžšä¸¾
         public static Color getByName(String name) {
             Color color = Color.RED;
             switch (name) {
@@ -42,7 +42,7 @@ public class EnumDemo {
             return color;
         }
 
-        //Í¨¹ýÄ¬ÈÏÐòºÅordinal»ñÈ¡Ã¶¾Ù
+        //é€šè¿‡é»˜è®¤åºå·ordinalèŽ·å–æžšä¸¾
         public static Color valueOf(int ordinal) {
             if (ordinal >= 0 && ordinal < values().length) {
                 return values()[ordinal];
@@ -52,20 +52,20 @@ public class EnumDemo {
         }
     }
 
-    // ×Ô¶¨ÒåÃ¶¾Ù
+    // è‡ªå®šä¹‰æžšä¸¾
     public enum ColorExt {
-        RED("ºìÉ«", 1), GREEN("ÂÌÉ«", 2), BLANK("°×É«", 3), YELLOW("»ÆÉ«", 4);
-        // ³ÉÔ±±äÁ¿
+        RED("çº¢è‰²", 1), GREEN("ç»¿è‰²", 2), BLANK("ç™½è‰²", 3), YELLOW("é»„è‰²", 4);
+        // æˆå‘˜å˜é‡
         private String name;
         private int index;
 
-        // ¹¹Ôì·½·¨
+        // æž„é€ æ–¹æ³•
         private ColorExt(String name, int index) {
             this.name = name;
             this.index = index;
         }
 
-        // ÆÕÍ¨·½·¨
+        // æ™®é€šæ–¹æ³•
         public static String getName(int index) {
             for (ColorExt c : ColorExt.values()) {
                 if (c.getIndex() == index) {
@@ -75,13 +75,13 @@ public class EnumDemo {
             return null;
         }
 
-        // ¸²¸Ç·½·¨
+        // è¦†ç›–æ–¹æ³•
         @Override
         public String toString() {
             return this.index + "_" + this.name;
         }
 
-        // get set ·½·¨
+        // get set æ–¹æ³•
         public String getName() {
             return name;
         }
@@ -99,7 +99,7 @@ public class EnumDemo {
         }
     }
 
-    // Ã¶¾ÙµÄswitchÓÃ·¨
+    // æžšä¸¾çš„switchç”¨æ³•
     public static void EnumSwitch() {
         Color color = Color.RED;
         System.out.println(color);
@@ -119,7 +119,7 @@ public class EnumDemo {
         }
     }
 
-    // Ã¶¾ÙÊµÏÖ½Ó¿Ú
+    // æžšä¸¾å®žçŽ°æŽ¥å£
     public interface Behaviour {
         void print();
 
@@ -127,30 +127,30 @@ public class EnumDemo {
     }
 
     public enum ColorImpl implements Behaviour {
-        RED("ºìÉ«", 1), GREEN("ÂÌÉ«", 2), BLANK("°×É«", 3), YELLOW("»ÆÉ«", 4);
-        // ³ÉÔ±±äÁ¿
+        RED("çº¢è‰²", 1), GREEN("ç»¿è‰²", 2), BLANK("ç™½è‰²", 3), YELLOW("é»„è‰²", 4);
+        // æˆå‘˜å˜é‡
         private String name;
         private int index;
 
-        // ¹¹Ôì·½·¨
+        // æž„é€ æ–¹æ³•
         private ColorImpl(String name, int index) {
             this.name = name;
             this.index = index;
         }
 
-        // ½Ó¿Ú·½·¨
+        // æŽ¥å£æ–¹æ³•
         @Override
         public String getInfo() {
             return this.name;
         }
 
-        // ½Ó¿Ú·½·¨
+        // æŽ¥å£æ–¹æ³•
         @Override
         public void print() {
             System.out.println(this.index + ":" + this.name);
         }
     }
 
-    //Ã¶¾Ù¼¯ºÏµÄÊ¹ÓÃ£¬java.util.EnumSetºÍjava.util.EnumMapÊÇÁ½¸öÃ¶¾Ù¼¯ºÏ¡£
+    //æžšä¸¾é›†åˆçš„ä½¿ç”¨ï¼Œjava.util.EnumSetå’Œjava.util.EnumMapæ˜¯ä¸¤ä¸ªæžšä¸¾é›†åˆã€‚
     EnumSet<Color> repayApplyStatus = EnumSet.of(Color.BLANK,Color.GREEN,Color.RED);
 }

@@ -4,22 +4,22 @@ import java.util.concurrent.LinkedTransferQueue;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TransferQueue;
 
-//Java7ÖĞ¼ÓÈëÁËJSR 166y¹æ·¶¶Ô¼¯ºÏÀàºÍ²¢·¢Àà¿âµÄ¸Ä½ø¡£ÆäÖĞµÄÒ»ÏîÊÇÔö¼ÓÁË½Ó¿ÚTransferQueueºÍÆäÊµÏÖÀàLinkedTransferQueue¡£
-//TransferQueue¼Ì³ĞÁËBlockingQueue£¨BlockingQueueÓÖ¼Ì³ĞÁËQueue£©²¢À©Õ¹ÁËÒ»Ğ©ĞÂ·½·¨¡£
-//TransferQueueÔò¸ü½øÒ»²½£¬Éú²úÕß»áÒ»Ö±×èÈûÖ±µ½ËùÌí¼Óµ½¶ÓÁĞµÄÔªËØ±»Ä³Ò»¸öÏû·ÑÕßËùÏû·Ñ£¨²»½ö½öÊÇÌí¼Óµ½¶ÓÁĞÀï¾ÍÍêÊÂ£©¡£
-//ĞÂÌí¼ÓµÄtransfer·½·¨ÓÃÀ´ÊµÏÖÕâÖÖÔ¼Êø¡£¹ËÃûË¼Òå£¬×èÈû¾ÍÊÇ·¢ÉúÔÚÔªËØ´ÓÒ»¸öÏß³Ìtransferµ½ÁíÒ»¸öÏß³ÌµÄ¹ı³ÌÖĞ£¬
-//ËüÓĞĞ§µØÊµÏÖÁËÔªËØÔÚÏß³ÌÖ®¼äµÄ´«µİ£¨ÒÔ½¨Á¢JavaÄÚ´æÄ£ĞÍÖĞµÄhappens-before¹ØÏµµÄ·½Ê½£©¡£
-//LinkedTransferQueueÊµ¼ÊÉÏÊÇConcurrentLinkedQueue¡¢SynchronousQueue£¨¹«Æ½Ä£Ê½£©ºÍLinkedBlockingQueueµÄ³¬¼¯¡£
+//Java7ä¸­åŠ å…¥äº†JSR 166yè§„èŒƒå¯¹é›†åˆç±»å’Œå¹¶å‘ç±»åº“çš„æ”¹è¿›ã€‚å…¶ä¸­çš„ä¸€é¡¹æ˜¯å¢åŠ äº†æ¥å£TransferQueueå’Œå…¶å®ç°ç±»LinkedTransferQueueã€‚
+//TransferQueueç»§æ‰¿äº†BlockingQueueï¼ˆBlockingQueueåˆç»§æ‰¿äº†Queueï¼‰å¹¶æ‰©å±•äº†ä¸€äº›æ–°æ–¹æ³•ã€‚
+//TransferQueueåˆ™æ›´è¿›ä¸€æ­¥ï¼Œç”Ÿäº§è€…ä¼šä¸€ç›´é˜»å¡ç›´åˆ°æ‰€æ·»åŠ åˆ°é˜Ÿåˆ—çš„å…ƒç´ è¢«æŸä¸€ä¸ªæ¶ˆè´¹è€…æ‰€æ¶ˆè´¹ï¼ˆä¸ä»…ä»…æ˜¯æ·»åŠ åˆ°é˜Ÿåˆ—é‡Œå°±å®Œäº‹ï¼‰ã€‚
+//æ–°æ·»åŠ çš„transferæ–¹æ³•ç”¨æ¥å®ç°è¿™ç§çº¦æŸã€‚é¡¾åæ€ä¹‰ï¼Œé˜»å¡å°±æ˜¯å‘ç”Ÿåœ¨å…ƒç´ ä»ä¸€ä¸ªçº¿ç¨‹transferåˆ°å¦ä¸€ä¸ªçº¿ç¨‹çš„è¿‡ç¨‹ä¸­ï¼Œ
+//å®ƒæœ‰æ•ˆåœ°å®ç°äº†å…ƒç´ åœ¨çº¿ç¨‹ä¹‹é—´çš„ä¼ é€’ï¼ˆä»¥å»ºç«‹Javaå†…å­˜æ¨¡å‹ä¸­çš„happens-beforeå…³ç³»çš„æ–¹å¼ï¼‰ã€‚
+//LinkedTransferQueueå®é™…ä¸Šæ˜¯ConcurrentLinkedQueueã€SynchronousQueueï¼ˆå…¬å¹³æ¨¡å¼ï¼‰å’ŒLinkedBlockingQueueçš„è¶…é›†ã€‚
 public class TransferQueueDemo {
 	private static TransferQueue<String> queue = new LinkedTransferQueue<String>();
 
 	public static void main(String[] args) throws Exception {
-		// queue.transferÓÃ·¨
+		// queue.transferç”¨æ³•
 		new Productor1(1).start();
 		Thread.sleep(100);
 		System.out.println("over.size=" + queue.size());
 
-		// queue.tryTransfer(result, 1, TimeUnit.SECONDS); ÓÃ·¨
+		// queue.tryTransfer(result, 1, TimeUnit.SECONDS); ç”¨æ³•
 		new Productor2(1).start();
 		Thread.sleep(100);
 		System.out.println("over.size=" + queue.size());// 2
@@ -28,7 +28,7 @@ public class TransferQueueDemo {
 	}
 
 	// transfer(E e)
-	// Èôµ±Ç°´æÔÚÒ»¸öÕıÔÚµÈ´ı»ñÈ¡µÄÏû·ÑÕßÏß³Ì£¬¼´Á¢¿Ì½«eÒÆ½»Ö®£»·ñÔò½«ÔªËØe²åÈëµ½¶ÓÁĞÎ²²¿£¬²¢ÇÒµ±Ç°Ïß³Ì½øÈë×èÈû×´Ì¬£¬Ö±µ½ÓĞÏû·ÑÕßÏß³ÌÈ¡×ß¸ÃÔªËØ¡£
+	// è‹¥å½“å‰å­˜åœ¨ä¸€ä¸ªæ­£åœ¨ç­‰å¾…è·å–çš„æ¶ˆè´¹è€…çº¿ç¨‹ï¼Œå³ç«‹åˆ»å°†eç§»äº¤ä¹‹ï¼›å¦åˆ™å°†å…ƒç´ eæ’å…¥åˆ°é˜Ÿåˆ—å°¾éƒ¨ï¼Œå¹¶ä¸”å½“å‰çº¿ç¨‹è¿›å…¥é˜»å¡çŠ¶æ€ï¼Œç›´åˆ°æœ‰æ¶ˆè´¹è€…çº¿ç¨‹å–èµ°è¯¥å…ƒç´ ã€‚
 	static class Productor1 extends Thread {
 		private int id;
 
@@ -50,8 +50,8 @@ public class TransferQueueDemo {
 	}
 
 	// tryTransfer(E e, long timeout, TimeUnit unit)
-	// Èôµ±Ç°´æÔÚÒ»¸öÕıÔÚµÈ´ı»ñÈ¡µÄÏû·ÑÕßÏß³Ì£¬»áÁ¢¼´´«Êä¸øËü;
-	// ·ñÔò½«ÔªËØe²åÈëµ½¶ÓÁĞÎ²²¿£¬²¢ÇÒµÈ´ı±»Ïû·ÑÕßÏß³Ì»ñÈ¡Ïû·Ñµô¡£ÈôÔÚÖ¸¶¨µÄÊ±¼äÄÚÔªËØeÎŞ·¨±»Ïû·ÑÕßÏß³Ì»ñÈ¡£¬Ôò·µ»Øfalse£¬Í¬Ê±¸ÃÔªËØ´Ó¶ÓÁĞÖĞÒÆ³ı¡£
+	// è‹¥å½“å‰å­˜åœ¨ä¸€ä¸ªæ­£åœ¨ç­‰å¾…è·å–çš„æ¶ˆè´¹è€…çº¿ç¨‹ï¼Œä¼šç«‹å³ä¼ è¾“ç»™å®ƒ;
+	// å¦åˆ™å°†å…ƒç´ eæ’å…¥åˆ°é˜Ÿåˆ—å°¾éƒ¨ï¼Œå¹¶ä¸”ç­‰å¾…è¢«æ¶ˆè´¹è€…çº¿ç¨‹è·å–æ¶ˆè´¹æ‰ã€‚è‹¥åœ¨æŒ‡å®šçš„æ—¶é—´å†…å…ƒç´ eæ— æ³•è¢«æ¶ˆè´¹è€…çº¿ç¨‹è·å–ï¼Œåˆ™è¿”å›falseï¼ŒåŒæ—¶è¯¥å…ƒç´ ä»é˜Ÿåˆ—ä¸­ç§»é™¤ã€‚
 	static class Productor2 extends Thread {
 		private int id;
 

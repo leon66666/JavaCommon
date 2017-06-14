@@ -4,83 +4,83 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.FutureTask;
 
-//¶àÏß³Ì    http://www.mamicode.com/info-detail-517008.html
+//å¤šçº¿ç¨‹    http://www.mamicode.com/info-detail-517008.html
 //     http://www.runoob.com/java/java-multithreading.html
 
-//ÔÚjavaÖĞ£¬Ã¿´Î³ÌĞòÔËĞĞÖÁÉÙÆô¶¯2¸öÏß³Ì¡£Ò»¸öÊÇmainÏß³Ì£¬Ò»¸öÊÇÀ¬»øÊÕ¼¯Ïß³Ì¡£
-//ÒòÎªÃ¿µ±Ê¹ÓÃjavaÃüÁîÖ´ĞĞÒ»¸öÀàµÄÊ±ºò£¬Êµ¼ÊÉÏ¶¼»áÆô¶¯Ò»¸ö£Ê£Ö£Í£¬Ã¿Ò»¸ö£ê£Ö£Í¾ÍÊÇÔÚ²Ù×÷ÏµÍ³ÖĞÆô¶¯ÁËÒ»¸ö½ø³Ì¡£
-//Ïß³ÌÀàµÄÒ»Ğ©³£ÓÃ·½·¨£º 
-//sleep(): Ç¿ÆÈÒ»¸öÏß³ÌË¯Ãß£ÎºÁÃë¡£ 
-//isAlive(): ÅĞ¶ÏÒ»¸öÏß³ÌÊÇ·ñ´æ»î¡£ 
-//join(): µÈ´ıÏß³ÌÖÕÖ¹¡£ 
-//activeCount(): ³ÌĞòÖĞ»îÔ¾µÄÏß³ÌÊı¡£ 
-//enumerate(): Ã¶¾Ù³ÌĞòÖĞµÄÏß³Ì¡£ 
-//currentThread(): µÃµ½µ±Ç°Ïß³Ì¡£ 
-//isDaemon(): Ò»¸öÏß³ÌÊÇ·ñÎªÊØ»¤Ïß³Ì¡£ 
-//setDaemon(): ÉèÖÃÒ»¸öÏß³ÌÎªÊØ»¤Ïß³Ì¡£(ÓÃ»§Ïß³ÌºÍÊØ»¤Ïß³ÌµÄÇø±ğÔÚÓÚ£¬ÊÇ·ñµÈ´ıÖ÷Ïß³ÌÒÀÀµÓÚÖ÷Ïß³Ì½áÊø¶ø½áÊø) 
-//setName(): ÎªÏß³ÌÉèÖÃÒ»¸öÃû³Æ¡£ 
-//wait(): Ç¿ÆÈÒ»¸öÏß³ÌµÈ´ı¡£ 
-//notify(): Í¨ÖªÒ»¸öÏß³Ì¼ÌĞøÔËĞĞ¡£ 
-//setPriority(): ÉèÖÃÒ»¸öÏß³ÌµÄÓÅÏÈ¼¶¡£
+//åœ¨javaä¸­ï¼Œæ¯æ¬¡ç¨‹åºè¿è¡Œè‡³å°‘å¯åŠ¨2ä¸ªçº¿ç¨‹ã€‚ä¸€ä¸ªæ˜¯mainçº¿ç¨‹ï¼Œä¸€ä¸ªæ˜¯åƒåœ¾æ”¶é›†çº¿ç¨‹ã€‚
+//å› ä¸ºæ¯å½“ä½¿ç”¨javaå‘½ä»¤æ‰§è¡Œä¸€ä¸ªç±»çš„æ—¶å€™ï¼Œå®é™…ä¸Šéƒ½ä¼šå¯åŠ¨ä¸€ä¸ªï¼ªï¼¶ï¼­ï¼Œæ¯ä¸€ä¸ªï½Šï¼¶ï¼­å°±æ˜¯åœ¨æ“ä½œç³»ç»Ÿä¸­å¯åŠ¨äº†ä¸€ä¸ªè¿›ç¨‹ã€‚
+//çº¿ç¨‹ç±»çš„ä¸€äº›å¸¸ç”¨æ–¹æ³•ï¼š
+//sleep(): å¼ºè¿«ä¸€ä¸ªçº¿ç¨‹ç¡çœ ï¼®æ¯«ç§’ã€‚
+//isAlive(): åˆ¤æ–­ä¸€ä¸ªçº¿ç¨‹æ˜¯å¦å­˜æ´»ã€‚
+//join(): ç­‰å¾…çº¿ç¨‹ç»ˆæ­¢ã€‚
+//activeCount(): ç¨‹åºä¸­æ´»è·ƒçš„çº¿ç¨‹æ•°ã€‚
+//enumerate(): æšä¸¾ç¨‹åºä¸­çš„çº¿ç¨‹ã€‚
+//currentThread(): å¾—åˆ°å½“å‰çº¿ç¨‹ã€‚
+//isDaemon(): ä¸€ä¸ªçº¿ç¨‹æ˜¯å¦ä¸ºå®ˆæŠ¤çº¿ç¨‹ã€‚
+//setDaemon(): è®¾ç½®ä¸€ä¸ªçº¿ç¨‹ä¸ºå®ˆæŠ¤çº¿ç¨‹ã€‚(ç”¨æˆ·çº¿ç¨‹å’Œå®ˆæŠ¤çº¿ç¨‹çš„åŒºåˆ«åœ¨äºï¼Œæ˜¯å¦ç­‰å¾…ä¸»çº¿ç¨‹ä¾èµ–äºä¸»çº¿ç¨‹ç»“æŸè€Œç»“æŸ)
+//setName(): ä¸ºçº¿ç¨‹è®¾ç½®ä¸€ä¸ªåç§°ã€‚
+//wait(): å¼ºè¿«ä¸€ä¸ªçº¿ç¨‹ç­‰å¾…ã€‚
+//notify(): é€šçŸ¥ä¸€ä¸ªçº¿ç¨‹ç»§ç»­è¿è¡Œã€‚
+//setPriority(): è®¾ç½®ä¸€ä¸ªçº¿ç¨‹çš„ä¼˜å…ˆçº§ã€‚
 
-//Èç¹û¶ÔÏóµ÷ÓÃÁËwait·½·¨¾Í»áÊ¹³ÖÓĞ¸Ã¶ÔÏóµÄÏß³Ì°Ñ¸Ã¶ÔÏóµÄ¿ØÖÆÈ¨½»³öÈ¥£¬È»ºó´¦ÓÚµÈ´ıÕâ¸ö¶ÔÏóµÄ¿ØÖÆÈ¨µÄ×´Ì¬¡£
-//Èç¹û¶ÔÏóµ÷ÓÃÁËnotify·½·¨¾Í»áÍ¨ÖªÄ³¸öÕıÔÚµÈ´ıÕâ¸ö¶ÔÏóµÄ¿ØÖÆÈ¨µÄÏß³Ì¿ÉÒÔ¼ÌĞøÔËĞĞ¡£
-//Èç¹û¶ÔÏóµ÷ÓÃÁËnotifyAll·½·¨¾Í»áÍ¨ÖªËùÓĞµÈ´ıÕâ¸ö¶ÔÏó¿ØÖÆÈ¨µÄÏß³Ì¼ÌĞøÔËĞĞ¡£
+//å¦‚æœå¯¹è±¡è°ƒç”¨äº†waitæ–¹æ³•å°±ä¼šä½¿æŒæœ‰è¯¥å¯¹è±¡çš„çº¿ç¨‹æŠŠè¯¥å¯¹è±¡çš„æ§åˆ¶æƒäº¤å‡ºå»ï¼Œç„¶åå¤„äºç­‰å¾…è¿™ä¸ªå¯¹è±¡çš„æ§åˆ¶æƒçš„çŠ¶æ€ã€‚
+//å¦‚æœå¯¹è±¡è°ƒç”¨äº†notifyæ–¹æ³•å°±ä¼šé€šçŸ¥æŸä¸ªæ­£åœ¨ç­‰å¾…è¿™ä¸ªå¯¹è±¡çš„æ§åˆ¶æƒçš„çº¿ç¨‹å¯ä»¥ç»§ç»­è¿è¡Œã€‚
+//å¦‚æœå¯¹è±¡è°ƒç”¨äº†notifyAllæ–¹æ³•å°±ä¼šé€šçŸ¥æ‰€æœ‰ç­‰å¾…è¿™ä¸ªå¯¹è±¡æ§åˆ¶æƒçš„çº¿ç¨‹ç»§ç»­è¿è¡Œã€‚
 public class MultiThreadDemo {
 	public static void main(String[] args) throws InterruptedException {
-		// ÄäÃûÀàÊµÏÖ¶àÏß³Ì
+		// åŒ¿åç±»å®ç°å¤šçº¿ç¨‹
 		// new Thread(new Runnable() {
 		// public void run() {
 		// for (int i = 0; i < 10; i++) {
-		// System.out.println("Ïß³Ì1");
+		// System.out.println("çº¿ç¨‹1");
 		// }
 		// }
 		// }).start();
 		// new Thread(new FutureTask<>(new Callable<Integer>() {
 		// public Integer call()
 		// {
-		// System.out.println("Ïß³Ì2");
+		// System.out.println("çº¿ç¨‹2");
 		// return 1;
 		// }
 		// })).start();
 
-		// start()·½·¨µÄµ÷ÓÃºó²¢²»ÊÇÁ¢¼´Ö´ĞĞ¶àÏß³Ì´úÂë£¬¶øÊÇÊ¹µÃ¸ÃÏß³Ì±äÎª¿ÉÔËĞĞÌ¬£¨Runnable£©£¬Ê²Ã´Ê±ºòÔËĞĞÊÇÓÉ²Ù×÷ÏµÍ³¾ö¶¨µÄ¡£
+		// start()æ–¹æ³•çš„è°ƒç”¨åå¹¶ä¸æ˜¯ç«‹å³æ‰§è¡Œå¤šçº¿ç¨‹ä»£ç ï¼Œè€Œæ˜¯ä½¿å¾—è¯¥çº¿ç¨‹å˜ä¸ºå¯è¿è¡Œæ€ï¼ˆRunnableï¼‰ï¼Œä»€ä¹ˆæ—¶å€™è¿è¡Œæ˜¯ç”±æ“ä½œç³»ç»Ÿå†³å®šçš„ã€‚
 		// new ThreadDemo("A").start();
 		// new ThreadDemo("B").start();
 
-		// ¶àÏß³Ì×ÊÔ´¹²Ïí
+		// å¤šçº¿ç¨‹èµ„æºå…±äº«
 		RunnableDemo my = new RunnableDemo();
 		new Thread(my, "C").start();
 		new Thread(my, "D").start();
 		new Thread(my, "E").start();
-		// Í¨¹ı Callable ºÍ Future ´´½¨Ïß³Ì
-		// 1. ´´½¨ Callable ½Ó¿ÚµÄÊµÏÖÀà£¬²¢ÊµÏÖ call() ·½·¨£¬¸Ã call() ·½·¨½«×÷ÎªÏß³ÌÖ´ĞĞÌå£¬²¢ÇÒÓĞ·µ»ØÖµ¡£
-		// 2. ´´½¨ Callable ÊµÏÖÀàµÄÊµÀı£¬Ê¹ÓÃ FutureTask ÀàÀ´°ü×° Callable ¶ÔÏó£¬¸Ã FutureTask
-		// ¶ÔÏó·â×°ÁË¸Ã Callable ¶ÔÏóµÄ call() ·½·¨µÄ·µ»ØÖµ¡£
-		// 3. Ê¹ÓÃ FutureTask ¶ÔÏó×÷Îª Thread ¶ÔÏóµÄ target ´´½¨²¢Æô¶¯ĞÂÏß³Ì¡£
-		// 4. µ÷ÓÃ FutureTask ¶ÔÏóµÄ get() ·½·¨À´»ñµÃ×ÓÏß³ÌÖ´ĞĞ½áÊøºóµÄ·µ»ØÖµ¡£
-		// FutureTaskÓĞÏÂÃæ¼¸¸öÖØÒªµÄ·½·¨£º
+		// é€šè¿‡ Callable å’Œ Future åˆ›å»ºçº¿ç¨‹
+		// 1. åˆ›å»º Callable æ¥å£çš„å®ç°ç±»ï¼Œå¹¶å®ç° call() æ–¹æ³•ï¼Œè¯¥ call() æ–¹æ³•å°†ä½œä¸ºçº¿ç¨‹æ‰§è¡Œä½“ï¼Œå¹¶ä¸”æœ‰è¿”å›å€¼ã€‚
+		// 2. åˆ›å»º Callable å®ç°ç±»çš„å®ä¾‹ï¼Œä½¿ç”¨ FutureTask ç±»æ¥åŒ…è£… Callable å¯¹è±¡ï¼Œè¯¥ FutureTask
+		// å¯¹è±¡å°è£…äº†è¯¥ Callable å¯¹è±¡çš„ call() æ–¹æ³•çš„è¿”å›å€¼ã€‚
+		// 3. ä½¿ç”¨ FutureTask å¯¹è±¡ä½œä¸º Thread å¯¹è±¡çš„ target åˆ›å»ºå¹¶å¯åŠ¨æ–°çº¿ç¨‹ã€‚
+		// 4. è°ƒç”¨ FutureTask å¯¹è±¡çš„ get() æ–¹æ³•æ¥è·å¾—å­çº¿ç¨‹æ‰§è¡Œç»“æŸåçš„è¿”å›å€¼ã€‚
+		// FutureTaskæœ‰ä¸‹é¢å‡ ä¸ªé‡è¦çš„æ–¹æ³•ï¼š
 		// 1.get()
-		// ×èÈûÒ»Ö±µÈ´ıÖ´ĞĞÍê³ÉÄÃµ½½á¹û
+		// é˜»å¡ä¸€ç›´ç­‰å¾…æ‰§è¡Œå®Œæˆæ‹¿åˆ°ç»“æœ
 		// 2.get(int timeout, TimeUnit timeUnit)
-		// ×èÈûÒ»Ö±µÈ´ıÖ´ĞĞÍê³ÉÄÃµ½½á¹û£¬Èç¹ûÔÚ³¬Ê±Ê±¼äÄÚ£¬Ã»ÓĞÄÃµ½Å×³öÒì³£
+		// é˜»å¡ä¸€ç›´ç­‰å¾…æ‰§è¡Œå®Œæˆæ‹¿åˆ°ç»“æœï¼Œå¦‚æœåœ¨è¶…æ—¶æ—¶é—´å†…ï¼Œæ²¡æœ‰æ‹¿åˆ°æŠ›å‡ºå¼‚å¸¸
 		// 3.isCancelled()
-		// ÊÇ·ñ±»È¡Ïû
+		// æ˜¯å¦è¢«å–æ¶ˆ
 		// 4.isDone()
-		// ÊÇ·ñÒÑ¾­Íê³É
+		// æ˜¯å¦å·²ç»å®Œæˆ
 		// 5.cancel(boolean mayInterruptIfRunning)
-		// ÊÔÍ¼È¡ÏûÕıÔÚÖ´ĞĞµÄÈÎÎñ
+		// è¯•å›¾å–æ¶ˆæ­£åœ¨æ‰§è¡Œçš„ä»»åŠ¡
 		// CallableDemo cDemo = new CallableDemo();
 		// FutureTask<Integer> fTask = new FutureTask<>(cDemo);
 		// for (int i = 0; i < 100; i++) {
-		// System.out.println(Thread.currentThread().getName() + " µÄÑ­»·±äÁ¿iµÄÖµ" +
+		// System.out.println(Thread.currentThread().getName() + " çš„å¾ªç¯å˜é‡içš„å€¼" +
 		// i);
 		// if (i == 20) {
-		// new Thread(fTask, "ÓĞ·µ»ØÖµµÄÏß³Ì").start();
+		// new Thread(fTask, "æœ‰è¿”å›å€¼çš„çº¿ç¨‹").start();
 		// }
 		// }
 		// try {
-		// System.out.println("×ÓÏß³ÌµÄ·µ»ØÖµ£º" + fTask.get());
+		// System.out.println("å­çº¿ç¨‹çš„è¿”å›å€¼ï¼š" + fTask.get());
 		// } catch (InterruptedException e) {
 		// e.printStackTrace();
 		// } catch (ExecutionException e) {
@@ -88,7 +88,7 @@ public class MultiThreadDemo {
 		// }
 	}
 
-	// ¼Ì³ĞThreadÀàÊµÏÖ¶àÏß³Ì
+	// ç»§æ‰¿Threadç±»å®ç°å¤šçº¿ç¨‹
 	public static class ThreadDemo extends Thread {
 		private int count = 50;
 
@@ -100,11 +100,11 @@ public class MultiThreadDemo {
 			for (int i = 0; i < 50; i++) {
 				synchronized(this)
 				{
-					System.out.println(this.getName() + "ÔËĞĞ  count= " + count--);
+					System.out.println(this.getName() + "è¿è¡Œ  count= " + count--);
 				}
-				
+
 				try {
-					// Thread.sleep()·½·¨µ÷ÓÃÄ¿µÄÊÇ²»ÈÃµ±Ç°Ïß³Ì¶À×Ô°ÔÕ¼¸Ã½ø³ÌËù»ñÈ¡µÄCPU×ÊÔ´£¬ÒÔÁô³öÒ»¶¨Ê±¼ä¸øÆäËûÏß³ÌÖ´ĞĞµÄ»ú»á¡£
+					// Thread.sleep()æ–¹æ³•è°ƒç”¨ç›®çš„æ˜¯ä¸è®©å½“å‰çº¿ç¨‹ç‹¬è‡ªéœ¸å è¯¥è¿›ç¨‹æ‰€è·å–çš„CPUèµ„æºï¼Œä»¥ç•™å‡ºä¸€å®šæ—¶é—´ç»™å…¶ä»–çº¿ç¨‹æ‰§è¡Œçš„æœºä¼šã€‚
 					sleep((int) Math.random() * 10);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
@@ -113,7 +113,7 @@ public class MultiThreadDemo {
 		}
 	}
 
-	// ÊµÏÖRunnable½Ó¿Ú¡£ ¿ÉÒÔ×ÊÔ´¹²Ïí¡£ºÍthreadµÄÖ÷ÒªÇø±ğ
+	// å®ç°Runnableæ¥å£ã€‚ å¯ä»¥èµ„æºå…±äº«ã€‚å’Œthreadçš„ä¸»è¦åŒºåˆ«
 	public static class RunnableDemo implements Runnable {
 		private volatile int count = 50;
 
@@ -121,16 +121,16 @@ public class MultiThreadDemo {
 		public void run() {
 			for (int i = 0; i < 50; i++) {
 				if (count > 0) {
-					System.out.println(Thread.currentThread().getName() + "ÔËĞĞ  count= " + count--);
+					System.out.println(Thread.currentThread().getName() + "è¿è¡Œ  count= " + count--);
 				}
 				// synchronized(this)
 				// {
 				// if (count > 0) {
-				// System.out.println(Thread.currentThread().getName() + "ÔËĞĞ
+				// System.out.println(Thread.currentThread().getName() + "è¿è¡Œ
 				// count= " + count--);
 				// }
 				// }
-				
+
 				try {
 					Thread.sleep((int) Math.random() * 10);
 				} catch (InterruptedException e) {
@@ -140,7 +140,7 @@ public class MultiThreadDemo {
 		}
 	}
 
-	// ÊµÏÖCallable ½Ó¿Ú¡£²¢ÊµÏÖ call() ·½·¨£¬¸Ã call() ·½·¨½«×÷ÎªÏß³ÌÖ´ĞĞÌå£¬²¢ÇÒÓĞ·µ»ØÖµ¡£
+	// å®ç°Callable æ¥å£ã€‚å¹¶å®ç° call() æ–¹æ³•ï¼Œè¯¥ call() æ–¹æ³•å°†ä½œä¸ºçº¿ç¨‹æ‰§è¡Œä½“ï¼Œå¹¶ä¸”æœ‰è¿”å›å€¼ã€‚
 	public static class CallableDemo implements Callable<Integer> {
 		@Override
 		public Integer call() throws Exception {

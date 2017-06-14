@@ -7,11 +7,11 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-//ÔÚtry catchÒì³£ÆË×½ÖĞ£¬Ò»¸öcatch¿ÉÒÔĞ´¶à¸öÒì³£ÀàĞÍ£¬ÓÃ"|"¸ô¿ª
+//åœ¨try catchå¼‚å¸¸æ‰‘æ‰ä¸­ï¼Œä¸€ä¸ªcatchå¯ä»¥å†™å¤šä¸ªå¼‚å¸¸ç±»å‹ï¼Œç”¨"|"éš”å¼€
 public class TryCatchDemo {
 	public static void main(String[] args) {
 
-		// jdk7Ö®Ç°
+		// jdk7ä¹‹å‰
 		try {
 			BufferedReader reader = new BufferedReader(new FileReader(""));
 			Connection con = null;
@@ -28,7 +28,7 @@ public class TryCatchDemo {
 			Connection con = null;
 			Statement stmt = con.createStatement();
 		} catch (IOException | SQLException e) {
-			// ²¶»ñ¶à¸öÒì³££¬e¾ÍÊÇfinalÀàĞÍµÄ e.printStackTrace();
+			// æ•è·å¤šä¸ªå¼‚å¸¸ï¼Œeå°±æ˜¯finalç±»å‹çš„ e.printStackTrace();
 		}
 	}
 }

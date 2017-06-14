@@ -7,28 +7,28 @@ import java.util.concurrent.LinkedBlockingQueue;
 //http://www.2cto.com/kf/201601/487906.html
 //http://blog.csdn.net/ghsau/article/details/7481142
 //http://blog.csdn.net/defonds/article/details/44021605#t7
-//Ê¹ÓÃ³¡¾°£¬Ö÷Òª¶ÔÉú²ú¹ıÊ£µÄÉú²úÕß½øĞĞ×èÈû£¬¶Ô¹ı¶àµÄÏû·ÑÕß½øĞĞ×èÈû¡£
+//ä½¿ç”¨åœºæ™¯ï¼Œä¸»è¦å¯¹ç”Ÿäº§è¿‡å‰©çš„ç”Ÿäº§è€…è¿›è¡Œé˜»å¡ï¼Œå¯¹è¿‡å¤šçš„æ¶ˆè´¹è€…è¿›è¡Œé˜»å¡ã€‚
 
-//ArrayBlockingQueue£ºArrayBlockingQueue ÊÇÒ»¸öÓĞ½çµÄ×èÈû¶ÓÁĞ£¬ÆäÄÚ²¿ÊµÏÖÊÇ½«¶ÔÏó·Åµ½Ò»¸öÊı×éÀï¡£
-//ÓĞ½çÒ²¾ÍÒâÎ¶×Å£¬Ëü²»ÄÜ¹»´æ´¢ÎŞÏŞ¶àÊıÁ¿µÄÔªËØ¡£ËüÓĞÒ»¸öÍ¬Ò»Ê±¼äÄÜ¹»´æ´¢ÔªËØÊıÁ¿µÄÉÏÏŞ¡£
-//Äã¿ÉÒÔÔÚ¶ÔÆä³õÊ¼»¯µÄÊ±ºòÉè¶¨Õâ¸öÉÏÏŞ£¬µ«Ö®ºó¾ÍÎŞ·¨¶ÔÕâ¸öÉÏÏŞ½øĞĞĞŞ¸ÄÁË(ÒëÕß×¢£ºÒòÎªËüÊÇ»ùÓÚÊı×éÊµÏÖµÄ£¬Ò²¾Í¾ßÓĞÊı×éµÄÌØĞÔ£ºÒ»µ©³õÊ¼»¯£¬´óĞ¡¾ÍÎŞ·¨ĞŞ¸Ä)¡£
+//ArrayBlockingQueueï¼šArrayBlockingQueue æ˜¯ä¸€ä¸ªæœ‰ç•Œçš„é˜»å¡é˜Ÿåˆ—ï¼Œå…¶å†…éƒ¨å®ç°æ˜¯å°†å¯¹è±¡æ”¾åˆ°ä¸€ä¸ªæ•°ç»„é‡Œã€‚
+//æœ‰ç•Œä¹Ÿå°±æ„å‘³ç€ï¼Œå®ƒä¸èƒ½å¤Ÿå­˜å‚¨æ— é™å¤šæ•°é‡çš„å…ƒç´ ã€‚å®ƒæœ‰ä¸€ä¸ªåŒä¸€æ—¶é—´èƒ½å¤Ÿå­˜å‚¨å…ƒç´ æ•°é‡çš„ä¸Šé™ã€‚
+//ä½ å¯ä»¥åœ¨å¯¹å…¶åˆå§‹åŒ–çš„æ—¶å€™è®¾å®šè¿™ä¸ªä¸Šé™ï¼Œä½†ä¹‹åå°±æ— æ³•å¯¹è¿™ä¸ªä¸Šé™è¿›è¡Œä¿®æ”¹äº†(è¯‘è€…æ³¨ï¼šå› ä¸ºå®ƒæ˜¯åŸºäºæ•°ç»„å®ç°çš„ï¼Œä¹Ÿå°±å…·æœ‰æ•°ç»„çš„ç‰¹æ€§ï¼šä¸€æ—¦åˆå§‹åŒ–ï¼Œå¤§å°å°±æ— æ³•ä¿®æ”¹)ã€‚
 
-//LinkedBlockingQueue£ºLinkedBlockingQueue ÄÚ²¿ÒÔÒ»¸öÁ´Ê½½á¹¹(Á´½Ó½Úµã)¶ÔÆäÔªËØ½øĞĞ´æ´¢¡£
-//Èç¹ûĞèÒªµÄ»°£¬ÕâÒ»Á´Ê½½á¹¹¿ÉÒÔÑ¡ÔñÒ»¸öÉÏÏŞ¡£Èç¹ûÃ»ÓĞ¶¨ÒåÉÏÏŞ£¬½«Ê¹ÓÃ Integer.MAX_VALUE ×÷ÎªÉÏÏŞ¡£
+//LinkedBlockingQueueï¼šLinkedBlockingQueue å†…éƒ¨ä»¥ä¸€ä¸ªé“¾å¼ç»“æ„(é“¾æ¥èŠ‚ç‚¹)å¯¹å…¶å…ƒç´ è¿›è¡Œå­˜å‚¨ã€‚
+//å¦‚æœéœ€è¦çš„è¯ï¼Œè¿™ä¸€é“¾å¼ç»“æ„å¯ä»¥é€‰æ‹©ä¸€ä¸ªä¸Šé™ã€‚å¦‚æœæ²¡æœ‰å®šä¹‰ä¸Šé™ï¼Œå°†ä½¿ç”¨ Integer.MAX_VALUE ä½œä¸ºä¸Šé™ã€‚
 
-//PriorityBlockingQueue£ºPriorityBlockingQueue ÊÇÒ»¸öÎŞ½çµÄ²¢·¢¶ÓÁĞ¡£
-//ËüÊ¹ÓÃÁËºÍÀà java.util.PriorityQueue Ò»ÑùµÄÅÅĞò¹æÔò¡£ÄãÎŞ·¨ÏòÕâ¸ö¶ÓÁĞÖĞ²åÈë null Öµ¡£
-//ËùÓĞ²åÈëµ½ PriorityBlockingQueue µÄÔªËØ±ØĞëÊµÏÖ java.lang.Comparable ½Ó¿Ú¡£Òò´Ë¸Ã¶ÓÁĞÖĞÔªËØµÄÅÅĞò¾ÍÈ¡¾öÓÚÄã×Ô¼ºµÄ Comparable ÊµÏÖ¡£
+//PriorityBlockingQueueï¼šPriorityBlockingQueue æ˜¯ä¸€ä¸ªæ— ç•Œçš„å¹¶å‘é˜Ÿåˆ—ã€‚
+//å®ƒä½¿ç”¨äº†å’Œç±» java.util.PriorityQueue ä¸€æ ·çš„æ’åºè§„åˆ™ã€‚ä½ æ— æ³•å‘è¿™ä¸ªé˜Ÿåˆ—ä¸­æ’å…¥ null å€¼ã€‚
+//æ‰€æœ‰æ’å…¥åˆ° PriorityBlockingQueue çš„å…ƒç´ å¿…é¡»å®ç° java.lang.Comparable æ¥å£ã€‚å› æ­¤è¯¥é˜Ÿåˆ—ä¸­å…ƒç´ çš„æ’åºå°±å–å†³äºä½ è‡ªå·±çš„ Comparable å®ç°ã€‚
 
-//SynchronousQueue£ºSynchronousQueue¡£
-//Ò»ÖÖ×èÈû¶ÓÁĞ£¬ÆäÖĞÃ¿¸ö²åÈë²Ù×÷±ØĞëµÈ´ıÁíÒ»¸öÏß³ÌµÄ¶ÔÓ¦ÒÆ³ı²Ù×÷ £¬·´Ö®ÒàÈ»¡£Í¬²½¶ÓÁĞÃ»ÓĞÈÎºÎÄÚ²¿ÈİÁ¿£¬ÉõÖÁÁ¬Ò»¸ö¶ÓÁĞµÄÈİÁ¿¶¼Ã»ÓĞ¡£
-//Í¬²½¶ÓÁĞÀàËÆÓÚ CSP ºÍ Ada ÖĞÊ¹ÓÃµÄ rendezvous ĞÅµÀ¡£
-//Ëü·Ç³£ÊÊºÏÓÚ´«µİĞÔÉè¼Æ£¬ÔÚÕâÖÖÉè¼ÆÖĞ£¬ÔÚÒ»¸öÏß³ÌÖĞÔËĞĞµÄ¶ÔÏóÒª½«Ä³Ğ©ĞÅÏ¢¡¢ÊÂ¼ş»òÈÎÎñ´«µİ¸øÔÚÁíÒ»¸öÏß³ÌÖĞÔËĞĞµÄ¶ÔÏó£¬Ëü¾Í±ØĞëÓë¸Ã¶ÔÏóÍ¬²½¡£
+//SynchronousQueueï¼šSynchronousQueueã€‚
+//ä¸€ç§é˜»å¡é˜Ÿåˆ—ï¼Œå…¶ä¸­æ¯ä¸ªæ’å…¥æ“ä½œå¿…é¡»ç­‰å¾…å¦ä¸€ä¸ªçº¿ç¨‹çš„å¯¹åº”ç§»é™¤æ“ä½œ ï¼Œåä¹‹äº¦ç„¶ã€‚åŒæ­¥é˜Ÿåˆ—æ²¡æœ‰ä»»ä½•å†…éƒ¨å®¹é‡ï¼Œç”šè‡³è¿ä¸€ä¸ªé˜Ÿåˆ—çš„å®¹é‡éƒ½æ²¡æœ‰ã€‚
+//åŒæ­¥é˜Ÿåˆ—ç±»ä¼¼äº CSP å’Œ Ada ä¸­ä½¿ç”¨çš„ rendezvous ä¿¡é“ã€‚
+//å®ƒéå¸¸é€‚åˆäºä¼ é€’æ€§è®¾è®¡ï¼Œåœ¨è¿™ç§è®¾è®¡ä¸­ï¼Œåœ¨ä¸€ä¸ªçº¿ç¨‹ä¸­è¿è¡Œçš„å¯¹è±¡è¦å°†æŸäº›ä¿¡æ¯ã€äº‹ä»¶æˆ–ä»»åŠ¡ä¼ é€’ç»™åœ¨å¦ä¸€ä¸ªçº¿ç¨‹ä¸­è¿è¡Œçš„å¯¹è±¡ï¼Œå®ƒå°±å¿…é¡»ä¸è¯¥å¯¹è±¡åŒæ­¥ã€‚
 public class BlockingQueueDemo {
 	private ArrayBlockingQueue<Integer> arrayBlockingQueue = new ArrayBlockingQueue<>(100);
 	private LinkedBlockingQueue<Integer> linkedBlockingQueue = new LinkedBlockingQueue<>();
 
-	// Éú²úÕß
+	// ç”Ÿäº§è€…
 	public static class Producer implements Runnable {
 		private final BlockingQueue<Integer> blockingQueue;
 		private volatile boolean flag;
@@ -60,7 +60,7 @@ public class BlockingQueueDemo {
 		}
 	}
 
-	// Ïû·ÑÕß
+	// æ¶ˆè´¹è€…
 	public static class Consumer implements Runnable {
 		private final BlockingQueue<Integer> blockingQueue;
 		private volatile boolean flag;
@@ -92,7 +92,7 @@ public class BlockingQueueDemo {
 		BlockingQueue<Integer> blockingQueue = new LinkedBlockingQueue<Integer>(3);
 		Producer producer = new Producer(blockingQueue);
 		Consumer consumer = new Consumer(blockingQueue);
-		// ´´½¨5¸öÉú²úÕß£¬5¸öÏû·ÑÕß
+		// åˆ›å»º5ä¸ªç”Ÿäº§è€…ï¼Œ5ä¸ªæ¶ˆè´¹è€…
 		for (int i = 0; i < 6; i++) {
 			if (i < 5) {
 				new Thread(producer, "producer" + i).start();
