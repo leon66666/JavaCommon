@@ -1,13 +1,11 @@
 package zhongqiu.common.base;
 
-
-//Switch�÷�
-//һ��caseƥ��,�ͻ�˳��ִ�к���ĳ������,�����ܺ����case�Ƿ�ƥ��,ֱ������break,������һ���Կ����úü���caseִ��ͳһ���.
+//Switch用法
+//一旦case匹配,就会顺序执行后面的程序代码,而不管后面的case是否匹配,直到遇见break,利用这一特性可以让好几个case执行统一语句.
 //http://www.cnblogs.com/wangzhongqiu/p/6574529.html
-//case 1,2д������
 public class SwitchDemo {
 	public static void main(String[] args) {
-		// switch�п���ʹ���ִ��ˡ�������������ڱ�������������ʵ�ֵ�
+		//switch中可以使用字串了。这个新特性是在编译器这个层次上实现的
 		String s = "test";
 		switch (s) {
 			case "test":
@@ -23,17 +21,5 @@ public class SwitchDemo {
 				System.out.println("break");
 				break;
 		}
-		test();
-	}
-
-	public static void test() {
-		int i = 0, j = -1;
-		switch (i) {
-			case 3:
-				j = 1;
-			case 4:
-				j = 2;
-		}
-		System.out.println(j);
 	}
 }

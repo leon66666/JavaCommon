@@ -11,7 +11,7 @@ public class ReadAndShow {
 
         ByteBuffer buffer = ByteBuffer.allocate(1024);
 
-        //ͨ��ͨ����ȡ���ݵ�������
+        //通过通道读取数据到缓存区
         fc.read(buffer);
 
         buffer.flip();
