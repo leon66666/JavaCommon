@@ -7,7 +7,7 @@ public class QuickSort {
     public static void main(String[] args) {
         int[] arr = {7, 5, 4, 3, 2, 1};
         QuickSort quickSort = new QuickSort();
-        quickSort.sort(arr, 0, arr.length-1);
+        quickSort.sort(arr, 0, arr.length - 1);
     }
 
     public void sort(int[] arr, int low, int high) {
@@ -35,7 +35,7 @@ public class QuickSort {
             }
         }
         print(arr);
-        System.out.print("l=" + (l + 1) + ",h=" + (h + 1) + ",povit=" + povit + "\n");
+        System.out.print("l=" + l + ",low=" + low + ",h=" + h + ",high=" + high + ",povit=" + povit + "\n");
         if (l > low) sort(arr, low, l - 1);
         if (h < high) sort(arr, l + 1, high);
     }
