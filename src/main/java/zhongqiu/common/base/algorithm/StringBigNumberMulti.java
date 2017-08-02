@@ -4,8 +4,9 @@ import java.util.Scanner;
 
 /**
  * Created by wangzhongqiu on 2017/8/1.
+ * java计算两个字符串大数的乘积
  */
-public class test {
+public class StringBigNumberMulti {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         String line = in.nextLine();
