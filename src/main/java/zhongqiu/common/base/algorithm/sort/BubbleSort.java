@@ -5,7 +5,7 @@ package zhongqiu.common.base.algorithm.sort;
  */
 public class BubbleSort {
     public static void main(String[] args) {
-        int[] a = {10, 8, 4, 7, 34, 12, 367, 21};
+        int[] a = {9, 8, 7, 6, 5, 4, 3, 2, 1};
         sort(a);
         for (int o : a) {
             System.out.print(o + ",");
@@ -14,25 +14,12 @@ public class BubbleSort {
 
     public static void sort(int[] a) {
         int temp = 0;
-        for (int i = a.length - 1; i > 0; --i) {
-            for (int j = 0; j < i; ++j) {
-                if (a[j + 1] < a[j]) {
-                    temp = a[j];
-                    a[j] = a[j + 1];
-                    a[j + 1] = temp;
-                }
-            }
-        }
-    }
-
-    public static void sortNew(int[] a) {
-        int temp = 0;
-        for (int i = 0; i < a.length - 1; i++) {
-            for (int j = i + 1; j < a.length; j++) {
-                if (a[i] > a[j]) {
-                    temp = a[j];
-                    a[j] = a[i];
-                    a[i] = temp;
+        for (int i = a.length - 1; i > 0; i--) {
+            for (int j = 0; j < i; j++) {
+                if (a[j] > a[j + 1]) {
+                    temp = a[j + 1];
+                    a[j + 1] = a[j];
+                    a[j] = temp;
                 }
             }
         }
