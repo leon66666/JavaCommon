@@ -54,22 +54,23 @@ public class MathRandomDemo {
      * 在初始化的无重复待选数组中随机产生一个数放入结果中，
      * 将待选数组被随机到的数，用待选数组(len-1)下标对应的数替换
      * 然后从len-2里随机产生下一个随机数，如此类推
-     * @param max  指定范围最大值
-     * @param min  指定范围最小值
-     * @param n  随机数个数
+     *
+     * @param max 指定范围最大值
+     * @param min 指定范围最小值
+     * @param n   随机数个数
      * @return int[] 随机数结果集
      */
-    public static int[] getRandomIntArrayWithoutRepeat(int min,int max,int n){
-        int len = max-min+1;
+    public static int[] getRandomIntArrayWithoutRepeat(int min, int max, int n) {
+        int len = max - min + 1;
 
-        if(max < min || n > len){
+        if (max < min || n > len) {
             return null;
         }
 
         //初始化给定范围的待选数组
         int[] source = new int[len];
-        for (int i = min; i < min+len; i++){
-            source[i-min] = i;
+        for (int i = min; i < min + len; i++) {
+            source[i - min] = i;
         }
 
         int[] result = new int[n];
@@ -84,5 +85,21 @@ public class MathRandomDemo {
             source[index] = source[len];
         }
         return result;
+    }
+
+    public static int[] getIntArrayAsc(int n) {
+        int[] a = new int[n];
+        for (int i = 0; i < n; i++) {
+            a[i] = i;
+        }
+        return a;
+    }
+
+    public static int[] getIntArrayDesc(int n) {
+        int[] a = new int[n];
+        for (int i = 0; i < n; i++) {
+            a[i] = n - i - 1;
+        }
+        return a;
     }
 }
