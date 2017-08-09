@@ -6,13 +6,13 @@ package zhongqiu.common.base.algorithm.sort;
 public class BubbleSort {
     public static void main(String[] args) {
         int[] a = {9, 8, 7, 6, 5, 4, 3, 2, 1};
-        sort(a);
+        bubbleSort(a);
         for (int o : a) {
             System.out.print(o + ",");
         }
     }
 
-    public static void sort(int[] a) {
+    public static void bubbleSort(int[] a) {
         int temp = 0;
         for (int i = a.length - 1; i > 0; i--) {
             for (int j = 0; j < i; j++) {

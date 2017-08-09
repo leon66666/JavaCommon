@@ -102,4 +102,12 @@ public class MathRandomDemo {
         }
         return a;
     }
+
+    public static int[] getIntArrayAllRepeat(int n, int repeat) {
+        int[] a = new int[n];
+        for (int i = 0; i < n; i++) {
+            a[i] = repeat;
+        }
+        return a;
+    }
 }
