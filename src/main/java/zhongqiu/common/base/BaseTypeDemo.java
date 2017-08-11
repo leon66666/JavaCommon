@@ -29,10 +29,10 @@ java中基本类型的包装类的大部分都实现了常量池技术，这些�
 也即对象不负责创建和管理大于127的这些类的对象*/
 public class BaseTypeDemo {
 	public static void main(String[] args) {
-		// ValueTypeDemo.test();
-		ReferenceTypeDemo.test();
-		// CharDemo.test();
-		// StringDemo.test();
+//		 ValueTypeDemo.test();
+//		ReferenceTypeDemo.test();
+//		 CharDemo.test();
+		 StringDemo.test();
 		// StringDemo.test1();
 		// StringDemo.test2();
 	}
@@ -48,7 +48,6 @@ public class BaseTypeDemo {
 			StringBuffer str = new StringBuffer("a");
 			process(str);
 			System.out.println(str);
-			// 结果： 1 1 ab
 		}
 
 		public static void process(int i) {
@@ -72,8 +71,6 @@ public class BaseTypeDemo {
 			char c = 'a';
 			System.out.println(a == b);
 			System.out.println(a == c);
-
-			// 结果：false true
 		}
 	}
 
@@ -91,7 +88,11 @@ public class BaseTypeDemo {
 			// ”kvill”的一个引用。
 			String s6 = "kvill";
 			String s7 = "kv" + "ill";
+			String a="kv";
+			String b="ill";
+			String s8=a+b;
 			System.out.println(s6 == s7);
+			System.out.println(s6 == s8);
 			System.out.println(new String("ab").equals(new String("ab")));
 		}
 

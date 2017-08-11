@@ -12,12 +12,12 @@ import java.util.Random;
 public class QuickSort {
     public static void main(String[] args) throws InterruptedException {
         //生成准备数据
-        int n = 1000000;
+        int n = 100000;
 //        int[] arr = MathRandomDemo.getRandomIntArrayWithRepeat(n);
-        int[] arr = MathRandomDemo.getRandomIntArrayWithoutRepeat(0, n - 1, n);
+//        int[] arr = MathRandomDemo.getRandomIntArrayWithoutRepeat(0, n - 1, n);
 //        int[] arr = MathRandomDemo.getIntArrayAllRepeat(n, 10);
 //        int[] arr = MathRandomDemo.getIntArrayAsc(n);
-//        int[] arr = MathRandomDemo.getIntArrayDesc(n);
+        int[] arr = MathRandomDemo.getIntArrayDesc(n);
         int[] brr = new int[n];
         for (int i = 0; i < n; i++) {
             brr[i] = arr[i];
@@ -28,24 +28,24 @@ public class QuickSort {
         Thread.sleep(3000);
         //开始计时，排序开始
         Date arrBegin = new Date();
-        quickSort_one.sort_four(arr, 0, arr.length - 1);
+        quickSort_one.sort_one(arr, 0, arr.length - 1);
         Date arrEnd = new Date();
         System.out.println("sort_one总运行时间:" + (arrEnd.getTime() - arrBegin.getTime()) + "毫秒");
         System.out.println("sort_one总运行次数:" + quickSort_one.getNum());
-//        quickSort.print(arr);
+//        quickSort_one.print(arr);
 
 
         Thread.sleep(3000);
         //开始计时，排序开始
         Date brrBegin = new Date();
-        quickSort_two.sort_three(brr, 0, brr.length - 1);
+        quickSort_two.sort_five(brr, 0, brr.length - 1);
         Date brrEnd = new Date();
         System.out.println("sort_two总运行时间:" + (brrEnd.getTime() - brrBegin.getTime()) + "毫秒");
         System.out.println("sort_two总运行次数:" + quickSort_two.getNum());
-//        quickSort.print(brr);
+//        quickSort_two.print(brr);
     }
 
-    //互换写法.
+    //互换写法
     public void sort_one(int[] arr, int low, int high) {
         num++;
         if (low < high) {
@@ -70,14 +70,13 @@ public class QuickSort {
                     h--;
                 }
             }
-//            print(arr);
-//            System.out.print("l=" + l + ",low=" + low + ",h=" + h + ",high=" + high + ",pivot=" + pivot + "\n");
-            if (l > low) sort_one(arr, low, l - 1);//优化递归操作
-            if (h < high) sort_one(arr, l + 1, high);//优化递归操作
+            sort_one(arr, low, l - 1);
+            sort_one(arr, l + 1, high);
         }
     }
 
     //不需要互换的写法,不需要创建大量的临时变量
+    //优化递归操作
     void sort_two(int[] arr, int low, int high) {
         num++;
         if (low < high) {
@@ -102,7 +101,9 @@ public class QuickSort {
         }
     }
 
-    //不需要互换的写法,不需要创建大量的临时变量。三数取中选取枢轴
+    //不需要互换的写法,不需要创建大量的临时变量。
+    //三数取中选取枢轴。
+    //优化递归操作。
     void sort_three(int[] arr, int low, int high) {
         num++;
         if (low < high) {
@@ -128,8 +129,10 @@ public class QuickSort {
         }
     }
 
-    //不需要互换的写法,不需要创建大量的临时变量。三数取中选取枢轴。长度小于10采用插入排序。优化递归操作
-    //对于很小和部分有序的数组，快排不如插排好。当待排序序列的长度分割到一定大小后，继续分割的效率比插入排序要差，此时可以使用插排而不是快排
+    //不需要互换的写法,不需要创建大量的临时变量。
+    //三数取中选取枢轴。
+    //优化递归操作。
+    //长度小于阈值采用插入排序。对于很小和部分有序的数组，快排不如插排好。当待排序序列的长度分割到一定大小后，继续分割的效率比插入排序要差，此时可以使用插排而不是快排
     void sort_four(int[] arr, int low, int high) {
         num++;
         if (low < high) {
@@ -159,8 +162,11 @@ public class QuickSort {
         }
     }
 
-    //不需要互换的写法,不需要创建大量的临时变量。三数取中选取枢轴。长度小于10采用插入排序。优化递归操作。聚集相等元素
-    //对于很小和部分有序的数组，快排不如插排好。当待排序序列的长度分割到一定大小后，继续分割的效率比插入排序要差，此时可以使用插排而不是快排
+    //不需要互换的写法,不需要创建大量的临时变量。
+    //三数取中选取枢轴。
+    //优化递归操作。
+    //长度小于阈值采用插入排序。对于很小和部分有序的数组，快排不如插排好。当待排序序列的长度分割到一定大小后，继续分割的效率比插入排序要差，此时可以使用插排而不是快排
+    //聚集相等元素
     void sort_five(int[] arr, int low, int high) {
         num++;
         if (low < high) {
@@ -168,27 +174,68 @@ public class QuickSort {
                 InsertSort.insertSort(arr, low, high);
                 return;
             }
-            int l = low, h = high;
+
+            int l = low;
+            int h = high;
+
+            int left = low;
+            int right = high;
+
+            int leftLen = 0;
+            int rightLen = 0;
+
             int pivot = SelectPivotMedianOfThree(arr, l, h);
 
-
             while (l < h) {
-                while (l < h && arr[h] >= pivot) // 从右向左找第一个小于x的数
+                // 从右向左找第一个小于x的数
+                while (l < h && arr[h] >= pivot) {
+                    if (arr[h] == pivot)//处理相等元素
+                    {
+                        swap(arr, right, h);
+                        right--;
+                        rightLen++;
+                    }
                     h--;
+                }
                 if (l < h) {
                     arr[l] = arr[h];
                     l++;
                 }
-                while (l < h && arr[l] < pivot) // 从左向右找第一个大于等于x的数
+                // 从左向右找第一个大于等于x的数
+                while (l < h && arr[l] < pivot) {
+                    if (arr[l] == pivot) {
+                        swap(arr, left, l);
+                        left++;
+                        leftLen++;
+                    }
                     l++;
+                }
                 if (l < h) {
                     arr[h] = arr[l];
                     h--;
                 }
             }
             arr[l] = pivot;
-            if (l > low) sort_five(arr, low, l - 1);//优化递归操作
-            if (h < high) sort_five(arr, l + 1, high);//优化递归操作
+
+            //一次快排结束
+            //把与枢轴key相同的元素移到枢轴最终位置周围
+            int i = l - 1;
+            int j = low;
+            while (j < left && arr[i] != pivot) {
+                swap(arr, i, j);
+                i--;
+                j++;
+            }
+            i = l + 1;
+            j = high;
+            while (j > right && arr[i] != pivot) {
+                swap(arr, i, j);
+                i++;
+                j--;
+            }
+
+            if (l - leftLen > low) sort_five(arr, low, l - leftLen - 1);//优化递归操作
+            if (h + rightLen < high) sort_five(arr, l + rightLen + 1, high);//优化递归操作
         }
     }
 

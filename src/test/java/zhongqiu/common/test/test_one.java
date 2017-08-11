@@ -7,16 +7,17 @@ package zhongqiu.common.test;
 public class test_one {
     public static void main(String[] args) throws Exception {
         System.out.println(new test_one().test());
+
     }
 
     public static int test() throws Exception {
         int x = 1;
         try {
             x++;
-            return x;
-        } finally {
-            ++x;
             throw new Exception("11");
+        } catch (Exception e){
+            e.printStackTrace();
         }
+        return 1;
     }
 }
