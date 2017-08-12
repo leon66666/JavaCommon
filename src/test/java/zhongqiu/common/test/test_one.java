@@ -42,22 +42,38 @@ public class test_one {
         int[] newArray = new int[arr.length];
         int i = 0;
         int j = arr.length - 1;
+        int newI = 0;
         int m = (i + j) / 2;
         newArray[m] = arr[j];
         j--;
-        boolean flag=true;
-        while (i < j) {
-            if(flag){
-                newArray[m - i - 1] = arr[i];
-                newArray[m + i + 1] = arr[i+1];
-                i=i+2;
-                flag=false;
+        int num = 0;
+        while (i <= j) {
+            switch (num) {
+                case 0:
+                    newArray[m + newI + 1] = arr[i];
+                    i++;
+                    num++;
+                    break;
+                case 1:
+                    newArray[m - newI - 1] = arr[i];
+                    i++;
+                    newI = newI + 1;
+                    num++;
+                    break;
+                case 2:
+                    newArray[m + newI + 1] = arr[j];
+                    num++;
+                    j--;
+                    break;
+                case 3:
+                    newArray[m - newI - 1] = arr[j];
+                    j--;
+                    newI = newI + 1;
+                    num++;
+                    break;
             }
-            else{
-                newArray[m - i - 1] = arr[j];
-                newArray[m + i + 1] = arr[j-1];
-                j=j-2;
-                flag=true;
+            if (num == 4) {
+                num = 0;
             }
         }
         return newArray;
