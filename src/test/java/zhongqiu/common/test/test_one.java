@@ -1,23 +1,77 @@
 package zhongqiu.common.test;
 
 
+import java.util.Scanner;
+
 /**
  * Created by wangzhongqiu on 2017/8/6.
  */
 public class test_one {
-    public static void main(String[] args) throws Exception {
-        System.out.println(new test_one().test());
 
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int total = sc.nextInt();
+        int[] arr = new int[total];
+        for (int i = 0; i < total; i++) {
+            arr[i] = sc.nextInt();
+        }
+        insertSort(arr, 0, arr.length - 1);
+        int[] newArray = create(arr);
+        int num = calculate(newArray);
+        System.out.println(num);
     }
 
-    public static int test() throws Exception {
-        int x = 1;
-        try {
-            x++;
-            throw new Exception("11");
-        } catch (Exception e){
-            e.printStackTrace();
+    public static void insertSort(int[] arr, int low, int high) {
+        int i, j;
+        int n = arr.length;
+        int target;
+        //假定第一个元素被放到了正确的位置上
+        //这样，仅需遍历1 - n-1
+        for (i = low + 1; i < high + 1; i++) {
+            j = i;
+            target = arr[j];
+            while (j > 0 && target < arr[j - 1]) {
+                arr[j] = arr[j - 1];
+                j--;
+            }
+            arr[j] = target;
         }
-        return 1;
+    }
+
+    public static int[] create(int[] arr) {
+        int[] newArray = new int[arr.length];
+        int i = 0;
+        int j = arr.length - 1;
+        int m = (i + j) / 2;
+        newArray[m] = arr[j];
+        j--;
+        boolean flag=true;
+        while (i < j) {
+            if(flag){
+                newArray[m - i - 1] = arr[i];
+                newArray[m + i + 1] = arr[i+1];
+                i=i+2;
+                flag=false;
+            }
+            else{
+                newArray[m - i - 1] = arr[j];
+                newArray[m + i + 1] = arr[j-1];
+                j=j-2;
+                flag=true;
+            }
+        }
+        return newArray;
+    }
+
+    public static int calculate(int[] arr) {
+        int num = 0;
+        for (int i = 0; i < arr.length - 1; i++) {
+            if (arr[i + 1] - arr[i] >= 0) {
+                num = num + arr[i + 1] - arr[i];
+            } else {
+                num = num + arr[i] - arr[i + 1];
+            }
+        }
+        return num;
     }
 }
