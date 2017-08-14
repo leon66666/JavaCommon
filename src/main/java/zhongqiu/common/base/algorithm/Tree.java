@@ -41,7 +41,6 @@ public class Tree {
         System.out.println(String.valueOf(res));
     }
 
-    // write your code here
     public static int resolve(ArrayList<Integer> ids, ArrayList<Integer> parents, ArrayList<Integer> costs) {
         TreeNode root = creatTree(ids, parents, costs);
         IteratorTree(root, 0);
