@@ -7,7 +7,8 @@ import java.util.Random;
 
 /**
  * Created by wangzhongqiu on 2017/8/2.
- * 快速排序，是不稳定的排序
+ * 快速排序，是不稳定的排序，时间复杂度为O(nlogn)
+ * 思想：分治，递归
  */
 public class QuickSort {
     public static void main(String[] args) throws InterruptedException {
