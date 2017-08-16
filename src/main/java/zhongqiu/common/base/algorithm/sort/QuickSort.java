@@ -1,6 +1,7 @@
 package zhongqiu.common.base.algorithm.sort;
 
 import zhongqiu.common.base.MathRandomDemo;
+import zhongqiu.common.utils.CommonUtils;
 
 import java.util.Date;
 import java.util.Random;
@@ -192,7 +193,7 @@ public class QuickSort {
                 while (l < h && arr[h] >= pivot) {
                     if (arr[h] == pivot)//处理相等元素
                     {
-                        swap(arr, right, h);
+                        CommonUtils.swap(arr, right, h);
                         right--;
                         rightLen++;
                     }
@@ -205,7 +206,7 @@ public class QuickSort {
                 // 从左向右找第一个大于等于x的数
                 while (l < h && arr[l] < pivot) {
                     if (arr[l] == pivot) {
-                        swap(arr, left, l);
+                        CommonUtils.swap(arr, left, l);
                         left++;
                         leftLen++;
                     }
@@ -223,14 +224,14 @@ public class QuickSort {
             int i = l - 1;
             int j = low;
             while (j < left && arr[i] != pivot) {
-                swap(arr, i, j);
+                CommonUtils.swap(arr, i, j);
                 i--;
                 j++;
             }
             i = l + 1;
             j = high;
             while (j > right && arr[i] != pivot) {
-                swap(arr, i, j);
+                CommonUtils.swap(arr, i, j);
                 i++;
                 j--;
             }
@@ -246,15 +247,15 @@ public class QuickSort {
         //使用三数取中法选择枢轴
         if (arr[mid] > arr[high])//目标: arr[mid] <= arr[high]
         {
-            swap(arr, mid, high);
+            CommonUtils.swap(arr, mid, high);
         }
         if (arr[low] > arr[high])//目标: arr[low] <= arr[high]
         {
-            swap(arr, low, high);
+            CommonUtils.swap(arr, low, high);
         }
         if (arr[mid] > arr[low]) //目标: arr[low] >= arr[mid]
         {
-            swap(arr, mid, low);
+            CommonUtils.swap(arr, mid, low);
         }
         //此时，arr[mid] <= arr[low] <= arr[high]
         return arr[low];
@@ -277,12 +278,5 @@ public class QuickSort {
             System.out.print(i + ",");
         }
         System.out.println("");
-    }
-
-    //交换数组两个下标的值
-    public void swap(int[] arr, int i, int j) {
-        int temp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = temp;
     }
 }
