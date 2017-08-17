@@ -1,4 +1,4 @@
-package zhongqiu.common.base.algorithm;
+package zhongqiu.common.base.algorithm.programming;
 
 import java.util.*;
 

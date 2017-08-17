@@ -1,9 +1,8 @@
-package zhongqiu.common.base.algorithm;
+package zhongqiu.common.base.algorithm.programming;
 
 /**
  * Created by wangzhongqiu on 2017/8/16.
  * <p/>
- *  * 好像Java答案不多，我来献丑吧。
  *  * 正如大家之前所说，这个题主要是考细节。所以我只说说代码的细节：
  *  *   1. 读到文件路径，先用substring截取文件名。
  *  *   2. 用Entry对象保存单个记录和出现次数。
