@@ -9,10 +9,4 @@ public class test_two {
     public static void main(String[] args) {
 
     }
-
-    public String replaceSpace(StringBuffer str) {
-        int index = str.lastIndexOf("");
-        System.out.print(index);
-        return "";
-    }
 }
