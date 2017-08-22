@@ -39,7 +39,10 @@ public class BinaryTreeUtil {
 
         int[] preOrder = {1, 2, 4, 7, 3, 5, 6, 8};
         int[] inOrder = {4, 7, 2, 1, 5, 3, 8, 6};
-        post(Construct(preOrder, inOrder));
+        int[] postOrder = {7, 4, 2, 5, 8, 6, 3, 1};
+        post(ConstructByPreAndIn(preOrder, inOrder));
+        System.out.println();
+        pre(ConstructByInAndPost(inOrder, postOrder));
     }
 
     //递归先序遍历
@@ -152,12 +155,29 @@ public class BinaryTreeUtil {
      * @param inOrder  中序遍历数组
      * @return 根结点
      */
-    public static BinaryTree Construct(int[] preOrder, int[] inOrder) {
+    public static BinaryTree ConstructByPreAndIn(int[] preOrder, int[] inOrder) {
         if (preOrder == null || inOrder == null || preOrder.length <= 0 || inOrder.length <= 0) {
             return null;
         }
         try {
-            return ConstructCore(preOrder, 0, preOrder.length - 1, inOrder, 0, inOrder.length - 1);
+            return ConstructByPreAndInCore(preOrder, 0, preOrder.length - 1, inOrder, 0, inOrder.length - 1);
+        } catch (InvalidPutException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    /**
+     * @param inOrder   中序遍历数组
+     * @param postOrder 后序遍历数组
+     * @return 根结点
+     */
+    public static BinaryTree ConstructByInAndPost(int[] inOrder, int[] postOrder) {
+        if (inOrder == null || postOrder == null || inOrder.length <= 0 || postOrder.length <= 0) {
+            return null;
+        }
+        try {
+            return ConstructByInAndPostCore(inOrder, 0, inOrder.length - 1, postOrder, 0, postOrder.length - 1);
         } catch (InvalidPutException e) {
             e.printStackTrace();
             return null;
@@ -174,8 +194,8 @@ public class BinaryTreeUtil {
      * @return 根结点
      * @throws InvalidPutException
      */
-    public static BinaryTree ConstructCore(int[] preOrder, int startPreIndex, int endPreIndex,
-                                           int[] inOrder, int startInIndex, int endInIndex) throws InvalidPutException {
+    public static BinaryTree ConstructByPreAndInCore(int[] preOrder, int startPreIndex, int endPreIndex,
+                                                     int[] inOrder, int startInIndex, int endInIndex) throws InvalidPutException {
         int rootValue = preOrder[startPreIndex];
         BinaryTree root = new BinaryTree(rootValue);
         // 只有一个元素
@@ -198,23 +218,65 @@ public class BinaryTreeUtil {
         int leftPreOrderEndIndex = startPreIndex + leftLength;
         if (leftLength > 0) {
             // 构建左子树
-            root.setLchild(ConstructCore(preOrder, startPreIndex + 1,
+            root.setLchild(ConstructByPreAndInCore(preOrder, startPreIndex + 1,
                     leftPreOrderEndIndex, inOrder, startInIndex,
                     rootInIndex - 1));
         }
         if (leftLength < endPreIndex - startPreIndex) {
             // 右子树有元素,构建右子树
-            root.setRchild(ConstructCore(preOrder, leftPreOrderEndIndex + 1,
+            root.setRchild(ConstructByPreAndInCore(preOrder, leftPreOrderEndIndex + 1,
                     endPreIndex, inOrder, rootInIndex + 1, endInIndex));
         }
         return root;
     }
 
+    /**
+     * @param inOrder        中序遍历序列
+     * @param startInIndex   中序序列开始位置
+     * @param endInIndex     中序序列结束位置
+     * @param postOrder      后序遍历序列
+     * @param startPostIndex 后序序列开始位置
+     * @param endPostIndex   后序序列结束位置
+     * @return 根结点
+     * @throws InvalidPutException
+     */
+    public static BinaryTree ConstructByInAndPostCore(int[] inOrder, int startInIndex, int endInIndex, int[] postOrder, int startPostIndex, int endPostIndex) throws InvalidPutException {
+        int rootValue = postOrder[endPostIndex];
+        BinaryTree root = new BinaryTree(rootValue);
+        // 只有一个元素
+        if (startPostIndex == endPostIndex) {
+            if (startInIndex == endInIndex && postOrder[endPostIndex] == inOrder[startInIndex]) {
+                return root;
+            } else {
+                throw new InvalidPutException();
+            }
+        }
+        // 在中序遍历中找到根结点的索引
+        int rootInIndex = startInIndex;
+        while (rootInIndex <= endInIndex && inOrder[rootInIndex] != rootValue) {
+            rootInIndex++;
+        }
+        if (rootInIndex == endInIndex && inOrder[rootInIndex] != rootValue) {
+            throw new InvalidPutException();
+        }
+        int leftLength = rootInIndex - startInIndex;
+        if (leftLength > 0) {
+            // 构建左子树
+            root.setLchild(ConstructByInAndPostCore(inOrder, startInIndex,
+                    rootInIndex - 1, postOrder, startPostIndex,
+                    startPostIndex + leftLength - 1));
+        }
+        if (leftLength < endPostIndex - startPostIndex) {
+            // 右子树有元素,构建右子树
+            root.setRchild(ConstructByInAndPostCore(inOrder, rootInIndex + 1,
+                    endInIndex, postOrder, startPostIndex + leftLength, endPostIndex - 1));
+        }
+        return root;
+    }
 
     static class InvalidPutException extends Exception {
         private static final long serialVersionUID = 1L;
     }
-
 
     public static void visit(BinaryTree bt) {
         System.out.print(bt.getData() + " ");
