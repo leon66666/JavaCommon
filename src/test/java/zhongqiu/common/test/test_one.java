@@ -9,12 +9,8 @@ import java.util.Scanner;
 public class test_one {
 
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        String s=sc.next();
-        int total = sc.nextInt();
-        int[] arr = new int[total];
-        for (int i = 0; i < total; i++) {
-            arr[i] = sc.nextInt();
-        }
+        System.out.print(4 % 3);
+        System.out.print(6 % 3);
+        System.out.print(5 % 3);
     }
 }

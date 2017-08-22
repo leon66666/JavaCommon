@@ -2,7 +2,7 @@ package zhongqiu.common.base.algorithm.programming;
 
 /**
  * Created by wangzhongqiu on 2017/8/20.
- * 替换字符串中的所有空格为"%20"
+ * 剑指offer：替换字符串中的所有空格为"%20"
  */
 public class ReplaceSpace {
     public static void main(String[] args) {
