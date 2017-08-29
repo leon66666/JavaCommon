@@ -1,4 +1,4 @@
-package zhongqiu.common.base.algorithm.programming;
+package zhongqiu.common.base.algorithm.programming.swordatoffer;
 
 /**
  * Created by wangzhongqiu on 2017/8/22.

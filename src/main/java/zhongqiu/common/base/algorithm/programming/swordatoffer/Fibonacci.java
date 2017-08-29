@@ -1,9 +1,10 @@
-package zhongqiu.common.base.algorithm.programming;
+package zhongqiu.common.base.algorithm.programming.swordatoffer;
 
 import java.util.Scanner;
 
 /**
  * Created by wangzhongqiu on 2017/8/28.
+ * 剑指offer：斐波那契数列
  */
 public class Fibonacci {
     public static void main(String[] args) {

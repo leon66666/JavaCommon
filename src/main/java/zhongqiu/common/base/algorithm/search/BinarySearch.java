@@ -14,7 +14,7 @@ public class BinarySearch {
         for (Integer i = 0; i < columns; i++) {
             array[i] = i;
         }
-        boolean result = binarySearchAdapt(array, 4, 0, array.length-1);
+        boolean result = binarySearchAdapt(array, 4, 0, array.length - 1);
         System.out.print(result);
     }
 
@@ -45,10 +45,12 @@ public class BinarySearch {
     }
 
     //差值二分查找，自适应
+    //对于表长较大，而关键字分布又比较均匀的查找表来说，插值查找算法的平均性能比折半查找要好的多。
+    //反之，数组中如果分布非常不均匀，那么插值查找未必是很合适的选择。
     public static boolean binarySearchAdapt(int a[], int value, int low, int high) {
         int mid;
         while (low <= high) {
-            mid = low+(value-a[low])/(a[high]-a[low])*(high-low);
+            mid = low + (value - a[low]) / (a[high] - a[low]) * (high - low);
             if (a[mid] == value)
                 return true;
             if (a[mid] > value)
