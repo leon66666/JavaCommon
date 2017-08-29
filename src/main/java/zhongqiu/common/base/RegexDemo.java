@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
 //http://www.runoob.com/java/java-regular-expressions.html
 public class RegexDemo {
 	public static void main(String[] args) {
-		match();
+//		match();
 		replace();
 	}
 
