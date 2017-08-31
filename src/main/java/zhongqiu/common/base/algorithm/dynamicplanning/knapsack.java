@@ -97,7 +97,6 @@ public class Knapsack {
             for (int j = f.length - 1; j >= weight[i]; j--) {
                 if (f[j] < f[j - weight[i]] + val[i]) {
                     f[j] = f[j - weight[i]] + val[i];
-//                    path[]
                 }
 //                f[j] = Math.max(f[j], f[j - weight[i]] + val[i]);
             }
