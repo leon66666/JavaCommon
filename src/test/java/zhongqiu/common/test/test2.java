@@ -1,23 +1,36 @@
 package zhongqiu.common.test;
 
+
 import java.util.Scanner;
 
 public class test2 {
     public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);
-        int n = scan.nextInt();
-        int m = scan.nextInt();
-        int p = scan.nextInt();
-        int[][] arr = new int[p][4];
-        for (int i = 0; i < p; i++) {
-            for (int j = 0; j < 4; j++) {
-                arr[i][j] = scan.nextInt();
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] a = new int[n];
+        for (int i = 0; i < n; i++) {
+
+        }
+        for (int i = 0; i < n; i++) {
+            a[i] = sc.nextInt();
+        }
+        int first = a[0];
+        int index = 0;
+        for (int i = 1; i < a.length; i++) {
+            if (a[i] > first) {
+                first = a[i];
+                index = i;
             }
         }
-        System.out.println(3);
-        System.out.println(4);
-        System.out.println(5);
-        System.out.println(3);
-        System.out.println(9);
+        for (int i = 0; i < a.length; i++) {
+            if (i == index)
+                continue;
+            first -= a[i];
+        }
+
+        if (first > 0)
+            System.out.println("no");
+        else
+            System.out.println("yes");
     }
 }
