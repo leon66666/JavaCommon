@@ -176,7 +176,7 @@ public class SynchronizedDemo implements Runnable {
         }, "t3").start();
     }
 
-    /*关于static的用法*/
+    /*关于static的用法,类的实例化对象中是不包含类的静态变量和静态方法的。*/
     public static void test5() {
         SynchronizedDemo.num++;
         SynchronizedDemo syn = new SynchronizedDemo();
