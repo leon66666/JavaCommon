@@ -19,10 +19,13 @@ package zhongqiu.common.base.thread;
 public class SynchronizedDemo implements Runnable {
     public static void main(String[] args) {
 //        test1();
-//		test2();
+//		  test2();
 //        test3();
-        test4();
+//        test4();
+        test5();
     }
+
+    public static int num;
 
     public void run() {
         System.out.println("线程" + Thread.currentThread().getName() + "申请获得syn的方法锁");
@@ -171,5 +174,12 @@ public class SynchronizedDemo implements Runnable {
                 syn.print();
             }
         }, "t3").start();
+    }
+
+    /*关于static的用法*/
+    public static void test5() {
+        SynchronizedDemo.num++;
+        SynchronizedDemo syn = new SynchronizedDemo();
+        syn.run();
     }
 }
