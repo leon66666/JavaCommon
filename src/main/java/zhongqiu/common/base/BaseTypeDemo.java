@@ -11,7 +11,7 @@ package zhongqiu.common.base;
 在栈中可以直接分配内存的数据是基本数据类型。
 引用数据类型：是数据的引用在栈中，但是他的对象在堆中。
 
-字节：
+字节：                      位
 boolean 布尔型              1/8
 byte 字节类型                1
 char 字符型                  2  一个字符能存储一个中文汉字
@@ -24,8 +24,11 @@ double 双精度类型（双精度）  8
 */
 
 /*常量池概念
-java中基本类型的包装类的大部分都实现了常量池技术，这些类是 Byte,Short,Integer,Long,Character,Boolean,
-另外两种浮点数类型的包装类则没有实现。另外 Byte,Short,Integer,Long,Character这5种整型的包装类也只是在对应值>= -128 &&<= 127时才可使用对象池，
+java中基本类型的包装类的大部分都实现了常量池技术，
+这些类是 Byte,Short,Integer,Long,Character,Boolean,
+另外两种浮点数类型的包装类则没有实现。
+另外 Byte,Short,Integer,Long,Character这5种整型的包装类
+也只是在对应值>= -128 &&<= 127时才可使用对象池，
 也即对象不负责创建和管理大于127的这些类的对象*/
 public class BaseTypeDemo {
 	public static void main(String[] args) {
