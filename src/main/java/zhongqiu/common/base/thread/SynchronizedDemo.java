@@ -3,48 +3,40 @@ package zhongqiu.common.base.thread;
 //多线程资源同步
 /*
 1、synchronized关键字的作用域有二种：
-1）是某个对象实例内，synchronized aMethod(){}可以防止多个线程同时访问这个对象的synchronized方法（如果一个对象有多个synchronized方法，
-       只要一个线程访问了其中的一个synchronized方法，其它线程不能同时访问这个对象中任何一个synchronized方法）。
-       这时，不同的对象实例的synchronized方法是不相干扰的。也就是说，其它线程照样可以同时访问相同类的另一个对象实例中的synchronized方法；
-2）是某个类的范围，synchronized static aStaticMethod{}防止多个线程同时访问这个类中的synchronized static 方法。它可以对类的所有对象实例起作用。
-2、除了方法前用synchronized关键字，synchronized关键字还可以用于方法中的某个区块中，表示只对这个区块的资源实行互斥访问。
-       用法是: synchronized(this){区块}，它的作用域是当前对象；
-3、synchronized关键字是不能继承的，也就是说，基类的方法synchronized f(){} 在继承类中并不自动是synchronized f(){}，
-       而是变成了f(){}。继承类需要你显式的指定它的某个方法为synchronized方法；
+1）是某个对象实例内，synchronized aMethod(){}可以防止多个线程同时访问这个对象的synchronized方法
+      （如果一个对象有多个synchronized方法，只要一个线程访问了其中的一个synchronized方法，
+       其它线程不能同时访问这个对象中任何一个synchronized方法）。
+       这时，不同的对象实例的synchronized方法是不相干扰的。
+       也就是说，其它线程照样可以同时访问相同类的另一个对象实例中的synchronized方法；
+2）是某个类的范围，synchronized static aStaticMethod{}
+   防止多个线程同时访问这个类中的synchronized static 方法。它可以对类的所有对象实例起作用。
+2、除了方法前用synchronized关键字，synchronized关键字还可以用于方法中的某个区块中，
+   表示只对这个区块的资源实行互斥访问。用法是: synchronized(this){区块}，它的作用域是当前对象；
+3、synchronized关键字是不能继承的，也就是说，
+   基类的方法synchronized f(){} 在继承类中并不自动是synchronized f(){}，
+   而是变成了f(){}。继承类需要你显式的指定它的某个方法为synchronized方法；
 */
 public class SynchronizedDemo implements Runnable {
     public static void main(String[] args) {
-        test1();
-//		test2();
+//        test1();
+//		  test2();
 //        test3();
+//        test4();
+        test5();
     }
 
-    // synchronized(this)同步代码块
-    public void run() {
-//        System.out.println("线程" + Thread.currentThread().getName() + "申请获得syn的锁");
-//        synchronized (this) {
-//            System.out.println("线程" + Thread.currentThread().getName() + "获得了syn的锁");
-//            System.out.println("线程" + Thread.currentThread().getName() + "休眠5秒");
-//            try {
-//                Thread.sleep(5000);
-//            } catch (InterruptedException e) {
-//                e.printStackTrace();
-//            }
-//            System.out.println("线程" + Thread.currentThread().getName() + "睡醒了");
-//            for (int i = 0; i < 200; i++) {
-//                System.out.println(Thread.currentThread().getName() + " synchronized loop " + i);
-//            }
-//        }
+    public static int num;
 
+    public void run() {
         System.out.println("线程" + Thread.currentThread().getName() + "申请获得syn的方法锁");
         print();
     }
 
     public synchronized static void print() {
         System.out.println("线程" + Thread.currentThread().getName() + "获得了syn的方法锁");
-        System.out.println("线程" + Thread.currentThread().getName() + "休眠5秒");
+        System.out.println("线程" + Thread.currentThread().getName() + "休眠50秒");
         try {
-            Thread.sleep(5000);
+            Thread.sleep(5000 * 10);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -74,16 +66,11 @@ public class SynchronizedDemo implements Runnable {
         }
     }
 
-    /*
-     * 当有一个明确的对象作为锁时，就可以这样写程序，但当没有明
-     *
-     * 确的对象作为锁，只是想让一段代码同步时，可以创建一个特殊的instance变量（它得是一个对象）来充当锁：
-     */
-    /*
-     * 注：零长度的byte数组对象创建起来将比任何对象都经济――查看编译后的字节码：生成零长度的byte[]对象只需3条操作码，而Object lock
-	 *
-	 * = new Object()则需要7行操作码。
-	 */
+
+    /*有一个明确的对象作为锁时，就可以这样写程序，但当没有明确的对象作为锁，
+    只是想让一段代码同步时，可以创建一个特殊的instance变量（它得是一个对象）来充当锁：
+    注：零长度的byte数组对象创建起来将比任何对象都经济――查看编译后的字节码：
+    生成零长度的byte[]对象只需3条操作码，而Object lock = new Object()则需要7行操作码。*/
     private byte[] lock1 = new byte[0]; // 特殊的instance变量
 
     void methodA() {
@@ -139,7 +126,8 @@ public class SynchronizedDemo implements Runnable {
     /*
      * 当一个线程访问object的一个synchronized(this)同步代码块时，
      * 其他线程对object中所有其它synchronized(this)同步代码块的访问将被阻塞。
-     * 也就是说，当一个线程访问object的一个synchronized(this)同步代码块时，它就获得了这个object的对象锁。
+     * 也就是说，当一个线程访问object的一个synchronized(this)同步代码块时，
+     * 它就获得了这个object的对象锁。
      * 结果，其它线程对该object对象所有同步代码部分的访问都被暂时阻塞。
      */
     public static void test3() {
@@ -164,4 +152,34 @@ public class SynchronizedDemo implements Runnable {
         }, "t3").start();
     }
 
+    /*synchronized static aStaticMethod{}
+       防止多个线程同时访问这个类中的synchronized static 方法。它可以对类的所有对象实例起作用。*/
+    public static void test4() {
+        final SynchronizedDemo syn = new SynchronizedDemo();
+
+        new Thread(new Runnable() {
+            public void run() {
+                SynchronizedDemo.print();
+            }
+        }, "t1").start();
+
+        new Thread(new Runnable() {
+            public void run() {
+                SynchronizedDemo.print();
+            }
+        }, "t2").start();
+
+        new Thread(new Runnable() {
+            public void run() {
+                syn.print();
+            }
+        }, "t3").start();
+    }
+
+    /*关于static的用法,类的实例化对象中是不包含类的静态变量和静态方法的。*/
+    public static void test5() {
+        SynchronizedDemo.num++;
+        SynchronizedDemo syn = new SynchronizedDemo();
+        syn.run();
+    }
 }
