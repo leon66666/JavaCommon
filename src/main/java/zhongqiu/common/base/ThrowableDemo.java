@@ -19,8 +19,11 @@ public class ThrowableDemo extends Throwable {
          (3) 检查异常是运行时异常以外的异常, 也是Exception及其子类, 这些异常从程序的角度来说是必须经过捕捉检查处理的, 否则不能通过编译.
              IOException
              SQLException
-             ClassNotFoundException
-             FileNotFoundException
+             ClassNotFoundException，继承自ReflectiveOperationException
+             FileNotFoundException，继承自ReflectiveOperationException
+             ReflectiveOperationException
+             InterruptedException
+               当某个线程处于长时间的等待、休眠或其他暂停状态，而此时其他的线程通过Thread的interrupt方法终止该线程时抛出该异常。
          (4) throw语句用在方法体内，表示抛出异常，由方法体内的语句处理。
              throws语句用在方法声明后面，表示再抛出异常，由该方法的调用者来处理。*/
     public static void main(String[] args) {
