@@ -29,14 +29,16 @@ public class SwitchDemo {
                 break;
         }
 
-
         final int i = 3;
         switch (i) {
-            case '1':
+            case '3':
                 System.out.println(1);
                 break;
             case 2:
                 System.out.println(2);
+                break;
+            case 223:
+                System.out.println(128);
                 break;
             default:
                 System.out.println("default");
