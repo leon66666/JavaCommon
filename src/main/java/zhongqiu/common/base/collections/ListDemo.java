@@ -40,7 +40,7 @@ public class ListDemo {
         arrayList.add(cPo);
 
         arrayList.add(new CollectionPo(1, "周", 87));
-
+        linkedList.add(cPo);
         list.add("Pear");
 
     }
