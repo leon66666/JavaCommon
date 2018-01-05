@@ -27,7 +27,7 @@ public class MapDemo {
     // TreeMap实现了SortedMap接口，能对键对象进行排序。支持自然排序和客户化排序两种方式。
     private static TreeMap<Integer, Integer> tMap = new TreeMap<>();
 
-    //
+    //线程安全，synchronized内置锁
     private static Hashtable<Integer, Integer> hashtable = new Hashtable<>();
 
     // map的赋值

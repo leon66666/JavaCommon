@@ -1,12 +1,6 @@
 package zhongqiu.common.base.collections;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.Vector;
+import java.util.*;
 
 //List相关操作
 public class ListDemo {
@@ -31,6 +25,7 @@ public class ListDemo {
     private static ArrayList<CollectionPo> arrayList = new ArrayList<>();// 非同步，可变数组
     private static LinkedList<CollectionPo> linkedList = new LinkedList<>();// 非同步，链表
     private static Vector<CollectionPo> vector = new Vector<>();// 同步
+    private static Stack<Integer> stack = new Stack<>();
 
     // 初始化方法
     public static void initList() {
