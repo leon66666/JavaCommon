@@ -1,9 +1,11 @@
-/**
+/*
  * @author zhongqiu
  * 参考资料：http://blog.csdn.net/fyang2007/article/details/51517662
  * （1）集合中的List：arrayList，linkedList,vector的区别和使用场景。linkedlist双向循环链表，vector同步实现原理syn锁
  * ArrayList。【ArrayList implements List】【List extends Collection】【Collection extends Iterable】
  * LinkedList。【LinkedList implements List,Deque】【Deque extends Queue】【Queue extends Collection】
+    list核心方法：linkFirst(E e)，linkLast(E e)，linkBefore(E e, Node<E> succ)，node(int index)，addAll(int index, Collection<? extends E> c)
+    Deque核心方法：indexOf(Object o)，lastIndexOf(Object o)，E unlink(Node<E> x)，remove(Object o)，
  * Vector。【Vector implements List】【elements方法内创建匿名类，返回Enumeration对象用来遍历集合】
  * Collections。【提供了很多对list的操作：排序，混排，替换，复制，最大最小值，移动list中元素位置】
  * （2）集合中的Stack：push，pop，peek，search。【Stack extends Vector】
