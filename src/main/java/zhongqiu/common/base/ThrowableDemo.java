@@ -11,7 +11,7 @@ public class ThrowableDemo extends Throwable {
              OutOfMemoryError,内存溢出
              StackOverflowError，堆栈溢出
          (2) 运行时异常都是RuntimeException类及其子类,
-             是在程序运行的时候可能会发生的, 所以程序可以捕捉, 也可以不捕捉. 这些错误一般是由程序的逻辑错误引起的, 程序应该从逻辑角度去尽量避免                        NullPointerException  空指针异常
+             是在程序运行的时候可能会发生的, 所以程序可以捕捉, 也可以不捕捉. 这些错误一般是由程序的逻辑错误引起的, 程序应该从逻辑角度去尽量避免                           NullPointerException  空指针异常
              IndexOutOfBoundsException 数组越界异常
              ClassCastException  类转换异常
              ArrayStoreException  数组存储异常
