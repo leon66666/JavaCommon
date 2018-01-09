@@ -1,5 +1,7 @@
 package zhongqiu.common.base.collections;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
+
 import java.util.*;
 
 //List相关操作
@@ -43,6 +45,8 @@ public class ListDemo {
         linkedList.add(cPo);
         list.add("Pear");
         list.remove("Pear");
+        Object o = new Object();
+        Boolean b = (Object) Object[].class == o;
     }
 
     // 遍历方法

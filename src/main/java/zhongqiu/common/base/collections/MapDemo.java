@@ -35,6 +35,7 @@ public class MapDemo {
         hMap.put(1, 1);
         hMap.put(2, 2);
         hMap.put(3, 3);
+        hMap.put(null, null);
     }
 
     // map的遍历
