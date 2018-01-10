@@ -3,7 +3,13 @@
  * 参考资料：http://blog.csdn.net/fyang2007/article/details/51517662
  * （1）集合中的List：arrayList，linkedList,vector的区别和使用场景。linkedlist双向循环链表，vector同步实现原理syn锁
        【ArrayList implements List】【List extends Collection】【Collection extends Iterable】
-       【核心方法】Arrays.copyOf，System.arraycopy(elementData, toIndex, elementData, fromIndex,numMoved)，fastRemove，clear
+       【核心方法】elementData[]，size,modCount
+                  Arrays.copyOf，System.arraycopy(original, toIndex, copy, fromIndex,numMoved)
+                  add,ensureCapacityInternal(size + 1),grow,Arrays.copyOf
+                  addAll,ensureCapacityInternal(size + numNew)
+                  addAll(int index, Collection<? extends E> c),
+                  remove,fastRemove(index)，clear
+                  iterator,class Itr implements Iterator,cursor,lastRet,next,remove,checkForComodification
        【LinkedList implements List,Deque】【Deque extends Queue】【Queue extends Collection】
        【list核心方法】linkFirst(E e)，linkLast(E e)，linkBefore(E e, Node<E> succ)，
                       node(int index)，addAll(int index, Collection<? extends E> c)
