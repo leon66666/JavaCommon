@@ -18,8 +18,9 @@
  * 内部实现：数组+链表；hash算法 ；初始容量(桶)和加载因子；rehash操作(扩充容量2倍)；链地址法解决冲突；红黑树，put和delete
  * HashMap。【HashMap implements Map】
     核心方法：Entry<K,V>[] table，threshold,modCount，loadFactor，size,hashSeed
-             put，inflateTable,initHashSeedAsNeeded,putForNullKey,addEntry,indexFor，hash,addEntry，resize，createEntry，transfer
-             
+             put，inflateTable,roundUpToPowerOf2，initHashSeedAsNeeded,putForNullKey,addEntry,
+                  hash,indexFor，addEntry，resize，transfer，createEntry
+
  * TreeMap。【TreeMap implements NavigableMap】【NavigableMap extends SortedMap】【SortedMap extends Map】
  * Hashtable。【Hashtable extends Dictionary implements Map】【synchronized内置锁保证线程安全】
  */
