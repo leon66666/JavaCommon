@@ -8,8 +8,9 @@
                   add,ensureCapacityInternal(size + 1),grow,Arrays.copyOf
                   addAll,ensureCapacityInternal(size + numNew)
                   addAll(int index, Collection<? extends E> c),
-                  remove(int index),remove(Object o),fastRemove(index)，clear
-                  iterator,class Itr implements Iterator,cursor,lastRet,expectedModCount,next(),remove(),checkForComodification
+                  remove(int index),remove(Object o),fastRemove(index)，System.arraycopy,clear
+                  iterator,class Itr implements Iterator,cursor,lastRet,expectedModCount,
+                           next(),remove(int index),checkForComodification()
        【LinkedList implements List,Deque】【Deque extends Queue】【Queue extends Collection】
        【list核心方法】linkFirst(E e)，linkLast(E e)，linkBefore(E e, Node<E> succ)，
                       node(int index)，addAll(int index, Collection<? extends E> c)
