@@ -13,9 +13,10 @@
                            next(),remove(int index),checkForComodification()
        【LinkedList implements List,Deque】【Deque extends Queue】【Queue extends Collection】
         size,first,last,modCount,
-       【list核心方法】linkFirst(E e)，linkLast(E e)，linkBefore(E e, Node<E> succ)
+       【list核心方法】toArray,linkFirst(E e)，linkLast(E e)，linkBefore(E e, Node<E> succ)
                       addAll(int index, Collection<? extends E> c),node(int index)
-       【Deque核心方法】indexOf(Object o)，lastIndexOf(Object o)，E unlink(Node<E> x)，remove(Object o)，
+       【Deque核心方法】indexOf(Object o)，lastIndexOf(Object o),remove(Object o)，unlink(Node<E> x)
+       【iterator】内部类class ListItr implements ListIterator<E>，lastReturned,next,nextIndex,expectedModCount
        【Vector implements List】【elements方法内创建匿名类，返回Enumeration对象用来遍历集合】
        【Collections 提供了很多对list的操作：排序，混排，替换，复制，最大最小值，移动list中元素位置】
  * （2）集合中的Stack：push，pop，peek，search。【Stack extends Vector】
