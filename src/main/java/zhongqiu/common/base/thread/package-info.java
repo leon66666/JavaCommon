@@ -1,7 +1,4 @@
-/**
- *
- */
-/**
+/*
  * @author zhongqiu
  * 并发，线程相关
  * （1）同步Synchronized
@@ -20,7 +17,7 @@
  *                5、有序性：happens-before原则（先行发生原则）
  *     Volatile说明：volatile关键字能禁止指令重排序，所以volatile能在一定程度上保证有序性。
  *                 volatile保证原子性吗？不能！！！
- *
+ *  (4)
  *
  */
 package zhongqiu.common.base.thread;

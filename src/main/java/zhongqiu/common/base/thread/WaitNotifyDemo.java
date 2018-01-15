@@ -22,8 +22,8 @@ public class WaitNotifyDemo {
 		WaitThread waitThread03 = test.new WaitThread("waiter03");
 		notifyThread.start();
 		waitThread01.start();
-		waitThread02.start();
-		waitThread03.start();
+//		waitThread02.start();
+//		waitThread03.start();
 	}
 
 	private StringBuilder flag =new StringBuilder("true");
@@ -35,7 +35,7 @@ public class WaitNotifyDemo {
 
 		public void run() {
 			try {
-				sleep(10000);// 推迟3秒钟通知
+				sleep(100000);// 推迟3秒钟通知
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
