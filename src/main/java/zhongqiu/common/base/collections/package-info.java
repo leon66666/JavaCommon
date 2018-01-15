@@ -29,8 +29,12 @@
        【内部实现】数组+链表；hash算法 ；初始容量(桶)和加载因子；rehash操作(扩充容量2倍)；链地址法解决冲突；红黑树，put和delete
        【HashMap】【HashMap implements Map】
        【核心方法】:Entry<K,V>[] table，threshold,modCount，loadFactor，size,hashSeed
-                   put，inflateTable,roundUpToPowerOf2，initHashSeedAsNeeded,putForNullKey,addEntry,
-                       hash,indexFor，addEntry，resize，transfer，createEntry
+                   put，inflateTable,roundUpToPowerOf2，initHashSeedAsNeeded,
+                        putForNullKey,遍历table[0]是否已存在null的key,不存在addEntry,
+                        hash,indexFor，遍历table[i]是否已存在key，不存在addEntry,
+                        addEntry(int hash, K key, V value, int bucketIndex)，
+                        resize(2 * table.length)，transfer，
+                        hash，indexFor，createEntry(hash, key, value, bucketIndex);
                    get,getForNullKey,getEntry，containsKey
                    remove，removeEntryForKey，clear，Arrays.fill(table, null);
                    entrySet，keySet，values
