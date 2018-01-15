@@ -35,7 +35,8 @@
                         addEntry(int hash, K key, V value, int bucketIndex)，
                         resize(2 * table.length)，transfer，
                         hash，indexFor，createEntry(hash, key, value, bucketIndex);
-                   get,getForNullKey,getEntry，containsKey
+                   get,getForNullKey,getEntry，
+                   containsKey,getEntry,
                    remove，removeEntryForKey，clear，Arrays.fill(table, null);
                    entrySet，keySet，values
        【TreeMap】【TreeMap implements NavigableMap】【NavigableMap extends SortedMap】【SortedMap extends Map】
