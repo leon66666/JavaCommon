@@ -37,8 +37,10 @@
                         hash，indexFor，createEntry(hash, key, value, bucketIndex);
                    get,getForNullKey,getEntry，
                    containsKey,getEntry,
-                   remove，removeEntryForKey，clear，Arrays.fill(table, null);
-                   entrySet，keySet，values
+                   remove(Object key)，removeEntryForKey，hash,indexFor,遍历table[i]，
+                   clear，Arrays.fill(table, null);
+                   entrySet，keySet，values,abstract class HashIterator implements Iterator,
+                   Entry<K,V> next;Entry<K,V> current;int index;expectedModCount,
        【TreeMap】【TreeMap implements NavigableMap】【NavigableMap extends SortedMap】【SortedMap extends Map】
        【Hashtable】【Hashtable extends Dictionary implements Map】【synchronized内置锁保证线程安全】
                     【Hashtable和hashmap的差别：线程安全，key和value不能为null，获取index实现不一样】
