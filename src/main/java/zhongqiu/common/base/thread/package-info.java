@@ -2,11 +2,13 @@
  * @author zhongqiu
  * 并发，线程相关
  * （1）同步Synchronized
- * （2）thread。implements Runnable。持有对象Runnable target，ThreadLocal.ThreadLocalMap threadLocals
- *             start启动，三种初始化方式，
- * （2）多线程:1、多线程的三种实现方法；runable和thread的区别；多次start一个线程会怎么样；线程的五大状态：新建、就绪、运行、阻塞、死亡。
- *            2、如何运行一个多线程执行代码；线程的常用方法；wait和notify的使用；isAlive的使用
- *            3、经典面试题（三个线程交替打印10次ABC）
+ * （2）thread。implements Runnable。
+ *             持有对象Runnable target，ThreadLocal.ThreadLocalMap threadLocals,threadStatus
+ *             start启动，多次调用会怎样，三种初始化方式(runable,futuretask,thread)，runable和thread的区别
+ *             线程的五大状态：新建、就绪、运行、阻塞、死亡。
+ *             wait和notify的使用；isAlive的使用
+ *             经典面试题（三个线程交替打印10次ABC）
+ *             多线程异步计算获取计算结果
  * （3）Volatile关键字。
  *     缓存一致性：内存，cpu高速缓存，总线锁机制，缓存一致性协议（Intel 的MESI协议），共享变量。
  *     内存模型：次序规则，锁定规则，volatile变量规则，线程启动规则，线程终止规则，对象终结规则
