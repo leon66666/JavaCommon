@@ -2,7 +2,8 @@
  * @author zhongqiu
  * 并发，线程相关
  * （1）同步Synchronized
- * （2）thread。implements Runnable，
+ * （2）thread。implements Runnable。持有对象Runnable target，ThreadLocal.ThreadLocalMap threadLocals
+ *             start启动，三种初始化方式，
  * （2）多线程:1、多线程的三种实现方法；runable和thread的区别；多次start一个线程会怎么样；线程的五大状态：新建、就绪、运行、阻塞、死亡。
  *            2、如何运行一个多线程执行代码；线程的常用方法；wait和notify的使用；isAlive的使用
  *            3、经典面试题（三个线程交替打印10次ABC）
