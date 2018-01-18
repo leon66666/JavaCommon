@@ -1,12 +1,15 @@
-package zhongqiu.common.base.thread;
+package zhongqiu.common.jdk5.concurrent;
 
 import java.util.Date;
+import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.FutureTask;
 
 /**
- * Created by wangzhongqiu on 2017/7/16.
+ * @author wangzhongqiu
+ * @date 2018/1/18.
  */
-public class CallableTest {
+public class FutureTaskDemo {
     public static void main(String[] args) throws InterruptedException, ExecutionException {
         Date begin = new Date();
         Calculate calculate = new Calculate();
@@ -14,13 +17,12 @@ public class CallableTest {
 
         //异步计算
         int two = 0;
-        RunnableDemo runnableDemo = new RunnableDemo();
-        runnableDemo.setCalculate(calculate);
-        new Thread(runnableDemo, "有返回值的线程").start();
+        CallableDemo cDemo = new CallableDemo();
+        cDemo.setCalculate(calculate);
+        FutureTask<Integer> fTask = new FutureTask<>(cDemo);
+        new Thread(fTask, "有返回值的线程").start();
         int one = calculate.calOne();
-        while (!runnableDemo.isDone()) {
-        }
-        two = runnableDemo.getResult();
+        two = fTask.get();
 
         //求和
         c = one + two;
@@ -44,23 +46,8 @@ class Calculate {
 
 }
 
-class RunnableDemo implements Runnable {
+class CallableDemo implements Callable<Integer> {
     private Calculate calculate;
-
-    private Integer result;
-
-    private volatile boolean done = false;
-
-
-    @Override
-    public void run() {
-        try {
-            result = calculate.calTwo();
-            done = true;
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
 
     public Calculate getCalculate() {
         return calculate;
@@ -70,20 +57,8 @@ class RunnableDemo implements Runnable {
         this.calculate = calculate;
     }
 
-    public Integer getResult() {
-        return result;
-    }
-
-    public void setResult(Integer result) {
-        this.result = result;
-    }
-
-    public boolean isDone() {
-        return done;
-    }
-
-    public void setDone(boolean done) {
-        this.done = done;
+    @Override
+    public Integer call() throws Exception {
+        return calculate.calTwo();
     }
 }
-

@@ -1,4 +1,4 @@
-package zhongqiu.common.base.thread;
+package zhongqiu.common.jdk5;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
