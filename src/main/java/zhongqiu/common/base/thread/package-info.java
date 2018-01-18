@@ -2,6 +2,7 @@
  * @author zhongqiu
  * 并发，线程相关
  * （1）同步Synchronized
+ * （2）thread。implements Runnable，
  * （2）多线程:1、多线程的三种实现方法；runable和thread的区别；多次start一个线程会怎么样；线程的五大状态：新建、就绪、运行、阻塞、死亡。
  *            2、如何运行一个多线程执行代码；线程的常用方法；wait和notify的使用；isAlive的使用
  *            3、经典面试题（三个线程交替打印10次ABC）
@@ -17,7 +18,7 @@
  *                5、有序性：happens-before原则（先行发生原则）
  *     Volatile说明：volatile关键字能禁止指令重排序，所以volatile能在一定程度上保证有序性。
  *                 volatile保证原子性吗？不能！！！
- *  (4)
+ *
  *
  */
 package zhongqiu.common.base.thread;
