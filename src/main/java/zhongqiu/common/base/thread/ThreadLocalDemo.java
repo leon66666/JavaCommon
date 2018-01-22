@@ -12,6 +12,6 @@ public class ThreadLocalDemo {
         threadLocal1.set(integer);
         Thread thread = Thread.currentThread();
         Date now = new Date("20170102");
-        threadLocal.get();
+        Integer a=threadLocal.get();
     }
 }
