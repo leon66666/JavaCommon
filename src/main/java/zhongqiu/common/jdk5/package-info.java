@@ -10,6 +10,7 @@
  * （6）泛型：泛型类；泛型作为参数和可变参数；泛型作为返回值；泛型方法；类型通配符和extend和super用法；
  * （7）增强型for循环For-Each
  * （8）Scanner类。用来获取用户的输入
+ *  (9)线程相关类。
  * （9）队列：【阻塞队列】blockingqueue（add、put和take，offer和poll，contains，remove，drainTo）
  *          ArrayBlockingQueue,LinkedBlockingQueue,,PriorityBlockingQueue
  *          DelayQueue：重写getDelay和compareTo方法
