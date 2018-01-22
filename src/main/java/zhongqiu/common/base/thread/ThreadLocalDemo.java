@@ -1,8 +1,5 @@
 package zhongqiu.common.base.thread;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class ThreadLocalDemo {
@@ -15,5 +12,6 @@ public class ThreadLocalDemo {
         threadLocal1.set(integer);
         Thread thread = Thread.currentThread();
         Date now = new Date("20170102");
+        threadLocal.get();
     }
 }
