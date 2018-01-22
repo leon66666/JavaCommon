@@ -6,19 +6,14 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class ThreadLocalDemo {
-    private static final String DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
-    @SuppressWarnings("rawtypes")
-    private static ThreadLocal threadLocal = new ThreadLocal() {
-        protected synchronized Object initialValue() {
-            return new SimpleDateFormat(DATE_FORMAT);
-        }
-    };
+    private static final ThreadLocal<Integer> threadLocal = new ThreadLocal<Integer>();
+    private static final ThreadLocal<Integer> threadLocal1 = new ThreadLocal<Integer>();
 
-    public static DateFormat getDateFormat() {
-        return (DateFormat) threadLocal.get();
-    }
-
-    public static Date parse(String textDate) throws ParseException {
-        return getDateFormat().parse(textDate);
+    public static void main(String[] args) {
+        Integer integer = 111;
+        threadLocal.set(integer);
+        threadLocal1.set(integer);
+        Thread thread = Thread.currentThread();
+        Date now = new Date("20170102");
     }
 }
