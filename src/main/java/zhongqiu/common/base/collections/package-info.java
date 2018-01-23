@@ -2,7 +2,9 @@
  * @author zhongqiu
  * 参考资料：http://blog.csdn.net/fyang2007/article/details/51517662
  * （1）集合中的List：arrayList，linkedList,vector的区别和使用场景。linkedlist双向循环链表，vector同步实现原理syn锁
-       【ArrayList implements List】【List extends Collection】【Collection extends Iterable】
+       【ArrayList implements List,RandomAccess】【List extends Collection】【Collection extends Iterable】
+       【RandomAccess接口，是一种标记接口，当要实现某些算法时，会判断当前类是否实现了RandomAccess接口会根据结果选择不同的算法】
+       【集合类是RandomAccess的实现，则尽量用for(int i = 0; i < size; i++) 来遍历而不要用Iterator迭代器来遍历】
        【核心方法】elementData[]，size,modCount
                   Arrays.copyOf，System.arraycopy(original, toIndex, copy, fromIndex,numMoved)
                   add,ensureCapacityInternal(size + 1),grow,Arrays.copyOf
