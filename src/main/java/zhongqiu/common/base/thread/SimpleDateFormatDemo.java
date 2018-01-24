@@ -23,7 +23,8 @@ public class SimpleDateFormatDemo {
     public static class TestSimpleDateFormatThreadSafe extends Thread {
         @Override
         public void run() {
-            while (true) {
+            int i = 0;
+            while (i < 100) {
                 try {
                     this.join(2000);
                 } catch (InterruptedException e1) {
@@ -34,6 +35,7 @@ public class SimpleDateFormatDemo {
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
+                i++;
             }
         }
     }
