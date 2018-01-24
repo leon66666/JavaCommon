@@ -13,7 +13,7 @@
  *  (3)ThreadLocal。ThreadLocalMap，Entry(ThreadLocal k, Object v)。thread持有ThreadLocalMap对象
  *     get: Thread t = Thread.currentThread();ThreadLocalMap map = getMap(t);
  *          ThreadLocalMap.Entry e = map.getEntry(this); return (T)e.value;
- *  (4)SimpleDateFormat
+ *  (4)SimpleDateFormat。
  * （5）Volatile关键字。
  *     缓存一致性：内存，cpu高速缓存，总线锁机制，缓存一致性协议（Intel 的MESI协议），共享变量。
  *     内存模型：次序规则，锁定规则，volatile变量规则，线程启动规则，线程终止规则，对象终结规则
