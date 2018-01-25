@@ -1,12 +1,13 @@
 /*
  * @author zhongqiu
  * 并发，线程相关
- * （1）同步Synchronized
+ * （1）同步Synchronized。非公平锁，每个线程都先要竞争锁，不管排队先后。
+ *         等待锁的实现方式：自旋锁，挂起等待，混合锁
  * （2）thread。implements Runnable。
  *             持有对象Runnable target，ThreadLocal.ThreadLocalMap threadLocals,threadStatus
  *             start启动，多次调用会怎样，初始化方式(runable,thread)，runable和thread的区别
  *             线程的五大状态：新建、就绪、运行、阻塞、死亡。
- *             wait和notify的使用；isAlive的使用,join的使用
+ *             wait和notify的使用；isAlive的使用,join的使用，field的使用
  *             Thread.sleep()与Object.wait()区别
  *             经典面试题（三个线程交替打印10次ABC）
  *             多线程异步计算获取计算结果
