@@ -1,6 +1,6 @@
 /*
  * @author zhongqiu
- * jdk5特性
+ * jdk5，并发新特性
  * （0）unsafe.compareAndSwapInt(this, stateOffset, expect, update)。
  *      【说明】CAS原语可以用来实现无锁的数据结构。是CPU指令级的操作，只有一步原子操作
  *      【步骤】有一些状态，创建它的副本，修改它，执行CAS，如果失败，重复尝试
