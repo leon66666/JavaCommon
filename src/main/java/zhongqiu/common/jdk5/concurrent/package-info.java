@@ -12,7 +12,8 @@
  *      【Sync extends AbstractQueuedSynchronizer】
  *      【NonfairSync extends Sync】非公平锁：当锁处于无线程占有的状态，此时其他线程和在队列中等待的线程都可以抢占该锁。
  *      【FairSync extends Sync】公平锁：当锁处于无线程占有的状态，在其他线程抢占该锁的时候，都需要先进入队列中等待。
- *      【FairSync】lock，compareAndSetState(0, 1)，unsafe.compareAndSwapInt(this, stateOffset, expect, update)
+ *      【FairSync】lock方法，if compareAndSetState(0, 1);unsafe.compareAndSwapInt(this, stateOffset, expect, update);
+ *                           setExclusiveOwnerThread(Thread.currentThread());else acquire(1);
  * （3）
  * （4）
  * （5）
