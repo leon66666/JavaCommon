@@ -15,6 +15,6 @@
  *  【lock方法】if compareAndSetState(0, 1);unsafe.compareAndSwapInt(this, stateOffset, expect, update);
  *    setExclusiveOwnerThread(Thread.currentThread());else acquire(1);tryAcquire(1);nonfairTryAcquire(1);
  *    nonfairTryAcquire加锁失败，放入队列中继续尝试获得锁acquireQueued(addWaiter(Node.EXCLUSIVE), arg));
- *    addWaiter,tail不为空，node放入队尾;tail为空，循环知道初始化并且放入队尾成功。compareAndSetTail
+ *    addWaiter,tail不为空，node放入队尾;tail为空，循环直到初始化并且放入队尾成功。compareAndSetTail
  */
 package zhongqiu.common.jdk5.concurrent.locks;
