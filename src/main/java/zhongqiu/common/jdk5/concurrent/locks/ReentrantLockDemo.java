@@ -6,13 +6,13 @@ import java.util.concurrent.locks.ReentrantLock;
 public class ReentrantLockDemo {
     public static void main(String[] args) {
         final Outputter1 output = new Outputter1();
-        new Thread() {
-            public void run() {
-                output.output("zhangsan");
-            }
-
-            ;
-        }.start();
+//        new Thread() {
+//            public void run() {
+//                output.output("zhangsan");
+//            }
+//
+//            ;
+//        }.start();
         new Thread() {
             public void run() {
                 output.output("lisi");
@@ -29,6 +29,7 @@ class Outputter1 {
     public void output(String name) {
         // TODO 线程输出方法
         lock.lock();// 得到锁
+        lock.lock();
         try {
             for (int i = 0; i < name.length(); i++) {
                 System.out.print(name.charAt(i));

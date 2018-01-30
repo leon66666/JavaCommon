@@ -7,14 +7,16 @@
  * (1)ReentrantLock implements Lock。成员变量：Sync sync;
  *  【Sync extends AbstractQueuedSynchronizer】成员变量：
  *  【AbstractQueuedSynchronizer extends AbstractOwnableSynchronizer】
- *    成员变量：long stateOffset;int state;Node tail;Node head;
+ *    成员变量：long stateOffset;int state;Node tail;Node head;内部类Node(waitStatus,prev,next,thread)
  *  【AbstractOwnableSynchronizer】成员变量：Thread exclusiveOwnerThread;
  *  【NonfairSync extends Sync】非公平锁：当锁处于无线程占有的状态，此时其他线程和在队列中等待的线程都可以抢占该锁。
  *  【FairSync extends Sync】公平锁：当锁处于无线程占有的状态，在其他线程抢占该锁的时候，都需要先进入队列中等待。
- *  【NonfairSync】lock,
+ *  【NonfairSync】lock();
  *  【lock方法】if compareAndSetState(0, 1);unsafe.compareAndSwapInt(this, stateOffset, expect, update);
- *    setExclusiveOwnerThread(Thread.currentThread());else acquire(1);tryAcquire(1);nonfairTryAcquire(1);
+ *    setExclusiveOwnerThread(Thread.currentThread());else nonfairTryAcquire(1);
+ *    判断state等于0，cas，setExclusiveOwnerThread；不为零且当前线程是持有锁的线程，state+1;
  *    nonfairTryAcquire加锁失败，放入队列中继续尝试获得锁acquireQueued(addWaiter(Node.EXCLUSIVE), arg));
- *    addWaiter,tail不为空，node放入队尾;tail为空，循环直到初始化并且放入队尾成功。compareAndSetTail
+ *    入队列addWaiter,tail不为空，node放入队尾;tail为空，循环直到初始化并且放入队尾成功。compareAndSetHead,compareAndSetTail
+ *    acquireQueued
  */
 package zhongqiu.common.jdk5.concurrent.locks;
