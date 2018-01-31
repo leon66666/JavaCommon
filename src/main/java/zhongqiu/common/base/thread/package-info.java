@@ -10,7 +10,7 @@
  *        start()  ,变为Runnable状态，创建新的线程在栈空间中开辟新的空间.if (threadStatus != 0) 抛出异常
  *        run()    ,不创建新的线程，直接在当前线程执行 thread的run方法
  *        isAlive(),如果线程已经启动且尚未终止，则为活动状态。介于Runnable和Terminated中间，都属于活动状态
- *        join()   ,B线程执行A.join(). B获取A的锁; 循环判断a.isAlive(),是则调用a.wait().
+ *        join()   ,B线程执行A.join(). B获取A的锁; 循环判断a.isAlive(),是则调用a.wait()
  *        field()  ,
  *        sleep()
  *        多线程异步计算获取计算结果
