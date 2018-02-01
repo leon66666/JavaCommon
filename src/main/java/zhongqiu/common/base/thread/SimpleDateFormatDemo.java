@@ -69,27 +69,27 @@ public class SimpleDateFormatDemo {
             new ThreadLocalDateUtilTest().start();
         }
     }
-}
 
-//性能较好的解决方案，threadlocal
-class ThreadLocalDateUtil {
-    private static final String date_format = "yyyy-MM-dd HH:mm:ss";
-    private static ThreadLocal<DateFormat> threadLocal = new ThreadLocal<DateFormat>();
+    //性能较好的解决方案，threadlocal
+    static class ThreadLocalDateUtil {
+        private static final String date_format = "yyyy-MM-dd HH:mm:ss";
+        private static ThreadLocal<DateFormat> threadLocal = new ThreadLocal<DateFormat>();
 
-    public static DateFormat getDateFormat() {
-        DateFormat df = threadLocal.get();
-        if (df == null) {
-            df = new SimpleDateFormat(date_format);
-            threadLocal.set(df);
+        public static DateFormat getDateFormat() {
+            DateFormat df = threadLocal.get();
+            if (df == null) {
+                df = new SimpleDateFormat(date_format);
+                threadLocal.set(df);
+            }
+            return df;
         }
-        return df;
-    }
 
-    public static String formatDate(Date date) throws ParseException {
-        return getDateFormat().format(date);
-    }
+        public static String formatDate(Date date) throws ParseException {
+            return getDateFormat().format(date);
+        }
 
-    public static Date parse(String strDate) throws ParseException {
-        return getDateFormat().parse(strDate);
+        public static Date parse(String strDate) throws ParseException {
+            return getDateFormat().parse(strDate);
+        }
     }
 }

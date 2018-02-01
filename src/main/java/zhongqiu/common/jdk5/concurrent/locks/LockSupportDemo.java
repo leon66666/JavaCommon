@@ -9,6 +9,8 @@ import java.util.concurrent.locks.LockSupport;
 public class LockSupportDemo {
     public static void main(String[] args) {
         LockSupport.park();
+
         LockSupport.unpark(Thread.currentThread());
     }
+
 }
