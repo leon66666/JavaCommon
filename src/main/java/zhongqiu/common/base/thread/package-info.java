@@ -5,17 +5,17 @@
  *         等待锁的实现方式：自旋锁，挂起等待，混合锁
  * （2）thread。implements Runnable。持有对象Runnable target，ThreadLocal.ThreadLocalMap threadLocals,threadStatus
  *        初始化方式(runable,thread)，runable和thread的区别
- *        线程的状态：New、Runnable、Blocked、Waiting、Timed waiting、Terminated
+ *        线程的状态：New、Runnable(包括操作系统的Ready和Running)、Blocked、Waiting、Timed waiting、Terminated
  *        new Thread(),变为New状态
  *        start()  ,变为Runnable状态，创建新的线程在栈空间中开辟新的空间.if (threadStatus != 0) 抛出异常
  *        run()    ,不创建新的线程，直接在当前线程执行 thread的run方法
  *        isAlive(),如果线程已经启动且尚未终止，则为活动状态。介于Runnable和Terminated中间，都属于活动状态
  *        join()   ,B线程执行A.join(). B获取A的锁; 循环判断a.isAlive(),是则调用a.wait()
- *        field()  ,
- *        sleep()
+ *        field()  ,使线程变成ready状态，从新和其他ready状态的线程参与cpu的竞争
+ *        sleep()  ,当前线程进入TIMED_WAITING状态，不释放监视器锁
  *        多线程异步计算获取计算结果
  *  (2)  Object
- *         wait()     ,使持有该对象的线程把该对象的控制权交出去，然后处于等待这个对象的控制权的状态。
+ *         wait()     ,使持有该对象的线程把该对象的控制权交出去，然后处于等待这个对象的控制权的状态。当前线程进入Waiting状态
  *         notify()   ,通知某个正在等待这个对象的控制权的线程可以继续运行。
  *         notifyall(),通知所有等待这个对象控制权的线程继续运行。
  *         经典面试题（三个线程交替打印10次ABC）
