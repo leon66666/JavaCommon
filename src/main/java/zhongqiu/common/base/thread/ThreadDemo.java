@@ -6,7 +6,6 @@ package zhongqiu.common.base.thread;
  */
 public class ThreadDemo {
     public static void main(String[] args) {
-        System.out.println("main线程状态：" + Thread.currentThread().getState());
         RunnableDemo runnableDemo = new RunnableDemo();
         Thread thread = new Thread(runnableDemo, "new");
         thread.start();
@@ -15,11 +14,14 @@ public class ThreadDemo {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        thread.isInterrupted();
-        thread.interrupt();
-        Thread.interrupted();
         System.out.println("thread线程状态：" + thread.getState());
-        System.out.println("main线程状态：" + Thread.currentThread().getState());
+        thread.interrupt();
+        try {
+            Thread.sleep(1000 * 3);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println("thread线程状态：" + thread.getState());
     }
 
     public static class RunnableDemo implements Runnable {
@@ -28,14 +30,15 @@ public class ThreadDemo {
 
         @Override
         public void run() {
-            System.out.println("111");
+            System.out.println("thread线程开始运行");
             synchronized (lock) {
                 try {
                     lock.wait(1000 * 10);
                 } catch (InterruptedException e) {
-                    e.printStackTrace();
+                    System.out.println("thread线程状态：" + Thread.currentThread().getState());
                 }
             }
+            System.out.println("thread线程运行结束");
         }
     }
 }
