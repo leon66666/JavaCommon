@@ -6,8 +6,9 @@ package zhongqiu.common.base.thread;
  */
 public class ThreadDemo {
     public static void main(String[] args) {
-        RunnableDemo runnableDemo = new RunnableDemo();
-        Thread thread = new Thread(runnableDemo, "new");
+        BlockRunnable blockRunnable = new BlockRunnable();
+        SpinRunnable spinRunnable = new SpinRunnable();
+        Thread thread = new Thread(spinRunnable, "new");
         thread.start();
         try {
             Thread.sleep(1000 * 3);
@@ -21,10 +22,14 @@ public class ThreadDemo {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        System.out.println("thread线程interrupt状态：" + Thread.interrupted());
+        System.out.println("thread线程interrupt状态：" + thread.isInterrupted());
         System.out.println("thread线程状态：" + thread.getState());
+
     }
 
-    public static class RunnableDemo implements Runnable {
+    //阻塞thread
+    public static class BlockRunnable implements Runnable {
         private volatile int count = 50;
         private static Object lock = new Object();
 
@@ -39,6 +44,20 @@ public class ThreadDemo {
                 }
             }
             System.out.println("thread线程运行结束");
+        }
+    }
+
+    //自旋thread
+    public static class SpinRunnable implements Runnable {
+        private volatile int count = 50;
+        private static Object lock = new Object();
+
+        @Override
+        public void run() {
+            System.out.println("thread线程开始运行");
+            while (true) {
+
+            }
         }
     }
 }

@@ -16,6 +16,8 @@
  *        interrupt(),不会中断一个正在运行的线程。如果线程被Object.wait, Thread.join和Thread.sleep三种方法之一阻塞，
  *                    它将接收到一个中断信号，提早地终结被阻塞状态，变成Runnable状态，抛出异常InterruptedException，继续往下执行
  *                    如果线程没有被阻塞，这时调用interrupt()将不起作用;
+ *        isInterrupted(),isInterrupted(false),查看线程的中断位，不清除
+ *        interrupted()  ,isInterrupted(true),静态方法，清除中断位，返回清除的中断位，只有当前线程才可以清除自己的中断位
  *        多线程异步计算获取计算结果
  *  (2)  Object
  *         wait()     ,使持有该对象的线程把该对象的控制权交出去，然后处于等待这个对象的控制权的状态。当前线程进入Waiting或者Timed waiting
