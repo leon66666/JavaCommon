@@ -15,6 +15,9 @@ public class ThreadDemo {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        thread.isInterrupted();
+        thread.interrupt();
+        Thread.interrupted();
         System.out.println("thread线程状态：" + thread.getState());
         System.out.println("main线程状态：" + Thread.currentThread().getState());
     }

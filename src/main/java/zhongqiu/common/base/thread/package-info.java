@@ -9,10 +9,13 @@
  *        new Thread(),变为New状态
  *        start()  ,变为Runnable状态，创建新的线程在栈空间中开辟新的空间.if (threadStatus != 0) 抛出异常
  *        run()    ,不创建新的线程，直接在当前线程执行 thread的run方法
+ *        field()  ,使线程变成ready状态，从新和其他ready状态的线程参与cpu的竞争
  *        isAlive(),如果线程已经启动且尚未终止，则为活动状态。介于Runnable和Terminated中间，都属于活动状态
  *        join()   ,B线程执行A.join(). B获取A的锁; 循环判断a.isAlive(),是则调用a.wait(0)，进入Waiting状态
- *        field()  ,使线程变成ready状态，从新和其他ready状态的线程参与cpu的竞争
  *        sleep()  ,当前线程进入TIMED_WAITING状态，不释放监视器锁
+ *        interrupt(),不会中断一个正在运行的线程。如果线程被Object.wait, Thread.join和Thread.sleep三种方法之一阻塞，
+ *                    那么，它将接收到一个中断异常（InterruptedException），从而提早地终结被阻塞状态。
+ *                    如果线程没有被阻塞，这时调用interrupt()将不起作用；
  *        多线程异步计算获取计算结果
  *  (2)  Object
  *         wait()     ,使持有该对象的线程把该对象的控制权交出去，然后处于等待这个对象的控制权的状态。当前线程进入Waiting或者Timed waiting
