@@ -1,10 +1,12 @@
 /*
  * @author wangzhongqiu
- *（0）unsafe.compareAndSwapInt(this, stateOffset, expect, update)。
+ * (0)unsafe.compareAndSwapInt(this, stateOffset, expect, update)。
  *      【说明】CAS原语可以用来实现无锁的数据结构。是CPU指令级的操作，只有一步原子操作
  *      【步骤】有一些状态，创建它的副本，修改它，执行CAS，如果失败，重复尝试
  *      【存在问题】如ABA问题、指令重排序等。
- * (0) LockSupport.
+ * (0)LockSupport
+ *     park():当前线程进入Waiting状态,等待许可
+ *     unpark(thread):给thread线程一个许可
  * (1)可重入锁。ReentrantLock的锁资源以state状态描述，利用CAS则实现对锁资源的抢占，并通过一个FIFO队列阻塞所有竞争线程，
  * 在后续则逐个唤醒等待中的竞争线程。ReentrantLock继承AQS完全从代码层面实现了java的同步机制，
  * 相对于synchronized，更容易实现对各类锁的扩展。同时，AbstractQueuedSynchronizer中的Condition配合ReentrantLock使用，

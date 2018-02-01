@@ -25,7 +25,6 @@ public class ThreadDemo {
         System.out.println("thread线程interrupt状态：" + Thread.interrupted());
         System.out.println("thread线程interrupt状态：" + thread.isInterrupted());
         System.out.println("thread线程状态：" + thread.getState());
-
     }
 
     //阻塞thread
