@@ -23,10 +23,14 @@
  *    setExclusiveOwnerThread(Thread.currentThread());else nonfairTryAcquire(1);
  *    判断state等于0，cas，setExclusiveOwnerThread；不为零且当前线程是持有锁的线程，state+1;
  *    nonfairTryAcquire加锁失败，放入队列中继续尝试获得锁acquireQueued(addWaiter(Node.EXCLUSIVE), arg));
- *    入队列addWaiter,tail不为空，node放入队尾;tail为空，自旋for循环直到初始化并且放入队尾成功。compareAndSetHead,compareAndSetTail
- *    acquireQueued。自旋for循环直到node节点获取到锁。for无限循环，node获取到锁，return
- *                   判断node的pre节点，为头结点参与锁的竞争，竞争成功，把node置成头结点;
- *                   否则判断node前节点的waitStatus是否为-1等待锁状态，是则LockSupport.park(this)，否则跳过状态为1取消等待锁的pre节点
+ *    自旋入队列addWaiter,tail不为空，node放入队尾;tail为空，自旋for循环直到初始化并且放入队尾成功。compareAndSetHead,compareAndSetTail
+ *    acquireQueued。for无限循环。自旋
+ *                   判断node节点的pre节点是否为头结点,是则node去竞争锁,获取到锁,把node置成头结点,return interrupted
+ *                   否则判断node前节点的waitStatus是否为-1(等待锁状态)
+ *                   是则返回true。调用LockSupport.park(this)阻塞等待许可，
+ *                        获取许可更新interrupted的值为Thread.interrupted(),重新下一次for循环
+ *                   不是则跳过状态为1(取消等待锁)的pre节点，返回false，重新下一次for循环
+ *     acquireQueued 返回true，Thread.currentThread().interrupt();
  *
  */
 package zhongqiu.common.jdk5.concurrent.locks;

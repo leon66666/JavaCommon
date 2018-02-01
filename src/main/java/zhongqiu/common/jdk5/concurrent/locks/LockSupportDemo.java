@@ -24,6 +24,11 @@ public class LockSupportDemo {
             e.printStackTrace();
         }
         System.out.println("thread线程状态：" + thread.getState());
+
+        LockSupport.unpark(thread);
+        LockSupport.unpark(thread);
+        LockSupport.unpark(thread);
+        System.out.println("thread线程状态：" + thread.getState());
     }
 
     //阻塞thread
@@ -54,6 +59,7 @@ public class LockSupportDemo {
         public void run() {
             System.out.println("thread线程开始运行");
             LockSupport.park();
+
             while (true) {
 
             }
