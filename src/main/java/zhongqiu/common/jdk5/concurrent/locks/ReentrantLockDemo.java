@@ -24,19 +24,19 @@ public class ReentrantLockDemo {
 }
 
 class Outputter1 {
-    private ReentrantLock nonfairLock = new ReentrantLock();// 锁对象
+    private ReentrantLock nonfairLock = new ReentrantLock();
     private ReentrantLock fairLock = new ReentrantLock(true);
 
     public void output(String name) {
-        // TODO 线程输出方法
-        nonfairLock.lock();// 得到锁
+        nonfairLock.lock();
         fairLock.lock();
         try {
             for (int i = 0; i < name.length(); i++) {
                 System.out.print(name.charAt(i));
             }
         } finally {
-            nonfairLock.unlock();// 释放锁
+            nonfairLock.unlock();
+            fairLock.unlock();
         }
     }
 }
