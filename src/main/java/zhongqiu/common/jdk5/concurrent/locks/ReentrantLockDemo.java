@@ -1,6 +1,5 @@
 package zhongqiu.common.jdk5.concurrent.locks;
 
-import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class ReentrantLockDemo {
@@ -14,6 +13,7 @@ public class ReentrantLockDemo {
 //            ;
 //        }.start();
         new Thread() {
+            @Override
             public void run() {
                 output.output("lisi");
             }
@@ -21,22 +21,24 @@ public class ReentrantLockDemo {
             ;
         }.start();
     }
-}
 
-class Outputter1 {
-    private ReentrantLock nonfairLock = new ReentrantLock();
-    private ReentrantLock fairLock = new ReentrantLock(true);
+    static class Outputter1 {
+        private ReentrantLock nonfairLock = new ReentrantLock();
+        private ReentrantLock fairLock = new ReentrantLock(true);
 
-    public void output(String name) {
-        nonfairLock.lock();
-        fairLock.lock();
-        try {
-            for (int i = 0; i < name.length(); i++) {
-                System.out.print(name.charAt(i));
+        public void output(String name) {
+            nonfairLock.lock();
+            fairLock.lock();
+            try {
+                for (int i = 0; i < name.length(); i++) {
+                    System.out.print(name.charAt(i));
+                }
+            } finally {
+                nonfairLock.unlock();
+                fairLock.unlock();
             }
-        } finally {
-            nonfairLock.unlock();
-            fairLock.unlock();
         }
     }
 }
+
+
