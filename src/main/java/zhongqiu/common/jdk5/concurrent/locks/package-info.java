@@ -2,6 +2,7 @@
  * @author wangzhongqiu
  * (0)Java无法直接访问底层操作系统，而是通过本地（native）方法来访问。
  *    不过尽管如此，JVM还是开了一个后门，JDK中有一个类Unsafe，它提供了硬件级别的原子操作。
+ *    当前的处理器基本都支持CAS，只不过不同的厂家的实现不一样罢了。
  *    unsafe.compareAndSwapInt(this, stateOffset, expect, update)。
  *      【说明】CAS原语可以用来实现无锁的数据结构。是CPU指令级的操作，只有一步原子操作
  *      【步骤】有一些状态，创建它的副本，修改它，执行CAS，如果失败，重复尝试
