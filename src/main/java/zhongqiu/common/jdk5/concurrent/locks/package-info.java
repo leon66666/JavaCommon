@@ -32,6 +32,6 @@
  *                   不是则跳过状态为1(取消等待锁)的pre节点，返回false，重新下一次for循环
  *        acquireQueued 返回true，Thread.currentThread().interrupt();
  *    【unlock方法】
- *
+ *      tryRelease(1);unparkSuccessor(h)，unpark头结点h的next
  */
 package zhongqiu.common.jdk5.concurrent.locks;
