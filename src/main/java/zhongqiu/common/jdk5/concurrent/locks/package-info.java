@@ -10,7 +10,7 @@
  * (0)LockSupport
  *     park():当前线程进入Waiting状态,等待许可
  *     unpark(thread):给thread线程一个许可
- * (1)可重入锁。ReentrantLock的锁资源以state状态描述，利用CAS则实现对锁资源的抢占，并通过一个FIFO队列阻塞所有竞争线程，
+ * (1)可重入独占锁。ReentrantLock的锁资源以state状态描述，利用CAS则实现对锁资源的抢占，并通过一个FIFO队列阻塞所有竞争线程，
  * 在后续则逐个唤醒等待中的竞争线程。ReentrantLock继承AQS完全从代码层面实现了java的同步机制，
  * 相对于synchronized，更容易实现对各类锁的扩展。同时，AbstractQueuedSynchronizer中的Condition配合ReentrantLock使用，
  * 实现了wait/notify的功能。

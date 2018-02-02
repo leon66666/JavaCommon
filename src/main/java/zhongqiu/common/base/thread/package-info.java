@@ -1,7 +1,7 @@
 /*
  * @author zhongqiu
  * 并发，线程相关
- * （1）同步Synchronized。非公平锁，每个线程都先要竞争锁，不管排队先后。
+ * （1）同步Synchronized。可重入独占锁，非公平锁，每个线程都去竞争锁，不管排队先后。
  *         等待锁的实现方式：自旋锁，挂起等待，混合锁
  * （2）thread。implements Runnable。持有对象Runnable target，ThreadLocal.ThreadLocalMap threadLocals,threadStatus
  *        初始化方式(runable,thread)，runable和thread的区别
