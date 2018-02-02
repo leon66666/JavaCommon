@@ -21,7 +21,7 @@
  *  【NonfairSync】lock();
  *  【lock方法】
  *    非公平锁，所有线程先执行一遍cas竞争锁，if compareAndSetState(0, 1);setExclusiveOwnerThread(Thread.currentThread());
- *    CAS失败，执行带有阻塞队列FIFO的acquire(1)方法：
+ *    CAS失败，执行带有阻塞队列FIFO的acquire(1)方法(公平锁直接调用的此方法)：
  *        cas竞争锁：判断state等于0，cas，setExclusiveOwnerThread；不为零且当前线程是持有锁的线程，state+1;
  *        竞争锁失败，放入队列中继续尝试获得锁acquireQueued(addWaiter(Node.EXCLUSIVE), arg));
  *        自旋入队列addWaiter,tail不为空，node放入队尾;tail为空，自旋for循环直到初始化并且放入队尾成功。compareAndSetHead,compareAndSetTail
