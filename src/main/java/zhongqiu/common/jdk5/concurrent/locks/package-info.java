@@ -15,7 +15,7 @@
  * 相对于synchronized，更容易实现对各类锁的扩展。同时，AbstractQueuedSynchronizer中的Condition配合ReentrantLock使用，
  * 实现了wait/notify的功能。
  * ReentrantLock implements Lock。成员变量：Sync sync;
- *  【Sync extends AbstractQueuedSynchronizer】成员变量：
+ *  【Sync extends AbstractQueuedSynchronizer】CLH锁是一个自旋锁，能确保无饥饿性，提供先来先服务的公平性。
  *  【AbstractQueuedSynchronizer extends AbstractOwnableSynchronizer】
  *    成员变量：long stateOffset;int state;Node tail;Node head;内部类Node(waitStatus,prev,next,thread);
  *  【AbstractOwnableSynchronizer】成员变量：Thread exclusiveOwnerThread;
