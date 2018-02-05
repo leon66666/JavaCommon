@@ -9,60 +9,58 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 * */
 public class ReentrantReadWriteLockDemo {
     public static void main(String[] args) {
-        final Data data = new Data();
+        final Queue3 q3 = new Queue3();
         for (int i = 0; i < 3; i++) {
-            new Thread(new Runnable() {
+            new Thread() {
+                @Override
                 public void run() {
-                    for (int j = 0; j < 5; j++) {
-                        data.set(new Random().nextInt(30));
+                    while (true) {
+                        q3.get();
                     }
                 }
-            }).start();
+
+            }.start();
         }
         for (int i = 0; i < 3; i++) {
-            new Thread(new Runnable() {
+            new Thread() {
                 public void run() {
-                    for (int j = 0; j < 5; j++) {
-                        data.get();
+                    while (true) {
+                        q3.put(new Random().nextInt(10000));
                     }
                 }
-            }).start();
+
+            }.start();
         }
     }
 
-    static class Data {
-        private int data;// 共享数据
-        private ReadWriteLock rwl = new ReentrantReadWriteLock();
-
-        public void set(int data) {
-            rwl.writeLock().lock();// 取到写入锁
+    static class Queue3 {
+        private Object data = null;//共享数据，只能有一个线程能写该数据，但可以有多个线程同时读该数据。
+        private ReentrantReadWriteLock rwl = new ReentrantReadWriteLock();
+        public void get() {
+            rwl.readLock().lock();//上读锁，其他线程只能读不能写
+            System.out.println(Thread.currentThread().getName() + " be ready to read data!");
             try {
-                System.out.println(Thread.currentThread().getName() + "准备写入数据");
-                try {
-                    Thread.sleep(20);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                this.data = data;
-                System.out.println(Thread.currentThread().getName() + "写入" + this.data);
-            } finally {
-                rwl.writeLock().unlock();// 释放写锁
+                Thread.sleep((long) (Math.random() * 1000));
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
+            System.out.println(Thread.currentThread().getName() + "have read data :" + data);
+            rwl.readLock().unlock(); //释放读锁，最好放在finnaly里面
         }
 
-        public void get() {
-            rwl.readLock().lock();// 取到读取锁
+        public void put(Object data) {
+
+            rwl.writeLock().lock();//上写锁，不允许其他线程读也不允许写
+            System.out.println(Thread.currentThread().getName() + " be ready to write data!");
             try {
-                System.out.println(Thread.currentThread().getName() + "准备读取数据");
-                try {
-                    Thread.sleep(20);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                System.out.println(Thread.currentThread().getName() + "读取" + this.data);
-            } finally {
-                rwl.readLock().unlock();// 释放读锁
+                Thread.sleep((long) (Math.random() * 1000));
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
+            this.data = data;
+            System.out.println(Thread.currentThread().getName() + " have write data: " + data);
+
+            rwl.writeLock().unlock();//释放写锁
         }
     }
 }
