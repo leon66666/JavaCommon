@@ -42,6 +42,7 @@
  *    【readLock().unlock()】->【releaseShared(int arg)】->【if (tryReleaseShared(arg))】->【doReleaseShared()】
  *       【tryReleaseShared 自旋释放锁直到成功，return nextc == 0;】【doReleaseShared 自旋直到把队列中第一个阻塞的线程唤醒】
  *    【writeLock().lock()】->【acquire(1),同ReentrantLock中的acquire(1)，唯一区别tryAcquire方法使用的是自己实现的方法】
- *                         ->【tryAcquire(1) 】
+ *                         ->【tryAcquire(1) 已经有读锁，失败；已经有写锁了，累加state；读锁和写锁都没有，
+ *                            CAS竞争锁（公平锁还需要在竞争锁之前判断是否有线程已经在wait）】
  */
 package zhongqiu.common.jdk5.concurrent.locks;
