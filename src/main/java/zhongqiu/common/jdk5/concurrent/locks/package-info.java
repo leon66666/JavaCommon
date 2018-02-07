@@ -17,21 +17,21 @@
  * ReentrantLock implements Lock。成员变量：Sync sync;
  *  【Sync extends AbstractQueuedSynchronizer】实现了CLH锁算法，CLH锁是一个自旋锁，能确保无饥饿性，提供先来先服务的公平性。
  *  【AbstractQueuedSynchronizer extends AbstractOwnableSynchronizer】
- *    成员变量：long stateOffset;int state;Node tail;Node head;内部类Node(waitStatus,prev,next,thread);
+ *    成员变量：long stateOffset;int state;Node tail;Node head;内部类Node(waitStatus,prev,next,thread,nextWaiter锁类型);
  *  【AbstractOwnableSynchronizer】成员变量：Thread exclusiveOwnerThread;
  *  【NonfairSync extends Sync】非公平锁：当锁处于无线程占有的状态，此时其他线程和在队列中等待的线程都可以抢占该锁。
  *  【FairSync extends Sync】公平锁：当锁处于无线程占有的状态，在其他线程抢占该锁的时候，都需要先进入队列中等待。
- *  【NonfairSync】lock();
+ *  【NonfairSync】lock();unlock();
  *    【lock方法】
  *      非公平锁，所有线程先执行一遍cas竞争锁，if compareAndSetState(0, 1);setExclusiveOwnerThread(Thread.currentThread());
  *      CAS失败，执行带有阻塞队列FIFO的acquire(1)方法(公平锁直接调用的此方法)：
- *        cas竞争锁：判断state等于0，cas，setExclusiveOwnerThread；不为零且当前线程是持有锁的线程，state+1;
+ *        cas竞争锁：判断state等于0，cas竞争锁，setExclusiveOwnerThread；不为零且当前线程是持有锁的线程，state+1;
  *        竞争锁失败，放入队列中继续尝试获得锁acquireQueued(addWaiter(Node.EXCLUSIVE), arg));
  *        自旋入队列addWaiter,tail不为空，node放入队尾;tail为空，自旋for循环直到初始化并且放入队尾成功。compareAndSetHead,compareAndSetTail
  *        acquireQueued。for无限循环。自旋在阻塞队列中竞争锁
- *                   判断node节点的pre节点是否为头结点,是则node去竞争锁,获取到锁,把node置成头结点,return interrupted
+ *                   判断node节点的pre节点是否为头结点,是则node去竞争锁,获取到锁,把node置成头结点,return interrupted(初始为false)
  *                   否则判断node前节点的waitStatus是否为-1(等待锁状态)
- *                   是则返回true。调用LockSupport.park(this)阻塞等待许可，获取许可更新interrupted的值为Thread.interrupted(),重新下一次for循环
+ *                   是则返回true。调用LockSupport.park(this)阻塞等待许可，获取许可，更新interrupted的值为Thread.interrupted(),重新下一次for循环
  *                   不是则跳过状态为1(取消等待锁)的pre节点，返回false，重新下一次for循环
  *        acquireQueued 返回true，Thread.currentThread().interrupt();
  *    【unlock方法】
