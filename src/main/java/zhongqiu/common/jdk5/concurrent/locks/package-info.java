@@ -36,7 +36,12 @@
  *        acquireQueued 返回true，Thread.currentThread().interrupt();
  *    【unlock方法】
  *      tryRelease(1);unparkSuccessor(h)，如果h的waitstatus为-1，修改状态为0，unpark头结点h的next
- * (2)读写锁 ReentrantReadWriteLock
- *      【readLock().lock()】if (tryAcquireShared(arg) < 0) doAcquireShared(arg);
+ * (2)读写锁 ReentrantReadWriteLock【参考文章：http://www.cnblogs.com/wangzhongqiu/p/8422925.html】
+ *    【readLock().lock()】->【acquireShared(int arg)】->【if (tryAcquireShared(arg) < 0)】->【doAcquireShared(arg)】
+ *       【tryAcquireShared没有阻塞方法，没有自旋】【doAcquireShared竞争锁失败，park，CLH锁，FIFO队列】
+ *    【readLock().unlock()】->【releaseShared(int arg)】->【if (tryReleaseShared(arg))】->【doReleaseShared()】
+ *       【tryReleaseShared 自旋释放锁直到成功，return nextc == 0;】【doReleaseShared 自旋直到把队列中第一个阻塞的线程唤醒】
+ *    【writeLock().lock()】->【acquire(1),同ReentrantLock中的acquire(1)，唯一区别tryAcquire方法使用的是自己实现的方法】
+ *                         ->【tryAcquire(1) 】
  */
 package zhongqiu.common.jdk5.concurrent.locks;
