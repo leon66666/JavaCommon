@@ -11,9 +11,6 @@ public class AtomicDemo {
     public static void main(String[] args) {
         AtomicBoolean atomicBoolean = new AtomicBoolean();
         atomicBoolean.getAndSet(true);
-//        AtomicIntegerArray atomicIntegerArray=new AtomicIntegerArray();
-//        atomicIntegerArray.getAndIncrement(0);
-
     }
 
 }
