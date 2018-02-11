@@ -6,8 +6,9 @@
  *      【HashEntry】final hash；final key；value；HashEntry<K,V> next;
  * （4）atomic：原子更新基本类型(AtomicBoolean,AtomicInteger,AtomicLong)、
  *             原子更新数组(AtomicIntegerArray,AtomicLongArray,AtomicReferenceArray)、
- *             原子更新引用(AtomicReference,)、
- *             原子更新属性（字段）
+ *             原子更新引用(AtomicReference)、
+ *             原子更新属性(AtomicIntegerFieldUpdater,AtomicLongFieldUpdater,AtomicReferenceFieldUpdater)
+ *
  *
  * （5）locks：LockSupport，ReentrantLock，ReentrantReadWriteLock
  * （6）
