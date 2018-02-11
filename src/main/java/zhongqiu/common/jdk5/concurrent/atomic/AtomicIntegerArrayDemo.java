@@ -11,13 +11,15 @@ import java.util.concurrent.atomic.AtomicReferenceArray;
  */
 public class AtomicIntegerArrayDemo {
     public static void main(String[] args) {
+        System.out.println(31 - Integer.numberOfLeadingZeros(8));
+        System.out.println(32 - Integer.numberOfLeadingZeros(8 - 1));
         int[] array = {1, 2, 3, 4};
         AtomicIntegerArray atomicIntegerArray = new AtomicIntegerArray(array);
         atomicIntegerArray.getAndIncrement(1);
 
-        Object[] objects={new Object(),new Object()};
-        AtomicReferenceArray atomicReferenceArray=new AtomicReferenceArray(objects);
-        atomicReferenceArray.compareAndSet(1,new Object(),new Object());
+        Object[] objects = {new Object(), new Object()};
+        AtomicReferenceArray atomicReferenceArray = new AtomicReferenceArray(objects);
+        atomicReferenceArray.getAndSet(1, new Object());
     }
 
 }
