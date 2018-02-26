@@ -20,6 +20,7 @@ public class AtomicIntegerFieldUpdaterDemo {
 
         AtomicReferenceFieldUpdater<Person, Hobby> atomicReferenceFieldUpdater = AtomicReferenceFieldUpdater.newUpdater(Person.class, Hobby.class, "hobby");
         atomicReferenceFieldUpdater.getAndSet(person, new Hobby("打球", "排球，羽毛球"));
+
     }
 
     static class Person {

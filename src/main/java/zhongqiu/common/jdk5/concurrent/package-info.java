@@ -14,7 +14,7 @@
  *                 只能是可修改变量，不能使final变量，因为final的语义就是不可修改。
  *                 对于AtomicIntegerFieldUpdater和AtomicLongFieldUpdater只能修改int/long类型的字段，不能修改其包装类型（Integer/Long）。
  *                 如果要修改包装类型就需要使用AtomicReferenceFieldUpdater。
- *
+ *             解决aba问题(AtomicMarkableReference,AtomicStampedReference)
  * （5）locks：LockSupport，ReentrantLock，ReentrantReadWriteLock
  * （6）
  * （7）
