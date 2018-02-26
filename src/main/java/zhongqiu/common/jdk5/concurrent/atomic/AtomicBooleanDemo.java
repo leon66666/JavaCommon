@@ -1,6 +1,7 @@
 package zhongqiu.common.jdk5.concurrent.atomic;
 
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicIntegerArray;
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -15,6 +16,9 @@ public class AtomicBooleanDemo {
 
         AtomicLong atomicLong = new AtomicLong();
         atomicLong.getAndDecrement();
+
+        AtomicInteger atomicInteger = new AtomicInteger();
+        atomicInteger.incrementAndGet();
     }
 
 }
