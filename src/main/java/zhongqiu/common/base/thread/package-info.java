@@ -9,9 +9,10 @@
  *        new Thread(),变为New状态
  *        start()  ,变为Runnable状态，创建新的线程在栈空间中开辟新的空间.if (threadStatus != 0) 抛出异常
  *        run()    ,不创建新的线程，直接在当前线程执行 thread的run方法
- *        field()  ,使线程变成ready状态，从新和其他ready状态的线程参与cpu的竞争
+ *        yield()  ,使线程变成ready状态，从新和其他ready状态的线程参与cpu的竞争
  *        isAlive(),如果线程已经启动且尚未终止，则为活动状态。介于Runnable和Terminated中间，都属于活动状态
- *        join()   ,B线程执行A.join(). B获取A的锁; 循环判断a.isAlive(),是则调用a.wait(0)，进入Waiting状态
+ *        join()   ,B线程执行A.join(). B获取A对象的锁; 循环判断a.isAlive(),是则调用a.wait(0)，进入Waiting状态。
+ *                  等A线程执行完毕，jvm执行notify_all(a);B线程重新获取到A对象的控制权，继续执行
  *        sleep()  ,当前线程进入TIMED_WAITING状态，不释放监视器锁
  *        interrupt(),不会中断一个正在运行的线程。如果线程被Object.wait, Thread.join和Thread.sleep三种方法之一阻塞，
  *                    它将接收到一个中断信号，提早地终结被阻塞状态，变成Runnable状态，抛出异常InterruptedException，继续往下执行
@@ -20,7 +21,8 @@
  *        interrupted()  ,isInterrupted(true),静态方法，清除中断位，返回清除的中断位，只有当前线程才可以清除自己的中断位
  *        多线程异步计算获取计算结果
  *  (2)  Object
- *         wait()     ,使持有该对象的线程把该对象的控制权交出去，然后处于等待这个对象的控制权的状态。当前线程进入Waiting或者Timed waiting
+ *         wait()     ,等价于wait(0),使持有该对象的线程把该对象的控制权交出去，然后处于等待这个对象的控制权的状态。
+ *                     当前线程进入Waiting或者Timed waiting
  *         notify()   ,通知某个正在等待这个对象的控制权的线程可以继续运行。
  *         notifyall(),通知所有等待这个对象控制权的线程继续运行。
  *         经典面试题（三个线程交替打印10次ABC）

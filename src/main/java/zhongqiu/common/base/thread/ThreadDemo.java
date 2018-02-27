@@ -11,6 +11,11 @@ public class ThreadDemo {
         Thread thread = new Thread(spinRunnable, "new");
         thread.start();
         try {
+            thread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        try {
             Thread.sleep(1000 * 3);
         } catch (InterruptedException e) {
             e.printStackTrace();
