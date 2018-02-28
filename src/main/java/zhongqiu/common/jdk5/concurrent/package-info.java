@@ -16,9 +16,9 @@
  * （3）ConcurrentHashMap.持有对象：Segment<K,V>[] segments;segmentMask;segmentShift
  *      【Segment extends ReentrantLock】HashEntry<K,V>[] table;modCount;threshold;count;loadFactor
  *      【HashEntry】final hash；final key；value；HashEntry<K,V> next;
- * （7）
- * （8）
- *  (9)
+ * （4）CountDownLatch
+ * （5）
+ *  (6)
 
  *                     
  */

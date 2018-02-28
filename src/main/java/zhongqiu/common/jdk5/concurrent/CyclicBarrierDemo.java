@@ -18,26 +18,27 @@ public class CyclicBarrierDemo {
 			new Thread(new CyclicBarrierWorker(i, barrier)).start();
 		}
 	}
-}
+	static class CyclicBarrierWorker implements Runnable {
+		private int id;
+		private CyclicBarrier barrier;
 
-class CyclicBarrierWorker implements Runnable {
-	private int id;
-	private CyclicBarrier barrier;
+		public CyclicBarrierWorker(int id, final CyclicBarrier barrier) {
+			this.id = id;
+			this.barrier = barrier;
+		}
 
-	public CyclicBarrierWorker(int id, final CyclicBarrier barrier) {
-		this.id = id;
-		this.barrier = barrier;
-	}
-
-	@Override
-	public void run() {
-		// TODO Auto-generated method stub
-		try {
-			System.out.println(id + " th people wait");
-			barrier.await(); // 大家等待最后一个线程到达
-		} catch (InterruptedException | BrokenBarrierException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		@Override
+		public void run() {
+			// TODO Auto-generated method stub
+			try {
+				System.out.println(id + " th people wait");
+				barrier.await(); // 大家等待最后一个线程到达
+			} catch (InterruptedException | BrokenBarrierException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 }
+
+
