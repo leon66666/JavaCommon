@@ -35,7 +35,7 @@
  *                   不是则跳过状态为1(取消等待锁)的pre节点，返回false，重新下一次for循环
  *        如果acquireQueued方法返回true，执行 Thread.currentThread().interrupt();
  *    【unlock方法】
- *      tryRelease(1);unparkSuccessor(h)，如果h的waitstatus为-1，修改状态为0，unpark头结点h的next
+ *      tryRelease(1);unparkSuccessor(h)，如果h的waitstatus为-1，修改状态为0，unpark头结点h的waitStatus为-1的next节点
  * (2)读写锁 ReentrantReadWriteLock【参考文章：http://www.cnblogs.com/wangzhongqiu/p/8422925.html】
  *    【readLock().lock()】->【acquireShared(int arg)】->【if (tryAcquireShared(arg) < 0)】->【doAcquireShared(arg)】
  *       【tryAcquireShared没有阻塞方法，没有自旋】【doAcquireShared竞争锁失败，park，CLH锁，FIFO队列】
