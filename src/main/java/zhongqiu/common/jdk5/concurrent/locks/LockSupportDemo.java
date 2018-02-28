@@ -17,6 +17,7 @@ public class LockSupportDemo {
             e.printStackTrace();
         }
         System.out.println("thread线程状态：" + thread.getState());
+
         LockSupport.unpark(thread);
         try {
             Thread.sleep(1000 * 3);

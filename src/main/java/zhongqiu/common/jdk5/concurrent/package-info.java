@@ -13,7 +13,6 @@
  *                 对于AtomicIntegerFieldUpdater和AtomicLongFieldUpdater只能修改int/long类型的字段，不能修改其包装类型（Integer/Long）。
  *                 如果要修改包装类型就需要使用AtomicReferenceFieldUpdater。
  *             解决ABA问题(AtomicMarkableReference,AtomicStampedReference)
-
  * （3）ConcurrentHashMap.持有对象：Segment<K,V>[] segments;segmentMask;segmentShift
  *      【Segment extends ReentrantLock】HashEntry<K,V>[] table;modCount;threshold;count;loadFactor
  *      【HashEntry】final hash；final key；value；HashEntry<K,V> next;
