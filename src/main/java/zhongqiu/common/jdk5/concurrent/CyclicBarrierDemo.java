@@ -10,12 +10,16 @@ public class CyclicBarrierDemo {
         CyclicBarrier barrier = new CyclicBarrier(num, new Runnable() {
             @Override
             public void run() {
-                // TODO Auto-generated method stub
                 System.out.println("go on together!");
             }
         });
-        for (int i = 1; i <= num; i++) {
+        for (int i = 1; i <= 12; i++) {
             new Thread(new CyclicBarrierWorker(i, barrier)).start();
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -30,10 +34,10 @@ public class CyclicBarrierDemo {
 
         @Override
         public void run() {
-            // TODO Auto-generated method stub
             try {
                 System.out.println(id + " th people wait");
                 barrier.await(); // 大家等待最后一个线程到达
+                System.out.println(id + " th people go on");
             } catch (InterruptedException | BrokenBarrierException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
