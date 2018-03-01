@@ -11,6 +11,8 @@ import java.util.concurrent.atomic.AtomicReferenceArray;
  * @date 2018/2/9.
  */
 public class AtomicIntegerArrayDemo {
+    public volatile int[] a = {1, 2};
+
     public static void main(String[] args) {
         System.out.println(31 - Integer.numberOfLeadingZeros(8));
         System.out.println(32 - Integer.numberOfLeadingZeros(8 - 1));
