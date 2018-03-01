@@ -9,7 +9,7 @@ public class SemaphoreDemo {
         // 线程池
         ExecutorService exec = Executors.newCachedThreadPool();
         // 只能5个线程同时访问
-        final Semaphore semp = new Semaphore(5);
+        final Semaphore semaphore = new Semaphore(5);
         // 模拟20个客户端访问
         for (int index = 0; index < 20; index++) {
             final int NO = index;
@@ -18,12 +18,12 @@ public class SemaphoreDemo {
                 public void run() {
                     try {
                         // 获取许可
-                        semp.acquire();
+                        semaphore.acquire();
                         System.out.println("Accessing: " + NO);
                         Thread.sleep((long) (Math.random() * 10000));
                         // 访问完后，释放
-                        semp.release();
-                        System.out.println("-----------------" + semp.availablePermits());
+                        semaphore.release();
+                        System.out.println("-----------------" + semaphore.availablePermits());
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
