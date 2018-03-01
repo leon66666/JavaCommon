@@ -18,8 +18,8 @@
  *      【HashEntry】final hash；final key；value；HashEntry<K,V> next;
  * （4）CountDownLatch
  * （5）CyclicBarrier
- *  (6)
-
+ *  (6)Semaphore
+ *  (7)
  *                     
  */
 package zhongqiu.common.jdk5.concurrent;
