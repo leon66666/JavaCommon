@@ -17,7 +17,7 @@
  *      【Segment extends ReentrantLock】HashEntry<K,V>[] table;modCount;threshold;count;loadFactor
  *      【HashEntry】final hash；final key；value；HashEntry<K,V> next;
  * （4）CountDownLatch
- * （5）
+ * （5）CyclicBarrier
  *  (6)
 
  *                     

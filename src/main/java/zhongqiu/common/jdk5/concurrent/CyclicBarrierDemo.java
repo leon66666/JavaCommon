@@ -13,7 +13,7 @@ public class CyclicBarrierDemo {
                 System.out.println("go on together!");
             }
         });
-        for (int i = 1; i <= 12; i++) {
+        for (int i = 1; i <= 10; i++) {
             new Thread(new CyclicBarrierWorker(i, barrier)).start();
             try {
                 Thread.sleep(1000);
