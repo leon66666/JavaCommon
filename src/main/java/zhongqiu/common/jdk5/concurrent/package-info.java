@@ -1,8 +1,8 @@
 /*
  * @author zhongqiu
  * jdk5，并发新特性。JUC  http://ifeve.com/doug-lea/
- * （1）locks：LockSupport，ReentrantLock，ReentrantReadWriteLock
- * （2）atomic：原子更新基本类型(AtomicBoolean,AtomicInteger,AtomicLong)、
+ *  (1) locks：LockSupport，ReentrantLock，ReentrantReadWriteLock
+ *  (2) atomic：原子更新基本类型(AtomicBoolean,AtomicInteger,AtomicLong)、
  *             原子更新数组(AtomicIntegerArray,AtomicLongArray,AtomicReferenceArray)、
  *             原子更新引用(AtomicReference)、
  *             原子更新属性(AtomicIntegerFieldUpdater,AtomicLongFieldUpdater,AtomicReferenceFieldUpdater)
@@ -13,12 +13,12 @@
  *                 对于AtomicIntegerFieldUpdater和AtomicLongFieldUpdater只能修改int/long类型的字段，不能修改其包装类型（Integer/Long）。
  *                 如果要修改包装类型就需要使用AtomicReferenceFieldUpdater。
  *             解决ABA问题(AtomicMarkableReference,AtomicStampedReference)
- * （3）ConcurrentHashMap.持有对象：Segment<K,V>[] segments;segmentMask;segmentShift
+ *  (3) ConcurrentHashMap.持有对象：Segment<K,V>[] segments;segmentMask;segmentShift
  *      【Segment extends ReentrantLock】HashEntry<K,V>[] table;modCount;threshold;count;loadFactor
  *      【HashEntry】final hash；final key；value；HashEntry<K,V> next;
- * （4）CountDownLatch
- * （5）CyclicBarrier
- *  (6)Semaphore
+ *  (4) CountDownLatch
+ *  (5) CyclicBarrier
+ *  (6) Semaphore
  *  (7)
  *                     
  */
