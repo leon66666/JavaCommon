@@ -25,89 +25,89 @@ import java.util.concurrent.LinkedBlockingQueue;
 //同步队列类似于 CSP 和 Ada 中使用的 rendezvous 信道。
 //它非常适合于传递性设计，在这种设计中，在一个线程中运行的对象要将某些信息、事件或任务传递给在另一个线程中运行的对象，它就必须与该对象同步。
 public class BlockingQueueDemo {
-	private ArrayBlockingQueue<Integer> arrayBlockingQueue = new ArrayBlockingQueue<>(100);
-	private LinkedBlockingQueue<Integer> linkedBlockingQueue = new LinkedBlockingQueue<>();
+    private ArrayBlockingQueue<Integer> arrayBlockingQueue = new ArrayBlockingQueue<>(100);
+    private LinkedBlockingQueue<Integer> linkedBlockingQueue = new LinkedBlockingQueue<>();
 
-	// 生产者
-	public static class Producer implements Runnable {
-		private final BlockingQueue<Integer> blockingQueue;
-		private volatile boolean flag;
-		private Random random;
+    public static void main(String[] args) {
+        BlockingQueue<Integer> blockingQueue = new LinkedBlockingQueue<Integer>(3);
+        Producer producer = new Producer(blockingQueue);
+        Consumer consumer = new Consumer(blockingQueue);
+        // 创建5个生产者，5个消费者
+        for (int i = 0; i < 6; i++) {
+            if (i < 5) {
+                new Thread(producer, "producer" + i).start();
+            } else {
+                new Thread(consumer, "consumer" + (i - 5)).start();
+            }
+        }
 
-		public Producer(BlockingQueue<Integer> blockingQueue) {
-			this.blockingQueue = blockingQueue;
-			flag = false;
-			random = new Random();
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        producer.shutDown();
+        consumer.shutDown();
+    }
 
-		}
+    // 生产者
+    public static class Producer implements Runnable {
+        private final BlockingQueue<Integer> blockingQueue;
+        private volatile boolean flag;
+        private Random random;
 
-		public void run() {
-			while (!flag) {
-				int info = random.nextInt(100);
-				try {
-					blockingQueue.put(info);
-					System.out.println(Thread.currentThread().getName() + " produce " + info);
-					Thread.sleep(50);
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-		}
+        public Producer(BlockingQueue<Integer> blockingQueue) {
+            this.blockingQueue = blockingQueue;
+            flag = false;
+            random = new Random();
 
-		public void shutDown() {
-			flag = true;
-		}
-	}
+        }
 
-	// 消费者
-	public static class Consumer implements Runnable {
-		private final BlockingQueue<Integer> blockingQueue;
-		private volatile boolean flag;
+        public void run() {
+            while (!flag) {
+                int info = random.nextInt(100);
+                try {
+                    blockingQueue.put(info);
+                    System.out.println(Thread.currentThread().getName() + " produce " + info);
+                    Thread.sleep(50);
+                } catch (InterruptedException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
+        }
 
-		public Consumer(BlockingQueue<Integer> blockingQueue) {
-			this.blockingQueue = blockingQueue;
-		}
+        public void shutDown() {
+            flag = true;
+        }
+    }
 
-		public void run() {
-			while (!flag) {
-				int info;
-				try {
-					info = blockingQueue.take();
-					System.out.println(Thread.currentThread().getName() + " consumer " + info);
-					Thread.sleep(50);
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-		}
+    // 消费者
+    public static class Consumer implements Runnable {
+        private final BlockingQueue<Integer> blockingQueue;
+        private volatile boolean flag;
 
-		public void shutDown() {
-			flag = true;
-		}
-	}
+        public Consumer(BlockingQueue<Integer> blockingQueue) {
+            this.blockingQueue = blockingQueue;
+        }
 
-	public static void main(String[] args) {
-		BlockingQueue<Integer> blockingQueue = new LinkedBlockingQueue<Integer>(3);
-		Producer producer = new Producer(blockingQueue);
-		Consumer consumer = new Consumer(blockingQueue);
-		// 创建5个生产者，5个消费者
-		for (int i = 0; i < 6; i++) {
-			if (i < 5) {
-				new Thread(producer, "producer" + i).start();
-			} else {
-				new Thread(consumer, "consumer" + (i - 5)).start();
-			}
-		}
+        public void run() {
+            while (!flag) {
+                int info;
+                try {
+                    info = blockingQueue.take();
+                    System.out.println(Thread.currentThread().getName() + " consumer " + info);
+                    Thread.sleep(50);
+                } catch (InterruptedException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
+        }
 
-		try {
-			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		producer.shutDown();
-		consumer.shutDown();
-	}
+        public void shutDown() {
+            flag = true;
+        }
+    }
 }

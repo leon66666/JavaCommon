@@ -19,8 +19,8 @@
  *  (4) CountDownLatch
  *  (5) CyclicBarrier
  *  (6) Semaphore
- *  (7)
- *                     
+ *  (7) BlockingQueue
+ *  (8) 
  */
 package zhongqiu.common.jdk5.concurrent;
 
