@@ -29,7 +29,7 @@ public class BlockingQueueDemo {
     private LinkedBlockingQueue<Integer> linkedBlockingQueue = new LinkedBlockingQueue<>();
 
     public static void main(String[] args) {
-        BlockingQueue<Integer> blockingQueue = new LinkedBlockingQueue<Integer>(3);
+        BlockingQueue<Integer> blockingQueue = new ArrayBlockingQueue<Integer>(3);
         Producer producer = new Producer(blockingQueue);
         Consumer consumer = new Consumer(blockingQueue);
         // 创建5个生产者，5个消费者
