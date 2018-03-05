@@ -3,9 +3,9 @@
  * jdk5，并发新特性。JUC  http://ifeve.com/doug-lea/
  *  (1) locks：LockSupport，ReentrantLock，ReentrantReadWriteLock
  *  (2) atomic：原子更新基本类型(AtomicBoolean,AtomicInteger,AtomicLong)、
- *             原子更新数组(AtomicIntegerArray,AtomicLongArray,AtomicReferenceArray)、
- *             原子更新引用(AtomicReference)、
- *             原子更新属性(AtomicIntegerFieldUpdater,AtomicLongFieldUpdater,AtomicReferenceFieldUpdater)
+ *              原子更新数组(AtomicIntegerArray,AtomicLongArray,AtomicReferenceArray)、
+ *              原子更新引用(AtomicReference)、
+ *              原子更新属性(AtomicIntegerFieldUpdater,AtomicLongFieldUpdater,AtomicReferenceFieldUpdater)
  *                 AtomicReferenceFieldUpdater的使用有以下限制：
  *                 字段必须是volatile类型的，在线程之间共享变量时保证立即可见
  *                 只能是实例变量，不能是类变量，也就是说不能加static关键字
@@ -19,7 +19,7 @@
  *  (4) CountDownLatch
  *  (5) CyclicBarrier
  *  (6) Semaphore
- *  (7) BlockingQueue
+ *  (7) BlockingQueue：ArrayBlockingQueue,LinkedBlockingQueue,SynchronousQueue
  *  (8)
  */
 package zhongqiu.common.jdk5.concurrent;
