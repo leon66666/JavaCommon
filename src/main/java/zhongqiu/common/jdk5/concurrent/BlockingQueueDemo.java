@@ -14,7 +14,8 @@ import java.util.concurrent.LinkedBlockingQueue;
 *                    你可以在对其初始化的时候设定这个上限，但之后就无法对这个上限进行修改了
 * LinkedBlockingQueue 内部以一个链式结构(链接节点)对其元素进行存储。
 *                     如果需要的话，这一链式结构可以选择一个上限。如果没有定义上限，将使用 Integer.MAX_VALUE 作为上限。
-* 
+* 常用方法：add，offer，put，poll，take，drainTo
+*
 * */
 
 //PriorityBlockingQueue：PriorityBlockingQueue 是一个无界的并发队列。
