@@ -7,14 +7,15 @@ import java.util.concurrent.LinkedBlockingQueue;
 //http://www.2cto.com/kf/201601/487906.html
 //http://blog.csdn.net/ghsau/article/details/7481142
 //http://blog.csdn.net/defonds/article/details/44021605#t7
-//使用场景，主要对生产过剩的生产者进行阻塞，对过多的消费者进行阻塞。
-
-//ArrayBlockingQueue：ArrayBlockingQueue 是一个有界的阻塞队列，其内部实现是将对象放到一个数组里。
-//有界也就意味着，它不能够存储无限多数量的元素。它有一个同一时间能够存储元素数量的上限。
-//你可以在对其初始化的时候设定这个上限，但之后就无法对这个上限进行修改了(译者注：因为它是基于数组实现的，也就具有数组的特性：一旦初始化，大小就无法修改)。
-
-//LinkedBlockingQueue：LinkedBlockingQueue 内部以一个链式结构(链接节点)对其元素进行存储。
-//如果需要的话，这一链式结构可以选择一个上限。如果没有定义上限，将使用 Integer.MAX_VALUE 作为上限。
+/*
+* 使用场景，主要对生产过剩的生产者进行阻塞，对过多的消费者进行阻塞。
+* ArrayBlockingQueue 是一个有界的阻塞队列，其内部实现是将对象放到一个数组里。
+*                    它不能够存储无限多数量的元素。它有一个同一时间能够存储元素数量的上限。
+*                    你可以在对其初始化的时候设定这个上限，但之后就无法对这个上限进行修改了
+* LinkedBlockingQueue 内部以一个链式结构(链接节点)对其元素进行存储。
+*                     如果需要的话，这一链式结构可以选择一个上限。如果没有定义上限，将使用 Integer.MAX_VALUE 作为上限。
+* 
+* */
 
 //PriorityBlockingQueue：PriorityBlockingQueue 是一个无界的并发队列。
 //它使用了和类 java.util.PriorityQueue 一样的排序规则。你无法向这个队列中插入 null 值。
