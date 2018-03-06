@@ -1,10 +1,7 @@
 package zhongqiu.common.jdk5.concurrent;
 
 import java.util.Random;
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.SynchronousQueue;
+import java.util.concurrent.*;
 //http://www.2cto.com/kf/201601/487906.html
 //http://blog.csdn.net/ghsau/article/details/7481142
 //http://blog.csdn.net/defonds/article/details/44021605#t7
@@ -26,7 +23,7 @@ import java.util.concurrent.SynchronousQueue;
 *                  同步队列没有任何内部容量，甚至连一个队列的容量都没有。
 *                  非常适合于传递性设计，在这种设计中，在一个线程中运行的对象要将某些信息、事件或任务传递给在另一个线程中运行的对象，
 *                  它就必须与该对象同步。
-*
+*PriorityBlockingQueue
 * */
 
 //PriorityBlockingQueue：PriorityBlockingQueue 是一个无界的并发队列。
@@ -36,6 +33,7 @@ public class BlockingQueueDemo {
     private ArrayBlockingQueue<Integer> arrayBlockingQueue = new ArrayBlockingQueue<>(100);
     private LinkedBlockingQueue<Integer> linkedBlockingQueue = new LinkedBlockingQueue<>();
     private SynchronousQueue<Integer> synchronousQueue = new SynchronousQueue<>();
+    private PriorityBlockingQueue<Integer> priorityBlockingQueue = new PriorityBlockingQueue<>();
 
     public static void main(String[] args) {
         ArrayBlockingQueueTest();
