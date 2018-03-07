@@ -1,5 +1,6 @@
 package zhongqiu.common.jdk5.concurrent;
 
+import java.util.Iterator;
 import java.util.Random;
 import java.util.concurrent.*;
 
@@ -33,7 +34,7 @@ import java.util.concurrent.*;
 *               notEmpty.signal()唤醒take线程。lock.unlock()解锁
 *   获取方法：如果队列中没有元素，获取失败，线程park，进入waiting状态。
 *   take方法： lock.lockInterruptibly()加锁，while ( (result = dequeue()) == null) notEmpty.await()。最后lock.unlock()解锁
-*
+*DelayQueue  无界的优先级的阻塞队列，其中的对象只能在其到期时才能从队列中取走。
 * */
 public class BlockingQueueDemo {
     private ArrayBlockingQueue<Integer> arrayBlockingQueue = new ArrayBlockingQueue<>(100);
@@ -43,6 +44,19 @@ public class BlockingQueueDemo {
 
     public static void main(String[] args) {
         ArrayBlockingQueueTest();
+//        exam();
+    }
+
+    public static void exam() {
+        int studentNumber = 20;
+        DelayQueue<Student> students = new DelayQueue<Student>();
+        Random random = new Random();
+        for (int i = 0; i < studentNumber; i++) {
+            students.put(new Student("student" + (i + 1), 30 + random.nextInt(120)));
+        }
+        students.put(new Student("student", 120));
+        Thread teacherThread = new Thread(new Teacher(students));
+        teacherThread.start();
     }
 
     public static void PriorityBlockingQueueTest() {
@@ -122,6 +136,100 @@ public class BlockingQueueDemo {
         }
         producer.shutDown();
         consumer.shutDown();
+    }
+
+    static class Student implements Runnable, Delayed {
+
+        private String name;
+        public long workTime;
+        private long submitTime;
+        private boolean isForce = false;
+
+        public Student() {
+        }
+
+        public Student(String name, long workTime) {
+            this.name = name;
+            this.workTime = workTime;
+            this.submitTime = TimeUnit.NANOSECONDS.convert(workTime, TimeUnit.NANOSECONDS) + System.nanoTime();// 纳秒级别
+        }
+
+        @Override
+        public int compareTo(Delayed o) {
+            if (o == null || !(o instanceof Student))
+                return 1;
+            if (o == this)
+                return 0;
+            Student s = (Student) o;
+            if (this.workTime > s.workTime) {
+                return 1;
+            } else if (this.workTime == s.workTime) {
+                return 0;
+            } else {
+                return -1;
+            }
+        }
+
+        @Override
+        public long getDelay(TimeUnit unit) {
+            return unit.convert(submitTime - System.nanoTime(), TimeUnit.NANOSECONDS);
+        }
+
+        @Override
+        public void run() {
+            if (isForce) {
+                System.out.println(name + " 交卷，实际用时 120分钟");
+            } else {
+                System.out.println(name + " 交卷," + "实际用时 " + workTime + " 分钟");
+            }
+        }
+
+        public boolean isForce() {
+            return isForce;
+        }
+
+        public void setForce(boolean isForce) {
+            this.isForce = isForce;
+        }
+
+    }
+
+    static class Teacher implements Runnable {
+        private int counter = 20;
+        private DelayQueue<Student> students;
+
+        public Teacher(DelayQueue<Student> students) {
+            this.students = students;
+        }
+
+        @Override
+        public void run() {
+            try {
+                System.out.println(" test start");
+                while (counter > 0) {
+                    Student student = students.poll();
+                    if (student.workTime < 120) {
+                        student.run();
+                        if (counter > 0) {
+                            counter--;
+                        }
+                    } else {
+                        System.out.println(" 考试时间到，全部交卷！");
+                        Student tmpStudent;
+                        for (Iterator<Student> iterator2 = students.iterator(); iterator2.hasNext(); ) {
+                            tmpStudent = iterator2.next();
+                            tmpStudent.setForce(true);
+                            tmpStudent.run();
+                            if (counter > 0) {
+                                counter--;
+                            }
+                        }
+                    }
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     // 生产者
