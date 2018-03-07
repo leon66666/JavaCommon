@@ -44,6 +44,7 @@ public class BlockingQueueDemo {
 
     public static void main(String[] args) {
         ArrayBlockingQueueTest();
+
 //        exam();
     }
 
