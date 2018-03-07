@@ -2,6 +2,7 @@ package zhongqiu.common.jdk5.concurrent;
 
 import java.util.Random;
 import java.util.concurrent.*;
+
 //http://www.2cto.com/kf/201601/487906.html
 //http://blog.csdn.net/ghsau/article/details/7481142
 //http://blog.csdn.net/defonds/article/details/44021605#t7
@@ -23,12 +24,9 @@ import java.util.concurrent.*;
 *                  同步队列没有任何内部容量，甚至连一个队列的容量都没有。
 *                  非常适合于传递性设计，在这种设计中，在一个线程中运行的对象要将某些信息、事件或任务传递给在另一个线程中运行的对象，
 *                  它就必须与该对象同步。
-*PriorityBlockingQueue
+*PriorityBlockingQueue  基于数组实现的线程安全的无界优先级队列，你无法向这个队列中插入 null 值。
+*                       所有插入到 PriorityBlockingQueue 的元素必须实现 java.lang.Comparable 接口
 * */
-
-//PriorityBlockingQueue：PriorityBlockingQueue 是一个无界的并发队列。
-//它使用了和类 java.util.PriorityQueue 一样的排序规则。你无法向这个队列中插入 null 值。
-//所有插入到 PriorityBlockingQueue 的元素必须实现 java.lang.Comparable 接口。因此该队列中元素的排序就取决于你自己的 Comparable 实现。
 public class BlockingQueueDemo {
     private ArrayBlockingQueue<Integer> arrayBlockingQueue = new ArrayBlockingQueue<>(100);
     private LinkedBlockingQueue<Integer> linkedBlockingQueue = new LinkedBlockingQueue<>();
