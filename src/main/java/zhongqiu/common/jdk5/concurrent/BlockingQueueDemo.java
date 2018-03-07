@@ -26,7 +26,13 @@ import java.util.concurrent.*;
 *                  它就必须与该对象同步。
 *PriorityBlockingQueue  基于数组实现的线程安全的无界优先级队列，你无法向这个队列中插入 null 值。
 *                       所有插入到 PriorityBlockingQueue 的元素必须实现 java.lang.Comparable 接口
-*                       以数组的形式实现的最大或最小堆
+*                       以数组的形式实现的最大或最小堆.
+*   添加方法：add,offer,put，最终调用的都是offer方法，因为是无界队列，入队列不会阻塞。
+*   offer方法： lock.lock()加锁，tryGrow(array, cap)增加容量，siftUpUsingComparator(n, e, array, cmp)自下而上调整，
+*               notEmpty.signal()唤醒take线程。lock.unlock()解锁
+*   获取方法：如果队列中没有元素，获取失败，线程park，进入waiting状态。
+*   take方法： lock.lockInterruptibly()加锁，while ( (result = dequeue()) == null) notEmpty.await()。最后lock.unlock()解锁
+*
 * */
 public class BlockingQueueDemo {
     private ArrayBlockingQueue<Integer> arrayBlockingQueue = new ArrayBlockingQueue<>(100);
@@ -36,6 +42,29 @@ public class BlockingQueueDemo {
 
     public static void main(String[] args) {
         ArrayBlockingQueueTest();
+    }
+
+    public static void PriorityBlockingQueueTest() {
+        final PriorityBlockingQueue<Integer> priorityBlockingQueue = new PriorityBlockingQueue<>();
+        Thread putThread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                System.out.println("put thread start");
+                priorityBlockingQueue.put(1);
+                System.out.println("put thread end");
+            }
+        });
+        Thread takeThread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                System.out.println("take thread start");
+                try {
+                    System.out.println("take from putThread: " + priorityBlockingQueue.take());
+                } catch (InterruptedException e) {
+                }
+                System.out.println("take thread end");
+            }
+        });
     }
 
     public static void SynchronousQueueTest() {
