@@ -26,6 +26,7 @@ import java.util.concurrent.*;
 *                  它就必须与该对象同步。
 *PriorityBlockingQueue  基于数组实现的线程安全的无界优先级队列，你无法向这个队列中插入 null 值。
 *                       所有插入到 PriorityBlockingQueue 的元素必须实现 java.lang.Comparable 接口
+*                       以数组的形式实现的最大或最小堆
 * */
 public class BlockingQueueDemo {
     private ArrayBlockingQueue<Integer> arrayBlockingQueue = new ArrayBlockingQueue<>(100);
