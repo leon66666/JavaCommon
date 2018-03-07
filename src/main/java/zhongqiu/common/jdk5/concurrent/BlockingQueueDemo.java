@@ -7,6 +7,7 @@ import java.util.concurrent.*;
 //http://blog.csdn.net/ghsau/article/details/7481142
 //http://blog.csdn.net/defonds/article/details/44021605#t7
 /*
+* BlockingQueue
 * 使用场景，主要对生产过剩的生产者进行阻塞，对过多的消费者进行阻塞。
 * 常用方法：放入元素，add，offer，put     获取元素，peek，poll，take，drainTo
 * ArrayBlockingQueue 是一个有界的阻塞队列，其内部实现是将对象放到一个循环数组里。它不能够存储无限多数量的元素。
