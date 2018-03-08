@@ -19,7 +19,7 @@
  *  (4) CountDownLatch
  *  (5) CyclicBarrier
  *  (6) Semaphore
- *  (7) BlockingQueue：ArrayBlockingQueue,LinkedBlockingQueue,SynchronousQueue,DelayQueue
+ *  (7) BlockingQueue：ArrayBlockingQueue,LinkedBlockingQueue,SynchronousQueue,PriorityBlockingQueue,DelayQueue
  *  (8)
  *  (9)
  *  (9)
