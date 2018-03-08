@@ -38,6 +38,7 @@ import java.util.concurrent.*;
 *             DelayQueue<E extends Delayed>,需实现方法long getDelay(TimeUnit unit);public int compareTo(T o);
 *     添加方法：add,offer,put，最终调用的都是offer方法，因为是无界队列，入队列不会阻塞。
 *     应用场景：具有过期时间的缓存；多学生答题系统(时间到，自动交卷);实现订单的定时取消(用户也可以主动取消);
+*              ScheduledThreadPoolExecutor中DelayedWorkQueue是对其的优化使用;
 *
 * */
 public class BlockingQueueDemo {
