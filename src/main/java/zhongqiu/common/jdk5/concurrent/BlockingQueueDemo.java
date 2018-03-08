@@ -34,7 +34,7 @@ import java.util.concurrent.*;
 *               notEmpty.signal()唤醒take线程。lock.unlock()解锁
 *   获取方法：如果队列中没有元素，获取失败，线程park，进入waiting状态。
 *   take方法： lock.lockInterruptibly()加锁，while ( (result = dequeue()) == null) notEmpty.await()。最后lock.unlock()解锁
-*DelayQueue  无界的优先级的阻塞队列，其中的对象只能在其到期时才能从队列中取走。
+* DelayQueue  无界的优先级的阻塞队列，其中的对象只能在其到期时才能从队列中取走。
 * */
 public class BlockingQueueDemo {
     private ArrayBlockingQueue<Integer> arrayBlockingQueue = new ArrayBlockingQueue<>(100);
