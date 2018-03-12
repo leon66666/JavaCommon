@@ -1,6 +1,7 @@
 package zhongqiu.common.jdk5.concurrent;
 
 import java.util.concurrent.*;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /*ThreadPoolExecutor 线程池
 * 继承关系：ThreadPoolExecutor extends AbstractExecutorService
@@ -32,14 +33,16 @@ import java.util.concurrent.*;
                            将worker完成的任务添加到总的完成任务中 completedTaskCount += w.completedTasks;
                            从workers集合中移除该worker。workers.remove(w)。mainLock解锁
                            尝试终止线程池 tryTerminate();
+*   shutdown方法： 设置线程池控制状态为SHUTDOWN。中断空闲worker。onShutdown()钩子方法。尝试终止线程池tryTerminate()
+*   shutdownNow方法：设置线程池控制状态为SHUTDOWN。中断所有worker。尝试终止线程池tryTerminate()。返回等待执行的任务列表
 * */
 public class ThreadPoolExecutorDemo {
     public static void main(String[] args) {
         BlockingQueue<Runnable> blockingQueue = new LinkedBlockingDeque<>();
-        ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(10, 10, 60, TimeUnit.SECONDS, blockingQueue);
+        ExecutorService executorService = new ThreadPoolExecutor(10, 10, 60, TimeUnit.SECONDS, blockingQueue, new CommonThreadFactory());
 
         //execute方法，没有返回值，执行runnable
-        threadPoolExecutor.execute(new Runnable() {
+        executorService.execute(new Runnable() {
             @Override
             public void run() {
                 System.out.println("run");
@@ -47,7 +50,7 @@ public class ThreadPoolExecutorDemo {
         });
 
         //submit方法带有返回值，用future接收，通过future.get()方法获取返回值
-        Future future = threadPoolExecutor.submit(new Runnable() {
+        Future future = executorService.submit(new Runnable() {
             @Override
             public void run() {
                 System.out.println("run");
@@ -61,5 +64,48 @@ public class ThreadPoolExecutorDemo {
             e.printStackTrace();
         }
 
+        //正确的关闭线程池
+        executorService.shutdown();
+        try {
+            while (!executorService.awaitTermination(10, TimeUnit.SECONDS)) {
+                System.out.println("Waiting batchRecharge thread pool close...");
+                //log.info("Waiting batchRecharge thread pool close..."); // Waiting thread pool close...
+            }
+        } catch (InterruptedException ex) { // should not reach here
+            ex.printStackTrace();
+            executorService.shutdownNow();
+            Thread.currentThread().interrupt();
+        } catch (Exception ex) { // should not reach here
+            ex.printStackTrace();
+            executorService.shutdownNow();
+        }
+    }
+
+    static class CommonThreadFactory implements ThreadFactory {
+        private static final AtomicInteger poolNumber = new AtomicInteger(1);
+        private final ThreadGroup group;
+        private final AtomicInteger threadNumber = new AtomicInteger(1);
+        private final String namePrefix;
+
+        CommonThreadFactory() {
+            SecurityManager s = System.getSecurityManager();
+            group = (s != null) ? s.getThreadGroup() : Thread.currentThread()
+                    .getThreadGroup();
+            namePrefix = "task" + poolNumber.getAndIncrement()
+                    + "-thread-";
+        }
+
+        @Override
+        public Thread newThread(Runnable r) {
+            Thread t = new Thread(group, r, namePrefix
+                    + threadNumber.getAndIncrement(), 0);
+            if (t.isDaemon()) {
+                t.setDaemon(false);
+            }
+            if (t.getPriority() != Thread.NORM_PRIORITY) {
+                t.setPriority(Thread.NORM_PRIORITY);
+            }
+            return t;
+        }
     }
 }
