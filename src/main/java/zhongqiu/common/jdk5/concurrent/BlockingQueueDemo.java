@@ -23,7 +23,7 @@ import java.util.concurrent.*;
 *                     如果需要的话，这一链式结构可以选择一个上限。如果没有定义上限，将使用 Integer.MAX_VALUE 作为上限。
 *                     使用了put和take两个锁进行锁分离，效率比ArrayBlockingQueue高
 * SynchronousQueue 阻塞队列，基于Spin和CAS方法。其中每个插入操作必须等待另一个线程的对应移除操作 ，反之亦然。
-*                  同步队列没有任何内部容量，甚至连一个队列的容量都没有。
+*                  同步队列没有任何内部容量，甚至连一个队列的容量都没有。内部维护一个队列或栈来保存阻塞的线程
 *     TransferQueue 先进先出队列，公平模式。核心方法,transfer
 * PriorityBlockingQueue 基于数组实现的线程安全的无界优先级队列，你无法向这个队列中插入 null 值。
 *                       所有插入到 PriorityBlockingQueue 的元素必须实现 java.lang.Comparable 接口
@@ -36,6 +36,7 @@ import java.util.concurrent.*;
 * DelayQueue  无界的优先级的阻塞队列，其中的对象只能在其到期时才能从队列中取走。
 *             DelayQueue<E extends Delayed>,需实现方法long getDelay(TimeUnit unit);public int compareTo(T o);
 *     添加方法：add,offer,put，最终调用的都是offer方法，因为是无界队列，入队列不会阻塞。
+*              内部使用PriorityQueue来存储，逻辑和PriorityBlockingQueue一样
 *     应用场景：具有过期时间的缓存；多学生答题系统(时间到，自动交卷);实现订单的定时取消(用户也可以主动取消);
 *              ScheduledThreadPoolExecutor中DelayedWorkQueue是对其的优化使用;
 *
