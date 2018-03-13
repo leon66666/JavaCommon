@@ -9,6 +9,8 @@ import java.util.concurrent.*;
  *                     三、ensurePrestart(),确保至少一个线程在处理任务，即使核心线程数corePoolSize为0
  * ensurePrestart方法：一、如果线程数量小于coreSize，addWorker(null, true)。二、否则，如果coreSize=0，addWorker(null,false)
  * addWorker->runWorker->getTask->delayedWorkQueue.take(阻塞，直到延迟队列的第一个元素到达了过期时间)->运行run方法
+ * 我们知道任务添加到队列后，工作线程会从队列获取并移除到期的元素，然后执行run方法，所以下面看看ScheduledFutureTask的run方法如何实现定时调度的
+ * run方法：一、不是循环任务，ScheduledFutureTask.super.run()。二、是循环任务，setNextRunTime();reExecutePeriodic(outerTask);
  */
 public class ScheduledThreadPoolExecutorDemo {
     static ScheduledExecutorService scheduledThreadPool = new ScheduledThreadPoolExecutor(5);
