@@ -31,34 +31,35 @@ public class FutureTaskDemo {
         long aaa = end.getTime() - begin.getTime();
         System.out.println("计算耗时：" + aaa);
     }
+
+    static class Calculate {
+        public int calOne() throws InterruptedException {
+            Thread.sleep(10000);
+            return 10;
+        }
+
+        public int calTwo() throws InterruptedException {
+            Thread.sleep(5000);
+            return 5;
+        }
+
+    }
+
+    static class CallableDemo implements Callable<Integer> {
+        private Calculate calculate;
+
+        public Calculate getCalculate() {
+            return calculate;
+        }
+
+        public void setCalculate(Calculate calculate) {
+            this.calculate = calculate;
+        }
+
+        @Override
+        public Integer call() throws Exception {
+            return calculate.calTwo();
+        }
+    }
 }
 
-class Calculate {
-    public int calOne() throws InterruptedException {
-        Thread.sleep(10000);
-        return 10;
-    }
-
-    public int calTwo() throws InterruptedException {
-        Thread.sleep(5000);
-        return 5;
-    }
-
-}
-
-class CallableDemo implements Callable<Integer> {
-    private Calculate calculate;
-
-    public Calculate getCalculate() {
-        return calculate;
-    }
-
-    public void setCalculate(Calculate calculate) {
-        this.calculate = calculate;
-    }
-
-    @Override
-    public Integer call() throws Exception {
-        return calculate.calTwo();
-    }
-}
