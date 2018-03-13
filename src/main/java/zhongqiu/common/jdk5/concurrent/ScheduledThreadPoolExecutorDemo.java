@@ -4,6 +4,11 @@ import java.util.concurrent.*;
 
 /**
  * ScheduledThreadPoolExecutor 调度线程池
+ * schedule，scheduleWithFixedDelay，scheduleWithFixedRate。三个方法内部都是调用的delayedExecute方法
+ * delayedExecute方法: 一、如果线程池shutdown，拒绝任务。二、delayedWorkQueue.add(task)。
+ *                     三、ensurePrestart(),确保至少一个线程在处理任务，即使核心线程数corePoolSize为0
+ * ensurePrestart方法：一、如果线程数量小于coreSize，addWorker(null, true)。二、否则，如果coreSize=0，addWorker(null,false)
+ * addWorker->runWorker->getTask->delayedWorkQueue.take(阻塞，直到延迟队列的第一个元素到达了过期时间)->运行run方法
  */
 public class ScheduledThreadPoolExecutorDemo {
     static ScheduledExecutorService scheduledThreadPool = new ScheduledThreadPoolExecutor(5);
