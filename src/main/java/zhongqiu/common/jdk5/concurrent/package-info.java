@@ -20,10 +20,11 @@
  *  (5) CyclicBarrier
  *  (6) Semaphore
  *  (7) BlockingQueue：ArrayBlockingQueue,LinkedBlockingQueue,SynchronousQueue,PriorityBlockingQueue,DelayQueue
+ *  (9) Exchanger
  *  (8) ThreadPoolExecutor
  *  (9) Executors
  *  (9) ScheduledThreadPoolExecutor
- *  (9)
+ *  (9) 
  */
 package zhongqiu.common.jdk5.concurrent;
 
