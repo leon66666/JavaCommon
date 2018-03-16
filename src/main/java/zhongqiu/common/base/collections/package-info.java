@@ -3,14 +3,21 @@
  * 参考资料：http://blog.csdn.net/fyang2007/article/details/51517662
  * （1）集合中的List：arrayList，linkedList,vector的区别和使用场景。linkedlist双向循环链表，vector同步实现原理syn锁
        【ArrayList implements List,RandomAccess】【List extends Collection】【Collection extends Iterable】
-       【RandomAccess接口，是一种标记接口，当要实现某些算法时，会判断当前类是否实现了RandomAccess接口会根据结果选择不同的算法】
+       【RandomAccess接口，一种标记接口，支持随机访问随机访问任意下标元素都比较快，根据是否实现了该接口采用不同的算法】
        【集合类是RandomAccess的实现，则尽量用for(int i = 0; i < size; i++) 来遍历而不要用Iterator迭代器来遍历】
        【核心变量】Object[] elementData【存放数据】，size【已经存放的数据数量】，modCount【用于快速失败】
-       【核心方法】 Arrays.copyOf，System.arraycopy(Object src,  int  srcPos,Object dest, int destPos, int length)
-                  add：modCount++。grow方法扩容,Arrays.copyOf
-                  addAll,ensureCapacityInternal(size + numNew)
+       【核心方法】copyOf(T[] original, int newLength)
+                  System.arraycopy(Object src,  int  srcPos,Object dest, int destPos, int length)
+                  ensureCapacityInternal(int minCapacity)：
+                       判断数组是否为默认容量数组，是的话取minCapacity=Math.max(DEFAULT_CAPACITY, minCapacity)
+                       modCount++。grow方法扩容为原来的1.5倍,newCapacity = oldCapacity + (oldCapacity >> 1)
+                       生成扩容后的新数组 elementData=Arrays.copyOf(elementData, newCapacity)，
+                       System.arraycopy(original, 0, copy, 0,Math.min(original.length, newLength))
+                  add：ensureCapacityInternal(size + 1)；elementData[size++] = e
+                  add(int index, E element)
+                  addAll(Collection<? extends E> c)
                   addAll(int index, Collection<? extends E> c),
-                  remove(int index),remove(Object o),fastRemove(index)，System.arraycopy,clear
+                  remove(int index),remove(Object o),fastRemove(index),clear
                   iterator,class Itr implements Iterator,cursor,lastRet,expectedModCount,
                            next(),remove(int index),checkForComodification()
        【LinkedList implements List,Deque】【Deque extends Queue】【Queue extends Collection】
