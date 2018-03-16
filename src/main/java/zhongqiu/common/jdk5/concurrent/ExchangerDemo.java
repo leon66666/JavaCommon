@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.Exchanger;
-import java.util.concurrent.ThreadPoolExecutor;
 
 /*
 * Exchanger是双向的数据传输，2个线程在一个同步点，交换数据。先到的线程会等待第二个线程执行exchange
