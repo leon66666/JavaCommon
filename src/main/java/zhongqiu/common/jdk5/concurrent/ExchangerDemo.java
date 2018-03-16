@@ -4,10 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.Exchanger;
-
 /*
 * Exchanger是双向的数据传输，2个线程在一个同步点，交换数据。先到的线程会等待第二个线程执行exchange
 * SynchronousQueue，是2个线程之间单向的数据传输，一个put，一个take。
+* */
+
+/*jdk 1.7 版本
 * 多个重载的exchange方法最终都是调用的doExchange(Object item, boolean timed, long nanos)方法
 * doExchange方法：A线程调用exchange(object),生成封装的Node对象【Node me = new Node(item)】，获取到A线程的index。开始for循环
 *                  第一步：如果arena[index]不为空，则和【slot=arena[index]】位置的线程B交换数据，
@@ -23,6 +25,10 @@ import java.util.concurrent.Exchanger;
 *                                                              自旋次数结束，返回CANCEL
 *                          index >>>= 1。index减少一半，换位置继续执行for循环
 *                  第三步：上面两步跳过了，跳过次数过多，增大index，重新for循环
+* */
+
+/*jdk 1.8 版本
+*
 * */
 public class ExchangerDemo {
     public static void main(String[] args) {
