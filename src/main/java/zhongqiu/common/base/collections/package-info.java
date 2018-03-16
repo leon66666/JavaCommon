@@ -5,9 +5,9 @@
        【ArrayList implements List,RandomAccess】【List extends Collection】【Collection extends Iterable】
        【RandomAccess接口，是一种标记接口，当要实现某些算法时，会判断当前类是否实现了RandomAccess接口会根据结果选择不同的算法】
        【集合类是RandomAccess的实现，则尽量用for(int i = 0; i < size; i++) 来遍历而不要用Iterator迭代器来遍历】
-       【核心方法】elementData[]，size,modCount用于快速失败
-                  Arrays.copyOf，System.arraycopy(original, toIndex, copy, fromIndex,numMoved)
-                  add,ensureCapacityInternal(size + 1),grow,Arrays.copyOf
+       【核心变量】Object[] elementData【存放数据】，size【已经存放的数据数量】，modCount【用于快速失败】
+       【核心方法】 Arrays.copyOf，System.arraycopy(Object src,  int  srcPos,Object dest, int destPos, int length)
+                  add：modCount++。grow方法扩容,Arrays.copyOf
                   addAll,ensureCapacityInternal(size + numNew)
                   addAll(int index, Collection<? extends E> c),
                   remove(int index),remove(Object o),fastRemove(index)，System.arraycopy,clear
