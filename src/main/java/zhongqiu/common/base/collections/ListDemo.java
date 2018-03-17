@@ -43,6 +43,9 @@ public class ListDemo {
 
         arrayList.add(new CollectionPo(1, "周", 87));
         linkedList.add(cPo);
+        linkedList.add(new CollectionPo(1, "周", 87));
+        linkedList.addAll(0,arrayList);
+
         list.add("Pear");
         list.remove("Pear");
         Object o = new Object();

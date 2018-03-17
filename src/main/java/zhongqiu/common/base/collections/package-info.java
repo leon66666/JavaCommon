@@ -1,7 +1,7 @@
 /*
  * @author zhongqiu
  * 参考资料：http://blog.csdn.net/fyang2007/article/details/51517662
- * （1）集合中的List：arrayList，linkedList,vector的区别和使用场景。linkedlist双向循环链表，vector同步实现原理syn锁
+ * （1）集合中的List：arrayList，linkedList,vector，stack
        【ArrayList implements List,RandomAccess】【List extends Collection】【Collection extends Iterable】
        【RandomAccess接口，一种标记接口，支持随机访问随机访问任意下标元素都比较快，根据是否实现了该接口采用不同的算法】
        【集合类是RandomAccess的实现，则尽量用for(int i = 0; i < size; i++) 来遍历而不要用Iterator迭代器来遍历】
@@ -18,21 +18,33 @@
                   addAll(Collection<? extends E> c)
                   addAll(int index, Collection<? extends E> c),
                   remove(int index),remove(Object o),fastRemove(index),clear
-                  iterator,class Itr implements Iterator,cursor,lastRet,expectedModCount,
-                           next(),remove(int index),checkForComodification()
-       【LinkedList implements List,Deque】【Deque extends Queue】【Queue extends Collection】
-        size,first,last,modCount,
-       【list核心方法】toArray,linkFirst(E e)，linkLast(E e)，linkBefore(E e, Node<E> succ)
-                      addAll(int index, Collection<? extends E> c),node(int index)
-       【Deque核心方法】indexOf(Object o)，lastIndexOf(Object o),remove(Object o)，unlink(Node<E> x)
-       【iterator】内部类class ListItr implements ListIterator<E>，lastReturned,next,nextIndex,expectedModCount
+                  iterator()   class Itr implements Iterator:
+                                    cursor【下一个要返回的index】,lastRet【最后一个返回的index】,
+                                    expectedModCount【期望的modcount，用于快速失败】
+                                    hasNext()，next(),remove(int index),checkForComodification()
+                  listIterator()  class ListItr extends Itr implements ListIterator<E>
+                                        hasPrevious()，previous()，set(E e)，add(E e)
+       【LinkedList<E> implements List<E>, Deque<E>】【Deque extends Queue】【Queue extends Collection】
+       【核心变量】size【已存储的元素数量】,Node first【首节点】,Node last【尾节点】,modCount【用于快速失败】
+       【核心方法】linkLast(E e),linkFirst(e),linkBefore(E e, Node<E> succ),
+                  node(int index),unlink(Node<E> x),indexOf(o)
+       【list核心方法】get(int index),set(int index, E element),add(E e),add(int index, E element)
+                      addAll(Collection<? extends E> c),addAll(int index, Collection<? extends E> c)
+                      remove(int index),remove(Object o),clear(),contains(Object o)，toArray()
+       【Deque核心方法】添加：add=offer(E e)==offerLast(E e),offerFirst(E e)，
+                       获取：peek(),poll()==pollFirst(),pollLast()
+       【Stack核心用法】添加：push(E e)
+                       获取：peek(),pop()
+       【iterator】内部类class ListItr implements ListIterator<E>
+                   Node lastReturned,Node next,nextIndex,expectedModCount
                    next,previous,remove,set,add
-       【Vector implements List】【elements方法内创建匿名类，返回Enumeration对象用来遍历集合】
-       【Collections 提供了很多对list的操作：排序，混排，替换，复制，最大最小值，移动list中元素位置】
- * （2）集合中的Stack：push，pop，peek，search。【Stack extends Vector】
- * （3）集合中的Array：数组的创建，数组作为参数，作为返回值
+       【Vector<E> extends AbstractList<E> implements List<E>, RandomAccess, Cloneable, java.io.Serializable】
+            内部使用数组存储，实现同ArrayList。通过对方法添加关键字synchronized实现线程安全。
+            Itr和elements(),内部也都使用了关键字synchronized确保线程安全
+       【Stack extends Vector】添加：push，获取：pop，peek，search
+ * （3）Collections 提供了很多对list的操作：排序，混排，替换，复制，最大最小值，移动list中元素位置
+                    Collections.synchronizedList。装饰器模式。遍历器遍历的时候，需要手动加锁
  * （4）集合中的Arrays类，对数组的各种操作。binarySearch，sort，fill，equals，asList，tostring，hashcode，copyof
- *  (5) Collections.synchronizedList。装饰器模式。遍历器遍历的时候，需要手动加锁
  * （6）集合中的Set：hashset,LinkedHashSet，treeset，二叉树排序，自定义排序
  * （7）集合中的Map：hashmap,treemap
        【应用】统计字符串中每个字符出现的次数。统计字符串中的大写，小写，数字，其他字符个数。统计字符串中子字符串出现的次数
