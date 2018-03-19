@@ -44,7 +44,8 @@
        【Stack extends Vector】添加：push，获取：pop，peek，search
  * （3）Collections 提供了很多对list的操作：排序，混排，替换，复制，最大最小值，移动list中元素位置
                     Collections.synchronizedList。装饰器模式。遍历器遍历的时候，需要手动加锁
-
+                    Collections.synchronizedSet
+                    Collections.synchronizedMap
  * （4）集合中的Arrays类，对数组的各种操作。binarySearch，sort，fill，equals，asList，tostring，hashcode，copyof
  * （6）集合中的Set：hashset,LinkedHashSet，treeset，二叉树排序，自定义排序
  * （7）集合中的Map：hashmap,treemap
