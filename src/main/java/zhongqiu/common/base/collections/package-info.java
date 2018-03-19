@@ -48,11 +48,12 @@
                     Collections.synchronizedMap
  * （4）集合中的Arrays类，对数组的各种操作。binarySearch，sort，fill，equals，asList，tostring，hashcode，copyof
  * （6）集合中的Set：hashset,LinkedHashSet，treeset，二叉树排序，自定义排序
- * （7）集合中的Map：hashmap,treemap
+ * （7）集合中的Map：HashMap,TreeMap 【红黑树，put和delete】【hash算法 ；初始容量(桶)和加载因子；rehash操作(扩充容量2倍)】
        【应用】统计字符串中每个字符出现的次数。统计字符串中的大写，小写，数字，其他字符个数。统计字符串中子字符串出现的次数
-       【内部实现】数组+链表；hash算法 ；初始容量(桶)和加载因子；rehash操作(扩充容量2倍)；链地址法解决冲突；红黑树，put和delete
-       【HashMap】【HashMap implements Map】
-       【核心方法】:Entry<K,V>[] table，threshold,modCount，loadFactor，size,hashSeed
+       【HashMap】【HashMap implements Map】【内部实现】数组+链表；链地址法解决冲突
+          【核心变量】threshold(resize阈值),loadFactor(加载因子),
+                     modCount(用于遍历器快速失败),size(已经存储的键值对数量),Node<K,V>[] table(保存Node<K,V>节点的数组)
+          【核心方法】
                    put，inflateTable,roundUpToPowerOf2，initHashSeedAsNeeded,
                         putForNullKey,遍历table[0]是否已存在null的key,不存在addEntry,
                         hash,indexFor，遍历table[i]是否已存在key，不存在addEntry,
