@@ -25,19 +25,19 @@
                   listIterator()  class ListItr extends Itr implements ListIterator<E>
                                         hasPrevious()，previous()，set(E e)，add(E e)
        【LinkedList<E> implements List<E>, Deque<E>】【Deque extends Queue】【Queue extends Collection】
-       【核心变量】size【已存储的元素数量】,Node first【首节点】,Node last【尾节点】,modCount【用于快速失败】
-       【核心方法】linkLast(E e),linkFirst(e),linkBefore(E e, Node<E> succ),
-                  node(int index),unlink(Node<E> x),indexOf(o)
-       【list核心方法】get(int index),set(int index, E element),add(E e),add(int index, E element)
-                      addAll(Collection<? extends E> c),addAll(int index, Collection<? extends E> c)
-                      remove(int index),remove(Object o),clear(),contains(Object o)，toArray()
-       【Deque核心方法】添加：add=offer(E e)==offerLast(E e),offerFirst(E e)，
-                       获取：peek(),poll()==pollFirst(),pollLast()
-       【Stack核心用法】添加：push(E e)
-                       获取：peek(),pop()
-       【iterator】内部类class ListItr implements ListIterator<E>
-                   Node lastReturned,Node next,nextIndex,expectedModCount
-                   next,previous,remove,set,add
+           【核心变量】size【已存储的元素数量】,Node first【首节点】,Node last【尾节点】,modCount【用于快速失败】
+           【核心方法】linkLast(E e),linkFirst(e),linkBefore(E e, Node<E> succ),
+                      node(int index),unlink(Node<E> x),indexOf(o)
+           【list核心方法】get(int index),set(int index, E element),add(E e),add(int index, E element)
+                          addAll(Collection<? extends E> c),addAll(int index, Collection<? extends E> c)
+                          remove(int index),remove(Object o),clear(),contains(Object o)，toArray()
+           【Deque核心方法】添加：add=offer(E e)==offerLast(E e),offerFirst(E e)，
+                           获取：peek(),poll()==pollFirst(),pollLast()
+           【Stack核心用法】添加：push(E e)
+                           获取：peek(),pop()
+           【iterator】内部类class ListItr implements ListIterator<E>
+                       Node lastReturned,Node next,nextIndex,expectedModCount
+                       next,previous,remove,set,add
        【Vector<E> extends AbstractList<E> implements List<E>, RandomAccess, Cloneable, java.io.Serializable】
             内部使用数组存储，实现同ArrayList。通过对方法添加关键字synchronized实现线程安全。
             Itr和elements(),内部也都使用了关键字synchronized确保线程安全
