@@ -48,12 +48,13 @@
                     Collections.synchronizedMap
  * （4）集合中的Arrays类，对数组的各种操作。binarySearch，sort，fill，equals，asList，tostring，hashcode，copyof
  * （6）集合中的Set：hashset,LinkedHashSet，treeset，二叉树排序，自定义排序
- * （7）集合中的Map：HashMap,TreeMap 【红黑树，put和delete】【hash算法 ；初始容量(桶)和加载因子；rehash操作(扩充容量2倍)】
+ * （7）集合中的Map：HashMap,TreeMap 【红黑树，put和delete】
        【应用】统计字符串中每个字符出现的次数。统计字符串中的大写，小写，数字，其他字符个数。统计字符串中子字符串出现的次数
-       【HashMap】【HashMap implements Map】【内部实现】数组+链表；链地址法解决冲突
+       【HashMap】【HashMap implements Map】
+          【内部实现】HashMap是数组+链表+红黑树(链表长度大于8转换为红黑树)；链地址法解决hash冲突
           【核心变量】threshold(resize阈值),loadFactor(加载因子),
                      modCount(用于遍历器快速失败),size(已经存储的键值对数量),Node<K,V>[] table(保存Node<K,V>节点的数组)
-          【核心方法】
+          【核心方法】【jdk 1.7】
                    put，inflateTable,roundUpToPowerOf2，initHashSeedAsNeeded,
                         putForNullKey,遍历table[0]是否已存在null的key,不存在addEntry,
                         hash,indexFor，遍历table[i]是否已存在key，不存在addEntry,
@@ -66,6 +67,8 @@
                    clear，Arrays.fill(table, null);
                    entrySet，keySet，values,abstract class HashIterator implements Iterator,
                    Entry<K,V> next;Entry<K,V> current;int index;expectedModCount,
+          【核心方法】【jdk 1.8】
+                【put】
        【TreeMap】【TreeMap implements NavigableMap】【NavigableMap extends SortedMap】【SortedMap extends Map】
        【Hashtable】【Hashtable extends Dictionary implements Map】【synchronized内置锁保证线程安全】
                     【Hashtable和hashmap的差别：线程安全，key和value不能为null，获取index实现不一样】
