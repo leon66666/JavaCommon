@@ -68,7 +68,9 @@
                    entrySet，keySet，values,abstract class HashIterator implements Iterator,
                    Entry<K,V> next;Entry<K,V> current;int index;expectedModCount,
           【核心方法】【jdk 1.8】
-                【put】
+                【put】1、tab为空，resize()扩容  2、确认槽位 i = (tab.length - 1) & hash
+                      3、tab[i]为空，newNode，放到tab[i]位置
+                      4、
        【TreeMap】【TreeMap implements NavigableMap】【NavigableMap extends SortedMap】【SortedMap extends Map】
        【Hashtable】【Hashtable extends Dictionary implements Map】【synchronized内置锁保证线程安全】
                     【Hashtable和hashmap的差别：线程安全，key和value不能为null，获取index实现不一样】
