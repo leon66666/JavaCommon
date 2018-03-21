@@ -52,7 +52,7 @@
        【应用】统计字符串中每个字符出现的次数。统计字符串中的大写，小写，数字，其他字符个数。统计字符串中子字符串出现的次数
        【HashMap】【HashMap implements Map】
           【内部实现】HashMap是数组+链表+红黑树(链表长度大于8转换为红黑树)；链地址法解决hash冲突
-          【核心变量】threshold(resize阈值),loadFactor(加载因子),
+          【核心变量】threshold(resize阈值),loadFactor(加载因子，默认0.75),
                      modCount(用于遍历器快速失败),size(已经存储的键值对数量),Node<K,V>[] table(保存Node<K,V>节点的数组)
           【核心方法】【jdk 1.7】
                    put，inflateTable,roundUpToPowerOf2，initHashSeedAsNeeded,
@@ -69,8 +69,14 @@
                    Entry<K,V> next;Entry<K,V> current;int index;expectedModCount,
           【核心方法】【jdk 1.8】
                 【put】1、tab为空，resize()扩容  2、确认槽位 i = (tab.length - 1) & hash
-                      3、tab[i]为空，newNode，放到tab[i]位置
-                      4、
+                      3、tab[i]为空，newNode，放到tab[i]位置。
+                      4、tab[i]不为空，从头结点开始遍历链表，遍历过程中把每一个节点的key和value和newNode比较
+                         如果完全相等，if (!onlyIfAbsent || oldValue == null)，替换旧节点。
+                         调用钩子方法afterNodeAccess(e); return oldValue
+                      5、所有节点遍历一遍，都没有发现完全相同的节点，把newNode连接到链表的尾部。p.next=newNode
+                         判断，如果连边长度超过8，改为红黑树结构代替链表。
+                         ++modCount; if (++size > threshold); resize()扩容;
+                         调用钩子方法afterNodeInsertion(evict); 原HashMap中不存在相同的key，return null
        【TreeMap】【TreeMap implements NavigableMap】【NavigableMap extends SortedMap】【SortedMap extends Map】
        【Hashtable】【Hashtable extends Dictionary implements Map】【synchronized内置锁保证线程安全】
                     【Hashtable和hashmap的差别：线程安全，key和value不能为null，获取index实现不一样】
