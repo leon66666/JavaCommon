@@ -48,7 +48,7 @@
                     Collections.synchronizedMap
  * （4）集合中的Arrays类，对数组的各种操作。binarySearch，sort，fill，equals，asList，tostring，hashcode，copyof
  * （6）集合中的Set：hashset,LinkedHashSet，treeset，二叉树排序，自定义排序
- * （7）集合中的Map：HashMap,TreeMap 【红黑树，put和delete】
+ * （7）集合中的Map：HashMap,TreeMap
        【应用】统计字符串中每个字符出现的次数。统计字符串中的大写，小写，数字，其他字符个数。统计字符串中子字符串出现的次数
        【HashMap】【HashMap implements Map】
           【内部实现】HashMap是数组+链表+红黑树(链表长度大于8转换为红黑树)；链地址法解决hash冲突
@@ -74,9 +74,10 @@
                          如果完全相等，if (!onlyIfAbsent || oldValue == null)，替换旧节点。
                          调用钩子方法afterNodeAccess(e); return oldValue
                       5、所有节点遍历一遍，都没有发现完全相同的节点，把newNode连接到链表的尾部。p.next=newNode
-                         判断，如果连边长度超过8，改为红黑树结构代替链表。
+                         判断，如果连边长度超过8，改为红黑树结构代替链表。treeifyBin(tab, hash)
                          ++modCount; if (++size > threshold); resize()扩容;
                          调用钩子方法afterNodeInsertion(evict); 原HashMap中不存在相同的key，return null
+                【treeifyBin】改为红黑树结构代替链表。自平衡的二叉查找树。
        【TreeMap】【TreeMap implements NavigableMap】【NavigableMap extends SortedMap】【SortedMap extends Map】
        【Hashtable】【Hashtable extends Dictionary implements Map】【synchronized内置锁保证线程安全】
                     【Hashtable和hashmap的差别：线程安全，key和value不能为null，获取index实现不一样】
