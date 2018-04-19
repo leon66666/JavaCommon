@@ -26,7 +26,7 @@ public class AtomicIntegerArrayDemo {
 
         Object[] objects = {new Object(), new Object()};
         AtomicReferenceArray atomicReferenceArray = new AtomicReferenceArray(objects);
-        atomicReferenceArray.getAndSet(1, new Object());
+        atomicReferenceArray.compareAndSet(1, new Object(), new Object());
     }
 
 }

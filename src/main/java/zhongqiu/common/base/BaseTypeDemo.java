@@ -14,7 +14,7 @@ package zhongqiu.common.base;
 类型                        字节
 boolean 布尔型              1/8
 byte 字节类型                1
-char 字符型                  2  一个字符能存储一个中文汉字
+char 字符型                  2  一个字符能存储一个中文汉字，一个汉字占用两个字节
 short 短整型                 2
 int 整数类型                 4
 long 长整形                  8
