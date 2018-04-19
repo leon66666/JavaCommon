@@ -1,7 +1,6 @@
 package zhongqiu.common.jdk5.concurrent.locks;
 
 import java.util.Random;
-import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 /*读写锁

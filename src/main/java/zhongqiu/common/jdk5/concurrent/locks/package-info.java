@@ -29,9 +29,9 @@
  *        自旋入队列addWaiter,tail不为空，node放入队尾;tail为空，自旋for循环直到初始化并且放入队尾成功。compareAndSetHead,compareAndSetTail
  *        acquireQueued。for无限循环。自旋在阻塞队列中竞争锁
  *              判断node节点的pre节点是否为头结点,是则node去竞争锁,获取到锁,把node置成头结点,return interrupted(初始为false)
- *              没有获取到锁或者不是则执行方法【shouldParkAfterFailedAcquire】：判断node前节点的waitStatus是否为-1(等待锁状态)，
+ *              没有获取到锁或者不是头结点则执行方法【shouldParkAfterFailedAcquire】：判断node前节点的waitStatus是否为-1(等待锁状态)，
  *              是则返回true。调用LockSupport.park(this)阻塞等待许可，获取许可，更新interrupted的值为Thread.interrupted(),重新下一次for循环
- *              不是且waitStatus>0,则跳过状态为1(取消等待锁)的pre节点，返回false，重新下一次for循环
+ *              不是且waitStatus>0,则从阻塞队列中移除状态为1(取消等待锁)的pre节点，返回false，重新下一次for循环
  *        如果acquireQueued方法返回true，执行 Thread.currentThread().interrupt();
  *    【公平锁 lock方法】
  *        【lock()】->【acquire(1)】->【if (!tryAcquire(arg) &&acquireQueued(addWaiter(Node.EXCLUSIVE), arg))】->
@@ -48,14 +48,19 @@
  *      如果next节点为空或者waitStatus > 0，从tail往前遍历到离head最近的waitStatus <= 0的节点，LockSupport.unpark(s.thread)
  * (2)读写锁 ReentrantReadWriteLock【参考文章：http://www.cnblogs.com/wangzhongqiu/p/8422925.html】
  *    【readLock().lock()】->【acquireShared(int arg)】->【if (tryAcquireShared(arg) < 0)】->【doAcquireShared(arg)】
- *       【tryAcquireShared没有阻塞方法，没有自旋】【doAcquireShared竞争锁失败，park，CLH锁，FIFO队列】
+ *       【tryAcquireShared没有阻塞方法，没有自旋。判断有写锁，失败。读写达到最大值，失败，阻塞队列中还有node，失败。竞争锁】
+ *       【tryAcquireShared失败，doAcquireShared 入阻塞队列，前节点为头结点竞争锁，失败park等待】【CLH锁，FIFO队列】
  *    【readLock().unlock()】->【releaseShared(int arg)】->【if (tryReleaseShared(arg))】->【doReleaseShared()】
- *       【tryReleaseShared 自旋释放锁直到成功，return nextc == 0;】【doReleaseShared 自旋直到把队列中第一个阻塞的线程唤醒】
+ *       【tryReleaseShared 自旋释放锁直到成功，return nextc == 0;】
+ *       【doReleaseShared 自旋直到把队列中第一个阻塞的线程唤醒】
+ *          如果next节点为空或者waitStatus > 0，从tail往前遍历到离head最近的waitStatus <= 0的节点，LockSupport.unpark(s.thread)
  *    【writeLock().lock()】->
  *       【acquire(1)】
  *          if (!tryAcquire(arg) && acquireQueued(addWaiter(Node.EXCLUSIVE), arg))
                selfInterrupt();
  *       【tryAcquire(1) 已经有读锁,失败;已经有写锁了,累加state;读锁和写锁都没有,CAS竞争锁（公平锁还要在竞争锁之前判断是否有线程已经在wait）】
  *    【writeLock().unlock()】->【release(1)】->【tryRelease(1)】->【unparkSuccessor(h)】
+ *       【tryRelease(1)】自旋释放锁直到成功，return nextc == 0;
+ *       【unparkSuccessor(h)】自旋直到把队列中第一个阻塞的线程唤醒  return  exclusiveCount(nextc) == 0
  */
 package zhongqiu.common.jdk5.concurrent.locks;
