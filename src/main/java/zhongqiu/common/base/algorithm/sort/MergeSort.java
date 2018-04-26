@@ -5,7 +5,11 @@ import java.util.Arrays;
 /**
  * Created by wangzhongqiu on 2017/8/11.
  * 归并排序，是稳定的排序，时间复杂度为O(nlogn)，空间复杂度为 O(n)
- * 思想：分治，递归，2-路归并
+ * 思想：分治，递归，2路归并
+ * 需要一块额外的内存空间来协助完成两个有序块的合并
+ * 只要从比较二个数列的第一个数，谁小就先取谁，取了后就在对应数列中删除这个数。
+ * 然后再进行比较，如果有数列为空，那直接将另一个数列的数据依次取出即可。
+ * 最后把排序好的临时数列放回（覆盖）待排序数列即可
  */
 public class MergeSort {
     public static void main(String[] args) {
