@@ -87,6 +87,8 @@ public class LinkedList {
 
     static class LinkedListUtil {
         // 方法：求两个单链表相交的第一个交点
+        //找出最长的链表，计算长度差值，将较长的链表往交点移动长度差值的长度
+        //将两个链表的指针同时向前移动，第一个相同的节点就是第一个交点
         public static Node getFirstCommonNode(LinkedList list1, LinkedList list2) {
             Node head1 = list1.head;
             Node head2 = list2.head;
