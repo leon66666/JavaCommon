@@ -281,47 +281,47 @@ public class BinaryTreeUtil {
     public static void visit(BinaryTree bt) {
         System.out.print(bt.getData() + " ");
     }
-}
 
-class BinaryTree {
-    private BinaryTree lchild;
-    private BinaryTree rchild;
-    private Object data;
+    static class BinaryTree {
+        private BinaryTree lchild;
+        private BinaryTree rchild;
+        private Object data;
 
-    public BinaryTree getLchild() {
-        return lchild;
-    }
+        public BinaryTree getLchild() {
+            return lchild;
+        }
 
-    public void setLchild(BinaryTree lchild) {
-        this.lchild = lchild;
-    }
+        public void setLchild(BinaryTree lchild) {
+            this.lchild = lchild;
+        }
 
-    public BinaryTree getRchild() {
-        return rchild;
-    }
+        public BinaryTree getRchild() {
+            return rchild;
+        }
 
-    public Object getData() {
-        return data;
-    }
+        public Object getData() {
+            return data;
+        }
 
-    public void setData(Object data) {
-        this.data = data;
-    }
+        public void setData(Object data) {
+            this.data = data;
+        }
 
-    public void setRchild(BinaryTree rchild) {
-        this.rchild = rchild;
-    }
+        public void setRchild(BinaryTree rchild) {
+            this.rchild = rchild;
+        }
 
-    public BinaryTree(BinaryTree l, BinaryTree r, Object data) {
-        lchild = l;
-        rchild = r;
-        this.data = data;
-    }
+        public BinaryTree(BinaryTree l, BinaryTree r, Object data) {
+            lchild = l;
+            rchild = r;
+            this.data = data;
+        }
 
-    public BinaryTree(Object data) {
-        lchild = null;
-        rchild = null;
-        this.data = data;
+        public BinaryTree(Object data) {
+            lchild = null;
+            rchild = null;
+            this.data = data;
+        }
     }
 }
 
