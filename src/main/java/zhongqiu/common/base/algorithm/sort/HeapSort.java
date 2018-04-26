@@ -8,7 +8,8 @@ import java.util.Arrays;
  * Created by wangzhongqiu on 2017/8/15.
  * 堆排序，不稳定排序，时间复杂度为O(nlogn)。堆排序是一种选择排序
  * 思想：二叉堆，最大堆（递减），最小堆（递增）。
- * 堆的存储:一般都用数组来表示堆，i结点的父结点下标就为(i – 1) / 2。它的左右子结点下标分别为2 * i + 1和2 * i + 2。
+ * 堆的存储:一般都用数组来表示堆，i结点的父结点下标就为(i – 1) / 2。
+ * 它的左右子结点下标分别为2 * i + 1和2 * i + 2。
  */
 public class HeapSort {
     public static void main(String[] args) {
@@ -19,7 +20,6 @@ public class HeapSort {
     }
 
     void HeapAdjust(int H[], int start, int end) {
-
         int temp = H[start];
         for (int i = 2 * start + 1; i <= end; i = 2 * i + 1) {
             //因为假设根结点的序号为0而不是1，所以i结点左孩子和右孩子分别为2i+1和2i+2
